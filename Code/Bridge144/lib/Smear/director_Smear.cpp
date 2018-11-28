@@ -1,3 +1,5 @@
+#include "BridgeLib_Private.h"
+
 /*!
         @file    $Id:: director_Smear.cpp #$
 

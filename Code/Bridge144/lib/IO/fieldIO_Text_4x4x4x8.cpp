@@ -1,3 +1,5 @@
+#include "BridgeLib_Private.h"
+
 /*!
         @file    $Id: fieldIO_Text_4x4x4x8.cpp #$
 

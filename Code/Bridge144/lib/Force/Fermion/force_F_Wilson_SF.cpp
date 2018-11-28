@@ -1,3 +1,5 @@
+#include "BridgeLib_Private.h"
+
 /*!
         @file    $Id:: force_F_Wilson_SF.cpp #$
 

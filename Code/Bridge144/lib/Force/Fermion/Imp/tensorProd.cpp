@@ -1,3 +1,6 @@
+#include "BridgeLib_Private.h"
+#if USE_IMP
+
 /*!
         @file    $Id: tensorProd.cpp #$
         @brief
@@ -81,3 +84,4 @@ void tensorProd_Field_F(Field_G& u, const int ex, const Field_F& v1, const Field
 
 
 //================================================================
+#endif

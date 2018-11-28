@@ -89,11 +89,10 @@
 
 //the eval expr parser looks like not been used. In fact, we have GINAC working on Windows now, may replace to GINAC though
 
-//=======================================================
-//=======================================================
+//==============================================================================================================
 //Real Physics start here
-//=======================================================
-//=======================================================
+//==============================================================================================================
+
 
 //=======================================================
 //Fields
@@ -155,6 +154,11 @@
 #include "Fopr/fopr_Rational_SF.h"
 
 //=======================================================
+//Eigen
+#include "Eigen/eigensolver.h"
+#include "Eigen/eigensolver_IRLanczos.h"
+
+//=======================================================
 //Measurements
 #include "Measurements/Gauge/staple.h"
 #include "Measurements/Gauge/staple_lex.h"
@@ -187,12 +191,13 @@
 #include "Measurements/Fermion/source.h"
 #include "Measurements/Fermion/source_Local.h"
 #include "Measurements/Fermion/source_Wall.h"
-//#include "Measurements/Fermion/source_Wall_SF.h" need smear
 #include "Measurements/Fermion/source_MomentumWall.h"
 
 #include "Measurements/Fermion/noiseVector.h"
 #include "Measurements/Fermion/noiseVector_Z2.h"
 #include "Measurements/Fermion/quarkNumberSusceptibility_Wilson.h"
+
+//source_Wall_SF need smear
 
 //=======================================================
 //Force
@@ -202,13 +207,56 @@
 #include "Force/Gauge/force_G_Rectangle.h"
 #include "Force/Gauge/force_G_Rectangle_SF.h"
 
+#include "Force/Fermion/force_F.h"
+#include "Force/Fermion/tensorProd.h"
+#include "Force/Fermion/force_F_Wilson_eo.h"
+#include "Force/Fermion/force_F_Wilson_Nf2.h"
+#include "Force/Fermion/force_F_Wilson_Nf2_Isochemical.h"
+#include "Force/Fermion/force_F_Wilson_SF.h"
+#include "Force/Fermion/force_F_CloverTerm.h"
+#include "Force/Fermion/force_F_Clover_Nf2.h"
+#include "Force/Fermion/force_F_Clover_Nf2_Isochemical.h"
+#include "Force/Fermion/force_F_Clover_SF.h"
+#include "Force/Fermion/force_F_Rational.h"
+
+//smear not included
+
+//=======================================================
+//Smear
+#include "Smear/projection.h"
+#include "Smear/projection_Maximum_SU_N.h"
+#include "Smear/projection_Stout_SU3.h"
+#include "Smear/smear.h"
+#include "Smear/director_Smear.h"
+
+#include "Measurements/Fermion/source_Wall_SF.h"
+
+#include "Smear/smear_APE.h"
+#include "Smear/smear_APE_SF.h"
+#include "Smear/smear_APE_spatial.h"
+#include "Smear/smear_HYP.h"
+#include "Smear/smear_HYP_SF.h"
+
+//Fopr
+#include "Fopr/fopr_Smeared.h"
+#include "Fopr/fopr_Smeared_eo.h"
+
+//Force
+#include "Force/Fermion/forceSmear.h"
+#include "Force/Fermion/forceSmear_APE.h"
+#include "Force/Fermion/forceSmear_APE_SF.h"
+#include "Force/Fermion/forceSmear_HYP.h"
+#include "Force/Fermion/forceSmear_HYP_SF.h"
+
 //=======================================================
 //Action
 #include "Action/action.h"
+
 #include "Action/Gauge/action_G_Plaq.h"
 #include "Action/Gauge/action_G_Rectangle.h"
 #include "Action/Gauge/action_G_Plaq_SF.h"
 #include "Action/Gauge/action_G_Rectangle_SF.h"
+
 #include "Action/Fermion/action_F_Standard_lex.h"
 #include "Action/Fermion/action_F_Standard_eo.h"
 #include "Action/Fermion/action_F_Standard_SF.h"
@@ -217,9 +265,45 @@
 #include "Action/Fermion/action_F_Ratio_lex.h"
 #include "Action/Fermion/action_F_Ratio_eo.h"
 
+//=======================================================
+//HMC
+#include "HMC/langevin_Momentum.h"
+#include "HMC/action_list.h"
+#include "HMC/integrator.h"
+#include "HMC/integrator_UpdateU.h"
+#include "HMC/integrator_UpdateP.h"
+#include "HMC/integrator_Leapfrog.h"
+#include "HMC/integrator_Omelyan.h"
+#include "HMC/builder_Integrator.h"
+#include "HMC/hmc_General.h"
+#include "HMC/hmc_Leapfrog.h"
+
+//==============================================================================================================
+//Things left
+//==============================================================================================================
 
 //=======================================================
 //IO
+#include "IO/io_format.h"
+#include "IO/io_format_gauge.h"
+
+#include "IO/dataIO.h"
+#include "IO/dataIO_Text.h"
+#include "IO/dataIO_Text_impl.h"
+
+#include "IO/fieldIO.h"
+#include "IO/fieldIO_Text.h"
+#include "IO/fieldIO_Text_4x4x4x8.h"
+#include "IO/fieldIO_Binary.h"
+#include "IO/fieldIO_Binary_Distributed.h"
+#include "IO/fieldIO_Binary_Parallel.h"
+#include "IO/fieldIO_Fortran.h"
+#include "IO/fieldIO_LIME.h" //Lattice QCD Interchange Message Encapsulation (a file format)
+#include "IO/fieldIO_LIME_Parallel.h"
+#include "IO/fieldIO_Null.h"
+
+#include "IO/gaugeConfig.h"
+#include "IO/gaugeConfig_SF.h"
 
 
 #endif //#ifndef _BRIDGELIB_PRIVATE_H_

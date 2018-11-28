@@ -1,3 +1,5 @@
+#include "BridgeLib_Private.h"
+
 /*!
         @file    $Id:: projection_Stout_SU3.cpp #$
 

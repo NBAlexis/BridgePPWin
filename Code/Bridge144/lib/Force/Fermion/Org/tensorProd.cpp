@@ -1,3 +1,6 @@
+#include "BridgeLib_Private.h"
+#if USE_ORG
+
 /*!
         @file    $Id: tensorProd.cpp #$
         @brief
@@ -49,3 +52,4 @@ void tensorProd_Field_F(Field_G& u, const int ex, const Field_F& v1, const Field
     u.set_mat(site, ex, ut);
   }
 }
+#endif

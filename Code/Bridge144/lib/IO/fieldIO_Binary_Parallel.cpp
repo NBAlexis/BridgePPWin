@@ -1,3 +1,5 @@
+#include "BridgeLib_Private.h"
+
 /*!
         @file    $Id: fieldIO_Binary_Parallel.cpp #$
 

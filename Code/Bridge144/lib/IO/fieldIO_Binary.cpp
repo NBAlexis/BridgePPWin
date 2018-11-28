@@ -1,3 +1,5 @@
+#include "BridgeLib_Private.h"
+
 /*!
         @file    $Id: fieldIO_Binary.cpp #$
 
@@ -14,7 +16,11 @@
 #include "fieldIO_Binary.h"
 
 #include <fstream>
+#if BRIDGE_WIN
+#include <string.h>
+#else
 #include <strings.h>
+#endif
 
 #include "bridgeIO.h"
 using Bridge::vout;
