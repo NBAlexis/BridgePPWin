@@ -15,7 +15,7 @@ namespace {
   }
 
 
-  double mult_Gn_r(const double *g, const double *w, int Nc)
+  double mult_Gn_r(const double *g, const double *w, int)
   {
     return g[0] * w[0] - g[1] * w[1]
            + g[2] * w[2] - g[3] * w[3]
@@ -23,7 +23,7 @@ namespace {
   }
 
 
-  double mult_Gn_i(const double *g, const double *w, int Nc)
+  double mult_Gn_i(const double *g, const double *w, int)
   {
     return g[0] * w[1] + g[1] * w[0]
            + g[2] * w[3] + g[3] * w[2]
@@ -31,7 +31,7 @@ namespace {
   }
 
 
-  double mult_Gd_r(const double *g, const double *w, int Nc)
+  double mult_Gd_r(const double *g, const double *w, int)
   {
     return g[0] * w[0] + g[1] * w[1]
            + g[6] * w[2] + g[7] * w[3]
@@ -39,7 +39,7 @@ namespace {
   }
 
 
-  double mult_Gd_i(const double *g, const double *w, int Nc)
+  double mult_Gd_i(const double *g, const double *w, int)
   {
     return g[0] * w[1] - g[1] * w[0]
            + g[6] * w[3] - g[7] * w[2]

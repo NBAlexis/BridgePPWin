@@ -74,7 +74,7 @@ void Action_G_Plaq::set_parameters(double beta)
 
 
 //====================================================================
-double Action_G_Plaq::langevin(RandomNumbers *rand)
+double Action_G_Plaq::langevin(RandomNumbers *)
 {
   double H_U = calcH(); // calculate action H_U=beta*(1-Plaq)*Lvol*6 (SA)
 

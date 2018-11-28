@@ -16,6 +16,8 @@
 #include <cstdio>
 #if BRIDGE_WIN
 #include "regex.h"
+#pragma comment(lib, "/pcre-7.0-lib/lib/pcre.lib")
+#pragma comment(lib, "/pcre-7.0-lib/lib/pcreposix.lib")
 #else
 #include <regex.h>
 #endif

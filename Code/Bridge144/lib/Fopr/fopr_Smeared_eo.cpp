@@ -41,8 +41,8 @@ void Fopr_Smeared_eo::set_parameters(const Parameters& params)
 //====================================================================
 void Fopr_Smeared_eo::set_config(Field *U)
 {
-  int Nvol = CommonParameters::Nvol();
-  int Ndim = CommonParameters::Ndim();
+  //int Nvol = CommonParameters::Nvol();
+  //int Ndim = CommonParameters::Ndim();
 
   m_dr_smear->set_config(U);
 

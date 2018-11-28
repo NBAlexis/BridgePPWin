@@ -65,7 +65,7 @@ void Projection_Stout_SU3::print_stat()
 
 //====================================================================
 void Projection_Stout_SU3::project(Field_G& U,
-                                   double alpha,
+                                   double ,
                                    const Field_G& Cst, const Field_G& Uorg)
 {
   //  int id = 31;
@@ -189,7 +189,7 @@ void Projection_Stout_SU3::exp_iQ(Field_G& e_iQ, const Field_G& iQ)
 */
 //====================================================================
 void Projection_Stout_SU3::force_recursive(Field_G& Xi, Field_G& iTheta,
-                                           double alpha, const Field_G& Sigmap,
+                                           double , const Field_G& Sigmap,
                                            const Field_G& Cst, const Field_G& Uorg)
 {
   // in stout projection, parameter alpha is dummy.

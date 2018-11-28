@@ -10,7 +10,7 @@ namespace {
   }
 
 
-  inline double mult_uv_r(const double *g, const double *w, int Nc)
+  inline double mult_uv_r(const double *g, const double *w, int)
   {
     return g[0] * w[0] - g[1] * w[1]
            + g[2] * w[2] - g[3] * w[3]
@@ -18,7 +18,7 @@ namespace {
   }
 
 
-  inline double mult_uv_i(const double *g, const double *w, int Nc)
+  inline double mult_uv_i(const double *g, const double *w, int)
   {
     return g[0] * w[1] + g[1] * w[0]
            + g[2] * w[3] + g[3] * w[2]
@@ -26,7 +26,7 @@ namespace {
   }
 
 
-  inline double mult_udagv_r(const double *g, const double *w, int Nc)
+  inline double mult_udagv_r(const double *g, const double *w, int)
   {
     return g[0] * w[0] + g[1] * w[1]
            + g[6] * w[2] + g[7] * w[3]
@@ -34,7 +34,7 @@ namespace {
   }
 
 
-  inline double mult_udagv_i(const double *g, const double *w, int Nc)
+  inline double mult_udagv_i(const double *g, const double *w, int)
   {
     return g[0] * w[1] - g[1] * w[0]
            + g[6] * w[3] - g[7] * w[2]

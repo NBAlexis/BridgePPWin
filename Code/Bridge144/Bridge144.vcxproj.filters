@@ -144,37 +144,10 @@
     <ClCompile Include="lib\Communicator\Single\communicator_single.cpp">
       <Filter>Communicator\Single</Filter>
     </ClCompile>
-    <ClCompile Include="lib\Communicator\MPI\channel.cpp">
-      <Filter>Communicator\MPI</Filter>
-    </ClCompile>
-    <ClCompile Include="lib\Communicator\MPI\communicator.cpp">
-      <Filter>Communicator\MPI</Filter>
-    </ClCompile>
     <ClCompile Include="lib\Communicator\MPI\communicator_mpi.cpp">
       <Filter>Communicator\MPI</Filter>
     </ClCompile>
-    <ClCompile Include="lib\Communicator\MPI\layout.cpp">
-      <Filter>Communicator\MPI</Filter>
-    </ClCompile>
-    <ClCompile Include="lib\Communicator\MPI\physical_map.cpp">
-      <Filter>Communicator\MPI</Filter>
-    </ClCompile>
-    <ClCompile Include="lib\Communicator\BGNET\channel.cpp">
-      <Filter>Communicator\BGNET</Filter>
-    </ClCompile>
-    <ClCompile Include="lib\Communicator\BGNET\communicator.cpp">
-      <Filter>Communicator\BGNET</Filter>
-    </ClCompile>
     <ClCompile Include="lib\Communicator\BGNET\communicator_bgnet.cpp">
-      <Filter>Communicator\BGNET</Filter>
-    </ClCompile>
-    <ClCompile Include="lib\Communicator\BGNET\counter.cpp">
-      <Filter>Communicator\BGNET</Filter>
-    </ClCompile>
-    <ClCompile Include="lib\Communicator\BGNET\layout.cpp">
-      <Filter>Communicator\BGNET</Filter>
-    </ClCompile>
-    <ClCompile Include="lib\Communicator\BGNET\physical_map.cpp">
       <Filter>Communicator\BGNET</Filter>
     </ClCompile>
     <ClCompile Include="lib\Eigen\eigensolver_IRLanczos.cpp">
@@ -258,60 +231,6 @@
     <ClCompile Include="lib\Fopr\fopr_WilsonGeneral.cpp">
       <Filter>Fopr</Filter>
     </ClCompile>
-    <ClCompile Include="lib\Fopr\Imp\fopr_CloverTerm.cpp">
-      <Filter>Fopr\Imp</Filter>
-    </ClCompile>
-    <ClCompile Include="lib\Fopr\Imp\fopr_CloverTerm_eo.cpp">
-      <Filter>Fopr\Imp</Filter>
-    </ClCompile>
-    <ClCompile Include="lib\Fopr\Imp\fopr_CloverTerm_General.cpp">
-      <Filter>Fopr\Imp</Filter>
-    </ClCompile>
-    <ClCompile Include="lib\Fopr\Imp\fopr_Wilson_eo_impl.cpp">
-      <Filter>Fopr\Imp</Filter>
-    </ClCompile>
-    <ClCompile Include="lib\Fopr\Imp\fopr_Wilson_eo_impl_thread.cpp">
-      <Filter>Fopr\Imp</Filter>
-    </ClCompile>
-    <ClCompile Include="lib\Fopr\Imp\fopr_Wilson_impl.cpp">
-      <Filter>Fopr\Imp</Filter>
-    </ClCompile>
-    <ClCompile Include="lib\Fopr\Imp\fopr_Wilson_impl_thread.cpp">
-      <Filter>Fopr\Imp</Filter>
-    </ClCompile>
-    <ClCompile Include="lib\Fopr\Imp\fopr_WilsonGeneral_impl.cpp">
-      <Filter>Fopr\Imp</Filter>
-    </ClCompile>
-    <ClCompile Include="lib\Fopr\Imp\fopr_WilsonGeneral_impl_thread.cpp">
-      <Filter>Fopr\Imp</Filter>
-    </ClCompile>
-    <ClCompile Include="lib\Fopr\Imp_BGQ\fopr_CloverTerm.cpp">
-      <Filter>Fopr\Imp_BGQ</Filter>
-    </ClCompile>
-    <ClCompile Include="lib\Fopr\Imp_BGQ\fopr_CloverTerm_eo.cpp">
-      <Filter>Fopr\Imp_BGQ</Filter>
-    </ClCompile>
-    <ClCompile Include="lib\Fopr\Imp_BGQ\fopr_CloverTerm_General.cpp">
-      <Filter>Fopr\Imp_BGQ</Filter>
-    </ClCompile>
-    <ClCompile Include="lib\Fopr\Imp_BGQ\fopr_Wilson_eo_impl.cpp">
-      <Filter>Fopr\Imp_BGQ</Filter>
-    </ClCompile>
-    <ClCompile Include="lib\Fopr\Imp_BGQ\fopr_Wilson_eo_impl_thread.cpp">
-      <Filter>Fopr\Imp_BGQ</Filter>
-    </ClCompile>
-    <ClCompile Include="lib\Fopr\Imp_BGQ\fopr_Wilson_impl.cpp">
-      <Filter>Fopr\Imp_BGQ</Filter>
-    </ClCompile>
-    <ClCompile Include="lib\Fopr\Imp_BGQ\fopr_Wilson_impl_thread.cpp">
-      <Filter>Fopr\Imp_BGQ</Filter>
-    </ClCompile>
-    <ClCompile Include="lib\Fopr\Imp_BGQ\fopr_WilsonGeneral_impl.cpp">
-      <Filter>Fopr\Imp_BGQ</Filter>
-    </ClCompile>
-    <ClCompile Include="lib\Fopr\Imp_BGQ\fopr_WilsonGeneral_impl_thread.cpp">
-      <Filter>Fopr\Imp_BGQ</Filter>
-    </ClCompile>
     <ClCompile Include="lib\Fopr\Org\fopr_CloverTerm.cpp">
       <Filter>Fopr\Org</Filter>
     </ClCompile>
@@ -374,9 +293,6 @@
     </ClCompile>
     <ClCompile Include="lib\Force\Fermion\forceSmear_HYP_SF.cpp">
       <Filter>Force\Fermion</Filter>
-    </ClCompile>
-    <ClCompile Include="lib\Force\Fermion\Imp\tensorProd.cpp">
-      <Filter>Force\Fermion\Imp</Filter>
     </ClCompile>
     <ClCompile Include="lib\Force\Fermion\Org\tensorProd.cpp">
       <Filter>Force\Fermion\Org</Filter>
@@ -498,9 +414,6 @@
     <ClCompile Include="lib\Measurements\Fermion\source_Wall_SF.cpp">
       <Filter>Measurements\Fermion</Filter>
     </ClCompile>
-    <ClCompile Include="lib\Measurements\Fermion\Imp\contract_4spinor.cpp">
-      <Filter>Measurements\Fermion\Imp</Filter>
-    </ClCompile>
     <ClCompile Include="lib\Measurements\Fermion\Org\contract_4spinor.cpp">
       <Filter>Measurements\Fermion\Org</Filter>
     </ClCompile>
@@ -578,9 +491,6 @@
     </ClCompile>
     <ClCompile Include="lib\ResourceManager\OpenMP\threadManager_OpenMP.cpp">
       <Filter>ResourceManager\OpenMP</Filter>
-    </ClCompile>
-    <ClCompile Include="lib\ResourceManager\OpenMP_stub\threadManager_OpenMP.cpp">
-      <Filter>ResourceManager\OpenMP_stub</Filter>
     </ClCompile>
     <ClCompile Include="lib\Smear\director_Smear.cpp">
       <Filter>Smear</Filter>
@@ -712,6 +622,96 @@
       <Filter>Tools</Filter>
     </ClCompile>
     <ClCompile Include="BridgeLib_Private.cpp" />
+    <ClCompile Include="lib\Communicator\BGNET\channel_BGNET.cpp">
+      <Filter>Communicator\BGNET</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Communicator\BGNET\counter_BGNET.cpp">
+      <Filter>Communicator\BGNET</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Communicator\BGNET\layout_BGNET.cpp">
+      <Filter>Communicator\BGNET</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Communicator\BGNET\physical_map_BGNET.cpp">
+      <Filter>Communicator\BGNET</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Communicator\BGNET\communicator_BG.cpp">
+      <Filter>Communicator\BGNET</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Communicator\MPI\channel_MPI.cpp">
+      <Filter>Communicator\MPI</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Communicator\MPI\communicator_M.cpp">
+      <Filter>Communicator\MPI</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Communicator\MPI\layout_MPI.cpp">
+      <Filter>Communicator\MPI</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Communicator\MPI\physical_map_MPI.cpp">
+      <Filter>Communicator\MPI</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\Imp\fopr_CloverTerm_IMP.cpp">
+      <Filter>Fopr\Imp</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\Imp\fopr_CloverTerm_eo_IMP.cpp">
+      <Filter>Fopr\Imp</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\Imp\fopr_CloverTerm_General_IMP.cpp">
+      <Filter>Fopr\Imp</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\Imp\fopr_Wilson_eo_impl_IMP.cpp">
+      <Filter>Fopr\Imp</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\Imp\fopr_Wilson_eo_impl_thread_IMP.cpp">
+      <Filter>Fopr\Imp</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\Imp\fopr_Wilson_impl_IMP.cpp">
+      <Filter>Fopr\Imp</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\Imp\fopr_Wilson_impl_thread_IMP.cpp">
+      <Filter>Fopr\Imp</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\Imp\fopr_WilsonGeneral_impl_IMP.cpp">
+      <Filter>Fopr\Imp</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\Imp\fopr_WilsonGeneral_impl_thread_IMP.cpp">
+      <Filter>Fopr\Imp</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\Imp_BGQ\fopr_CloverTerm_IMPBGQ.cpp">
+      <Filter>Fopr\Imp_BGQ</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\Imp_BGQ\fopr_CloverTerm_eo_IMPBGQ.cpp">
+      <Filter>Fopr\Imp_BGQ</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\Imp_BGQ\fopr_CloverTerm_General_IMPBGQ.cpp">
+      <Filter>Fopr\Imp_BGQ</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\Imp_BGQ\fopr_Wilson_eo_impl_IMPBGQ.cpp">
+      <Filter>Fopr\Imp_BGQ</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\Imp_BGQ\fopr_Wilson_eo_impl_thread_IMPBGQ.cpp">
+      <Filter>Fopr\Imp_BGQ</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\Imp_BGQ\fopr_Wilson_impl_IMPBGQ.cpp">
+      <Filter>Fopr\Imp_BGQ</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\Imp_BGQ\fopr_Wilson_impl_thread_IMPBGQ.cpp">
+      <Filter>Fopr\Imp_BGQ</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\Imp_BGQ\fopr_WilsonGeneral_impl_IMPBGQ.cpp">
+      <Filter>Fopr\Imp_BGQ</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\Imp_BGQ\fopr_WilsonGeneral_impl_thread_IMPBGQ.cpp">
+      <Filter>Fopr\Imp_BGQ</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Force\Fermion\Imp\tensorProd_IMP.cpp">
+      <Filter>Force\Fermion\Imp</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Measurements\Fermion\Imp\contract_4spinor_IMP.cpp">
+      <Filter>Measurements\Fermion\Imp</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\ResourceManager\OpenMP_stub\threadManager_OpenMP_STUB.cpp">
+      <Filter>ResourceManager\OpenMP_stub</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\Action\action.h">

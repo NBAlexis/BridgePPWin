@@ -356,7 +356,7 @@ void ShiftField_eo::dn_xh(Field& v, const Field& w, const int boundary_condition
 
 //====================================================================
 void ShiftField_eo::up_yh(Field& v, const Field& w, const int boundary_condition,
-                          const int ieo)
+                          const int )
 {
   double bc2;
 
@@ -421,7 +421,7 @@ void ShiftField_eo::up_yh(Field& v, const Field& w, const int boundary_condition
 
 //====================================================================
 void ShiftField_eo::dn_yh(Field& v, const Field& w, const int boundary_condition,
-                          const int ieo)
+                          const int )
 {
   double bc2;
 
@@ -486,7 +486,7 @@ void ShiftField_eo::dn_yh(Field& v, const Field& w, const int boundary_condition
 
 //====================================================================
 void ShiftField_eo::up_zh(Field& v, const Field& w, const int boundary_condition,
-                          const int ieo)
+                          const int )
 {
   double bc2;
 
@@ -552,7 +552,7 @@ void ShiftField_eo::up_zh(Field& v, const Field& w, const int boundary_condition
 
 //====================================================================
 void ShiftField_eo::dn_zh(Field& v, const Field& w, const int boundary_condition,
-                          const int ieo)
+                          const int )
 {
   double bc2;
 
@@ -618,7 +618,7 @@ void ShiftField_eo::dn_zh(Field& v, const Field& w, const int boundary_condition
 
 //====================================================================
 void ShiftField_eo::up_th(Field& v, const Field& w, const int boundary_condition,
-                          const int ieo)
+                          const int )
 {
   double bc2;
 
@@ -685,7 +685,7 @@ void ShiftField_eo::up_th(Field& v, const Field& w, const int boundary_condition
 
 //====================================================================
 void ShiftField_eo::dn_th(Field& v, const Field& w, const int boundary_condition,
-                          const int ieo)
+                          const int )
 {
   double bc2;
 

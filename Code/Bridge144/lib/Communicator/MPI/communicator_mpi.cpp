@@ -196,12 +196,12 @@ int Communicator_impl::sync_global()
 int Communicator_impl::Base::broadcast(size_t size, void *data, int sender)
 {
   LOG;
-  return MPI_Bcast(data, size, MPI_BYTE, sender, m_comm);
+  return MPI_Bcast(data, (int)size, MPI_BYTE, sender, m_comm);
 }
 
 
 //====================================================================
-int Communicator_impl::Base::exchange(size_t size, void *recv_buf, void *send_buf, int idir, int ipm, int itag)
+int Communicator_impl::Base::exchange(size_t size, void *recv_buf, void *send_buf, int idir, int ipm, int )
 {
   LOG;
 
@@ -227,8 +227,8 @@ int Communicator_impl::Base::exchange(size_t size, void *recv_buf, void *send_bu
   int tag_recv = Layout::tag(p_recv, idir, -ipm);
 
   return MPI_Sendrecv(
-    send_buf, size, MPI_BYTE, p_send, tag_send,
-    recv_buf, size, MPI_BYTE, p_recv, tag_recv,
+    send_buf, (int)size, MPI_BYTE, p_send, tag_send,
+    recv_buf, (int)size, MPI_BYTE, p_recv, tag_recv,
     m_comm, &status);
 }
 
@@ -244,10 +244,10 @@ int Communicator_impl::Base::send_1to1(size_t size, void *recv_buf, void *send_b
     memcpy(recv_buf, send_buf, size);
   } else {
     if (self() == recv_from)
-      MPI_Send(send_buf, size, MPI_BYTE, send_to, tag, m_comm);
+      MPI_Send(send_buf, (int)size, MPI_BYTE, send_to, tag, m_comm);
 
     if (self() == send_to)
-      MPI_Recv(recv_buf, size, MPI_BYTE, recv_from, tag, m_comm, &status);
+      MPI_Recv(recv_buf, (int)size, MPI_BYTE, recv_from, tag, m_comm, &status);
   }
 
   // sync should be taken outside.
@@ -288,7 +288,7 @@ int Communicator_impl::broadcast_string(int count, string& data, int sender)
   }
 
   // do broadcast.
-  int retv = MPI_Bcast((void *)buf, size, MPI_BYTE, sender, m_comm);
+  int retv = MPI_Bcast((void *)buf, (int)size, MPI_BYTE, sender, m_comm);
 
   if (Communicator::self() != sender) {
     data = string(buf);

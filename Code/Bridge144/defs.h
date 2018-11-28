@@ -17,8 +17,8 @@
 #include <string>
 
 // for debug
-#define LOG printf(">>> %s\n", __PRETTY_FUNCTION__)
-//#define LOG
+//#define LOG printf(">>> %s\n", __PRETTY_FUNCTION__) why this is not working?
+#define LOG
 
 // direction label
 enum Direction

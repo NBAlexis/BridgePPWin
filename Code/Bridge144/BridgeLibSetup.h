@@ -19,6 +19,9 @@
 //choose complex
 #define USE_STD_COMPLEX 1
 
+#define USE_STRDUP 1
+#define USE_EVALEXPR 1
+
 //choose communicator
 //COMMUNICATOR_USE_BGNET
 //COMMUNICATOR_USE_MPI

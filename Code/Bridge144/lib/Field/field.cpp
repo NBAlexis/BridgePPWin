@@ -123,7 +123,7 @@ dcomplex dotc(const Field& y, const Field& x)
     vout.crucial("Error at %s: unsupported arg types.\n", __func__);
     exit(EXIT_FAILURE);
 
-    return cmplx(0.0, 0.0);  // never reached.
+    //return cmplx(0.0, 0.0);  // never reached.
   }
 }
 
@@ -161,7 +161,7 @@ dcomplex dotc(const Field& y, const int exy, const Field& x, const int exx)
     vout.crucial("Error at %s: unsupported arg types.\n", __func__);
     exit(EXIT_FAILURE);
 
-    return cmplx(0.0, 0.0);  // never reached.
+    //return cmplx(0.0, 0.0);  // never reached.
   }
 }
 
@@ -212,7 +212,7 @@ void axpy(Field& y, const dcomplex a, const Field& x)
     vout.crucial("Error at %s: real vector and complex parameter.\n", __func__);
     exit(EXIT_FAILURE);
 
-    return axpy(y, real(a), x);  // ignore imaginary part of a
+    //return axpy(y, real(a), x);  // ignore imaginary part of a
   } else if ((y.field_element_type() == Field::COMPLEX) &&
              (x.field_element_type() == Field::COMPLEX)) {
     double       *yp = y.ptr(0);
@@ -251,7 +251,7 @@ void axpy(Field& y, const int exy, const dcomplex a, const Field& x, const int e
     vout.crucial("Error at %s: real vector and complex parameter.\n", __func__);
     exit(EXIT_FAILURE);
 
-    return axpy(y, real(a), x);  // ignore imaginary part of a
+    //return axpy(y, real(a), x);  // ignore imaginary part of a
   } else if ((y.field_element_type() == Field::COMPLEX) &&
              (x.field_element_type() == Field::COMPLEX)) {
     double       *yp = y.ptr(0, 0, exy);
@@ -321,7 +321,7 @@ void scal(Field& x, const dcomplex a)
     exit(EXIT_FAILURE);
 
     //    x.field *= real(a);  // ignore imaginary part of a
-    scal(x, a);
+    //scal(x, a);
   } else if (x.field_element_type() == Field::COMPLEX) {
     double *xp = x.ptr(0);
     //int ntot = x.ntot();
@@ -354,7 +354,7 @@ void scal(Field& x, const int exx, const dcomplex a)
     exit(EXIT_FAILURE);
 
     //    x.field *= real(a);  // ignore imaginary part of a
-    scal(x, exx, a);
+    //scal(x, exx, a);
   } else if (x.field_element_type() == Field::COMPLEX) {
     double *xp = x.ptr(0, 0, exx);
     //    int size = x.nin() * x.nvol();
@@ -485,7 +485,7 @@ void aypx(const dcomplex a, Field& y, const Field& x)
     vout.crucial("Error at %s: real vector and complex parameter.\n", __func__);
     exit(EXIT_FAILURE);
 
-    return aypx(real(a), y, x);  // ignore imaginary part of a
+    //return aypx(real(a), y, x);  // ignore imaginary part of a
   } else if ((y.field_element_type() == Field::COMPLEX) &&
              (x.field_element_type() == Field::COMPLEX)) {
     double       *yp = y.ptr(0);

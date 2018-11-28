@@ -1,3 +1,6 @@
+#include "BridgeLib_Private.h"
+#if USE_EVALEXPR
+
 /*!
         @file    $Id: evalexpr.cpp #$
 
@@ -23,19 +26,19 @@
 
 //====================================================================
 // global symbol entries
-namespace {
-  struct _init_function
-  {
-    char const *name;
-    function_t func;
-  };
-
-  struct _init_variable
-  {
-    char const *name;
-    double     val;
-  };
-}
+//namespace {
+//  struct _init_function
+//  {
+//    char const *name;
+//    function_t func;
+//  };
+//
+//  struct _init_variable
+//  {
+//    char const *name;
+//    double     val;
+//  };
+//}
 
 // import global symbol definitions
 #include "evalexpr_global.h"
@@ -129,7 +132,7 @@ int EvalExpr::next_token(semantic_type& yylval)
     double x = atof(p);
 
 #ifdef USE_STRDUP
-    char *symbol = strdup(p);
+    char *symbol = _strdup(p);
 #else
     char *symbol = strndup(p, i + 1);
 #endif
@@ -153,7 +156,7 @@ int EvalExpr::next_token(semantic_type& yylval)
     }
 
 #ifdef USE_STRDUP
-    char *symbol = strdup(p);
+    char *symbol = _strdup(p);
 #else
     char *symbol = strndup(p, i + 1);
 #endif
@@ -228,3 +231,4 @@ void EvalExpr::error(const std::string& msg)
 
 //====================================================================
 //============================================================END=====
+#endif

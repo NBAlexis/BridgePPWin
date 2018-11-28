@@ -143,7 +143,7 @@ std::vector<int> Sorter::sort_index(std::vector<double>& v)
   std::vector<std::pair<int, double> > w(v.size());
 
   for (size_t i = 0, n = v.size(); i < n; ++i) {
-    w[i].first  = i;
+    w[i].first  = (int)i;
     w[i].second = v[i];
   }
 
@@ -169,7 +169,7 @@ std::vector<int> Sorter::sort_index(std::vector<double>& v, const size_t nelem)
   std::vector<std::pair<int, double> > w(v.size());
 
   for (size_t i = 0, n = v.size(); i < n; ++i) {
-    w[i].first  = i;
+    w[i].first  = (int)i;
     w[i].second = v[i];
   }
 

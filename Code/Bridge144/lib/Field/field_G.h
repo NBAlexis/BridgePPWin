@@ -182,7 +182,7 @@ class Field_G : public Field
 
   void xI()
   {
-    for (int i = 0, n = field.size(); i < n; i += 2) {
+    for (int i = 0, n = (int)field.size(); i < n; i += 2) {
       double real = field[i];
       field[i]     = -field[i + 1];
       field[i + 1] = real;

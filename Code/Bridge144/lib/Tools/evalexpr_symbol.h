@@ -18,8 +18,6 @@
 #include <string>
 #include "IO/bridgeIO.h"
 
-typedef double (*function_t)(double);
-
 class SymbolTable
 {
  private:

@@ -92,10 +92,10 @@ void Integrator_Leapfrog::set_parameter_Nsteps(const std::vector<int>& Nsteps)
 //====================================================================
 void Integrator_Leapfrog::evolve(const double step_size, Field_G& iP, Field_G& U)
 {
-  int Nin  = U.nin();
-  int Nvol = U.nvol();
-  int Nex  = U.nex();
-  int Nc   = CommonParameters::Nc();
+  //int Nin  = U.nin();
+  //int Nvol = U.nvol();
+  //int Nex  = U.nex();
+  //int Nc   = CommonParameters::Nc();
 
   vout.general(m_vl, "Integration level-%d start.\n", m_level);
 

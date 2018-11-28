@@ -271,7 +271,7 @@ void FieldIO_LIME_Parallel::write_file(Field *u, string filename)
     size_t padding_size = (8 - data_length % 8) % 8;
 
     const char blank[8] = "";
-    ret = MPI_File_write_at(fh, pos + data_length, const_cast<char *>(blank), padding_size, MPI_BYTE, MPI_STATUS_IGNORE);
+    ret = MPI_File_write_at(fh, pos + data_length, const_cast<char *>(blank), (int)padding_size, MPI_BYTE, MPI_STATUS_IGNORE);
     if (ret) {
       vout.crucial(vl, "Error at %s: write padding failed.\n", _function_name);
       exit(EXIT_FAILURE);
@@ -555,7 +555,7 @@ namespace {
 
     MPI_Status status;
     char       *buf = new char [info.length + 1];
-    MPI_File_read_at(fh, info.offset, buf, info.length, MPI_BYTE, &status);
+    MPI_File_read_at(fh, info.offset, buf, (int)info.length, MPI_BYTE, &status);
 
     int count;
     MPI_Get_count(&status, MPI_BYTE, &count);
@@ -639,14 +639,14 @@ namespace {
     size_t padding_size = (8 - length % 8) % 8;
 
     MPI_Status status;
-    int        ret = MPI_File_write(fh, const_cast<char *>(content), length, MPI_BYTE, &status);
+    int        ret = MPI_File_write(fh, const_cast<char *>(content), (const int)length, MPI_BYTE, &status);
     if (ret) {
       vout.crucial(vl, "%s: write content failed.\n", __func__);
       return 0;
     }
 
     if (padding_size > 0) {
-      ret = MPI_File_write(fh, const_cast<char *>(blank), padding_size, MPI_BYTE, &status);
+      ret = MPI_File_write(fh, const_cast<char *>(blank), (int)padding_size, MPI_BYTE, &status);
       if (ret) {
         vout.crucial(vl, "%s: write padding failed.\n", __func__);
         return 0;

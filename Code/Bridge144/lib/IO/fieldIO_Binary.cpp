@@ -1,16 +1,16 @@
 #include "BridgeLib_Private.h"
 
 /*!
-        @file    $Id: fieldIO_Binary.cpp #$
+@file    $Id: fieldIO_Binary.cpp #$
 
-        @brief
+@brief
 
-        @author  Hideo Matsufuru (matsufuru)
-                 $LastChangedBy: aoym $
+@author  Hideo Matsufuru (matsufuru)
+$LastChangedBy: aoym $
 
-        @date    $LastChangedDate: 2014-06-06 18:09:02 #$
+@date    $LastChangedDate: 2014-06-06 18:09:02 #$
 
-        @version $LastChangedRevision: 1561 $
+@version $LastChangedRevision: 1561 $
 */
 
 #include "fieldIO_Binary.h"
@@ -34,147 +34,151 @@ const std::string FieldIO_Binary::class_name = "FieldIO_Binary";
 //====================================================================
 void FieldIO_Binary::read_file(Field *v, std::string filename)
 {
-  int nin_field = v->nin();
-  int nex_field = v->nex();
+    int nin_field = v->nin();
+    int nex_field = v->nex();
 
-  int nin_file = m_format->nin();
-  int nex_file = m_format->nex();
+    int nin_file = m_format->nin();
+    int nex_file = m_format->nex();
 
-  if ((nin_file == 0) || (nex_file == 0)) {
-    nin_file = nin_field;
-    nex_file = nex_field;
-  }
-
-  // temporary buffer: allocated only at I/O node.
-  Field vtmp;
-
-  if (Communicator::is_primary()) {
-    vout.detailed(m_vl, "reading field data from %s\n", filename.c_str());
-
-    int Lvol = CommonParameters::Lvol();
-    vtmp.reset(nin_field, Lvol, nex_field);
-
-    bool do_swap = (is_bigendian() == false);
-    if (do_swap) {
-      vout.detailed(m_vl, "host endian is little: byte swap performed.\n");
+    if ((nin_file == 0) || (nex_file == 0)) {
+        nin_file = nin_field;
+        nex_file = nex_field;
     }
 
-    const int block_size = nin_file;
-    char      buf[sizeof(double) * block_size];
+    // temporary buffer: allocated only at I/O node.
+    Field vtmp;
 
-    std::ifstream infile(filename.c_str(), std::ios::in | std::ios::binary);
-    if (!infile) {
-      vout.crucial(m_vl, "Error at %s: file open failed, %s may not exist.\n", class_name.c_str(), filename.c_str());
-      exit(EXIT_FAILURE);
-    }
+    if (Communicator::is_primary()) {
+        vout.detailed(m_vl, "reading field data from %s\n", filename.c_str());
 
-    for (int j = 0; j < nex_file; ++j) {
-      for (int isite = 0; isite < Lvol; ++isite) {
-        // read 1 block
-        infile.read(buf, sizeof(double) * block_size);
+        int Lvol = CommonParameters::Lvol();
+        vtmp.reset(nin_field, Lvol, nex_field);
 
-        if (!infile) {
-          if (infile.eof()) {  // short file
-            vout.crucial(m_vl, "Error at %s: file size of %s is too small.\n", class_name.c_str(), __func__);
-          } else {
-            vout.crucial(m_vl, "Error at %s: io error of %s.\n", class_name.c_str(), __func__);
-          }
-
-          exit(EXIT_FAILURE);
-        }
-
+        bool do_swap = (is_bigendian() == false);
         if (do_swap) {
-          byte_swap(buf, sizeof(double), block_size);
+            vout.detailed(m_vl, "host endian is little: byte swap performed.\n");
         }
 
-        double *ptr = (double *)buf;
+        const int block_size = nin_file;
 
-        for (int i = 0; i < nin_file; ++i) {
-          int s, t;
-          m_format->file_to_field(s, t, i, j);
+        //char      buf[sizeof(double) * block_size];
+        char *buf = (char *)alloca(sizeof(double) * block_size);
 
-          vtmp.set(s, isite, t, ptr[i]);
+        std::ifstream infile(filename.c_str(), std::ios::in | std::ios::binary);
+        if (!infile) {
+            vout.crucial(m_vl, "Error at %s: file open failed, %s may not exist.\n", class_name.c_str(), filename.c_str());
+            exit(EXIT_FAILURE);
         }
-      }
+
+        for (int j = 0; j < nex_file; ++j) {
+            for (int isite = 0; isite < Lvol; ++isite) {
+                // read 1 block
+                infile.read(buf, sizeof(double) * block_size);
+
+                if (!infile) {
+                    if (infile.eof()) {  // short file
+                        vout.crucial(m_vl, "Error at %s: file size of %s is too small.\n", class_name.c_str(), __func__);
+                    }
+                    else {
+                        vout.crucial(m_vl, "Error at %s: io error of %s.\n", class_name.c_str(), __func__);
+                    }
+
+                    exit(EXIT_FAILURE);
+                }
+
+                if (do_swap) {
+                    byte_swap(buf, sizeof(double), block_size);
+                }
+
+                double *ptr = (double *)buf;
+
+                for (int i = 0; i < nin_file; ++i) {
+                    int s, t;
+                    m_format->file_to_field(s, t, i, j);
+
+                    vtmp.set(s, isite, t, ptr[i]);
+                }
+            }
+        }
+
+        infile.close();
     }
 
-    infile.close();
-  }
+    FieldIO::deliver(v, &vtmp);
 
-  FieldIO::deliver(v, &vtmp);
-
-  vout.detailed(m_vl, "read successful\n");
+    vout.detailed(m_vl, "read successful\n");
 }
 
 
 //====================================================================
 void FieldIO_Binary::write_file(Field *v, std::string filename)
 {
-  int nin_field = v->nin();
-  int nex_field = v->nex();
+    int nin_field = v->nin();
+    int nex_field = v->nex();
 
-  int nin_file = m_format->nin();
-  int nex_file = m_format->nex();
+    int nin_file = m_format->nin();
+    int nex_file = m_format->nex();
 
-  if ((nin_file == 0) || (nex_file == 0)) {
-    nin_file = nin_field;
-    nex_file = nex_field;
-  }
-
-  int Lvol = CommonParameters::Lvol();
-
-  Field vtmp;
-  if (Communicator::is_primary()) {
-    vtmp.reset(nin_field, Lvol, nex_field);
-  }
-
-  FieldIO::gather(&vtmp, v);
-
-  if (Communicator::is_primary()) {
-    vout.detailed(m_vl, "writing field data to %s\n", filename.c_str());
-
-    bool do_swap = (is_bigendian() == false);
-    if (do_swap) {
-      vout.detailed(m_vl, "host endian is little: byte swap performed.\n");
+    if ((nin_file == 0) || (nex_file == 0)) {
+        nin_file = nin_field;
+        nex_file = nex_field;
     }
 
-    const int block_size = nin_file;
-    char      buf[sizeof(double) * block_size];
+    int Lvol = CommonParameters::Lvol();
 
-    std::ofstream outfile(filename.c_str(), std::ios::out | std::ios::binary);
-    if (!outfile) {
-      vout.crucial(m_vl, "Error at %s: file open of %s failed\n", class_name.c_str(), filename.c_str());
-      exit(EXIT_FAILURE);
+    Field vtmp;
+    if (Communicator::is_primary()) {
+        vtmp.reset(nin_field, Lvol, nex_field);
     }
 
-    for (int j = 0; j < nex_file; ++j) {
-      for (int isite = 0; isite < Lvol; ++isite) {
-        double *ptr = (double *)buf;
+    FieldIO::gather(&vtmp, v);
 
-        for (int i = 0; i < nin_file; ++i) {
-          int s, t;
-          m_format->file_to_field(s, t, i, j);
+    if (Communicator::is_primary()) {
+        vout.detailed(m_vl, "writing field data to %s\n", filename.c_str());
 
-          ptr[i] = vtmp.cmp(s, isite, t);
-        }
-
+        bool do_swap = (is_bigendian() == false);
         if (do_swap) {
-          byte_swap(buf, sizeof(double), block_size);
+            vout.detailed(m_vl, "host endian is little: byte swap performed.\n");
         }
 
-        outfile.write(buf, sizeof(double) * block_size);
+        const int block_size = nin_file;
+        //char      buf[sizeof(double) * block_size];
+        char *buf = (char *)alloca(sizeof(double) * block_size);
 
-        if (!outfile) {  // error
-          vout.crucial(m_vl, "Error at %s: io error of %s.\n", class_name.c_str(), __func__);
-          exit(EXIT_FAILURE);
+        std::ofstream outfile(filename.c_str(), std::ios::out | std::ios::binary);
+        if (!outfile) {
+            vout.crucial(m_vl, "Error at %s: file open of %s failed\n", class_name.c_str(), filename.c_str());
+            exit(EXIT_FAILURE);
         }
-      }
+
+        for (int j = 0; j < nex_file; ++j) {
+            for (int isite = 0; isite < Lvol; ++isite) {
+                double *ptr = (double *)buf;
+
+                for (int i = 0; i < nin_file; ++i) {
+                    int s, t;
+                    m_format->file_to_field(s, t, i, j);
+
+                    ptr[i] = vtmp.cmp(s, isite, t);
+                }
+
+                if (do_swap) {
+                    byte_swap(buf, sizeof(double), block_size);
+                }
+
+                outfile.write(buf, sizeof(double) * block_size);
+
+                if (!outfile) {  // error
+                    vout.crucial(m_vl, "Error at %s: io error of %s.\n", class_name.c_str(), __func__);
+                    exit(EXIT_FAILURE);
+                }
+            }
+        }
+
+        outfile.close();
     }
 
-    outfile.close();
-  }
-
-  vout.detailed(m_vl, "write succeeded.\n");
+    vout.detailed(m_vl, "write succeeded.\n");
 }
 
 

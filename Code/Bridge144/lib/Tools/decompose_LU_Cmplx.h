@@ -25,7 +25,7 @@
 class Decompose_LU_Cmplx
 {
  public:
-  Decompose_LU_Cmplx(size_t N) : N(N), N2(2 * N), size(N * N2), m_lu(size) {}
+  Decompose_LU_Cmplx(size_t N) : N((int)N), N2(2 * (int)N), size((int)N * N2), m_lu(size) {}
 
   void set_matrix(const double *mat);
 

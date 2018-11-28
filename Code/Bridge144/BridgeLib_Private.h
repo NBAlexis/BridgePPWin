@@ -13,6 +13,10 @@
 #ifndef _BRIDGELIB_PRIVATE_H_
 #define _BRIDGELIB_PRIVATE_H_
 
+#define _VCWIN 1
+
+#define UNUSE(x) (void*)(x);
+
 #include "configure.h"
 #include "defs.h"
 #include "BridgeLibSetup.h"
@@ -49,12 +53,7 @@
 //=======================================================
 //Tools
 
-//hh files
-#include "Tools/location.hh"
-#include "Tools/position.hh"
-#include "Tools/stack.hh"
-
-//other
+//Misc
 #include "Tools/sorter.h"
 #include "Tools/timer.h"
 #include "Tools/factory.h"
@@ -86,6 +85,16 @@
 #include "Tools/mat_SU_N.h"
 #include "Tools/vec_SU_N.h"
 #include "Tools/generatorSet_Mat_SU_N.h"
+
+//we have to include eval exp, because parameter parser need it
+//hh files
+#include "Tools/location.hh"
+#include "Tools/position.hh"
+#include "Tools/stack.hh"
+#include "Tools/evalexpr_global.h"
+#include "Tools/evalexpr_parser.h"
+#include "Tools/evalexpr_symbol.h"
+#include "Tools/evalexpr.h"
 
 //the eval expr parser looks like not been used. In fact, we have GINAC working on Windows now, may replace to GINAC though
 

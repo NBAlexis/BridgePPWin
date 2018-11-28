@@ -1,3 +1,6 @@
+#include "BridgeLib_Private.h"
+#if USE_EVALEXPR
+
 /*!
         @file    $Id: evalexpr_symbol.cpp #$
 
@@ -104,3 +107,5 @@ void SymbolTable::dump() const
 
 //==========================================================
 //==================================================END=====
+
+#endif

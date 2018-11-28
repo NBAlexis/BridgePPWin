@@ -107,8 +107,8 @@ void Projection_Maximum_SU_N::project(Field_G& U,
 
 //====================================================================
 void Projection_Maximum_SU_N::force_recursive(Field_G& Xi, Field_G& iTheta,
-                                              double alpha, const Field_G& Sigmap,
-                                              const Field_G& Cst, const Field_G& Uorg)
+                                              double , const Field_G& Sigmap,
+                                              const Field_G& , const Field_G& Uorg)
 {
   vout.crucial(m_vl, "Error at %s: force_recursive() is not available.\n", class_name.c_str());
   exit(EXIT_FAILURE);

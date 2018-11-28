@@ -151,15 +151,15 @@ void Index_eo::splitField(Field& field_e, Field& field_o,
   assert(field_o.nin() == Nin);
   assert(field_o.nex() == Nex);
 
-  int Nvol2 = field_eo.nvol() / 2;
+  int Nvol2_f = field_eo.nvol() / 2;
 
   for (int iex = 0; iex < Nex; ++iex) {
-    for (int ivol = 0; ivol < Nvol2; ++ivol) {
+    for (int ivol = 0; ivol < Nvol2_f; ++ivol) {
       for (int iin = 0; iin < Nin; ++iin) {
         field_e.set(iin, ivol, iex,
                     field_eo.cmp(iin, ivol, iex));
         field_o.set(iin, ivol, iex,
-                    field_eo.cmp(iin, ivol + Nvol2, iex));
+                    field_eo.cmp(iin, ivol + Nvol2_f, iex));
       }
     }
   }
@@ -179,14 +179,14 @@ void Index_eo::mergeField(Field& field_eo,
   assert(field_o.nin() == Nin);
   assert(field_o.nex() == Nex);
 
-  int Nvol2 = field_eo.nvol() / 2;
+  int Nvol2_f = field_eo.nvol() / 2;
 
   for (int iex = 0; iex < Nex; ++iex) {
-    for (int ivol = 0; ivol < Nvol2; ++ivol) {
+    for (int ivol = 0; ivol < Nvol2_f; ++ivol) {
       for (int iin = 0; iin < Nin; ++iin) {
         field_eo.set(iin, ivol, iex,
                      field_e.cmp(iin, ivol, iex));
-        field_eo.set(iin, ivol + Nvol2, iex,
+        field_eo.set(iin, ivol + Nvol2_f, iex,
                      field_o.cmp(iin, ivol, iex));
       }
     }

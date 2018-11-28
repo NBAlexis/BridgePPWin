@@ -269,7 +269,7 @@ void ParameterManager_XML::read_params(const std::string& params_file, Parameter
     }
 
     fin.seekg(0, std::ios::end);
-    filesize = fin.tellg();
+    filesize = (int)fin.tellg();
     fin.seekg(0, std::ios::beg);
 
     int padding = 8 - (filesize % 8);

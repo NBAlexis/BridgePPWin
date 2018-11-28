@@ -109,7 +109,7 @@ void Eigensolver_IRLanczos::set_parameters(int Nk, int Np,
 
 //====================================================================
 void Eigensolver_IRLanczos::solve(std::vector<double>& TDa, std::vector<Field>& vk,
-                                  int& Nsbt, int& Nconv, const Field& b)
+                                  int& Nsbt, int& Nconv, const Field& )
 {
   int    Nk          = m_Nk;
   int    Np          = m_Np;
@@ -416,11 +416,11 @@ void Eigensolver_IRLanczos::tqri(std::vector<double>& TDa,
       if (fabs(TDb[j - 1]) + dds > dds) {
         kmax = j + 1;
 
-        for (int j = 0; j < kmax - 1; ++j) {
-          double dds = fabs(TDa[j]) + fabs(TDa[j + 1]);
+        for (int jj = 0; jj < kmax - 1; ++jj) {
+          double ddsjj = fabs(TDa[jj]) + fabs(TDa[jj + 1]);
 
-          if (fabs(TDb[j]) + dds > dds) {
-            kmin = j + 1;
+          if (fabs(TDb[jj]) + ddsjj > ddsjj) {
+            kmin = jj + 1;
 
             break;
           }
@@ -477,28 +477,28 @@ void Eigensolver_IRLanczos::qrtrf(std::vector<double>& TDa,
   }
 
   //- Givens transformations
-  for (int k = kmin; k < kmax - 1; ++k) {
-    double Fden = 1.0 / sqrt(x * x + TDb[k - 1] * TDb[k - 1]);
-    double c    = TDb[k - 1] * Fden;
-    double s    = -x * Fden;
+  for (int k1 = kmin; k1 < kmax - 1; ++k1) {
+    double Fden1 = 1.0 / sqrt(x * x + TDb[k1 - 1] * TDb[k1 - 1]);
+    double c1    = TDb[k1 - 1] * Fden1;
+    double s1    = -x * Fden1;
 
-    double tmpa1 = TDa[k];
-    double tmpa2 = TDa[k + 1];
-    double tmpb  = TDb[k];
-    TDa[k]     = c * c * tmpa1 + s * s * tmpa2 - 2.0 * c * s * tmpb;
-    TDa[k + 1] = s * s * tmpa1 + c * c * tmpa2 + 2.0 * c * s * tmpb;
-    TDb[k]     = c * s * (tmpa1 - tmpa2) + (c * c - s * s) * tmpb;
-    TDb[k - 1] = c * TDb[k - 1] - s * x;
-    if (k != kmax - 2) {
-      x          = -s * TDb[k + 1];
-      TDb[k + 1] = c * TDb[k + 1];
+    double tmpa1_inner = TDa[k1];
+    double tmpa2_inner = TDa[k1 + 1];
+    double tmpb_inner  = TDb[k1];
+    TDa[k1]     = c1 * c1 * tmpa1_inner + s1 * s1 * tmpa2_inner - 2.0 * c1 * s1 * tmpb_inner;
+    TDa[k1 + 1] = s1 * s1 * tmpa1_inner + c1 * c1 * tmpa2_inner + 2.0 * c1 * s1 * tmpb_inner;
+    TDb[k1]     = c1 * s1 * (tmpa1_inner - tmpa2_inner) + (c1 * c1 - s1 * s1) * tmpb_inner;
+    TDb[k1 - 1] = c1 * TDb[k1 - 1] - s1 * x;
+    if (k1 != kmax - 2) {
+      x          = -s1 * TDb[k1 + 1];
+      TDb[k1 + 1] = c1 * TDb[k1 + 1];
     }
 
     for (int i = 0; i < Nk; ++i) {
-      double Qtmp1 = Qt[i + Nm * k];
-      double Qtmp2 = Qt[i + Nm * (k + 1)];
-      Qt[i + Nm * k]       = c * Qtmp1 - s * Qtmp2;
-      Qt[i + Nm * (k + 1)] = s * Qtmp1 + c * Qtmp2;
+      double Qtmp1 = Qt[i + Nm * k1];
+      double Qtmp2 = Qt[i + Nm * (k1 + 1)];
+      Qt[i + Nm * k1]       = c1 * Qtmp1 - s1 * Qtmp2;
+      Qt[i + Nm * (k1 + 1)] = s1 * Qtmp1 + c1 * Qtmp2;
     }
   }
 }

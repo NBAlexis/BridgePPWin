@@ -10,7 +10,7 @@ namespace {
   }
 
 
-  double mult_Gnn_r(const double *g1, const double *g2, int Nc)
+  double mult_Gnn_r(const double *g1, const double *g2, int )
   {
     return g1[0] * g2[0] - g1[1] * g2[1]
            + g1[2] * g2[6] - g1[3] * g2[7]
@@ -18,7 +18,7 @@ namespace {
   }
 
 
-  double mult_Gnn_i(const double *g1, const double *g2, int Nc)
+  double mult_Gnn_i(const double *g1, const double *g2, int )
   {
     return g1[0] * g2[1] + g1[1] * g2[0]
            + g1[2] * g2[7] + g1[3] * g2[6]
@@ -26,7 +26,7 @@ namespace {
   }
 
 
-  double mult_Gdn_r(const double *g1, const double *g2, int Nc)
+  double mult_Gdn_r(const double *g1, const double *g2, int )
   {
     return g1[0] * g2[0] + g1[1] * g2[1]
            + g1[6] * g2[6] + g1[7] * g2[7]
@@ -34,7 +34,7 @@ namespace {
   }
 
 
-  double mult_Gdn_i(const double *g1, const double *g2, int Nc)
+  double mult_Gdn_i(const double *g1, const double *g2, int )
   {
     return g1[0] * g2[1] - g1[1] * g2[0]
            + g1[6] * g2[7] - g1[7] * g2[6]
@@ -42,7 +42,7 @@ namespace {
   }
 
 
-  double mult_Gnd_r(const double *g1, const double *g2, int Nc)
+  double mult_Gnd_r(const double *g1, const double *g2, int )
   {
     return g1[0] * g2[0] + g1[1] * g2[1]
            + g1[2] * g2[2] + g1[3] * g2[3]
@@ -50,7 +50,7 @@ namespace {
   }
 
 
-  double mult_Gnd_i(const double *g1, const double *g2, int Nc)
+  double mult_Gnd_i(const double *g1, const double *g2, int )
   {
     return -g1[0] * g2[1] + g1[1] * g2[0]
            - g1[2] * g2[3] + g1[3] * g2[2]
@@ -58,7 +58,7 @@ namespace {
   }
 
 
-  double mult_Gdd_r(const double *g1, const double *g2, int Nc)
+  double mult_Gdd_r(const double *g1, const double *g2, int )
   {
     return g1[0] * g2[0] - g1[1] * g2[1]
            + g1[6] * g2[2] - g1[7] * g2[3]
@@ -66,7 +66,7 @@ namespace {
   }
 
 
-  double mult_Gdd_i(const double *g1, const double *g2, int Nc)
+  double mult_Gdd_i(const double *g1, const double *g2, int )
   {
     return -g1[0] * g2[1] - g1[1] * g2[0]
            - g1[6] * g2[3] - g1[7] * g2[2]

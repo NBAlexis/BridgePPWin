@@ -19,6 +19,14 @@ namespace ParameterCheck
 {
   Bridge::VerboseLevel vl;
 
+  int non_negative(const double v)
+  {
+      if (v < 0) {
+          vout.crucial(vl, "ParameterCheck: range check error, negative double.\n");
+          return EXIT_FAILURE;
+      }
+      return EXIT_SUCCESS;
+  }
 
   int non_negative(const int v)
   {

@@ -110,7 +110,7 @@ void Force_F_Clover_Nf2_Isochemical::tidyup()
 //====================================================================
 void Force_F_Clover_Nf2_Isochemical::force_udiv(Field& force_, const Field& eta_)
 {
-  int Nc   = CommonParameters::Nc();
+  //int Nc   = CommonParameters::Nc();
   int Nvol = CommonParameters::Nvol();
   int Ndim = CommonParameters::Ndim();
 
@@ -133,7 +133,7 @@ void Force_F_Clover_Nf2_Isochemical::force_udiv(Field& force_, const Field& eta_
 //====================================================================
 void Force_F_Clover_Nf2_Isochemical::force_udiv1(Field& force_, const Field& zeta_, const Field& eta_)
 {
-  int Nc   = CommonParameters::Nc();
+  //int Nc   = CommonParameters::Nc();
   int Nvol = CommonParameters::Nvol();
   int Ndim = CommonParameters::Ndim();
 
@@ -150,8 +150,8 @@ void Force_F_Clover_Nf2_Isochemical::force_udiv1(Field& force_, const Field& zet
 //====================================================================
 void Force_F_Clover_Nf2_Isochemical::force_udiv1_impl(Field_G& force, const Field_F& zeta, const Field_F& eta)
 {
-  int Nc   = CommonParameters::Nc();
-  int Nd   = CommonParameters::Nd();
+  //int Nc   = CommonParameters::Nc();
+  //int Nd   = CommonParameters::Nd();
   int Nvol = CommonParameters::Nvol();
   int Ndim = CommonParameters::Ndim();
 

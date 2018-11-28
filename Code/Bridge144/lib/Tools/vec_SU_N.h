@@ -60,7 +60,7 @@ namespace SU_N {
     Vec_SU_N& operator/=(const dcomplex&);
 
     inline int size() const
-    { return va.size(); }
+    { return (int)va.size(); }
 
     inline double r(const int c) const
     { return va[2 * c]; }

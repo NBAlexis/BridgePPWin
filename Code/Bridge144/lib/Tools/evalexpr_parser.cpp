@@ -1,3 +1,6 @@
+#include "BridgeLib_Private.h"
+#if USE_EVALEXPR
+
 /* A Bison parser, made by GNU Bison 2.7.  */
 
 /* Skeleton implementation for Bison LALR(1) parsers in C++
@@ -1162,3 +1165,5 @@ yy::parser::error(const yy::parser::location_type& l, const std::string& m)
 {
   driver.error(m);
 }
+
+#endif

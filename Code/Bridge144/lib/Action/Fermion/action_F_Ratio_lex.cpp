@@ -29,10 +29,10 @@ void Action_F_Ratio_lex::set_parameters(const Parameters& params)
 //====================================================================
 void Action_F_Ratio_lex::set_parameters()
 {
-  int Nc   = CommonParameters::Nc();
-  int Nvol = CommonParameters::Nvol();
-  int Ndim = CommonParameters::Ndim();
-  int NinG = 2 * Nc * Nc;
+  //int Nc   = CommonParameters::Nc();
+  //int Nvol = CommonParameters::Nvol();
+  //int Ndim = CommonParameters::Ndim();
+  //int NinG = 2 * Nc * Nc;
 
   vout.general(m_vl, "%s:\n", class_name.c_str());
 }
@@ -55,7 +55,7 @@ void Action_F_Ratio_lex::set_config(Field *U)
 double Action_F_Ratio_lex::langevin(RandomNumbers *rand)
 {
   int Nvol = CommonParameters::Nvol();
-  int Ndim = CommonParameters::Ndim();
+  //int Ndim = CommonParameters::Ndim();
 
   int NinF     = m_fopr_prec->field_nin();
   int NvolF    = m_fopr_prec->field_nvol();
@@ -101,8 +101,8 @@ double Action_F_Ratio_lex::langevin(RandomNumbers *rand)
 //====================================================================
 double Action_F_Ratio_lex::calcH()
 {
-  int Nvol = CommonParameters::Nvol();
-  int Ndim = CommonParameters::Ndim();
+  //int Nvol = CommonParameters::Nvol();
+  //int Ndim = CommonParameters::Ndim();
 
   int NinF     = m_fopr_prec->field_nin();
   int NvolF    = m_fopr_prec->field_nvol();
@@ -141,8 +141,8 @@ void Action_F_Ratio_lex::force(Field& force)
   int Nin  = m_U->nin();
   int Nvol = m_U->nvol();
   int Nex  = m_U->nex();
-  int Nc   = CommonParameters::Nc();
-  int Ndim = CommonParameters::Ndim();
+  //int Nc   = CommonParameters::Nc();
+  //int Ndim = CommonParameters::Ndim();
 
   assert(force.nin() == Nin);
   assert(force.nvol() == Nvol);

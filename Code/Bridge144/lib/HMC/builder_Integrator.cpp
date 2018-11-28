@@ -152,7 +152,7 @@ Integrator *Builder_Integrator::build_leapfrog()
 
   Integrator *integrator = update_U;
 
-  for (int lv = m_Nstep.size() - 1; lv >= 0; --lv) {
+  for (int lv = (int)m_Nstep.size() - 1; lv >= 0; --lv) {
     Integrator_UpdateP *update_p = new Integrator_UpdateP(m_actions.get_actions(lv));
     m_integs.push_back(update_p);
 
@@ -186,7 +186,7 @@ Integrator *Builder_Integrator::build_omelyan()
 
   Integrator *integrator = update_U;
 
-  for (int lv = m_Nstep.size() - 1; lv >= 0; --lv) {
+  for (int lv = (int)m_Nstep.size() - 1; lv >= 0; --lv) {
     Integrator_UpdateP *update_p = new Integrator_UpdateP(m_actions.get_actions(lv));
     m_integs.push_back(update_p);
 

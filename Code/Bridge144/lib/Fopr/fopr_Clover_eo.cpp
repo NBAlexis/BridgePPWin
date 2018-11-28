@@ -131,8 +131,8 @@ void Fopr_Clover_eo::set_parameters(const double kappa, const double cSW,
 //====================================================================
 void Fopr_Clover_eo::set_config(Field *U)
 {
-  int Ndim = CommonParameters::Ndim();
-  int Nvol = CommonParameters::Nvol();
+  //int Ndim = CommonParameters::Ndim();
+  //int Nvol = CommonParameters::Nvol();
 
   m_idx.convertField(*m_Ueo, *U);
 
@@ -216,7 +216,7 @@ double Fopr_Clover_eo::flop_count()
   // (1 - Meo*Moe), flop of clover term is twice added together with
   // contribution of addition.
 
-  int Lvol = CommonParameters::Lvol();
+  //int Lvol = CommonParameters::Lvol();
 
   double flop_w = m_fopr_w->flop_count();
   // this is for aypx + Meo * 2 with Wilson_eo.

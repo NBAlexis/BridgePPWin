@@ -66,7 +66,7 @@ namespace Bridge {
       fprintf(stderr, "%s: init: unable to open log file \"%s\".\n", class_name.c_str(), filename.c_str());
       exit(EXIT_FAILURE);
 
-      rewind_();
+      //rewind_();
     }
   }
 
@@ -84,7 +84,7 @@ namespace Bridge {
       fprintf(stderr, "%s: init: unable to open stream.\n", class_name.c_str());
       exit(EXIT_FAILURE);
 
-      rewind_();
+      //rewind_();
     }
   }
 

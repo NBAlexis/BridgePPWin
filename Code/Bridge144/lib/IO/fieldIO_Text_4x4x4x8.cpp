@@ -112,7 +112,7 @@ void FieldIO_Text_4x4x4x8::read_file(Field *v, string filename)
   int count = NinG * LvolF * Ndim;
   Communicator::broadcast(count, (double *)vtmp.ptr(0), 0);
 
-  Index_lex idx;
+  Index_lex idx_f;
   Index_lex indexF(NxF, NyF, NzF, NtF);
 
   int Nx = CommonParameters::Nx();
@@ -134,7 +134,7 @@ void FieldIO_Text_4x4x4x8::read_file(Field *v, string filename)
           int y2 = (y + ipey * Ny) % NyF;
           for (int x = 0; x < Nx; ++x) {
             int x2    = (x + ipex * Nx) % NxF;
-            int lsite = idx.site(x, y, z, t);
+            int lsite = idx_f.site(x, y, z, t);
             int gsite = indexF.site(x2, y2, z2, t2);
 
             for (int i = 0; i < NinG; ++i) {

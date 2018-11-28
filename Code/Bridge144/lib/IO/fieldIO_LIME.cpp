@@ -596,8 +596,8 @@ void FieldIO_LIME::write_file(std::vector<Field *>& vv, const std::string& filen
 
 #else /* USE_LIMELIB */
 
-void FieldIO_LIME::read_file(Field *v, std::string filename) {}
-void FieldIO_LIME::write_file(Field *v, std::string filename) {}
+void FieldIO_LIME::read_file(Field *, std::string ) {}
+void FieldIO_LIME::write_file(Field *, std::string ) {}
 #endif /* USE_LIMELIB */
 
 //====================================================================

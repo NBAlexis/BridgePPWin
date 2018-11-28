@@ -83,7 +83,7 @@ void Action_G_Rectangle::set_parameters(double beta,
 
 
 //====================================================================
-double Action_G_Rectangle::langevin(RandomNumbers *rand)
+double Action_G_Rectangle::langevin(RandomNumbers *)
 {
   double H_U = calcH();
 

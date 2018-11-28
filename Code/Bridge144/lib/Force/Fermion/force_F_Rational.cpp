@@ -129,8 +129,8 @@ void Force_F_Rational::force_udiv(Field& force_, const Field& eta_)
 //====================================================================
 void Force_F_Rational::force_udiv_impl(Field_G& force, const Field_F& eta)
 {
-  int Nc   = CommonParameters::Nc();
-  int Nd   = CommonParameters::Nd();
+  //int Nc   = CommonParameters::Nc();
+  //int Nd   = CommonParameters::Nd();
   int Nvol = CommonParameters::Nvol();
   int Ndim = CommonParameters::Ndim();
 

@@ -153,7 +153,7 @@ void Action_G_Rectangle_SF::set_parameters(double beta, double c_plaq, double c_
 
 
 //====================================================================
-double Action_G_Rectangle_SF::langevin(RandomNumbers *rand)
+double Action_G_Rectangle_SF::langevin(RandomNumbers *)
 {
   double H_U = calcH();
 

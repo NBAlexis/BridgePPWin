@@ -106,10 +106,10 @@ void Integrator_Omelyan::set_parameter_lambda(const double lambda_omelyan)
 //====================================================================
 void Integrator_Omelyan::evolve(const double step_size, Field_G& iP, Field_G& U)
 {
-  int Nin  = U.nin();
-  int Nvol = U.nvol();
-  int Nex  = U.nex();
-  int Nc   = CommonParameters::Nc();
+  //int Nin  = U.nin();
+  //int Nvol = U.nvol();
+  //int Nex  = U.nex();
+  //int Nc   = CommonParameters::Nc();
 
   vout.detailed(m_vl, "%s: level %d: Nstep = %d, step_size = %8.6f\n", class_name.c_str(), m_level, m_Nstep, step_size);
 

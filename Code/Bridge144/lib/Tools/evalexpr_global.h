@@ -18,6 +18,20 @@
 
 // global symbol definitions.
 namespace {
+    typedef double(*function_t)(double);
+
+    struct _init_function
+    {
+        char const *name;
+        function_t func;
+    };
+
+    struct _init_variable
+    {
+        char const *name;
+        double     val;
+    };
+
   const _init_function arithmetic_functions[] =
   {
     { "cos",  cos,  },

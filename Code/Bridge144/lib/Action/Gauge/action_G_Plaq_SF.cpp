@@ -106,7 +106,7 @@ void Action_G_Plaq_SF::set_parameters(double beta, double *phi, double *phipr, d
 
 
 //====================================================================
-double Action_G_Plaq_SF::langevin(RandomNumbers *rand)
+double Action_G_Plaq_SF::langevin(RandomNumbers *)
 {
   double H_U = calcH();
 

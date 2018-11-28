@@ -29,16 +29,16 @@ namespace {
 const std::string GaugeFixing_None::class_name = "GaugeFixing_None";
 
 //====================================================================
-void GaugeFixing_None::set_parameters(const Parameters& params)
+void GaugeFixing_None::set_parameters(const Parameters& )
 {
   //- No parameters are set.
 }
 
 
 //====================================================================
-void GaugeFixing_None::set_parameters(const int Niter, const int Nnaive,
-                                      const int Nmeas, const int Nreset,
-                                      const double Enorm, const double wp)
+void GaugeFixing_None::set_parameters(const int , const int ,
+                                      const int , const int ,
+                                      const double , const double )
 {
   //- No parameters are set.
 }

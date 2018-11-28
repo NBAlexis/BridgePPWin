@@ -79,8 +79,8 @@ void Force_F_Wilson_Nf2::set_parameters(const double kappa, const std::vector<in
 //====================================================================
 void Force_F_Wilson_Nf2::force_udiv(Field& force_, const Field& eta_)
 {
-  int Nc   = CommonParameters::Nc();
-  int Nd   = CommonParameters::Nd();
+  //int Nc   = CommonParameters::Nc();
+  //int Nd   = CommonParameters::Nd();
   int Nvol = CommonParameters::Nvol();
   int Ndim = CommonParameters::Ndim();
 
@@ -118,8 +118,8 @@ void Force_F_Wilson_Nf2::force_udiv1(Field& force_, const Field& zeta_, const Fi
 //====================================================================
 void Force_F_Wilson_Nf2::force_udiv1_impl(Field_G& force, const Field_F& zeta, const Field_F& eta)
 {
-  int Nc   = CommonParameters::Nc();
-  int Nd   = CommonParameters::Nd();
+  //int Nc   = CommonParameters::Nc();
+  //int Nd   = CommonParameters::Nd();
   int Nvol = CommonParameters::Nvol();
   int Ndim = CommonParameters::Ndim();
 

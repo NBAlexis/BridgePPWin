@@ -142,7 +142,7 @@ namespace Imp {
       mult_gm5(w, m_w1);
     }
 
-    inline void mult_undef(Field&, const Field& f)
+    inline void mult_undef(Field&, const Field&)
     {
       vout.crucial(m_vl, "Error at Fopr_Wilson: mode undefined.\n");
       exit(EXIT_FAILURE);

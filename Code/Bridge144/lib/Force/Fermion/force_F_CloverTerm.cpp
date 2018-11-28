@@ -97,7 +97,7 @@ void Force_F_CloverTerm::tidyup()
 
 // override default force_core()
 //====================================================================
-void Force_F_CloverTerm::force_core(Field& force, const Field& eta)
+void Force_F_CloverTerm::force_core(Field& , const Field& )
 {
   vout.crucial(m_vl, "Error at %s: force_core() is not available.\n", class_name.c_str());
   exit(EXIT_FAILURE);
@@ -105,7 +105,7 @@ void Force_F_CloverTerm::force_core(Field& force, const Field& eta)
 
 
 //====================================================================
-void Force_F_CloverTerm::force_udiv(Field& force, const Field& eta)
+void Force_F_CloverTerm::force_udiv(Field& , const Field& )
 {
   vout.crucial(m_vl, "Error at %s: force_udiv() is not available.\n", class_name.c_str());
   exit(EXIT_FAILURE);
@@ -132,7 +132,7 @@ void Force_F_CloverTerm::force_udiv1(Field& force_, const Field& zeta_, const Fi
 void Force_F_CloverTerm::force_udiv1_impl(Field_G& force, const Field_F& zeta, const Field_F& eta)
 {
   int Nc   = CommonParameters::Nc();
-  int Nd   = CommonParameters::Nd();
+  //int Nd   = CommonParameters::Nd();
   int Nvol = CommonParameters::Nvol();
   int Ndim = CommonParameters::Ndim();
 
@@ -225,8 +225,8 @@ void Force_F_CloverTerm::force_udiv1_impl(Field_G& force, const Field_F& zeta, c
 //====================================================================
 void Force_F_CloverTerm::set_component()
 {
-  int Nc   = CommonParameters::Nc();
-  int Nd   = CommonParameters::Nd();
+  //int Nc   = CommonParameters::Nc();
+  //int Nd   = CommonParameters::Nd();
   int Nvol = CommonParameters::Nvol();
 
   Field_G    Cmu_ud1(Nvol, 1);

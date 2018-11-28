@@ -45,7 +45,7 @@ void FieldIO::deliver(Field *vlocal, Field *vglobal)
   int Ny   = CommonParameters::Ny();
   int Nz   = CommonParameters::Nz();
   int Nt   = CommonParameters::Nt();
-  int Nvol = CommonParameters::Nvol();
+  //int Nvol = CommonParameters::Nvol();
 
   int NPEx = CommonParameters::NPEx();
   int NPEy = CommonParameters::NPEy();
@@ -131,7 +131,7 @@ void FieldIO::gather(Field *vglobal, Field *vlocal)
   int Ny   = CommonParameters::Ny();
   int Nz   = CommonParameters::Nz();
   int Nt   = CommonParameters::Nt();
-  int Nvol = CommonParameters::Nvol();
+  //int Nvol = CommonParameters::Nvol();
 
   int NPEx = CommonParameters::NPEx();
   int NPEy = CommonParameters::NPEy();
@@ -307,7 +307,7 @@ void FieldIO::convert_endian(void *ptr, size_t size, size_t nmemb)
 // default implementation for collection of fields.
 void FieldIO::read_file(std::vector<Field *>& vv, const std::string& filename_base)
 {
-  for (int i = 0, n = vv.size(); i < n; ++i) {
+  for (int i = 0, n = (int)vv.size(); i < n; ++i) {
     std::string filename = FileUtils::generate_filename("%s.%d", filename_base.c_str(), i);
     read_file(vv[i], filename);
   }
@@ -318,7 +318,7 @@ void FieldIO::read_file(std::vector<Field *>& vv, const std::string& filename_ba
 // default implementation for collection of fields.
 void FieldIO::write_file(std::vector<Field *>& vv, const std::string& filename_base)
 {
-  for (int i = 0, n = vv.size(); i < n; ++i) {
+  for (int i = 0, n = (int)vv.size(); i < n; ++i) {
     std::string filename = FileUtils::generate_filename("%s.%d", filename_base.c_str(), i);
     write_file(vv[i], filename);
   }

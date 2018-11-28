@@ -98,7 +98,7 @@ void Force_F_Clover_SF::set_parameters(double kappa, double cSW, const std::vect
 //====================================================================
 void Force_F_Clover_SF::force_udiv(Field& force_, const Field& eta_)
 {
-  int Nc   = CommonParameters::Nc();
+  //int Nc   = CommonParameters::Nc();
   int Nvol = CommonParameters::Nvol();
   int Ndim = CommonParameters::Ndim();
 
@@ -123,7 +123,7 @@ void Force_F_Clover_SF::force_udiv(Field& force_, const Field& eta_)
 //====================================================================
 void Force_F_Clover_SF::force_udiv1(Field& force_, const Field& zeta_, const Field& eta_)
 {
-  int Nc   = CommonParameters::Nc();
+  //int Nc   = CommonParameters::Nc();
   int Nvol = CommonParameters::Nvol();
   int Ndim = CommonParameters::Ndim();
 
@@ -141,7 +141,7 @@ void Force_F_Clover_SF::force_udiv1(Field& force_, const Field& zeta_, const Fie
 void Force_F_Clover_SF::force_udiv1_impl(Field_G& force, const Field_F& zeta, const Field_F& eta)
 {
   int Nc   = CommonParameters::Nc();
-  int Nd   = CommonParameters::Nd();
+  //int Nd   = CommonParameters::Nd();
   int Nvol = CommonParameters::Nvol();
   int Ndim = CommonParameters::Ndim();
 
@@ -244,8 +244,8 @@ void Force_F_Clover_SF::force_udiv1_impl(Field_G& force, const Field_F& zeta, co
 //====================================================================
 void Force_F_Clover_SF::set_component()
 {
-  int Nc   = CommonParameters::Nc();
-  int Nd   = CommonParameters::Nd();
+  //int Nc   = CommonParameters::Nc();
+  //int Nd   = CommonParameters::Nd();
   int Nvol = CommonParameters::Nvol();
 
   Field_G_SF Cmu_ud1(Nvol, 1);

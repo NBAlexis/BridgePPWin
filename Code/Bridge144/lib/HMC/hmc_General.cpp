@@ -169,8 +169,8 @@ void HMC_General::set_parameters(double trajectory_length, int Metropolis_test)
 //====================================================================
 double HMC_General::update(Field_G& Uorg)
 {
-  int Nc   = CommonParameters::Nc();
-  int Lvol = CommonParameters::Lvol();
+  //int Nc   = CommonParameters::Nc();
+  //int Lvol = CommonParameters::Lvol();
 
   Field_G U(Uorg);
 
@@ -237,7 +237,7 @@ double HMC_General::update(Field_G& Uorg)
 
 
 //====================================================================
-double HMC_General::langevin(Field_G& iP, Field_G& U)
+double HMC_General::langevin(Field_G& iP, Field_G& )
 {
   int Nc   = CommonParameters::Nc();
   int Lvol = CommonParameters::Lvol();
@@ -276,12 +276,12 @@ double HMC_General::langevin(Field_G& iP, Field_G& U)
 //====================================================================
 double HMC_General::calc_Hamiltonian(Field_G& iP, Field_G& U)
 {
-  int Nin  = U.nin();
-  int Nvol = U.nvol();
+  //int Nin  = U.nin();
+  //int Nvol = U.nvol();
   int Nex  = U.nex();
 
   int Nc   = CommonParameters::Nc();
-  int Nd   = CommonParameters::Nd();
+  //int Nd   = CommonParameters::Nd();
   int Lvol = CommonParameters::Lvol();
   int NcA  = Nc * Nc - 1;
 

@@ -81,8 +81,8 @@ void Force_F_Wilson_Nf2_Isochemical::set_parameters(const double kappa, const do
 //====================================================================
 void Force_F_Wilson_Nf2_Isochemical::force_udiv(Field& force_, const Field& eta_)
 {
-  int Nc   = CommonParameters::Nc();
-  int Nd   = CommonParameters::Nd();
+  //int Nc   = CommonParameters::Nc();
+  //int Nd   = CommonParameters::Nd();
   int Nvol = CommonParameters::Nvol();
   int Ndim = CommonParameters::Ndim();
 
@@ -122,8 +122,8 @@ void Force_F_Wilson_Nf2_Isochemical::force_udiv1(Field& force_, const Field& zet
 //====================================================================
 void Force_F_Wilson_Nf2_Isochemical::force_udiv1_impl(Field_G& force, const Field_F& zeta, const Field_F& eta)
 {
-  int Nc   = CommonParameters::Nc();
-  int Nd   = CommonParameters::Nd();
+  //int Nc   = CommonParameters::Nc();
+  //int Nd   = CommonParameters::Nd();
   int Nvol = CommonParameters::Nvol();
   int Ndim = CommonParameters::Ndim();
 

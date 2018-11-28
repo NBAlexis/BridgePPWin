@@ -264,8 +264,8 @@ void HMC_Leapfrog::set_parameters(double Estep, int Nmdc, int Nprec, int Metropo
 //====================================================================
 double HMC_Leapfrog::update(Field_G& Uorg)
 {
-  int Nc   = CommonParameters::Nc();   //color (SA)
-  int Lvol = CommonParameters::Lvol(); // global volume (SA)
+  //int Nc   = CommonParameters::Nc();   //color (SA)
+  //int Lvol = CommonParameters::Lvol(); // global volume (SA)
 
   Field_G U(Uorg);                     // set original gauge conf. to U (SA)
 
@@ -273,7 +273,7 @@ double HMC_Leapfrog::update(Field_G& Uorg)
     m_action[i]->set_config(&U); // set gauge conf. for each action (SA)
   }
 
-  int Nin  = U.nin();    // 2x(complex) 3(color) x 3(color) part (SA)
+  //int Nin  = U.nin();    // 2x(complex) 3(color) x 3(color) part (SA)
   int Nvol = U.nvol();   // local volume (SA)
   int Nex  = U.nex();    // direction mu (SA)
 
@@ -333,7 +333,7 @@ double HMC_Leapfrog::update(Field_G& Uorg)
 
 
 //====================================================================
-double HMC_Leapfrog::langevin(Field_G& iP, Field_G& U)
+double HMC_Leapfrog::langevin(Field_G& iP, Field_G& )
 {
   int Nc   = CommonParameters::Nc();
   int Lvol = CommonParameters::Lvol(); //global volume (SA)
@@ -370,12 +370,12 @@ double HMC_Leapfrog::langevin(Field_G& iP, Field_G& U)
 //====================================================================
 double HMC_Leapfrog::calc_Hamiltonian(Field_G& iP, Field_G& U)
 {
-  int Nin  = U.nin(); // Local volume (SA)
-  int Nvol = U.nvol();
+  //int Nin  = U.nin(); // Local volume (SA)
+  //int Nvol = U.nvol();
   int Nex  = U.nex();
 
   int Nc   = CommonParameters::Nc();
-  int Nd   = CommonParameters::Nd();
+  //int Nd   = CommonParameters::Nd();
   int Lvol = CommonParameters::Lvol(); //Global volume (SA)
   int NcA  = Nc * Nc - 1;
 
@@ -450,7 +450,7 @@ void HMC_Leapfrog::update_P(double estep, Field_G& iP, Field_G& U)
   int Nin  = U.nin();
   int Nvol = U.nvol();
   int Nex  = U.nex();
-  int Nc   = CommonParameters::Nc();
+  //int Nc   = CommonParameters::Nc();
 
   Field force(Nin, Nvol, Nex);
 

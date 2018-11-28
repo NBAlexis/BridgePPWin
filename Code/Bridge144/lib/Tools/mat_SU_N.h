@@ -110,7 +110,7 @@ namespace SU_N {
 
     //  Mat_SU_N& operator/=(const std::complex<double>&);
 
-    int size() const { return va.size(); }
+    int size() const { return (int)va.size(); }
     double r(int c) const { return va[2 * c]; }
     double i(int c) const { return va[2 * c + 1]; }
 

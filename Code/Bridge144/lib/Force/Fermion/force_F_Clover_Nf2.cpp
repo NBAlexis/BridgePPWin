@@ -110,7 +110,7 @@ void Force_F_Clover_Nf2::tidyup()
 //====================================================================
 void Force_F_Clover_Nf2::force_udiv(Field& force_, const Field& eta_)
 {
-  int Nc   = CommonParameters::Nc();
+  //int Nc   = CommonParameters::Nc();
   int Nvol = CommonParameters::Nvol();
   int Ndim = CommonParameters::Ndim();
 
@@ -132,7 +132,7 @@ void Force_F_Clover_Nf2::force_udiv(Field& force_, const Field& eta_)
 //====================================================================
 void Force_F_Clover_Nf2::force_udiv1(Field& force_, const Field& zeta_, const Field& eta_)
 {
-  int Nc   = CommonParameters::Nc();
+  //int Nc   = CommonParameters::Nc();
   int Nvol = CommonParameters::Nvol();
   int Ndim = CommonParameters::Ndim();
 
@@ -149,8 +149,8 @@ void Force_F_Clover_Nf2::force_udiv1(Field& force_, const Field& zeta_, const Fi
 //====================================================================
 void Force_F_Clover_Nf2::force_udiv1_impl(Field_G& force, const Field_F& zeta, const Field_F& eta)
 {
-  int Nc   = CommonParameters::Nc();
-  int Nd   = CommonParameters::Nd();
+  //int Nc   = CommonParameters::Nc();
+  //int Nd   = CommonParameters::Nd();
   int Nvol = CommonParameters::Nvol();
   int Ndim = CommonParameters::Ndim();
 
@@ -169,8 +169,8 @@ void Force_F_Clover_Nf2::force_udiv1_impl(Field_G& force, const Field_F& zeta, c
 //====================================================================
 void Force_F_Clover_Nf2::set_component()
 {
-  int Nc   = CommonParameters::Nc();
-  int Nd   = CommonParameters::Nd();
+  //int Nc   = CommonParameters::Nc();
+  //int Nd   = CommonParameters::Nd();
   int Nvol = CommonParameters::Nvol();
 
   Staple_lex staple;

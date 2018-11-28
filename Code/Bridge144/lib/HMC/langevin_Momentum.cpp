@@ -41,7 +41,7 @@ double Langevin_Momentum::set_iP(Field_G& iP)
 //====================================================================
 double Langevin_Momentum::set_iP_general_SU_N(Field_G& iP)
 {
-  int Nin  = iP.nin();
+  //int Nin  = iP.nin();
   int Nvol = iP.nvol(); // local volume (SA)
   int Nex  = iP.nex();
 
@@ -92,7 +92,7 @@ double Langevin_Momentum::set_iP_SU3_alt(Field_G& iP)
   // alternative implementation to set_iP_SU3():
   // this gives the same result as set_iP_general_SU_N() for Nc=3 case.
 
-  int Nin  = iP.nin();
+  //int Nin  = iP.nin();
   int Nvol = iP.nvol(); // local volume (SA)
   int Nex  = iP.nex();
 
@@ -155,7 +155,7 @@ double Langevin_Momentum::set_iP_SU3(Field_G& iP)
 {
   // implementation for SU(3) case: original version.
 
-  int Nin  = iP.nin();
+  //int Nin  = iP.nin();
   int Nvol = iP.nvol(); // local volume (SA)
   int Nex  = iP.nex();
 

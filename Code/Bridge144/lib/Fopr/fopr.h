@@ -88,8 +88,8 @@ class Fopr
   }
 
   //! nearest neighbor hopping term: temporary entry [H.Matsufuru]
-  virtual void mult_up(int mu, Field&, const Field&) {}
-  virtual void mult_dn(int mu, Field&, const Field&) {}
+  virtual void mult_up(int, Field&, const Field&) {}
+  virtual void mult_dn(int, Field&, const Field&) {}
 
   //! \brief setting the mode of multiplication if necessary.
   //!  Default implementation here is just to avoid irrelevant call.
