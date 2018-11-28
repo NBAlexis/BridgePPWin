@@ -416,8 +416,8 @@ double Staple_SF::sf_coupling_rect(const Field_G& m_U, double ctr)
 
   Field_G_SF Cup1(Nvol, 1), Cup2(Nvol, 1);
   Field_G_SF Cdn1(Nvol, 1), Cdn2(Nvol, 1);
-  Field_G    Umu(Nvol, 1), Unu(Nvol, 1);
-  Field_G    v(Nvol, 1), c(Nvol, 1);
+  Field_G    Umu_f(Nvol, 1), Unu_f(Nvol, 1);
+  Field_G    vv(Nvol, 1), c(Nvol, 1);
 
   Mat_SU_N wmat(Nc), cmat(Nc);
 
@@ -449,10 +449,10 @@ double Staple_SF::sf_coupling_rect(const Field_G& m_U, double ctr)
     //      <---<---+
     upper(Cup2, m_U, nu, mu);
 
-    Umu.setpart_ex(0, m_U, mu);
-    Unu.setpart_ex(0, m_U, nu);
-    shift.backward(v, Cup2, mu);
-    shift.backward(c, Umu, nu);
+    Umu_f.setpart_ex(0, m_U, mu);
+    Unu_f.setpart_ex(0, m_U, nu);
+    shift.backward(vv, Cup2, mu);
+    shift.backward(c, Umu_f, nu);
     for (int z = 0; z < Nz; z++) {
       for (int y = 0; y < Ny; y++) {
         for (int x = 0; x < Nx; x++) {
@@ -460,25 +460,25 @@ double Staple_SF::sf_coupling_rect(const Field_G& m_U, double ctr)
           t = 0;
           if (Communicator::ipe(3) == 0) {
             site    = index.site(x, y, z, t);
-            wmat    = wk * v.mat(site);
+            wmat    = wk * vv.mat(site);
             cmat    = wmat * c.mat_dag(site);
-            wmat    = cmat * Unu.mat_dag(site);
+            wmat    = cmat * Unu_f.mat_dag(site);
             rect01 += ReTr(iomega0 * wmat);
-            wmat    = iomega0 * v.mat(site);
+            wmat    = iomega0 * vv.mat(site);
             cmat    = wmat * c.mat_dag(site);
-            wmat    = cmat * Unu.mat_dag(site);
+            wmat    = cmat * Unu_f.mat_dag(site);
             rect02 += ReTr(wk * wmat);
           }
           t = Nt - 1;
           if (Communicator::ipe(3) == NPEt - 1) {
             site    = index.site(x, y, z, t);
             cmat    = iomega0 * wkpr;
-            wmat    = cmat * v.mat_dag(site);
-            cmat    = Unu.mat(site) * wmat;
+            wmat    = cmat * vv.mat_dag(site);
+            cmat    = Unu_f.mat(site) * wmat;
             rectt1 += ReTr(cmat * m_U.mat_dag(site, mu));
-            cmat    = iomega0 * v.mat_dag(site);
+            cmat    = iomega0 * vv.mat_dag(site);
             wmat    = wkpr * cmat;
-            cmat    = Unu.mat(site) * wmat;
+            cmat    = Unu_f.mat(site) * wmat;
             rectt2 += ReTr(cmat * m_U.mat_dag(site, mu));
           }
         }
@@ -494,7 +494,7 @@ double Staple_SF::sf_coupling_rect(const Field_G& m_U, double ctr)
     //   omega0
     upper(Cup1, m_U, mu, nu);
 
-    shift.backward(v, Unu, mu);
+    shift.backward(vv, Unu_f, mu);
     shift.backward(c, Cup1, nu);
     for (int z = 0; z < Nz; z++) {
       for (int y = 0; y < Ny; y++) {
@@ -503,8 +503,8 @@ double Staple_SF::sf_coupling_rect(const Field_G& m_U, double ctr)
 
           if (Communicator::ipe(3) == 0) {
             site    = index.site(x, y, z, t);
-            wmat    = c.mat(site) * v.mat_dag(site);
-            cmat    = Unu.mat(site) * wmat;
+            wmat    = c.mat(site) * vv.mat_dag(site);
+            cmat    = Unu_f.mat(site) * wmat;
             wmat    = wk * cmat.dag();
             rect03 += ReTr(iomega0 * wmat);
           }
@@ -521,7 +521,7 @@ double Staple_SF::sf_coupling_rect(const Field_G& m_U, double ctr)
     //      +---+
     lower(Cdn1, m_U, mu, nu);
 
-    shift.backward(v, Unu, mu);
+    shift.backward(vv, Unu_f, mu);
     for (int z = 0; z < Nz; z++) {
       for (int y = 0; y < Ny; y++) {
         for (int x = 0; x < Nx; x++) {
@@ -530,9 +530,9 @@ double Staple_SF::sf_coupling_rect(const Field_G& m_U, double ctr)
           if (Communicator::ipe(3) == NPEt - 1) {
             site    = index.site(x, y, z, t);
             wmat    = iomega0 * wkpr;
-            cmat    = wmat * v.mat_dag(site);
+            cmat    = wmat * vv.mat_dag(site);
             wmat    = cmat * Cdn1.mat_dag(site);
-            rectt3 += ReTr(Unu.mat(site) * wmat);
+            rectt3 += ReTr(Unu_f.mat(site) * wmat);
           }
         }
       }

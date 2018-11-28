@@ -20,7 +20,8 @@
 // prototype declaration
 namespace {
   static int pe_logical_layout(const int ndim, const int *dims, int nproc, int *npe);
-  static int find_primes(const int n, int *p);
+  //looks like this function is for testing use
+  //static int find_primes(const int n, int *p);
 }
 
 // static members
@@ -428,6 +429,8 @@ namespace { // anonymous namespace
         return retv;
     }
 
+    //looks like this function is for testing use
+#if 0
     //* find n primes.
     static int find_primes(const int n, int *p)
     {
@@ -455,6 +458,7 @@ namespace { // anonymous namespace
 
         return EXIT_SUCCESS;
     }
+#endif
 }
 
 //====================================================================

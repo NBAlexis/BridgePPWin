@@ -32,10 +32,10 @@ void GaugeConfig_SF::set_cold_SF(Field *U, double *phi, double *phipr)
   int Nz   = CommonParameters::Nz();
   int Nt   = CommonParameters::Nt();
   int Lx   = CommonParameters::Lx();
-  int Ly   = CommonParameters::Ly();
-  int Lz   = CommonParameters::Lz();
+  //int Ly   = CommonParameters::Ly();
+  //int Lz   = CommonParameters::Lz();
   int Lt   = CommonParameters::Lt();
-  int NPEt = CommonParameters::NPEt();
+  //int NPEt = CommonParameters::NPEt();
 
   Index_lex idx;
   int       site;
@@ -70,8 +70,8 @@ void GaugeConfig_SF::set_cold_SF(Field *U, double *phi, double *phipr)
   }
   {
     int mu = Ndim - 1;
-    for (int site = 0; site < Nvol; ++site) {
-      up->set_mat(site, mu, ut);
+    for (int site2 = 0; site2 < Nvol; ++site2) {
+      up->set_mat(site2, mu, ut);
     }
   }
 

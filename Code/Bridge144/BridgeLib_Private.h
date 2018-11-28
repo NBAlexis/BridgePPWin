@@ -13,7 +13,11 @@
 #ifndef _BRIDGELIB_PRIVATE_H_
 #define _BRIDGELIB_PRIVATE_H_
 
+//in this case, we are using as self include
+#ifndef _BRIDGE_LIB_PUBLIC
 #define _VCWIN 1
+#define BAPI __declspec(dllexport)
+#endif
 
 #define UNUSE(x) (void*)(x);
 

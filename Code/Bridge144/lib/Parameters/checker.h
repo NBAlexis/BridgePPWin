@@ -36,6 +36,7 @@ namespace ParameterCheck
   typedef bool (*valid_int_vector)(const std::vector<int>&);
   typedef bool (*valid_string)(const std::string&);
 
+  int non_negative(const double v);
   int non_negative(const int v);
   int non_zero(const int v);
   int non_zero(const double v);

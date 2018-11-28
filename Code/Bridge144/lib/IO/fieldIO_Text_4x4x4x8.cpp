@@ -149,7 +149,7 @@ void FieldIO_Text_4x4x4x8::read_file(Field *v, string filename)
 
 
 //====================================================================
-void FieldIO_Text_4x4x4x8::write_file(Field *v, std::string filename)
+void FieldIO_Text_4x4x4x8::write_file(Field *, std::string )
 {
   vout.crucial(m_vl, "Warning at %s: no write method is defined.\n",
                class_name.c_str());

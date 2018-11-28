@@ -67,7 +67,7 @@ bool RandomNumberManager::initialize(const std::string& rng_type, unsigned long 
     vout.crucial("Error: %s: already initialized.\n", class_name.c_str());
 
     exit(EXIT_FAILURE);
-    return false;
+    //return false;
   }
 
   s_rand = factory(rng_type, seed);

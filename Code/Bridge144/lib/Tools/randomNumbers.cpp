@@ -175,7 +175,7 @@ void RandomNumbers::generate_global(Field& f)
 {
   InnerGenerator fill(f, this);
 
-  int Nin  = f.nin();
+  //int Nin  = f.nin();
   int Nvol = f.nvol();
   int Nex  = f.nex();
 

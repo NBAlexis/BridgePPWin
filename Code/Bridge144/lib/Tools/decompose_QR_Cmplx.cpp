@@ -148,7 +148,7 @@ void Decompose_QR_Cmplx::solve(double *vec)
 
   // vec -> R^{-1} vec
   // Back substitution
-  for (int i = N - 1; i >= 0; --i) {
+  for (int i = (int)N - 1; i >= 0; --i) {
     for (int j = i + 1; j < N; ++j) {
       vec[re(i)] -= m_qr[re(i, j)] * vec[re(j)] - m_qr[im(i, j)] * vec[im(j)];
       vec[im(i)] -= m_qr[re(i, j)] * vec[im(j)] + m_qr[im(i, j)] * vec[re(j)];
@@ -206,7 +206,7 @@ void Decompose_QR_Cmplx::mult_inverse(double *mat)
   }
 
   // Back substitution
-  for (int i = N - 1; i >= 0; --i) {
+  for (int i = (int)N - 1; i >= 0; --i) {
     for (int r = i + 1; r < N; ++r) {
       double& qrir_re = m_qr[re(i, r)];
       double& qrir_im = m_qr[im(i, r)];
@@ -259,7 +259,7 @@ void Decompose_QR_Cmplx::get_Qu(double *mat)
 //====================================================================
 void Decompose_QR_Cmplx::mult_Q(double *mat)
 {
-  for (int r = N - 1; r >= 0; --r) {
+  for (int r = (int)N - 1; r >= 0; --r) {
     for (int j = 0; j < N; ++j) {
       // vm = <v|m_j>
       double vm_re = mat[re(r, j)];

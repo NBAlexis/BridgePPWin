@@ -73,7 +73,7 @@ void Shiftsolver_CG::solve(std::vector<Field>& xq,
                            const Field& b,
                            int& Nconv, double& diff)
 {
-  int Nshift = sigma.size();
+  int Nshift = (int)sigma.size();
 
   vout.paranoiac(m_vl, "  Shift CG solver start.\n");
   vout.paranoiac(m_vl, "    number of shift = %d\n", Nshift);
@@ -162,7 +162,7 @@ void Shiftsolver_CG::solve(std::vector<Field>& xq,
 //====================================================================
 void Shiftsolver_CG::solve_init(double& rr)
 {
-  int Nshift = m_p.size();
+  int Nshift = (int)m_p.size();
 
   vout.paranoiac(m_vl, "number of shift = %d\n", Nshift);
 

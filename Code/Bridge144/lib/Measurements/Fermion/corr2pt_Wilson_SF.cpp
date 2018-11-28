@@ -75,7 +75,7 @@ double Corr2pt_Wilson_SF::fAfP(const std::vector<Field_F>& sq1,
   GammaMatrix           qn_src, qn_sink;
 
   int    Lvol = CommonParameters::Lvol();
-  int    m_Nc = CommonParameters::Nc();
+  //int    m_Nc = CommonParameters::Nc();
   double norm = 0.5 / Lvol * Lt;
 
   //  double norm=0.5/Lvol*Lt*(2*0.130*2*0.130);

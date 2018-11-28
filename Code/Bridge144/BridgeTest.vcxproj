@@ -19,6 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Main\main.cpp" />
+    <ClCompile Include="Main\run_test.cpp" />
+    <ClCompile Include="Main\run_testmanager.cpp" />
     <ClCompile Include="Tests\Eigensolver\test_Eigensolver.cpp" />
     <ClCompile Include="Tests\Eigensolver\test_Eigensolver_Chebyshev.cpp" />
     <ClCompile Include="Tests\Eigensolver\test_Eigensolver_Clover_SF.cpp" />
@@ -76,6 +79,9 @@
     <ClCompile Include="Tests\WilsonLoop\test_WilsonLoop.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BridgeTest.h" />
+    <ClInclude Include="Main\doxygen.h" />
+    <ClInclude Include="Main\run_testmanager.h" />
     <ClInclude Include="Tests\test.h" />
     <ClInclude Include="Tests\testlist.h" />
     <ClInclude Include="Tests\testManager.h" />
@@ -135,7 +141,7 @@
     <IncludePath>$(SolutionDir)..\Dependency\wxWidgets\include;$(SolutionDir)..\Dependency\wxWidgets\include\msvc;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(SolutionDir)..\Dependency\wxWidgets\include;$(SolutionDir)..\Dependency\wxWidgets\include\msvc;$(ProjectDir);$(SolutionDir)Z2VulkanGo\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)..\Dependency\wxWidgets\include;$(SolutionDir)..\Dependency\wxWidgets\include\msvc;$(ProjectDir);$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)..\Bin\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)..\Temp\$(Configuration)\</IntDir>
     <TargetName>$(ProjectName)_d</TargetName>
@@ -143,7 +149,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)..\Bin\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)..\Temp\$(Configuration)\</IntDir>
-    <IncludePath>$(SolutionDir)..\Dependency\wxWidgets\include;$(SolutionDir)..\Dependency\wxWidgets\include\msvc;$(ProjectDir);$(SolutionDir)Z2VulkanGo\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)..\Dependency\wxWidgets\include;$(SolutionDir)..\Dependency\wxWidgets\include\msvc;$(ProjectDir);$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

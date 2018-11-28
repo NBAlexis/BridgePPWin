@@ -111,12 +111,12 @@ double TopologicalCharge::measure(Field_G& U)
     // NB. #(mu,nu)=6 i.e. (1,2),(1,3),(1,4),(2,3),(2,4),(3,4)
     std::vector<Field_G> Fmunu_1x2(6);
 
-    int i_munu = 0;
+    int i_munu_if = 0;
     for (int mu = 0; mu < Ndim; ++mu) {
       for (int nu = mu + 1; nu < Ndim; ++nu) {
-        m_field_strength.construct_Fmunu_1x2(Fmunu_1x2[i_munu], mu, nu, U);
+        m_field_strength.construct_Fmunu_1x2(Fmunu_1x2[i_munu_if], mu, nu, U);
 
-        ++i_munu;
+        ++i_munu_if;
       }
     }
 

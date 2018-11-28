@@ -304,45 +304,45 @@ double Corr2pt_4spinor::meson_momentum_all(const std::vector<Field_F>& sq1,
 
   gm_src  = m_gmset->get_GM(m_gmset->GAMMA5);
   gm_sink = m_gmset->get_GM(m_gmset->GAMMA5);
-  for (int i_momentum = 0; i_momentum < N_momentum; i_momentum++) {
+  for (int i_momentum2 = 0; i_momentum2 < N_momentum; i_momentum2++) {
     vout.general(m_vl, "PS_momentum(%d %d %d) <-- PS correlator:\n",
-                 momentum_sink[i_momentum][0],
-                 momentum_sink[i_momentum][1],
-                 momentum_sink[i_momentum][2]);
-    meson_momentum_correlator(corr, momentum_sink[i_momentum], gm_sink, gm_src,
+                 momentum_sink[i_momentum2][0],
+                 momentum_sink[i_momentum2][1],
+                 momentum_sink[i_momentum2][2]);
+    meson_momentum_correlator(corr, momentum_sink[i_momentum2], gm_sink, gm_src,
                               sq1, sq2, source_position);
   }
 
   gm_src  = m_gmset->get_GM(m_gmset->GAMMA1);
   gm_sink = m_gmset->get_GM(m_gmset->GAMMA1);
-  for (int i_momentum = 0; i_momentum < N_momentum; i_momentum++) {
+  for (int i_momentum3 = 0; i_momentum3 < N_momentum; i_momentum3++) {
     vout.general(m_vl, "V1_momentum(%d %d %d) <-- V1 correlator:\n",
-                 momentum_sink[i_momentum][0],
-                 momentum_sink[i_momentum][1],
-                 momentum_sink[i_momentum][2]);
-    meson_momentum_correlator(corr, momentum_sink[i_momentum], gm_sink, gm_src,
+                 momentum_sink[i_momentum3][0],
+                 momentum_sink[i_momentum3][1],
+                 momentum_sink[i_momentum3][2]);
+    meson_momentum_correlator(corr, momentum_sink[i_momentum3], gm_sink, gm_src,
                               sq1, sq2, source_position);
   }
 
   gm_src  = m_gmset->get_GM(m_gmset->GAMMA2);
   gm_sink = m_gmset->get_GM(m_gmset->GAMMA2);
-  for (int i_momentum = 0; i_momentum < N_momentum; i_momentum++) {
+  for (int i_momentum4 = 0; i_momentum4 < N_momentum; i_momentum4++) {
     vout.general(m_vl, "V2_momentum(%d %d %d) <-- V2 correlator:\n",
-                 momentum_sink[i_momentum][0],
-                 momentum_sink[i_momentum][1],
-                 momentum_sink[i_momentum][2]);
-    meson_momentum_correlator(corr, momentum_sink[i_momentum], gm_sink, gm_src,
+                 momentum_sink[i_momentum4][0],
+                 momentum_sink[i_momentum4][1],
+                 momentum_sink[i_momentum4][2]);
+    meson_momentum_correlator(corr, momentum_sink[i_momentum4], gm_sink, gm_src,
                               sq1, sq2, source_position);
   }
 
   gm_src  = m_gmset->get_GM(m_gmset->GAMMA3);
   gm_sink = m_gmset->get_GM(m_gmset->GAMMA3);
-  for (int i_momentum = 0; i_momentum < N_momentum; i_momentum++) {
+  for (int i_momentum5 = 0; i_momentum5 < N_momentum; i_momentum5++) {
     vout.general(m_vl, "V3_momentum(%d %d %d) <-- V3 correlator:\n",
-                 momentum_sink[i_momentum][0],
-                 momentum_sink[i_momentum][1],
-                 momentum_sink[i_momentum][2]);
-    meson_momentum_correlator(corr, momentum_sink[i_momentum], gm_sink, gm_src,
+                 momentum_sink[i_momentum5][0],
+                 momentum_sink[i_momentum5][1],
+                 momentum_sink[i_momentum5][2]);
+    meson_momentum_correlator(corr, momentum_sink[i_momentum5], gm_sink, gm_src,
                               sq1, sq2, source_position);
   }
 

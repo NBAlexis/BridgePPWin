@@ -57,7 +57,7 @@ static const unsigned __int64 epoch = ((unsigned __int64)116444736000000000ULL);
 *
 */
 int
-gettimeofday(struct timeval * tp, struct timezone * tzp)
+gettimeofday(struct timeval * tp, struct timezone * )
 {
     FILETIME    file_time;
     SYSTEMTIME  system_time;

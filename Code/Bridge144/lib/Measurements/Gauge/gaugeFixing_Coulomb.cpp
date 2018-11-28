@@ -605,14 +605,14 @@ void GaugeFixing_Coulomb::maxTr2(Field_G& G, Field_G& W)
     gt.set(6, fn * (-wt.r(6) + wt.r(2)), fn * (-wt.i(6) - wt.i(2)));
     gt.set(8, fn * (wt.r(8) + wt.r(0)), fn * (-wt.i(8) + wt.i(0)));
 
-    Mat_SU_N wt2(Nc);
-    wt2 = gt * wt;
-    W.set_mat(site, 0, wt2);
+    Mat_SU_N wt2_f(Nc);
+    wt2_f = gt * wt;
+    W.set_mat(site, 0, wt2_f);
 
-    Mat_SU_N gt2(Nc);
-    gt2 = G.mat(site, 0);
-    wt2 = gt * gt2;
-    G.set_mat(site, 0, wt2);
+    Mat_SU_N gt2_f(Nc);
+    gt2_f = G.mat(site, 0);
+    wt2_f = gt * gt2_f;
+    G.set_mat(site, 0, wt2_f);
   }
 }
 
@@ -647,14 +647,14 @@ void GaugeFixing_Coulomb::maxTr3(Field_G& G, Field_G& W)
     gt.set(7, fn * (wt.r(5) - wt.r(7)), fn * (-wt.i(5) - wt.i(7)));
     gt.set(8, fn * (wt.r(4) + wt.r(8)), fn * (wt.i(4) - wt.i(8)));
 
-    Mat_SU_N wt2(Nc);
-    wt2 = gt * wt;
-    W.set_mat(site, 0, wt2);
+    Mat_SU_N wt2_f(Nc);
+    wt2_f = gt * wt;
+    W.set_mat(site, 0, wt2_f);
 
-    Mat_SU_N gt2(Nc);
-    gt2 = G.mat(site, 0);
-    wt2 = gt * gt2;
-    G.set_mat(site, 0, wt2);
+    Mat_SU_N gt2_f(Nc);
+    gt2_f = G.mat(site, 0);
+    wt2_f = gt * gt2_f;
+    G.set_mat(site, 0, wt2_f);
   }
 }
 

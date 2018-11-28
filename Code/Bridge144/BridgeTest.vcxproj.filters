@@ -52,6 +52,12 @@
     <Filter Include="WilsonLoop">
       <UniqueIdentifier>{275ed9f3-a3db-4860-aa74-b6e8b449bdaa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="_Main">
+      <UniqueIdentifier>{2fd05324-e78e-4718-bf6b-5cae76cfafb7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tests">
+      <UniqueIdentifier>{6ee613c6-5aa7-4602-9ebe-378da6eaa0a0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Tests\Eigensolver\test_Eigensolver.cpp">
@@ -213,5 +219,38 @@
     <ClCompile Include="Tests\PolyakovLoop\test_PolyakovLoop.cpp">
       <Filter>PolyakovLoop</Filter>
     </ClCompile>
+    <ClCompile Include="Main\main.cpp">
+      <Filter>_Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\run_test.cpp">
+      <Filter>_Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Main\run_testmanager.cpp">
+      <Filter>_Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Tests\test.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="Tests\testManager.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Main\doxygen.h">
+      <Filter>_Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Main\run_testmanager.h">
+      <Filter>_Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Tests\test.h">
+      <Filter>Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="Tests\testlist.h">
+      <Filter>Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="Tests\testManager.h">
+      <Filter>Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="BridgeTest.h" />
   </ItemGroup>
 </Project>

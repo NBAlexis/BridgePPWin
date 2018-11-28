@@ -38,7 +38,8 @@
 #define ENABLE_ILDG_TAG
 
 
-namespace Bridge {
+namespace Bridge 
+{
   enum VerboseLevel
   {
     CRUCIAL,
@@ -47,7 +48,8 @@ namespace Bridge {
     PARANOIAC
   };
 
-  class BridgeIO {
+  class BAPI BridgeIO
+  {
    public:
     static const std::string class_name;
 
@@ -104,7 +106,7 @@ namespace Bridge {
 
     // Hide copy constructor and assignment.
     BridgeIO(const BridgeIO&);
-    BridgeIO& operator=(const BridgeIO&);
+    BridgeIO& operator=(const BridgeIO& other);
 
     // main method for verbose output for c style
     inline void print(VerboseLevel level, VerboseLevel write_level,
@@ -130,6 +132,7 @@ namespace Bridge {
 #endif
   };
 
-  extern BridgeIO vout;
+  extern BAPI BridgeIO vout;
 }
+
 #endif //BRIDGE_IO_INCLUDED

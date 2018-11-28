@@ -339,31 +339,31 @@ int Parameters::fetch_VerboseLevel(Bridge::VerboseLevel& value) const
 
 
 //====================================================================
-void Parameters::Register_double(const string& key, const double )
+void Parameters::Register_double(const string& , const double )
 { vout.crucial("%s: %s: unsupported.\n", class_name.c_str(), __func__); }
 
-void Parameters::Register_int(const string& key, const int )
+void Parameters::Register_int(const string& , const int )
 { vout.crucial("%s: %s: unsupported.\n", class_name.c_str(), __func__); }
 
-void Parameters::Register_string(const string& key, const string& )
+void Parameters::Register_string(const string& , const string& )
 { vout.crucial("%s: %s: unsupported.\n", class_name.c_str(), __func__); }
 
-void Parameters::Register_double_vector(const string& key, const vector<double>& )
+void Parameters::Register_double_vector(const string& , const vector<double>& )
 { vout.crucial("%s: %s: unsupported.\n", class_name.c_str(), __func__); }
 
-void Parameters::Register_int_vector(const string& key, const vector<int>& )
+void Parameters::Register_int_vector(const string& , const vector<int>& )
 { vout.crucial("%s: %s: unsupported.\n", class_name.c_str(), __func__); }
 
-void Parameters::Register_string_vector(const string& key, const vector<string>& )
+void Parameters::Register_string_vector(const string& , const vector<string>& )
 { vout.crucial("%s: %s: unsupported.\n", class_name.c_str(), __func__); }
 
-void Parameters::Register_Parameters(const string& key, const Parameters& )
+void Parameters::Register_Parameters(const string& , const Parameters& )
 { vout.crucial("%s: %s: unsupported.\n", class_name.c_str(), __func__); }
 
-void Parameters::Register_Parameters(const string& key, Parameters *const )
+void Parameters::Register_Parameters(const string& , Parameters *const )
 { vout.crucial("%s: %s: unsupported.\n", class_name.c_str(), __func__); }
 
-void Parameters::Register_Parameters(const string& key, const unique_ptr<Parameters>& )
+void Parameters::Register_Parameters(const string& , const unique_ptr<Parameters>& )
 { vout.crucial("%s: %s: unsupported.\n", class_name.c_str(), __func__); }
 
 //====================================================================

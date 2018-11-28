@@ -178,7 +178,7 @@ double HMC_General::update(Field_G& Uorg)
     m_action[i]->set_config(&U);
   }
 
-  int Nin  = U.nin();
+  //int Nin  = U.nin();
   int Nvol = U.nvol();
   int Nex  = U.nex();
 

@@ -57,8 +57,8 @@ void GeneratorSet_Mat_SU_N::setup(int Nc)
   assert(k == m_NcA);
 
   // overall normalization: tr[Ta,Tb] = (1/2) delta_{ab}
-  for (int k = 0; k < m_NcA; ++k) {
-    *m_Ta[k] *= 0.5;
+  for (int k2 = 0; k2 < m_NcA; ++k2) {
+    *m_Ta[k2] *= 0.5;
   }
 
   //  print();

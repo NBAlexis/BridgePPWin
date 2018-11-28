@@ -185,7 +185,7 @@ Mat_SU_N& Mat_SU_N::set_random_SU3(RandomNumbers *rand)
 
 
 //==========================================================
-Mat_SU_N& Mat_SU_N::set_random_SU2(RandomNumbers *rand)
+Mat_SU_N& Mat_SU_N::set_random_SU2(RandomNumbers *)
 {
   assert(m_Nc == 2);
 

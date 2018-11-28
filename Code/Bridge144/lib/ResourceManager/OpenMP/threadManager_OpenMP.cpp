@@ -96,7 +96,7 @@ void ThreadManager_OpenMP::wait()
 
 
 //====================================================================
-void ThreadManager_OpenMP::barrier(int Nthread)
+void ThreadManager_OpenMP::barrier(int )
 {
 #pragma omp barrier
 }

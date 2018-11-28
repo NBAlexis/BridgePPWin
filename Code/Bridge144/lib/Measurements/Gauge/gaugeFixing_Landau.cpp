@@ -508,7 +508,7 @@ void GaugeFixing_Landau::maxTr3(Field_G& G, Field_G& W)
   const int Nc    = CommonParameters::Nc();
   const int Nvol2 = W.nvol();
 
-  Mat_SU_N gt2(Nc), wt2(Nc);
+  //Mat_SU_N gt2(Nc), wt2(Nc);
 
   for (int site = 0; site < Nvol2; ++site) {
     Mat_SU_N wt(Nc);

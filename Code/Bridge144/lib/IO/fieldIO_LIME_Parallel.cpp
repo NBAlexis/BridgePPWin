@@ -57,6 +57,7 @@ namespace {
 // local header info
   struct LIME_record_info
   {
+    LIME_record_info() : offset(0), length(0) {}
     uint64_t offset;
     uint64_t length;
     char     type[128];

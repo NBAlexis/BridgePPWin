@@ -40,7 +40,7 @@ std::valarray<double> Eigen_QR_Cmplx::solve(const double *matrix)
   hessenberg.get_Q(&m_q[0]);
 
   // # of unfound eigen value
-  int Neigen = N;
+  int Neigen = (int)N;
   for (int i_iter = 0; i_iter < Niter; ++i_iter) {
     int r1 = Neigen - 1;
 

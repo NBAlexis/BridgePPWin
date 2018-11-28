@@ -117,8 +117,8 @@ double EnergyDensity::E_clover(const Field_G& U)
 
   double F2_1x1 = 0.0;
   for (int site = 0; site < Nvol; ++site) {
-    for (int i_munu = 0; i_munu < 6; i_munu++) {
-      F2_1x1 += ReTr(Fmunu_1x1[i_munu].mat(site) * Fmunu_1x1[i_munu].mat(site));
+    for (int i_munu_for = 0; i_munu_for < 6; i_munu_for++) {
+      F2_1x1 += ReTr(Fmunu_1x1[i_munu_for].mat(site) * Fmunu_1x1[i_munu_for].mat(site));
     }
   }
   E_clover_1x1 = Communicator::reduce_sum(F2_1x1) / Lvol;
@@ -131,19 +131,19 @@ double EnergyDensity::E_clover(const Field_G& U)
     // NB. #(mu,nu)=6 i.e. (1,2),(1,3),(1,4),(2,3),(2,4),(3,4)
     std::vector<Field_G> Fmunu_1x2(6);
 
-    int i_munu = 0;
+    int i_munu_f = 0;
     for (int mu = 0; mu < Ndim; ++mu) {
       for (int nu = mu + 1; nu < Ndim; ++nu) {
-        m_field_strength.construct_Fmunu_1x2(Fmunu_1x2[i_munu], mu, nu, U);
+        m_field_strength.construct_Fmunu_1x2(Fmunu_1x2[i_munu_f], mu, nu, U);
 
-        ++i_munu;
+        ++i_munu_f;
       }
     }
 
     double F2_1x2 = 0.0;
     for (int site = 0; site < Nvol; ++site) {
-      for (int i_munu = 0; i_munu < 6; i_munu++) {
-        F2_1x2 += ReTr(Fmunu_1x2[i_munu].mat(site) * Fmunu_1x2[i_munu].mat(site));
+      for (int i_munu_for = 0; i_munu_for < 6; i_munu_for++) {
+        F2_1x2 += ReTr(Fmunu_1x2[i_munu_for].mat(site) * Fmunu_1x2[i_munu_for].mat(site));
       }
     }
     E_clover_1x2 = Communicator::reduce_sum(F2_1x2) / Lvol;

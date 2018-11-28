@@ -88,7 +88,7 @@ void Projection_Maximum_SU_N::project(Field_G& U,
 {
   int Nex  = Uorg.nex();
   int Nvol = Uorg.nvol();
-  int Nc   = CommonParameters::Nc();
+  //int Nc   = CommonParameters::Nc();
 
   assert(Cst.nex() == Nex);
   assert(Cst.nvol() == Nvol);
@@ -106,9 +106,9 @@ void Projection_Maximum_SU_N::project(Field_G& U,
 
 
 //====================================================================
-void Projection_Maximum_SU_N::force_recursive(Field_G& Xi, Field_G& iTheta,
-                                              double , const Field_G& Sigmap,
-                                              const Field_G& , const Field_G& Uorg)
+void Projection_Maximum_SU_N::force_recursive(Field_G& , Field_G& ,
+                                              double , const Field_G& ,
+                                              const Field_G& , const Field_G& )
 {
   vout.crucial(m_vl, "Error at %s: force_recursive() is not available.\n", class_name.c_str());
   exit(EXIT_FAILURE);

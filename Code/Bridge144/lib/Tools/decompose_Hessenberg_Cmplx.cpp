@@ -159,7 +159,7 @@ void Decompose_Hessenberg_Cmplx::get_Q(double *mat)
 //====================================================================
 void Decompose_Hessenberg_Cmplx::mult_Q(double *mat)
 {
-  for (int r = N - 2; r >= 0; --r) {
+  for (int r = (int)N - 2; r >= 0; --r) {
     for (int j = 0; j < N; ++j) {
       // vm = <v|m_j>
       double vm_re = mat[re(r + 1, j)];

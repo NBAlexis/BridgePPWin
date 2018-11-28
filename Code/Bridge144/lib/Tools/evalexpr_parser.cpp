@@ -701,8 +701,8 @@ yyerrorlab:
       /* Pacify compilers like GCC when the user code never invokes
          YYERROR and the label yyerrorlab therefore never appears in user
          code.  */
-      if (false)
-        goto yyerrorlab;
+      //if (false) what is this if (false)???
+      //  goto yyerrorlab;
 
       yyerror_range[1] = yylocation_stack_[yylen - 1];
 

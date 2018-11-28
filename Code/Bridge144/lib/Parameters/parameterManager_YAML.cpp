@@ -428,10 +428,10 @@ int Parser_bridge::parse_stream(std::istream& iss, Parameters& params)
         level_t lv = levels.top();
         levels.pop();
 
-        string     key            = lv.second.first;
+        string     key_s            = lv.second.first;
         Parameters *stored_params = lv.second.second;
 
-        stored_params->set_string(key, string()); // null string.
+        stored_params->set_string(key_s, string()); // null string.
 
         // current_params is yet not newly created. no need to delete.
 
@@ -448,10 +448,10 @@ int Parser_bridge::parse_stream(std::istream& iss, Parameters& params)
           level_t lv = levels.top();
           levels.pop();
 
-          string     key            = lv.second.first;
+          string     key_s            = lv.second.first;
           Parameters *stored_params = lv.second.second;
 
-          stored_params->set_Parameters(key, *current_params);
+          stored_params->set_Parameters(key_s, *current_params);
           delete current_params;
 
           // restore upper level

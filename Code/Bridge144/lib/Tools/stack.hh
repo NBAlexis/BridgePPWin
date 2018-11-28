@@ -94,7 +94,7 @@ namespace yy {
     unsigned int
     height () const
     {
-      return seq_.size ();
+      return (unsigned int)seq_.size ();
     }
 
     inline const_iterator begin () const { return seq_.rbegin (); }

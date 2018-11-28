@@ -82,7 +82,7 @@ void Projection_Stout_SU3::project(Field_G& U,
   assert(U.nex() == Nex);
   assert(U.nvol() == Nvol);
 
-  int NinG = Uorg.nin();
+  //int NinG = Uorg.nin();
 
   Mat_SU_N iQ0(NC), iQ1(NC), iQ2(NC), iQ3(NC);
   Mat_SU_N ct(NC), ut(NC), ut2(NC), e_iQ(NC);

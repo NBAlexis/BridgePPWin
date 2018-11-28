@@ -93,7 +93,7 @@ void Solver_CGNE::solve(Field& xq, const Field& b, int& Nconv, double& diff)
 //====================================================================
 double Solver_CGNE::flop_count()
 {
-  int    NPE = CommonParameters::NPE();
+  //int    NPE = CommonParameters::NPE();
   double eps = CommonParameters::epsilon_criterion();
 
   double flop_fopr = this->Solver_CG::get_fopr()->flop_count();

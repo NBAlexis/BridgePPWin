@@ -48,7 +48,7 @@ void PolyakovLoop::set_parameters(const Parameters& params)
 
 
 //====================================================================
-void PolyakovLoop::set_parameters(int Nspc_size, int Ntype)
+void PolyakovLoop::set_parameters(int , int )
 {
 #if 0
   //- print input parameters
@@ -242,11 +242,11 @@ void PolyakovLoop::calc_ploop(Field_G& P, Field_G& U)
     }
   }
 
-  for (int t = 1; t < Nt; ++t) {
+  for (int t_for = 1; t_for < Nt; ++t_for) {
     for (int z = 0; z < Nz; ++z) {
       for (int y = 0; y < Ny; ++y) {
         for (int x = 0; x < Nx; ++x) {
-          int site  = index.site(x, y, z, t);
+          int site  = index.site(x, y, z, t_for);
           int site2 = index_spc.site(x, y, z, 0);
           Ut.mat(utmp1, site, 0);
           P.mat(utmp2, site2, 0);

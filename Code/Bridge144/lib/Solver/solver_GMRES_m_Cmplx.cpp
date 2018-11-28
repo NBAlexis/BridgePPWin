@@ -368,7 +368,7 @@ double Solver_GMRES_m_Cmplx::flop_count()
   double flop_axpy = static_cast<double>(Nin * Nex * 2) * (Nvol * NPE);
   double flop_dotc = static_cast<double>(Nin * Nex * 4) * (Nvol * NPE);
   double flop_norm = static_cast<double>(Nin * Nex * 2) * (Nvol * NPE);
-  double flop_scal = static_cast<double>(Nin * Nex * 2) * (Nvol * NPE);
+  //double flop_scal = static_cast<double>(Nin * Nex * 2) * (Nvol * NPE);
 
   int N_iter = (m_Nconv_count - 1) / m_N_M;
 

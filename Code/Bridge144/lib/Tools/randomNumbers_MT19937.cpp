@@ -143,7 +143,7 @@ void RandomNumbers_MT19937::init(unsigned long s, vector<unsigned long>& key)
   init(s);
   int i          = 1;
   int j          = 0;
-  int key_length = key.size();
+  int key_length = (int)key.size();
 
   for (int k = N > key_length ? N : key_length; k; --k) {
     // non linear

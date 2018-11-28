@@ -15,9 +15,7 @@
 
 #include <cstdio>
 #if BRIDGE_WIN
-#include "regex.h"
-#pragma comment(lib, "/pcre-7.0-lib/lib/pcre.lib")
-#pragma comment(lib, "/pcre-7.0-lib/lib/pcreposix.lib")
+#include <regex>
 #else
 #include <regex.h>
 #endif
@@ -101,7 +99,7 @@ std::string Filename::format_(int narg, ...)
   return std::string(buf);
 }
 
-
+#if !BRIDGE_WIN
 //====================================================================
 Filename::keywordlist_type Filename::generate_pattern(char *fmt, const size_t fmt_size, const char *msg)
 {
@@ -169,7 +167,33 @@ Filename::keywordlist_type Filename::generate_pattern(char *fmt, const size_t fm
 
   return keyword_list;
 }
+#endif
 
+#if BRIDGE_WIN
+
+//What does this function do?????
+Filename::keywordlist_type Filename::generate_pattern(char *fmt, const size_t fmt_size, const char *msg)
+{
+    keywordlist_type keyword_list;
+
+    const char pattern[] = "\\{([._[:alnum:]]+)(:([[:digit:]]+))?\\}";
+    const int  num_regmatch = 4; // number of parentheses + 1
+
+    std::cmatch narrowMatch;
+    std::regex rx(pattern);
+    bool bFound = std::regex_search(msg, msg + strlen(msg), narrowMatch, rx);
+    memset(fmt, '\0', fmt_size);
+    if (bFound)
+    {
+        for (int i = 0; i < narrowMatch.size(); ++i)
+        {
+            keyword_list.push_back(keyword_type(narrowMatch[i].str()));
+        }
+    }
+
+    return keyword_list;
+}
+#endif
 
 //====================================================================
 //============================================================END=====

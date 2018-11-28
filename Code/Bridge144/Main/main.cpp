@@ -11,21 +11,16 @@
          @version $LastChangedRevision: 1561 $
 */
 
-#include "Communicator/communicator.h"
-#include "ResourceManager/threadManager_OpenMP.h"
+#include "BridgeTest.h"
 
-#include "Parameters/commonParameters.h"
-#include "Parameters/parameters.h"
-#include "Parameters/parameterManager_YAML.h"
-
-#include "Tools/timer.h"
 
 #ifdef USE_TESTMANAGER
 #include "run_testmanager.h"
 #endif
 
-#include "IO/bridgeIO.h"
-using Bridge::vout;
+//using namespace Bridge;
+
+//using Bridge::vout;
 
 
 const std::string filename_main_input = "main.yaml";
@@ -39,7 +34,7 @@ int run_test();
 int main(int argc, char *argv[])
 {
   // ###  initial setup  ###
-  Bridge::VerboseLevel vl = Bridge::GENERAL;
+  Bridge::VerboseLevel vl = Bridge::VerboseLevel.GENERAL;
 
 #ifdef USE_TESTMANAGER
   preprocess_testmanager(argc, argv);
