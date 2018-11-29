@@ -35,7 +35,7 @@ using std::string;
 
  */
 
-class DataIO
+class BAPI DataIO
 {
  public:
   DataIO() : m_vl(CommonParameters::Vlevel()) {}

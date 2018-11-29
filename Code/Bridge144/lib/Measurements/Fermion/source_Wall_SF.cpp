@@ -114,7 +114,7 @@ U_0^\dagger\left(\vec{y},0\right)_{ab}
  */
 void Source_Wall_SF::set_t0(Field_F& src, int ic, int id)
 {
-  int Nvol = CommonParameters::Nvol();
+  //int Nvol = CommonParameters::Nvol();
   int Ndim = CommonParameters::Ndim();
 
   std::vector<int> Nsize(Ndim);
@@ -125,11 +125,11 @@ void Source_Wall_SF::set_t0(Field_F& src, int ic, int id)
   Nsize[3] = CommonParameters::Nt();
 
   int m_Nc = CommonParameters::Nc();
-  int m_Nd = CommonParameters::Nd();
+  //int m_Nd = CommonParameters::Nd();
 
   assert(ic < m_Nc);
-  assert(id < m_Nd / 2);
-  assert(src.nvol() == Nvol);
+  assert(id < CommonParameters::Nd() / 2);
+  assert(src.nvol() == CommonParameters::Nvol());
   assert(src.nex() == 1);
 
   Mat_SU_N u0dag(m_Nc);
@@ -174,7 +174,7 @@ b_{T-1}\left({y},\alpha,a\right)_{\beta,b}=\widetilde{c}_tU_0(\vec{y},T-1)_{ab}
 void Source_Wall_SF::set_tT(Field_F& src, int ic, int id)
 {
   int NPEt = CommonParameters::NPEt();
-  int Nvol = CommonParameters::Nvol();
+  //int Nvol = CommonParameters::Nvol();
   int Ndim = CommonParameters::Ndim();
 
   std::vector<int> Nsize(Ndim);
@@ -185,12 +185,12 @@ void Source_Wall_SF::set_tT(Field_F& src, int ic, int id)
   Nsize[3] = CommonParameters::Nt();
 
   int m_Nc = CommonParameters::Nc();
-  int m_Nd = CommonParameters::Nd();
+  //int m_Nd = CommonParameters::Nd();
 
   assert(ic < m_Nc);
-  assert(id > m_Nd / 2 - 1);
-  assert(id < m_Nd);
-  assert(src.nvol() == Nvol);
+  assert(id > CommonParameters::Nd() / 2 - 1);
+  assert(id < CommonParameters::Nd());
+  assert(src.nvol() == CommonParameters::Nvol());
   assert(src.nex() == 1);
 
   Mat_SU_N u0(m_Nc);

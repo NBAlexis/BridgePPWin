@@ -41,7 +41,7 @@ using Bridge::vout;
 */
 
 
-class HMC_Leapfrog
+class BAPI HMC_Leapfrog
 {
  public:
   static const std::string class_name;

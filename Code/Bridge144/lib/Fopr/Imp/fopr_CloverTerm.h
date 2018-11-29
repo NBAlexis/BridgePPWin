@@ -24,7 +24,7 @@ using Bridge::vout;
 //! Clover term operator.
 
 /*!
-    This class implements the clover term for the clover (improved
+    This class BAPI implements the clover term for the clover (improved
     Wilson) fermion operator.
     This part was separated from the Fopr_Clover class.
     The field strength is calculate when the function
@@ -42,7 +42,7 @@ using Bridge::vout;
  */
 
 namespace Imp {
-  class Fopr_CloverTerm : public Fopr
+  class BAPI Fopr_CloverTerm : public Fopr
   {
    public:
     static const std::string class_name;

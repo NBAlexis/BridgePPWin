@@ -25,7 +25,7 @@ using Bridge::vout;
 //! Methods to shift the even-odd field.
 
 /*!
-    This class defines the methods that shift a given Field
+    This class BAPI defines the methods that shift a given Field
     instance with even-odd site index in specified direction.
     The field must have half the size of the numbers of sites
     in a node, and field on even(odd) sites are shifted to
@@ -42,7 +42,7 @@ using Bridge::vout;
                                    [25 Dec 2011 H.Matsufuru]
  */
 
-class ShiftField_eo {
+class BAPI ShiftField_eo {
  public:
   static const std::string class_name;
 

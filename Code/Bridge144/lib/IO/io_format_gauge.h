@@ -26,7 +26,7 @@ namespace IO_Format {
         complex x b x a x mu x n
         */
 
-        class ILDG_Format : public Format {
+        class BAPI ILDG_Format : public Format {
         public:
             ILDG_Format()
             {
@@ -65,13 +65,13 @@ namespace IO_Format {
         (same as present Field_G format. thus adopt Trivial_Format class.)
         */
 
-        class JLQCD_Format : public Trivial_Format {};
+        class BAPI JLQCD_Format : public Trivial_Format {};
 
         //----------------------------------------------------------------
         // predefined formats
 
-        extern const Format *ILDG;
-        extern const Format *JLQCD;
+        extern BAPI const Format *ILDG;
+        extern BAPI const Format *JLQCD;
     } // namespace Gauge
 }   // namespace IO_Format
 #endif /* IO_FORMAT_GAUGE_INCLUDED */

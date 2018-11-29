@@ -17,11 +17,11 @@
 //! Counter of time and GFlops for Blue Gene/Q at KEK.
 
 /*!
-   This class wraps libkek.h counter probably available only
+   This class BAPI wraps libkek.h counter probably available only
    at KEK.
                                    [7 Feb 2014 H.Matsufuru]
  */
-class Counter {
+class BAPI Counter {
  private:
   int        m_id;       //!< counter id.
   static int cid_static; //!< static id to asign unique id to the instance.

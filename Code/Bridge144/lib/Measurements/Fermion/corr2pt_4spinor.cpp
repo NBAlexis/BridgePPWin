@@ -177,10 +177,10 @@ void Corr2pt_4spinor::meson_correlator(std::vector<dcomplex>& corr_global,
 {
   int Nc = CommonParameters::Nc();
   int Nd = CommonParameters::Nd();
-  int Lt = CommonParameters::Lt();
+  //int Lt = CommonParameters::Lt();
   int Nt = CommonParameters::Nt();
 
-  assert(corr_global.size() == Lt);
+  assert(corr_global.size() == CommonParameters::Lt());
 
   GammaMatrix gm_gm5_src, gm5_gm_sink, gm5;
   gm5         = m_gmset->get_GM(m_gmset->GAMMA5);
@@ -367,10 +367,10 @@ void Corr2pt_4spinor::meson_momentum_correlator(std::vector<dcomplex>& corr_glob
 {
   int Nc = CommonParameters::Nc();
   int Nd = CommonParameters::Nd();
-  int Lt = CommonParameters::Lt();
+  //int Lt = CommonParameters::Lt();
   int Nt = CommonParameters::Nt();
 
-  assert(corr_global.size() == Lt);
+  assert(corr_global.size() == CommonParameters::Lt());
 
   GammaMatrix gm_gm5_src, gm5_gm_sink, gm5;
   gm5         = m_gmset->get_GM(m_gmset->GAMMA5);
@@ -469,11 +469,11 @@ void Corr2pt_4spinor::proton_correlator(std::vector<dcomplex>& corr_global,
 {
   int Nc = CommonParameters::Nc();
   int Nd = CommonParameters::Nd();
-  int Lt = CommonParameters::Lt();
+  //int Lt = CommonParameters::Lt();
   int Nt = CommonParameters::Nt();
 
   assert(Nc == 3);
-  assert(corr_global.size() == Lt);
+  assert(corr_global.size() == CommonParameters::Lt());
 
   GammaMatrix cg5, c, gm5;
   gm5 = m_gmset->get_GM(m_gmset->GAMMA5);

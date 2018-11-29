@@ -1,0 +1,43 @@
+# this is a sample parameter file
+
+Test_TopologicalCharge:
+  ## gauge_config_status = {Continue,Cold_start,Hot_start}
+  gauge_config_status        : Continue
+  ## gauge_config_type = {Text,Binary,Binary_Parallel,Fortran_JLQCD,Fortran_ILDG,ILDG,ILDG_Parallel}
+  gauge_config_type_input    : Text
+  config_filename_input      : ./conf_04040408.txt
+  ## random_number_type = {Mseries,MT19937,SFMT} NB. SFMT is an extra library
+  random_number_type         : Mseries
+  seed_for_random_number     : 1234567UL
+  number_of_max_smearing     : 30
+  number_of_measurement_step : 1
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level              : General
+  expected_result            : -4.53170078830395e-04
+
+TopologicalCharge:
+  ## filename_output = {stdout, or "filename"}
+  filename_output : stdout
+  c_plaq          :  5.0/3.0
+  c_rect          : -1.0/12.0
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level   : General
+
+Projection:
+  ## projection_type = {Maximum_SU_N,Stout_SU3}
+  projection_type             : Maximum_SU_N
+  maximum_number_of_iteration : 1000
+  convergence_criterion       : 1.0e-14
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level   : General
+
+Smear:
+  ## smear_type = {APE,HYP}
+  smear_type    : APE
+  rho_uniform   : 0.1
+  #smear_type    : HYP
+  #alpha1        : 0.95
+  #alpha2        : 0.76
+  #alpha3        : 0.38
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level : General

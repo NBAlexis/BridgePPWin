@@ -43,7 +43,7 @@ using Bridge::vout;
  */
 
 
-class HMC_General
+class BAPI HMC_General
 {
  public:
   static const std::string class_name;

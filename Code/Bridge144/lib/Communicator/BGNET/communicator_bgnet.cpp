@@ -55,7 +55,7 @@ int Communicator_impl::m_comm;
 
 //----------------------------------------------------------------
 
-// class methods
+// class BAPI methods
 //====================================================================
 int Communicator_impl::init(int *pargc, char ***pargv)
 {

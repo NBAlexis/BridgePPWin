@@ -20,7 +20,7 @@
 #include "IO/bridgeIO.h"
 using Bridge::vout;
 
-//! HMC action class for rectangular gauge action.
+//! HMC action class BAPI for rectangular gauge action.
 
 /*!
     Gauge action with plaquette and rectangular Wilson loops.
@@ -32,7 +32,7 @@ using Bridge::vout;
  */
 
 
-class Action_G_Rectangle : public Action
+class BAPI Action_G_Rectangle : public Action
 {
  public:
   static const std::string class_name;

@@ -1,0 +1,16 @@
+# this is a sample parameter file
+
+Test_Rational:
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level        : General
+  expected_result      : 10.099999
+
+Math_Rational:
+  number_of_poles      : 16
+  exponent_numerator   : -1
+  exponent_denominator : 2
+  lower_bound          : 1.0e-4
+  upper_bound          : 10.0
+  number_of_partitions : 100
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level        : General

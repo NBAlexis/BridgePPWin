@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="BppSmallTest.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Eigensolver\test_Eigensolver.cpp" />
+    <ClCompile Include="Eigensolver\test_Eigensolver_Chebyshev.cpp" />
+    <ClCompile Include="Eigensolver\test_Eigensolver_Clover_SF.cpp" />
+    <ClCompile Include="Gauge\test_Gauge_Plaquette.cpp" />
+    <ClCompile Include="Gauge\test_Gauge_Shift.cpp" />
+    <ClCompile Include="GradientFlow\test_GradientFlow_Nf0.cpp" />
+    <ClCompile Include="HMC\test_HMC_Clover_Isochemical_Nf2.cpp" />
+    <ClCompile Include="HMC\test_HMC_Clover_Isochemical_RHMC_Nf2p1.cpp" />
+    <ClCompile Include="HMC\test_HMC_Clover_Nf2.cpp" />
+    <ClCompile Include="HMC\test_HMC_Clover_Nf2_eo.cpp" />
+    <ClCompile Include="HMC\test_HMC_Clover_RHMC_Nf2p1.cpp" />
+    <ClCompile Include="HMC\test_HMC_Clover_RHMC_Nf2p1_eo.cpp" />
+    <ClCompile Include="HMC\test_HMC_Clover_SF_Nf2.cpp" />
+    <ClCompile Include="HMC\test_HMC_Clover_SF_RHMC_Nf2p1.cpp" />
+    <ClCompile Include="HMC\test_HMC_Quenched.cpp" />
+    <ClCompile Include="HMC\test_HMC_Quenched_Leapfrog.cpp" />
+    <ClCompile Include="HMC\test_HMC_Wilson_Leapfrog_Nf2.cpp" />
+    <ClCompile Include="HMC\test_HMC_Wilson_Nf2.cpp" />
+    <ClCompile Include="HotStart\test_HotStart_Determinant.cpp" />
+    <ClCompile Include="HotStart\test_HotStart_Eigenvalue.cpp" />
+    <ClCompile Include="HotStart\test_HotStart_Unitary.cpp" />
+    <ClCompile Include="IO\test_IO_Data_Text.cpp" />
+    <ClCompile Include="IO\test_IO_GaugeConfig.cpp" />
+    <ClCompile Include="Mult\test_Mult.cpp" />
+    <ClCompile Include="Mult\test_Mult_eo.cpp" />
+    <ClCompile Include="Mult\test_Mult_Wilson.cpp" />
+    <ClCompile Include="PolyakovLoop\test_PolyakovLoop.cpp" />
+    <ClCompile Include="QuarkNumberSusceptibility\test_QuarkNumberSusceptibility_Clover_Isochemical.cpp" />
+    <ClCompile Include="RandomNumbers\test_RandomNumbers_Mseries_Gaussian.cpp" />
+    <ClCompile Include="RandomNumbers\test_RandomNumbers_Mseries_GaussianField.cpp" />
+    <ClCompile Include="RandomNumbers\test_RandomNumbers_Mseries_Global.cpp" />
+    <ClCompile Include="RandomNumbers\test_RandomNumbers_Mseries_Uniform.cpp" />
+    <ClCompile Include="RandomNumbers\test_RandomNumbers_MT19937_GaussianField.cpp" />
+    <ClCompile Include="RandomNumbers\test_RandomNumbers_MT19937_Global.cpp" />
+    <ClCompile Include="RandomNumbers\test_RandomNumbers_MT19937_Uniform.cpp" />
+    <ClCompile Include="RandomNumbers\test_RandomNumbers_SFMT_GaussianField.cpp" />
+    <ClCompile Include="RandomNumbers\test_RandomNumbers_SFMT_Global.cpp" />
+    <ClCompile Include="RandomNumbers\test_RandomNumbers_SFMT_Uniform.cpp" />
+    <ClCompile Include="Rational\test_Rational_Approx.cpp" />
+    <ClCompile Include="Rational\test_Rational_Inverse.cpp" />
+    <ClCompile Include="Rational\test_Rational_Smeared.cpp" />
+    <ClCompile Include="run_testmanager.cpp" />
+    <ClCompile Include="SF_fAfP\test_SF_fAfP_Boundary_Meson_2ptFunction.cpp" />
+    <ClCompile Include="ShiftSolver\test_ShiftSolver_Wilson.cpp" />
+    <ClCompile Include="Spectrum\test_Spectrum_2ptFunction.cpp" />
+    <ClCompile Include="Spectrum\test_Spectrum_2ptFunction_eo.cpp" />
+    <ClCompile Include="Spectrum\test_Spectrum_2ptFunction_eo_withFileIO.cpp" />
+    <ClCompile Include="Spectrum\test_Spectrum_2ptFunction_withFileIO.cpp" />
+    <ClCompile Include="Spectrum\test_Spectrum_CRSMatrix_Clover_Lexical.cpp" />
+    <ClCompile Include="Spectrum\test_Spectrum_CRSMatrix_CRSsolver.cpp" />
+    <ClCompile Include="Spectrum\test_Spectrum_Wilson_2ptFunction.cpp" />
+    <ClCompile Include="test.cpp" />
+    <ClCompile Include="testManager.cpp" />
+    <ClCompile Include="TopologicalCharge\test_TopologicalCharge.cpp" />
+    <ClCompile Include="WilsonLoop\test_WilsonLoop.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BppSmallTest.h" />
+    <ClInclude Include="run_testmanager.h" />
+    <ClInclude Include="test.h" />
+    <ClInclude Include="testlist.h" />
+    <ClInclude Include="testManager.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{C0FB5EBF-7893-46F8-B746-682DDD5E507A}</ProjectGuid>
+    <RootNamespace>Bridge144</RootNamespace>
+    <ProjectName>BppSmallTest</ProjectName>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(SolutionDir)..\Dependency\wxWidgets\include;$(SolutionDir)..\Dependency\wxWidgets\include\msvc;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(SolutionDir)..\Dependency\wxWidgets\include;$(SolutionDir)..\Dependency\wxWidgets\include\msvc;$(ProjectDir);$(SolutionDir)Bridge144;$(SolutionDir)Bridge144\lib;$(MSMPI_INC);$(MSMPI_INC)\x64;$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)..\Bin\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)..\Temp\$(ProjectName)\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)_d</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)..\Bin\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)..\Temp\$(ProjectName)\$(Configuration)\</IntDir>
+    <IncludePath>$(SolutionDir)..\Dependency\wxWidgets\include;$(SolutionDir)..\Dependency\wxWidgets\include\msvc;$(ProjectDir);$(SolutionDir)Bridge144;$(SolutionDir)Bridge144\lib;$(MSMPI_INC);$(MSMPI_INC)\x64;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_UNICODE=1;UNICODE=1;%(PreprocessorDefinitions);WSAPI=__DLL_EXPORT;DEBUG=1;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;</PreprocessorDefinitions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>BppSmallTest.h</PrecompiledHeaderFile>
+      <ProgramDataBaseFileName>$(IntDir)$(ProjectName)_$(Configuration).pdb</ProgramDataBaseFileName>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\Dependency;$(SolutionDir)..\Libs;$(SolutionDir)..\Dependency\wxWidgets\lib\vc_x64_dll;$(MSMPI_LIB64);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <PreprocessorDefinitions>_UNICODE;UNICODE;%(PreprocessorDefinitions);WSAPI=__DLL_EXPORT;NDEBUG=1;</PreprocessorDefinitions>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>BppSmallTest.h</PrecompiledHeaderFile>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\Dependency;$(SolutionDir)..\Libs;$(MSMPI_LIB64);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <SubSystem>Console</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

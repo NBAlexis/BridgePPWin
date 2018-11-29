@@ -232,7 +232,7 @@ void FieldIO_LIME_Parallel::write_file(Field *u, string filename)
   if (Communicator::is_primary()) {
     // metadata
     char metadata[2048];
-    sprintf(metadata, ildg_metadata_template,
+    sprintf_s(metadata, ildg_metadata_template,
             sizeof(double) * 8, /* bit width */
             CommonParameters::Lx(),
             CommonParameters::Ly(),
@@ -606,7 +606,7 @@ namespace {
     header.magic    = LIME_MAGIC;
     header.version  = (uint16_t)1;
     header.bitfield = flag;
-    strncpy(header.type, type, 128);
+    strncpy_s(header.type, type, 128);
     header.length = length;
 
     if (FieldIO::is_bigendian() == false) {

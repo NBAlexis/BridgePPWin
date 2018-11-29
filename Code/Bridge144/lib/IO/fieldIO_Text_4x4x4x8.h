@@ -31,7 +31,7 @@ using std::string;
                                          [11 Jul 2014 H.Matsufuru]
 */
 
-class FieldIO_Text_4x4x4x8 : public FieldIO
+class BAPI FieldIO_Text_4x4x4x8 : public FieldIO
 {
  public:
   static const std::string class_name;

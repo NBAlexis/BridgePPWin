@@ -20,7 +20,7 @@
 #include "IO/bridgeIO.h"
 using Bridge::vout;
 
-//! HMC action class for plaquette gauge action.
+//! HMC action class BAPI for plaquette gauge action.
 
 /*!
     Standard plaquette gauge action.
@@ -30,7 +30,7 @@ using Bridge::vout;
  */
 
 
-class Action_G_Plaq : public Action
+class BAPI Action_G_Plaq : public Action
 {
  public:
   static const std::string class_name;

@@ -34,7 +34,7 @@ using std::string;
    the field data is gathered from/scattered to parallel nodes.
 */
 
-class FieldIO_Text : public FieldIO
+class BAPI FieldIO_Text : public FieldIO
 {
  public:
   static const std::string class_name;

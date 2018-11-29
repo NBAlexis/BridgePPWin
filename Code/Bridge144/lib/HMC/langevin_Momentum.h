@@ -35,7 +35,7 @@ class RandomNumbers;
    HMC_General) so as to implement for general value of Nc.
                                      [13 Feb 2013 H.Matsufuru]
 */
-class Langevin_Momentum
+class BAPI Langevin_Momentum
 {
  private:
   RandomNumbers        *m_rand;

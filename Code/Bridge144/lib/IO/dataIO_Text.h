@@ -41,7 +41,7 @@ enum
    included at the bottom.
  */
 
-class DataIO_Text : public DataIO
+class BAPI DataIO_Text : public DataIO
 {
  public:
   DataIO_Text() : m_format_precision(default_format_precision) {}

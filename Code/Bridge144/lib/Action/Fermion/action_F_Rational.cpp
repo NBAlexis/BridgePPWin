@@ -94,13 +94,13 @@ double Action_F_Rational::calcH()
 //====================================================================
 void Action_F_Rational::force(Field& force)
 {
-    int Nin = m_U->nin();
-    int Nvol = m_U->nvol();
-    int Nex = m_U->nex();
+    //int Nin = m_U->nin();
+    //int Nvol = m_U->nvol();
+    //int Nex = m_U->nex();
 
-    assert(force.nin() == Nin);
-    assert(force.nvol() == Nvol);
-    assert(force.nex() == Nex);
+    assert(force.nin() == m_U->nin());
+    assert(force.nvol() == m_U->nvol());
+    assert(force.nex() == m_U->nex());
 
     vout.general(m_vl, "  %s: %s\n", class_name.c_str(), m_label.c_str());
 

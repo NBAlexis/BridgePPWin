@@ -1,14 +1,14 @@
 /*!
-        @file    $Id:: action_F_Standard_lex.h #$
+@file    $Id:: action_F_Standard_lex.h #$
 
-        @brief
+@brief
 
-        @author  UEDA, Satoru  (sueda)
-                 $LastChangedBy: aoym $
+@author  UEDA, Satoru  (sueda)
+$LastChangedBy: aoym $
 
-        @date    $LastChangedDate:: 2017-02-24 18:35:38 #$
+@date    $LastChangedDate:: 2017-02-24 18:35:38 #$
 
-        @version $LastChangedRevision: 1571 $
+@version $LastChangedRevision: 1571 $
 */
 
 #ifndef ACTION_F_STANDARD_LEX_INCLUDED
@@ -25,78 +25,78 @@ using Bridge::vout;
 //! Standard fermion action for HMC.
 
 /*!
-    This class is used to define an action used in HMC.
-    Fermion and Force operators and given at the construction.
-                                        [05 Dec 2011 H.Matsufuru]
-    (Coding history will be recovered from trac.)
-    Fprop is introduced.                [03 Mar 2013 Y.Namekawa]
-    unique_ptr is introduced to avoid memory leaks
-                                        [21 Mar 2015 Y.Namekawa]
- */
+This class BAPI is used to define an action used in HMC.
+Fermion and Force operators and given at the construction.
+[05 Dec 2011 H.Matsufuru]
+(Coding history will be recovered from trac.)
+Fprop is introduced.                [03 Mar 2013 Y.Namekawa]
+unique_ptr is introduced to avoid memory leaks
+[21 Mar 2015 Y.Namekawa]
+*/
 
-class Action_F_Standard_lex : public Action
+class BAPI Action_F_Standard_lex : public Action
 {
- public:
-  static const std::string class_name;
+public:
+    static const std::string class_name;
 
- private:
-  Fopr        *m_fopr;
-  Force       *m_fopr_force;
-  Field       m_psf;
-  std::string m_label;
+private:
+    Fopr * m_fopr;
+    Force       *m_fopr_force;
+    Field       m_psf;
+    std::string m_label;
 
-  Fprop *m_fprop_MD;
-  Fprop *m_fprop_H;
+    Fprop *m_fprop_MD;
+    Fprop *m_fprop_H;
 
-  Field *m_U;
+    Field *m_U;
 
 
- public:
-  Action_F_Standard_lex(
-    Fopr *fopr, Force *fopr_force,
-    Fprop *fprop_MD, Fprop *fprop_H)
-    : Action(),
-      m_fopr(fopr), m_fopr_force(fopr_force),
-      m_fprop_MD(fprop_MD), m_fprop_H(fprop_H)
-  {
-    set_parameters();
-  }
+public:
+    Action_F_Standard_lex(
+        Fopr *fopr, Force *fopr_force,
+        Fprop *fprop_MD, Fprop *fprop_H)
+        : Action(),
+        m_fopr(fopr), m_fopr_force(fopr_force),
+        m_fprop_MD(fprop_MD), m_fprop_H(fprop_H)
+    {
+        set_parameters();
+    }
 
-  Action_F_Standard_lex(
-    unique_ptr<Fopr>& fopr, unique_ptr<Force>& fopr_force,
-    unique_ptr<Fprop>& fprop_MD, unique_ptr<Fprop>& fprop_H)
-    : Action(),
-      m_fopr(fopr.get()), m_fopr_force(fopr_force.get()),
-      m_fprop_MD(fprop_MD.get()), m_fprop_H(fprop_H.get())
-  {
-    set_parameters();
-  }
+    Action_F_Standard_lex(
+        unique_ptr<Fopr>& fopr, unique_ptr<Force>& fopr_force,
+        unique_ptr<Fprop>& fprop_MD, unique_ptr<Fprop>& fprop_H)
+        : Action(),
+        m_fopr(fopr.get()), m_fopr_force(fopr_force.get()),
+        m_fprop_MD(fprop_MD.get()), m_fprop_H(fprop_H.get())
+    {
+        set_parameters();
+    }
 
-  ~Action_F_Standard_lex()
-  {
-    // delete m_fprop;
-  }
+    ~Action_F_Standard_lex()
+    {
+        // delete m_fprop;
+    }
 
-  void set_parameters(const Parameters&);
-  void set_parameters();
+    void set_parameters(const Parameters&);
+    void set_parameters();
 
-  void set_label(std::string label)
-  {
-    m_label = label;
-    vout.detailed(m_vl, "  label: %s\n", m_label.c_str());
-  }
+    void set_label(std::string label)
+    {
+        m_label = label;
+        vout.detailed(m_vl, "  label: %s\n", m_label.c_str());
+    }
 
-  std::string get_label()
-  {
-    return m_label;
-  }
+    std::string get_label()
+    {
+        return m_label;
+    }
 
-  void set_config(Field *U);
+    void set_config(Field *U);
 
-  double langevin(RandomNumbers *);
+    double langevin(RandomNumbers *);
 
-  double calcH();
+    double calcH();
 
-  void force(Field&);
+    void force(Field&);
 };
 #endif

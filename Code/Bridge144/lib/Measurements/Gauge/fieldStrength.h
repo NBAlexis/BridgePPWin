@@ -1,14 +1,14 @@
 /*!
-        @file    $Id:: fieldStrength.h #$
+@file    $Id:: fieldStrength.h #$
 
-        @brief
+@brief
 
-        @author  Yusuke Namekawa  (namekawa)
-                 $LastChangedBy: aoym $
+@author  Yusuke Namekawa  (namekawa)
+$LastChangedBy: aoym $
 
-        @date    $LastChangedDate:: 2017-02-24 18:35:38 #$
+@date    $LastChangedDate:: 2017-02-24 18:35:38 #$
 
-        @version $LastChangedRevision: 1571 $
+@version $LastChangedRevision: 1571 $
 */
 
 #ifndef FIELDSTRENGTH_INCLUDED
@@ -23,36 +23,36 @@ using Bridge::vout;
 //! field strength construction.
 
 /*!
-    This class constructs a field strength, Fmunu,
-    defined by a clover leaf on the lattice.
-                     [03 Mar 2016 Y.Namekawa]
- */
+This class constructs a field strength, Fmunu,
+defined by a clover leaf on the lattice.
+[03 Mar 2016 Y.Namekawa]
+*/
 
-class FieldStrength
+class BAPI FieldStrength
 {
- public:
-  static const std::string class_name;
+public:
+    static const std::string class_name;
 
- protected:
-  Bridge::VerboseLevel m_vl;
+protected:
+    Bridge::VerboseLevel m_vl;
 
- private:
-  ShiftField_lex m_shift;
-  Staple_lex     m_staple;
+private:
+    ShiftField_lex m_shift;
+    Staple_lex     m_staple;
 
- public:
-  FieldStrength()
-    : m_vl(CommonParameters::Vlevel()) {}
+public:
+    FieldStrength()
+        : m_vl(CommonParameters::Vlevel()) {}
 
-  virtual ~FieldStrength() {}
+    virtual ~FieldStrength() {}
 
- private:
-  // non-copyable
-  FieldStrength(const FieldStrength&);
-  FieldStrength& operator=(const FieldStrength&);
+private:
+    // non-copyable
+    FieldStrength(const FieldStrength&);
+    FieldStrength& operator=(const FieldStrength&);
 
- public:
-  void construct_Fmunu_1x1(Field_G& Fmunu, const int mu, const int nu, const Field_G& U);
-  void construct_Fmunu_1x2(Field_G& Fmunu, const int mu, const int nu, const Field_G& U);
+public:
+    void construct_Fmunu_1x1(Field_G& Fmunu, const int mu, const int nu, const Field_G& U);
+    void construct_Fmunu_1x2(Field_G& Fmunu, const int mu, const int nu, const Field_G& U);
 };
 #endif

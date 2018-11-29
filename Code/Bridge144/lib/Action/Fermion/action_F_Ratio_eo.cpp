@@ -54,7 +54,7 @@ void Action_F_Ratio_eo::set_config(Field *U)
 //====================================================================
 double Action_F_Ratio_eo::langevin(RandomNumbers *rand)
 {
-    int Nvol = CommonParameters::Nvol();
+    //int Nvol = CommonParameters::Nvol();
     //int Ndim = CommonParameters::Ndim();
 
     int NinF = m_fopr_prec->field_nin();

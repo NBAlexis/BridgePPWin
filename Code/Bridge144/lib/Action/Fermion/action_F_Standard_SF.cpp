@@ -50,7 +50,7 @@ void Action_F_Standard_SF::set_parameters()
 //====================================================================
 double Action_F_Standard_SF::langevin(RandomNumbers *rand)
 {
-  int Nvol = CommonParameters::Nvol();
+  //int Nvol = CommonParameters::Nvol();
   //int Ndim = CommonParameters::Ndim();
 
   int NinF     = m_fopr->field_nin();
@@ -58,7 +58,7 @@ double Action_F_Standard_SF::langevin(RandomNumbers *rand)
   int NexF     = m_fopr->field_nex();
   int size_psf = NinF * NvolF * NexF * CommonParameters::NPE();
 
-  assert(NvolF == Nvol);
+  assert(NvolF == CommonParameters::Nvol());
   m_psf.reset(NinF, NvolF, NexF);
 
   vout.general(m_vl, "  %s: %s\n", class_name.c_str(), m_label.c_str());

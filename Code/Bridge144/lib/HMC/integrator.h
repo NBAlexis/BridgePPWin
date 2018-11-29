@@ -26,7 +26,7 @@ This class defines the interface of Integrator-type classes.
 [25 Dec 2011 H.Matsufuru]
 */
 
-class Integrator
+class BAPI Integrator
 {
 public:
 

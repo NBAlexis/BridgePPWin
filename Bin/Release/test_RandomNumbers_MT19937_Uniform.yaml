@@ -1,0 +1,7 @@
+Test_RandomNumbers:
+  number_of_seeds   : 20
+  int_seed_base     : 200000
+  number_of_samples : 10000000
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level     : General
+  expected_result   : 3.14157767999999970598

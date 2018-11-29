@@ -36,7 +36,7 @@ using Bridge::vout;
                                         [13 Oct 2015 S.Ueda]
  */
 
-class FieldIO_Binary_Distributed : public FieldIO
+class BAPI FieldIO_Binary_Distributed : public FieldIO
 {
  public:
   static const std::string class_name;

@@ -410,7 +410,7 @@ namespace Bridge
                 exit(EXIT_FAILURE);
             }
 
-            vsprintf(buff_, format, arg);
+            vsprintf_s(buff_, format, arg);
 
             *os_ << buff_;
 #ifdef DEBUG
@@ -472,7 +472,7 @@ namespace Bridge
         va_list arg;
 
         va_start(arg, format);
-        vsprintf(buff_, format, arg);
+        vsprintf_s(buff_, format, arg);
         va_end(arg);
 
         *ildg_os_ << "@ILDG:" << buff_;

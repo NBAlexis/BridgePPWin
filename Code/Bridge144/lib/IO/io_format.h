@@ -33,7 +33,7 @@
  */
 
 namespace IO_Format {
-  class Format {
+  class BAPI Format {
    public:
     virtual ~Format() {}
 
@@ -43,7 +43,7 @@ namespace IO_Format {
     virtual void file_to_field(int& s, int& t, const int i, const int j) const = 0;
   };
 
-  class Trivial_Format : public Format {
+  class BAPI Trivial_Format : public Format {
    public:
     virtual ~Trivial_Format() {}
 
@@ -60,7 +60,7 @@ namespace IO_Format {
 //----------------------------------------------------------------
 // predefined formats
 
-  extern const Format *Trivial;
+  extern BAPI const Format *Trivial;
 
 //----------------------------------------------------------------
 }

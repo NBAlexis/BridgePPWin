@@ -24,7 +24,7 @@
 //! Implementation of Communicator with BGNET library.
 
 /*!
-  This class is an implementation of Communicator using the
+  This class BAPI is an implementation of Communicator using the
   low latency library BGNET for Blue Gene/Q.
   MPI is not used (while possible to initialize for the purpose
   of using Parallel I/O).
@@ -35,7 +35,7 @@
   Simultaneous use of BGNET and MPI libraries become possible
   thanks to Takumi Doi's contribution. [21 Aug 2014 H.Matsufuru]
  */
-class Communicator_impl {
+class BAPI Communicator_impl {
  public:
   static int init(int *pargc, char ***pargv);
   static int finalize();
@@ -76,7 +76,7 @@ class Communicator_impl {
   static int status();
 
   //! base class
-  class Base {
+  class BAPI Base {
    public:
     static int reduce(int count, void *recv_buf, void *send_buf,
                       int type, int op, int pattern);
@@ -100,7 +100,7 @@ class Communicator_impl {
   static Channel *recv_init(int count, int idir, int ipm);
 
   //! logical and physical layout
-  class Layout;
+  class BAPI Layout;
 
  private:
   Communicator_impl() {}

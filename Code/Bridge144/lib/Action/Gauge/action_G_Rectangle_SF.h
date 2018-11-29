@@ -21,7 +21,7 @@
 #include "IO/bridgeIO.h"
 using Bridge::vout;
 
-//! HMC action class for rectangular gauge action with the SF BC.
+//! HMC action class BAPI for rectangular gauge action with the SF BC.
 
 /*!
   Gauge action with plaquette and rectangular Wilson loops.
@@ -90,7 +90,7 @@ W_1({\cal C})
             \right.
 \f]
   <ul>
-  <li>A major difference from Action_G_Rectangle class is to override a calculation of the Hamltonian and the force.
+  <li>A major difference from Action_G_Rectangle class BAPI is to override a calculation of the Hamltonian and the force.
   <li>Boundary condition can be accessed with m_phi and m_phipr.
   <li>Boundary improvement factor is stored in m_ct, m_ctr.
   <li> [03 Feb. 2012 Y.Taniguchi]
@@ -100,7 +100,7 @@ W_1({\cal C})
  */
 
 
-class Action_G_Rectangle_SF : public Action
+class BAPI Action_G_Rectangle_SF : public Action
 {
  public:
   static const std::string class_name;

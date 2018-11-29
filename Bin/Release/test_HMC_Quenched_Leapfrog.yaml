@@ -1,0 +1,34 @@
+# this is a sample parameter file
+
+Test_HMC_Quenched:
+  ## gauge_config_status = {Continue,Cold_start,Hot_start}
+  gauge_config_status      : Continue
+  ## gauge_config_type = {Text,Binary,Binary_Parallel,Fortran_JLQCD,Fortran_ILDG,ILDG,ILDG_Parallel,Null}
+  gauge_config_type_input  : Text
+  config_filename_input    : ./conf_04040408.txt
+  gauge_config_type_output : Null
+  config_filename_output   : ./conf_output.dat
+  ## random_number_type = {Mseries,MT19937,SFMT} NB. SFMT is an extra library
+  random_number_type       : Mseries
+  seed_for_random_number   : 1234567UL
+  trajectory_number        : 200000
+  trajectory_number_step   : 1
+  save_config_interval     : 100
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level            : General
+  expected_result          : 0.623852461953823
+
+HMC_Leapfrog:
+  step_size       : 0.01
+  number_of_steps : 10
+  order_of_exp_iP : 8
+  ## Metropolis_test = {1,0} for Metropolis_test on/off
+  Metropolis_test : 1
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level   : General
+
+Action_G:
+  action_type   :  Action_G_Plaq
+  beta          :  6.0
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level : General

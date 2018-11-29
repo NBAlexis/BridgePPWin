@@ -28,7 +28,7 @@ set_mode() is added. This is for the cases when the force
 calculation is nonhermitian.       [18 Jan 2012 H.Matsufuru]
 */
 
-class Force
+class BAPI Force
 {
 public:
 

@@ -120,10 +120,10 @@ void ForceSmear_APE::init()
 //====================================================================
 void ForceSmear_APE::force_udiv(Field_G& Sigma, const Field_G& Sigmap, const Field_G& U)
 {
-  int Nc   = CommonParameters::Nc();
-  int NinG = 2 * Nc * Nc;
+  //int Nc   = CommonParameters::Nc();
+  //int NinG = 2 * Nc * Nc;
 
-  assert(Sigmap.nin() == NinG);
+  assert(Sigmap.nin() == 2 * CommonParameters::Nc() * CommonParameters::Nc());
   assert(Sigmap.nvol() == m_Nvol);
   assert(Sigmap.nex() == m_Ndim);
 

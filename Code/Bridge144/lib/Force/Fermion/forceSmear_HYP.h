@@ -35,7 +35,7 @@ using Bridge::vout;
  */
 
 
-class ForceSmear_HYP : public ForceSmear
+class BAPI ForceSmear_HYP : public ForceSmear
 {
  public:
   static const std::string class_name;

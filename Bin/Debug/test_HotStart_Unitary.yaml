@@ -1,0 +1,6 @@
+# this is a sample parameter file
+
+Test_HotStart:
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level            : General
+  expected_result          : 0.0

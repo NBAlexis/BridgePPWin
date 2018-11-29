@@ -116,12 +116,12 @@ void Force_G_Plaq_SF::set_parameters(double beta, double *phi, double *phipr, do
 */
 void Force_G_Plaq_SF::force_core(Field& force)
 {
-  int Nin  = m_U->nin();
+  //int Nin  = m_U->nin();
   int Nvol = m_U->nvol();
   int Nex  = m_U->nex();
   int Nc   = CommonParameters::Nc();
 
-  assert(force.nin() == Nin);
+  assert(force.nin() == m_U->nin());
   assert(force.nvol() == Nvol);
   assert(force.nex() == Nex);
 

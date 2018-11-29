@@ -13,10 +13,29 @@
 #ifndef _BRIDGELIB_PRIVATE_H_
 #define _BRIDGELIB_PRIVATE_H_
 
+#pragma warning( disable : 4251 )
+
+//All other dependencies
+#include <memory>
+#include <cstdio>
+#include <cstdlib>
+#include <cstddef>
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <stack>
+#include <cstdarg>
+#include <complex>
+#include <cmath>
+#include <vector>
+
 //in this case, we are using as self include
 #ifndef _BRIDGE_LIB_PUBLIC
-#define _VCWIN 1
-#define BAPI __declspec(dllexport)
+#   define _VCWIN 1
+#   ifdef BAPI
+#   undef BAPI
+#   endif
+#   define BAPI __declspec(dllexport)
 #endif
 
 #define UNUSE(x) (void*)(x);
@@ -62,12 +81,11 @@
 #include "Tools/timer.h"
 #include "Tools/factory.h"
 #include "Tools/file_utils.h"
-#include "Tools/filename.h" //this file is only use in test...
 
 //randoms
 #include "Tools/randomNumberManager.h"
 #include "Tools/randomNumbers.h"
-#include "Tools/randomNumbers_Mseries.h"
+#include "Tools/randomNumbers_Mseries.h" //Mseries is faster
 #include "Tools/randomNumbers_MT19937.h"
 
 //math
@@ -260,6 +278,7 @@
 #include "Force/Fermion/forceSmear_APE_SF.h"
 #include "Force/Fermion/forceSmear_HYP.h"
 #include "Force/Fermion/forceSmear_HYP_SF.h"
+#include "Force/Fermion/force_F_Smeared.h"
 
 //=======================================================
 //Action

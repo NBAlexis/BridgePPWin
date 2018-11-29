@@ -198,9 +198,13 @@ namespace Test_Spectrum {
 
     vector<Parameters> params_quark;
 
+    char tmp[128];
     for (int iq = 0; iq < N_quark; ++iq) {
-      string qlabel = Filename("Quark_{id}").format(iq + 1);
-      params_quark.push_back(params_all.lookup(qlabel));
+        memset(tmp, sizeof(char) * 128, 0);
+        _itoa(iq + 1, tmp, 10);
+        string qlabel = "Quark_" + string(tmp);
+        vout.general(qlabel.c_str());
+        params_quark.push_back(params_all.lookup(qlabel));
     }
 
     // NB. all str_gmset_type are supposed to be the same.

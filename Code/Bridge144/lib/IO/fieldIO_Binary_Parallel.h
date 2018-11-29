@@ -52,7 +52,7 @@ using Bridge::vout;
  */
 
 #ifdef USE_MPI
-class FieldIO_Binary_Parallel : public FieldIO
+class BAPI FieldIO_Binary_Parallel : public FieldIO
 {
  public:
   static const std::string class_name;

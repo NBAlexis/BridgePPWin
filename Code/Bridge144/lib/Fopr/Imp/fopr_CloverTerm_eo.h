@@ -30,7 +30,7 @@ using Bridge::vout;
 //! Clover term operator.
 
 /*!
-    This class implements the clover term for the clover (improved
+    This class BAPI implements the clover term for the clover (improved
     Wilson) fermion operator.
     This part was separated from the Fopr_Clover class.
     The field strength is calculate when the function
@@ -53,12 +53,12 @@ using Bridge::vout;
  */
 
 namespace Imp {
-  class Fopr_CloverTerm_eo : public Fopr
+  class BAPI Fopr_CloverTerm_eo : public Fopr
   {
    public:
     static const std::string class_name;
 
-// This class return D_ee = 1-f_ee or D_oo = 1-f_oo
+// This class BAPI return D_ee = 1-f_ee or D_oo = 1-f_oo
    private:
     double           m_kappa;
     double           m_cSW;

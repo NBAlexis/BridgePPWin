@@ -43,7 +43,7 @@
 
 #if defined(_VCWIN)
 #   if !defined(BAPI)
-#	define __LIB_TITLE__	"BridgeLib"
+#	define __LIB_TITLE__	"BridgeLib144"
 #	define BAPI __DLL_IMPORT
 #	ifdef DEBUG
 #		define __LIB_FILE__	__LIB_TITLE__ "_d.lib"

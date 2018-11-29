@@ -25,7 +25,7 @@ using Bridge::vout;
 //! HMC action for Hasenbusch preconditioned fermions.
 
 /*!
-    This class is used to define an fermion action used in HMC
+    This class BAPI is used to define an fermion action used in HMC
     which is given as a ratio of two fermion operators.
     Two sets of fermion and Force operators and given at the
     construction.
@@ -36,7 +36,7 @@ using Bridge::vout;
                                         [21 Mar 2015 Y.Namekawa]
  */
 
-class Action_F_Ratio_eo : public Action
+class BAPI Action_F_Ratio_eo : public Action
 {
  public:
   static const std::string class_name;

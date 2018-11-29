@@ -225,7 +225,6 @@
     <ClInclude Include="lib\Tools\fft.h" />
     <ClInclude Include="lib\Tools\fft_xyz_1dim.h" />
     <ClInclude Include="lib\Tools\fft_xyz_3dim.h" />
-    <ClInclude Include="lib\Tools\filename.h" />
     <ClInclude Include="lib\Tools\file_utils.h" />
     <ClInclude Include="lib\Tools\gammaMatrix.h" />
     <ClInclude Include="lib\Tools\gammaMatrixSet.h" />
@@ -439,7 +438,6 @@
     <ClCompile Include="lib\Tools\evalexpr_symbol.cpp" />
     <ClCompile Include="lib\Tools\fft_xyz_1dim.cpp" />
     <ClCompile Include="lib\Tools\fft_xyz_3dim.cpp" />
-    <ClCompile Include="lib\Tools\filename.cpp" />
     <ClCompile Include="lib\Tools\file_utils.cpp" />
     <ClCompile Include="lib\Tools\gammaMatrix.cpp" />
     <ClCompile Include="lib\Tools\gammaMatrixSet_Chiral.cpp" />
@@ -529,12 +527,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>$(SolutionDir)..\Dependency\wxWidgets\include;$(SolutionDir)..\Dependency\wxWidgets\include\msvc;$(ProjectDir);$(ProjectDir)lib\;$(MSMPI_INC);$(MSMPI_INC)\x64;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)..\Bin\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)..\Temp\$(Configuration)\</IntDir>
+    <IntDir>$(SolutionDir)..\Temp\$(ProjectName)\$(Configuration)\</IntDir>
     <TargetName>$(ProjectName)_d</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)..\Bin\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)..\Temp\$(Configuration)\</IntDir>
+    <IntDir>$(SolutionDir)..\Temp\$(ProjectName)\$(Configuration)\</IntDir>
     <IncludePath>$(SolutionDir)..\Dependency\wxWidgets\include;$(SolutionDir)..\Dependency\wxWidgets\include\msvc;$(ProjectDir);$(ProjectDir)lib\;$(MSMPI_INC);$(MSMPI_INC)\x64;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -560,6 +558,7 @@
       <AdditionalLibraryDirectories>$(SolutionDir)..\Dependency;$(SolutionDir)..\Libs;$(SolutionDir)..\Dependency\wxWidgets\lib\vc_x64_dll;$(MSMPI_LIB64);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <SubSystem>Windows</SubSystem>
       <AdditionalDependencies>msmpi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ImportLibrary>$(SolutionDir)..\Libs\$(TargetName).lib</ImportLibrary>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -591,6 +590,7 @@
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>BridgeLib_Private.h</PrecompiledHeaderFile>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -598,6 +598,7 @@
       <AdditionalLibraryDirectories>$(SolutionDir)..\Dependency;$(SolutionDir)..\Libs;$(MSMPI_LIB64);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <SubSystem>Windows</SubSystem>
       <AdditionalDependencies>msmpi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ImportLibrary>$(SolutionDir)..\Libs\$(TargetName).lib</ImportLibrary>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

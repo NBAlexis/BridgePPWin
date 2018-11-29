@@ -1,15 +1,15 @@
 /*!
-        @file    $Id:: parameterManager.h #$
+@file    $Id:: parameterManager.h #$
 
-        @brief
+@brief
 
-        @author  Hideo Matsufuru (matsufuru)
-                 $LastChangedBy: aoym $
+@author  Hideo Matsufuru (matsufuru)
+$LastChangedBy: aoym $
 
-        @date    $LastChangedDate:: 2017-02-24 00:49:46 #$
+@date    $LastChangedDate:: 2017-02-24 00:49:46 #$
 
-        @version $LastChangedRevision: 1561 $
- */
+@version $LastChangedRevision: 1561 $
+*/
 
 #ifndef PARAMETERMANAGER_INCLUDED
 #define PARAMETERMANAGER_INCLUDED
@@ -22,40 +22,38 @@
 //! Base class of parameter manager.
 
 /*!
-                          [17 Jun 2012 H.Matsufuru]
- */
+[17 Jun 2012 H.Matsufuru]
+*/
 
-class ParameterManager
+class BAPI ParameterManager
 {
- public:
-  static const std::string class_name;
+public:
+    static const std::string class_name;
 
- protected:
+protected:
 
-  Bridge::VerboseLevel m_vl;
+    Bridge::VerboseLevel m_vl;
 
- public:
+public:
 
-  ParameterManager() : m_vl(CommonParameters::Vlevel()) {}
+    ParameterManager() : m_vl(CommonParameters::Vlevel()) {}
 
-  virtual ~ParameterManager() {}
+    virtual ~ParameterManager() {}
 
- private:
-  // non-copyable
-  ParameterManager(const ParameterManager&);
-  ParameterManager& operator=(const ParameterManager&);
+private:
+    // non-copyable
+    ParameterManager(const ParameterManager&);
+    ParameterManager& operator=(const ParameterManager&);
 
- public:
+public:
 
-  virtual void
-  read_params(const std::string& params_file, Parameters& params) = 0;
+    virtual void
+        read_params(const std::string& params_file, Parameters& params) = 0;
 
-  static
-  void read(const std::string& params_file, Parameters& params);
+    static void read(const std::string& params_file, Parameters& params);
 
-  static
-  Parameters read(const std::string& params_file);
+    static Parameters read(const std::string& params_file);
 
-  void set_parameter_verboselevel(const Bridge::VerboseLevel vl) { m_vl = vl; }
+    void set_parameter_verboselevel(const Bridge::VerboseLevel vl) { m_vl = vl; }
 };
 #endif

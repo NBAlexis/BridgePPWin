@@ -37,7 +37,7 @@
 
 typedef std::vector<Action *>   ActionSet;
 
-class ActionList
+class BAPI ActionList
 {
  public:
   static const std::string class_name;

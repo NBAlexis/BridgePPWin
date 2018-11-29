@@ -23,12 +23,12 @@ void Timer::timestamp()
   static char  buf[buf_size];
 
   time_t    current_time;
-  struct tm *timep;
+  struct tm timep;
 
   current_time = time(NULL);
-  timep        = localtime(&current_time);
+  localtime_s(&timep, &current_time);
 
-  strftime(buf, buf_size, "%Y/%m/%d %H:%M:%S %z", timep);
+  strftime(buf, buf_size, "%Y/%m/%d %H:%M:%S %z", &timep);
 
   vout.general("%s: timestamp: %s\n", class_name.c_str(), buf);
 }

@@ -31,7 +31,7 @@ using Bridge::vout;
  */
 
 
-class Integrator_UpdateU : public Integrator
+class BAPI Integrator_UpdateU : public Integrator
 {
  public:
   static const std::string class_name;

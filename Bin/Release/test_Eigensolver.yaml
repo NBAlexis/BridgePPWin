@@ -1,0 +1,65 @@
+# this is a sample parameter file
+
+Test_Eigensolver:
+  ## gauge_config_status = {Continue,Cold_start,Hot_start}
+  gauge_config_status      : Continue
+  ## gauge_config_type = {Text,Binary,Binary_Parallel,Fortran_JLQCD,Fortran_ILDG,ILDG,ILDG_Parallel}
+  gauge_config_type_input  : Text
+  config_filename_input    : ./conf_04040408.txt
+  ## random_number_type = {Mseries,MT19937,SFMT} NB. SFMT is an extra library
+  random_number_type       : Mseries
+  seed_for_random_number   : 1234567UL
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level            : General
+  expected_result          : 0.15203194923405
+
+Fopr:
+  fermion_type       : Clover
+  ## gamma_matrix_type = {Chiral,Dirac}
+  gamma_matrix_type  : Dirac
+  hopping_parameter  : 0.12
+  clover_coefficient : 1.0
+  boundary_condition : [1,1,1,-1]
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level      : General
+
+Projection:
+  ## projection_type = {Maximum_SU_N,Stout_SU3}
+  projection_type : Stout_SU3
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level   : General
+
+Smear:
+  ## smear_type = {APE,HYP}
+  smear_type    : APE
+  rho_uniform   : 0.1
+  #smear_type    : HYP
+  #alpha1        : 0.95
+  #alpha2        : 0.76
+  #alpha3        : 0.38
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level : General
+
+Director_Smear:
+  number_of_smearing : 0
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level      : General
+
+Eigensolver:
+  eigensolver_mode               : abs_ascending
+  number_of_wanted_eigenvectors  : 20
+  number_of_working_eigenvectors : 50
+  convergence_criterion_squared  : 1.0e-24
+  maximum_number_of_iteration    : 500
+  threshold_value                : 0.15
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level                  : General
+#
+#  eigensolver_mode               : abs_descending
+#  number_of_wanted_eigenvectors  : 20
+#  number_of_working_eigenvectors : 20
+#  convergence_criterion_squared  : 1.0e-26
+#  maximum_number_of_iteration    : 500
+#  threshold_value                : 10.0
+#  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+#  verbose_level                  : General

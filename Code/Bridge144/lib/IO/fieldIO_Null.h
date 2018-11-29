@@ -29,7 +29,7 @@ using std::string;
                                [26 June 2016 T.Aoyama]
 */
 
-class FieldIO_Null : public FieldIO
+class BAPI FieldIO_Null : public FieldIO
 {
  public:
   static const std::string class_name;

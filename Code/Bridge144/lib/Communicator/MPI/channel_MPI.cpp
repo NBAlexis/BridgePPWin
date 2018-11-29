@@ -95,7 +95,7 @@ Channel *Communicator_impl::recv_init(int count, int idir, int ipm)
 
 
 //====================================================================
-// class Channel
+// class BAPI Channel
 Channel::Channel() : m_buf(0)
 {
   LOG;
@@ -131,7 +131,7 @@ int Channel::wait()
 
 
 //====================================================================
-// class ChannelSet
+// class BAPI ChannelSet
 ChannelSet::ChannelSet(int count)
  : m_array(count), m_status(count), m_nreq(0)
 {

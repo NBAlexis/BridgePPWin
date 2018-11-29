@@ -23,27 +23,27 @@
 #include <string>
 using std::string;
 
-class Channel;
+class BAPI Channel;
 
 //! Communication library which wraps MPI.
 
 /**
-  This class provides communication library which wraps
+  This class BAPI provides communication library which wraps
   MPI (message passing interface) if the implementation
   file communicator_mpi.cpp is bound.
   For single processor environment with no MPI library,
   communicator_dummy.cpp should be bound instead.
   [28 Dec 2011 H.Matsufuru]
 
-  This class defines interface of inter-node communication routines.
+  This class BAPI defines interface of inter-node communication routines.
   All methods are static, i.e. class-methods (like global).
   The explicit definitions are hidden in the implementation classes.
 */
 
 // forward declaration
-//class Channel;
+//class BAPI Channel;
 
-class Communicator {
+class BAPI Communicator {
  public:
   //! initialize communicator
 
@@ -152,10 +152,10 @@ class Communicator {
 //! base case
 
   /**
-     this class defines base case for data exchange that are specified
+     this class BAPI defines base case for data exchange that are specified
      by plain streams of bytes of size.
    */
-  class Base {
+  class BAPI Base {
    public:
     static int broadcast(size_t size, void *data, int sender);
     static int exchange(size_t size, void *recv_buf, void *send_buf, int idir, int ipm, int tag);
@@ -168,7 +168,7 @@ class Communicator {
 //! no instance at all
 
 /**
-   communicator class is not indented to be instantiated.
+   communicator class BAPI is not indented to be instantiated.
    constructor, copy constroctor, assignment operator, and destructor
    are defined as private.
 */

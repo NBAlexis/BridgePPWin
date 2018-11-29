@@ -21,7 +21,7 @@
 using Bridge::vout;
 
 /*!
-  \brief HMC action class for plaquette gauge action with SF BC.
+  \brief HMC action class BAPI for plaquette gauge action with SF BC.
 
   SF boundary condition is intrduced accrdong to the following policy.
   <ul>
@@ -46,7 +46,7 @@ S_g[U]=\frac{\beta}{N_c}\sum_{x}\sum_{\mu<\nu}\omega_{\mu\nu}(x)
 \f$\omega_{0i}(t=0)=\omega_{0i}(t=T)=c_t\f$,
 \f$\omega_{\mu\nu}(n)=1\f$: otherwise.
   <ul>
-  <li>A major difference from Action_G_Plaq class is a use of Staple_SF instead of Staple.
+  <li>A major difference from Action_G_Plaq class BAPI is a use of Staple_SF instead of Staple.
   <ul>
   <li>For correct Hamltonian with SF BC.
   <li>For correct force with SF BC.
@@ -60,7 +60,7 @@ S_g[U]=\frac{\beta}{N_c}\sum_{x}\sum_{\mu<\nu}\omega_{\mu\nu}(x)
 */
 
 
-class Action_G_Plaq_SF : public Action
+class BAPI Action_G_Plaq_SF : public Action
 {
  public:
   static const std::string class_name;

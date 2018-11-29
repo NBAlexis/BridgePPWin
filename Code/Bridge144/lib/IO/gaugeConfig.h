@@ -1,14 +1,14 @@
 /*!
-        @file    $Id:: gaugeConfig.h #$
+@file    $Id:: gaugeConfig.h #$
 
-        @brief
+@brief
 
-        @author  Hideo Matsufuru (matsufuru)
-                 $LastChangedBy: aoym $
+@author  Hideo Matsufuru (matsufuru)
+$LastChangedBy: aoym $
 
-        @date    $LastChangedDate:: 2017-02-24 18:35:38 #$
+@date    $LastChangedDate:: 2017-02-24 18:35:38 #$
 
-        @version $LastChangedRevision: 1571 $
+@version $LastChangedRevision: 1571 $
 */
 
 
@@ -38,86 +38,98 @@ using Bridge::vout;
 //! GaugeConfig class for file I/O of gauge configuration.
 
 /*!
-   This class family is used to setup and output the gauge
-   configuration.
-   This is the base class, which implements common functions,
-   and read/write methods are implemented in subclasses.
-   At present, cutting off the gauge field for each node
-   and deliver it to the node is implemented in this class.
-   It may be better to separate that to other class for
-   general usage for other field objects.
-                                [28 Dec 2011 H.Matsufuru]
+This class family is used to setup and output the gauge
+configuration.
+This is the base class, which implements common functions,
+and read/write methods are implemented in subclasses.
+At present, cutting off the gauge field for each node
+and deliver it to the node is implemented in this class.
+It may be better to separate that to other class for
+general usage for other field objects.
+[28 Dec 2011 H.Matsufuru]
 
-   GaugeConfig class provides file I/O of gauge configuration.
-   It provides an interface to underlying FieldIO class family;
+GaugeConfig class provides file I/O of gauge configuration.
+It provides an interface to underlying FieldIO class family;
 
-   The file format is specified by a string argument type to
-   the constructor (in a somewhat similar manner as factory).
-   Data layout is ILDG layout for most of the cases except
-   for Fortran_JLQCD in which JLQCD layout is applied.
+The file format is specified by a string argument type to
+the constructor (in a somewhat similar manner as factory).
+Data layout is ILDG layout for most of the cases except
+for Fortran_JLQCD in which JLQCD layout is applied.
 
-   "NO_OUTPUT" is added to GaugeConfig::write_file()
-                                [22 Feb 2015 Y.Namekawa]
-   unique_ptr is introduced to avoid memory leaks
-                                [21 Mar 2015 Y.Namekawa]
-   Config types "Unit" and "Random" are introduced to generate
-   unit and random gauge configurations for cold and hot start,
-   respectively.
-   The methods are renamed to read/write. read_file/write_file
-   are left for compatibility. these methods now take args of
-   Field_G* type instead of Field*.
-                                [24 June 2016 T.Aoyama]
-   "Null" config type is introduced that suppresses output.
-   Specifying "NO_OUTPUT" for filename is also valid.
-                                [8 July 2016 T.Aoyama]
- */
+"NO_OUTPUT" is added to GaugeConfig::write_file()
+[22 Feb 2015 Y.Namekawa]
+unique_ptr is introduced to avoid memory leaks
+[21 Mar 2015 Y.Namekawa]
+Config types "Unit" and "Random" are introduced to generate
+unit and random gauge configurations for cold and hot start,
+respectively.
+The methods are renamed to read/write. read_file/write_file
+are left for compatibility. these methods now take args of
+Field_G* type instead of Field*.
+[24 June 2016 T.Aoyama]
+"Null" config type is introduced that suppresses output.
+Specifying "NO_OUTPUT" for filename is also valid.
+[8 July 2016 T.Aoyama]
+*/
 
-class GaugeConfig
+class BAPI GaugeConfig
 {
- public:
-  static const std::string class_name;
+public:
+    static const std::string class_name;
 
- public:
-  GaugeConfig(const string& type);
-  virtual ~GaugeConfig();
+public:
+    GaugeConfig(const string& type);
+    virtual ~GaugeConfig();
 
- private:
-  // non-copyable
-  GaugeConfig(const GaugeConfig&);
-  GaugeConfig& operator=(const GaugeConfig&);
+private:
+    // non-copyable
+    GaugeConfig(const GaugeConfig&);
+    GaugeConfig& operator=(const GaugeConfig&);
 
- public:
+public:
 
-  void read(Field_G *U, const string& filename = string());
+    void read(Field_G *U, const string& filename = string());
 
-  void read(unique_ptr<Field_G>& U, const string& filename = string())
-  { return read(U.get(), filename); }
+    void read(unique_ptr<Field_G>& U, const string& filename = string())
+    {
+        return read(U.get(), filename);
+    }
 
-  void write(Field_G *U, const string& filename = string());
+    void write(Field_G *U, const string& filename = string());
 
-  void write(unique_ptr<Field_G>& U, const string& filename = string())
-  { return write(U.get(), filename); }
+    void write(unique_ptr<Field_G>& U, const string& filename = string())
+    {
+        return write(U.get(), filename);
+    }
 
 
-  void read_file(Field_G *U, const string& filename)
-  { return read(U, filename); }
-  void read_file(unique_ptr<Field_G>& U, const string& filename)
-  { return read_file(U.get(), filename); }
+    void read_file(Field_G *U, const string& filename)
+    {
+        return read(U, filename);
+    }
+    void read_file(unique_ptr<Field_G>& U, const string& filename)
+    {
+        return read_file(U.get(), filename);
+    }
 
-  void write_file(Field_G *U, const string& filename)
-  { return write(U, filename); }
-  void write_file(unique_ptr<Field_G>& U, const string& filename)
-  { return write_file(U.get(), filename); }
+    void write_file(Field_G *U, const string& filename)
+    {
+        return write(U, filename);
+    }
+    void write_file(unique_ptr<Field_G>& U, const string& filename)
+    {
+        return write_file(U.get(), filename);
+    }
 
- protected:
-  Bridge::VerboseLevel m_vl;
-  FieldIO              *m_fieldio;
+protected:
+    Bridge::VerboseLevel m_vl;
+    FieldIO              *m_fieldio;
 
- private:
-  class DataSource;
-  class DataSource_Unit;
-  class DataSource_Random;
+private:
+    class DataSource;
+    class DataSource_Unit;
+    class DataSource_Random;
 
-  DataSource *m_datasource;
+    DataSource *m_datasource;
 };
 #endif

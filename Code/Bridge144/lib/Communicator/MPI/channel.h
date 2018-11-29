@@ -24,18 +24,18 @@
 static const int max_dimension = 8;
 
 // forward declaration
-class ChannelSet;
+class BAPI ChannelSet;
 
-//! Channel class for asynchronous communication
+//! Channel class BAPI for asynchronous communication
 
 /**
-   Channel class defines communication channel between sender and receiver
+   Channel class BAPI defines communication channel between sender and receiver
    for asynchronous data transfer. It actually provides a half-channel of
    sender part or receiver part.
-   This class wraps MPI persistent communication, as well as send/receive
+   This class BAPI wraps MPI persistent communication, as well as send/receive
    buffer.
 
-   An instance of channel class is generated through Communicator send_int()
+   An instance of channel class BAPI is generated through Communicator send_int()
    and recv_init() methods.
    To access the buffer, operator[] is provided as if it is an ordinary
    container or array.
@@ -45,7 +45,7 @@ class ChannelSet;
    repeatedly for the same communication channel once it is created.
 */
 
-class Channel {
+class BAPI Channel {
  public:
   typedef char                          element_type;    //!< data transfer is byte-wise.
   typedef std::valarray<element_type>   container_type;
@@ -70,17 +70,17 @@ class Channel {
   MPI_Request m_request;  //!< handler to MPI persistent communication
   MPI_Status  m_status;   //!< handler to MPI status information
 
-  friend class Communicator_impl;
-  friend class ChannelSet;
+  friend class BAPI Communicator_impl;
+  friend class BAPI ChannelSet;
 };
 
-//! ChannelSet class for a collection of channels
+//! ChannelSet class BAPI for a collection of channels
 
 /**
-   ChannelSet defines a collection of channel class instances
+   ChannelSet defines a collection of channel class BAPI instances
    to invoke start and wait methods collectively for a set of channels.
 */
-class ChannelSet {
+class BAPI ChannelSet {
  public:
   ChannelSet(int nchannel = 8); //!< constructor. default number of channels is 8 for upward and downward in 4 dimensions.
 

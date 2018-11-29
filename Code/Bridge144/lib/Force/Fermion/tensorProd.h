@@ -16,6 +16,6 @@
 
 #include "Field/field_F.h"
 
-void tensorProd_Field_F(Field_G&, const Field_F&, const Field_F&);
-void tensorProd_Field_F(Field_G&, const int mu, const Field_F&, const Field_F&);
+extern void BAPI tensorProd_Field_F(Field_G&, const Field_F&, const Field_F&);
+extern void BAPI tensorProd_Field_F(Field_G&, const int mu, const Field_F&, const Field_F&);
 #endif

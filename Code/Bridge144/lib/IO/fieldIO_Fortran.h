@@ -49,7 +49,7 @@ using std::string;
  */
 
 
-class FieldIO_Fortran : public FieldIO
+class BAPI FieldIO_Fortran : public FieldIO
 {
  public:
   static const std::string class_name;

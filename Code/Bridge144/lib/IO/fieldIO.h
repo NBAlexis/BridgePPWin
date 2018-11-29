@@ -50,7 +50,7 @@
    data over parallel nodes (if any), and converting byte order.
 */
 
-class FieldIO
+class BAPI FieldIO
 {
  public:
   static const std::string class_name;

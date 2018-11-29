@@ -38,7 +38,7 @@ using Bridge::vout;
   C_k'=\frac{i}{L}\pmatrix{\phi'_1\cr&\phi'_2\cr&&\phi'_3\cr}
   \f]
  */
-class GaugeConfig_SF : public GaugeConfig
+class BAPI GaugeConfig_SF : public GaugeConfig
 {
  public:
   static const std::string class_name;

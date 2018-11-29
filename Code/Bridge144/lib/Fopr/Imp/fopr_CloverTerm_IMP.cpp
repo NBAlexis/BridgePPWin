@@ -541,9 +541,9 @@ namespace Imp {
     void Fopr_CloverTerm::set_fieldstrength(Field_G& Fst,
         const int mu, const int nu)
     {
-        int Nthread = ThreadManager_OpenMP::get_num_threads();
+        //int Nthread = ThreadManager_OpenMP::get_num_threads();
 
-        assert(Nthread == 1);
+        assert(ThreadManager_OpenMP::get_num_threads() == 1);
         // this function must be called in single thread region.
 
         m_staple.upper(m_Cup, *m_U, mu, nu); // these staple constructions

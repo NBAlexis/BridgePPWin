@@ -1,0 +1,47 @@
+# this is a sample parameter file
+
+Test_GradientFlow:
+  ## gauge_config_status = {Continue,Cold_start,Hot_start}
+  gauge_config_status      : Continue
+  ## gauge_config_type = {Text,Binary,Binary_Parallel,Fortran_JLQCD,Fortran_ILDG,ILDG,ILDG_Parallel,Null}
+  gauge_config_type_input  : Text
+  config_filename_input    : ./conf_04040408.txt
+  gauge_config_type_output : Null
+  config_filename_output   : ./conf_output.dat
+  ## random_number_type = {Mseries,MT19937,SFMT} NB. SFMT is an extra library
+  random_number_type       : Mseries
+  seed_for_random_number   : 1234567UL
+  number_of_steps          : 4
+  max_flow_time            : 1.0
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level            : General
+  expected_result          : 0.0154888282499804
+
+EnergyDensity:
+  ## filename_output = {stdout, or "filename"}
+  filename_output : stdout
+  c_plaq        : 1.0
+  c_rect        : 0.0
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level : General
+
+Action_G:
+  action_type   : Action_G_Rectangle
+  ## NB. beta has been fixed in GradientFlow
+  # beta          :  3.0
+  c_plaq        : 1.0
+  c_rect        : 0.0
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level : General
+
+GradientFlow:
+  ## order_of_RungeKutta = {1,2,3,4}
+  order_of_RungeKutta        : 4
+  step_size                  : 0.01
+  order_of_approx_for_exp_iP : 8
+  ## adaptive = { 0 = false, 1 = true }
+  adaptive                   : 0
+  tolerance                  : 1.0e-4
+  safety_factor              : 0.9
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level              : General

@@ -28,7 +28,7 @@ using Bridge::vout;
  */
 
 
-class Integrator_Leapfrog : public Integrator
+class BAPI Integrator_Leapfrog : public Integrator
 {
  public:
   static const std::string class_name;

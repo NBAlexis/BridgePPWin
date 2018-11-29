@@ -17,15 +17,15 @@
 #include "communicator_mpi.h"
 #include "Parameters/commonParameters.h"
 
-//! Layout class for logical organisation of parallel nodes
+//! Layout class BAPI for logical organisation of parallel nodes
 
 /**
-   Layout class inside MPI communicator class describes
+   Layout class BAPI inside MPI communicator class BAPI describes
    logical organisation of parallel nodes.
    not intended for public use.
  */
 
-class Communicator_impl::Layout {
+class BAPI Communicator_impl::Layout {
  public:
 
   static int grid_rank(int *rank, const int *gcoord); //!< find rank from grid coordinate.

@@ -97,9 +97,9 @@ void PolyakovLoop::set_parameters(int , int )
 //====================================================================
 void PolyakovLoop::init()
 {
-  int Ndim = CommonParameters::Ndim();
+  //int Ndim = CommonParameters::Ndim();
 
-  assert(Ndim == 4);
+  assert(CommonParameters::Ndim() == 4);
 
   m_filename_output = "stdout";
 

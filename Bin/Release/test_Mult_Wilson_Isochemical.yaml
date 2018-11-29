@@ -1,0 +1,29 @@
+# this is a sample parameter file
+
+Test_Mult:
+  ## gauge_config_status = {Continue,Cold_start,Hot_start}
+  gauge_config_status      : Continue
+  ## gauge_config_type = {Text,Binary,Binary_Parallel,Fortran_JLQCD,Fortran_ILDG,ILDG,ILDG_Parallel}
+  gauge_config_type_input  : Text
+  config_filename_input    : ./conf_04040408.txt
+  ## random_number_type = {Mseries,MT19937,SFMT} NB. SFMT is an extra library
+  random_number_type       : Mseries
+  seed_for_random_number   : 1234567UL
+  number_of_mult           : 1
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level            : General
+  expected_result          : 1.23747358409683e+02
+  tolerance                : 1.0e-14
+
+Fopr:
+  ## fermion_type = {Clover,CloverGeneral,Clover_Isochemical,Clover_SF,
+  ##                 Wilson,WilsonGeneral,Wilson_Isochemical,Wilson_SF}
+  ## NB. Domainwall,Overlap,Staggered need special treatments
+  fermion_type               : Wilson_Isochemical
+  ## gamma_matrix_type = {Chiral,Dirac}
+  gamma_matrix_type          : Dirac
+  hopping_parameter          : 0.12
+  isospin_chemical_potential : 0.3
+  boundary_condition         : [-1,-1,-1,-1]
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level              : General

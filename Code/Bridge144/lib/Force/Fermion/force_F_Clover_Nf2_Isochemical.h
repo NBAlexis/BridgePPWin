@@ -33,7 +33,7 @@ using Bridge::vout;
  */
 
 
-class Force_F_Clover_Nf2_Isochemical : public Force
+class BAPI Force_F_Clover_Nf2_Isochemical : public Force
 {
  public:
   static const std::string class_name;

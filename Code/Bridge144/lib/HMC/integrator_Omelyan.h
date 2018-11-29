@@ -28,7 +28,7 @@ using Bridge::vout;
  */
 
 
-class Integrator_Omelyan : public Integrator
+class BAPI Integrator_Omelyan : public Integrator
 {
  public:
   static const std::string class_name;

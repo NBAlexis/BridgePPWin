@@ -1,14 +1,14 @@
 /*!
-        @file    $Id:: action.h #$
+@file    $Id:: action.h #$
 
-        @brief
+@brief
 
-        @author  Hideo Matsufuru (matsufuru)
-                 $LastChangedBy: aoym $
+@author  Hideo Matsufuru (matsufuru)
+$LastChangedBy: aoym $
 
-        @date    $LastChangedDate:: 2017-02-24 00:49:46 #$
+@date    $LastChangedDate:: 2017-02-24 00:49:46 #$
 
-        @version $LastChangedRevision: 1561 $
+@version $LastChangedRevision: 1561 $
 */
 
 
@@ -25,66 +25,66 @@
 #endif
 
 
-//! Base class of HMC action class family.
+//! Base class BAPI of HMC action class BAPI family.
 
 /*!
-   This class defines interface of Action-type classes.
-                                   [28 Dec 2011 H.Matsufuru]
-   Factory is introduced.          [21 Mar 2015 Y.Namekawa]
- */
+This class BAPI defines interface of Action-type classes.
+[28 Dec 2011 H.Matsufuru]
+Factory is introduced.          [21 Mar 2015 Y.Namekawa]
+*/
 
-class Action
+class BAPI Action
 {
- public:
+public:
 
-  Action()
-    : m_vl(CommonParameters::Vlevel()) {}
+    Action()
+        : m_vl(CommonParameters::Vlevel()) {}
 
-  virtual ~Action() {}
+    virtual ~Action() {}
 
- private:
-  // non-copyable
-  Action(const Action&);
-  Action& operator=(const Action&);
+private:
+    // non-copyable
+    Action(const Action&);
+    Action& operator=(const Action&);
 
- public:
-  virtual void set_parameters(const Parameters& param) = 0;
+public:
+    virtual void set_parameters(const Parameters& param) = 0;
 
-  void set_parameter_verboselevel(const Bridge::VerboseLevel vl) { m_vl = vl; }
+    void set_parameter_verboselevel(const Bridge::VerboseLevel vl) { m_vl = vl; }
 
-  //! setting pointer to the gauge configuration.
-  virtual void set_config(Field *U) = 0;
+    //! setting pointer to the gauge configuration.
+    virtual void set_config(Field *U) = 0;
 
-  //! Langevis step.
-  virtual double langevin(RandomNumbers *) = 0;
+    //! Langevis step.
+    virtual double langevin(RandomNumbers *) = 0;
 
-  //! calculate Hamiltonian of this action term.
-  virtual double calcH() = 0;
+    //! calculate Hamiltonian of this action term.
+    virtual double calcH() = 0;
 
-  //! returns force for molcular dynamical update of conjugate momenta.
-  //virtual const Field force() = 0;
-  virtual void force(Field&) = 0;
+    //! returns force for molcular dynamical update of conjugate momenta.
+    //virtual const Field force() = 0;
+    virtual void force(Field&) = 0;
 
-  virtual void force(Field& v, Field& U)
-  {
-    set_config(&U);
-    force(v);
-  }
+    virtual void force(Field& v, Field& U)
+    {
+        set_config(&U);
+        force(v);
+    }
 
- protected:
-  Bridge::VerboseLevel m_vl;
+protected:
+    Bridge::VerboseLevel m_vl;
 
 #ifdef USE_FACTORY
- public:
-  typedef Action *(*ProductCreator)();
-  typedef FactoryTemplate<Action, ProductCreator>   Factory;
+public:
+    typedef Action *(*ProductCreator)();
+    typedef FactoryTemplate<Action, ProductCreator>   Factory;
 
-  static Action *New(const IdentifierType& subtype)
-  {
-    ProductCreator p = Factory::Find(subtype);
+    static Action *New(const IdentifierType& subtype)
+    {
+        ProductCreator p = Factory::Find(subtype);
 
-    return p ? (*p)() : 0;
-  }
+        return p ? (*p)() : 0;
+    }
 #endif
 };
 #endif

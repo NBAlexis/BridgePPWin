@@ -35,7 +35,7 @@ using Bridge::vout;
  */
 
 
-class Force_F_Clover_SF : public Force
+class BAPI Force_F_Clover_SF : public Force
 {
  public:
   static const std::string class_name;

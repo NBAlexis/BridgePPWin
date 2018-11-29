@@ -13,6 +13,8 @@
 #ifndef _BRIDGETEST_H_
 #define _BRIDGETEST_H_
 
+#define _VCWIN 1
+
 #include "BridgeLib.h"
 
 #endif //#ifndef _BRIDGETEST_H_

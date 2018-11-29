@@ -1,14 +1,14 @@
 /*!
-        @file    $Id:: noiseVector.h #$
+@file    $Id:: noiseVector.h #$
 
-        @brief
+@brief
 
-        @author  Hideo Matsufuru (matsufuru)
-                 $LastChangedBy: aoym $
+@author  Hideo Matsufuru (matsufuru)
+$LastChangedBy: aoym $
 
-        @date    $LastChangedDate:: 2017-02-24 00:49:46 #$
+@date    $LastChangedDate:: 2017-02-24 00:49:46 #$
 
-        @version $LastChangedRevision: 1561 $
+@version $LastChangedRevision: 1561 $
 */
 
 
@@ -22,34 +22,34 @@
 //! Base class for noise vector generator.
 
 /*!
-    This is the base class of noise vector generator for
-    trace calculations.
-    This class only defines the interface.
-                                     [2 Sep 2012 H.Matsufuru]
- */
+This is the base class of noise vector generator for
+trace calculations.
+This class only defines the interface.
+[2 Sep 2012 H.Matsufuru]
+*/
 
-class NoiseVector
+class BAPI NoiseVector
 {
- protected:
-  Bridge::VerboseLevel m_vl;
+protected:
+    Bridge::VerboseLevel m_vl;
 
- public:
+public:
 
-  NoiseVector()
-    : m_vl(CommonParameters::Vlevel()) {}
+    NoiseVector()
+        : m_vl(CommonParameters::Vlevel()) {}
 
-  virtual ~NoiseVector() {}
+    virtual ~NoiseVector() {}
 
- private:
-  // non-copyable
-  NoiseVector(const NoiseVector&);
-  NoiseVector& operator=(const NoiseVector&);
+private:
+    // non-copyable
+    NoiseVector(const NoiseVector&);
+    NoiseVector& operator=(const NoiseVector&);
 
- public:
+public:
 
-  void set_parameter_verboselevel(const Bridge::VerboseLevel vl) { m_vl = vl; }
+    void set_parameter_verboselevel(const Bridge::VerboseLevel vl) { m_vl = vl; }
 
-  //! setting a noise vector.
-  virtual void set(Field& v) = 0;
+    //! setting a noise vector.
+    virtual void set(Field& v) = 0;
 };
 #endif

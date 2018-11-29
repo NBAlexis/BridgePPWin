@@ -576,9 +576,6 @@
     <ClCompile Include="lib\Tools\file_utils.cpp">
       <Filter>Tools</Filter>
     </ClCompile>
-    <ClCompile Include="lib\Tools\filename.cpp">
-      <Filter>Tools</Filter>
-    </ClCompile>
     <ClCompile Include="lib\Tools\gammaMatrix.cpp">
       <Filter>Tools</Filter>
     </ClCompile>
@@ -1318,9 +1315,6 @@
       <Filter>Tools</Filter>
     </ClInclude>
     <ClInclude Include="lib\Tools\file_utils.h">
-      <Filter>Tools</Filter>
-    </ClInclude>
-    <ClInclude Include="lib\Tools\filename.h">
       <Filter>Tools</Filter>
     </ClInclude>
     <ClInclude Include="lib\Tools\gammaMatrix.h">

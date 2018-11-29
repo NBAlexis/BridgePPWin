@@ -1,0 +1,12 @@
+# this is a sample parameter file
+
+Test_Spectrum_CRSMatrix:
+  ## gauge_config_type = {Text,Binary,Binary_Parallel,Fortran_JLQCD,Fortran_ILDG,ILDG,ILDG_Parallel}
+  gauge_config_type_input : Text
+  config_filename_input   : ./conf_04040408.txt
+  matrix_output           : matrix4x8_clover.crs
+  source_output           : source4x8_clover.crs
+  solution_output         : solution4x8_clover.crs
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level           : General
+  expected_result         : 2.22854173819116e-28

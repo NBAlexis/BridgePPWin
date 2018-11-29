@@ -18,19 +18,19 @@
 #include "Parameters/parameters.h"
 #include "field_G.h"
 
-//! SU(N) gauge field class in which a few functions are added for the SF.
+//! SU(N) gauge field class BAPI in which a few functions are added for the SF.
 
 /*!
-  This class defines SU(N) gauge field, which is used such as gauge configuration.
+  This class BAPI defines SU(N) gauge field, which is used such as gauge configuration.
   <ul>
-  <li>A derived class from Field_G in order to add a few functions to manipulate the boundary link variables.
+  <li>A derived class BAPI from Field_G in order to add a few functions to manipulate the boundary link variables.
   <li>An inheritance was adopted since we need to manipulate the Field contents and upcast into Filed_G object.
   <li>[23 Mar 2012 Y.Taniguchi]
   </ul>
  */
 
 
-class Field_G_SF : public Field_G
+class BAPI Field_G_SF : public Field_G
 {
  private:
   //! number of color elements

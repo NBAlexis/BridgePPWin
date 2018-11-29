@@ -25,7 +25,7 @@ using Bridge::vout;
 //! Standard even-odd preconditioned fermion action for HMC.
 
 /*!
-    This class is used to define an action used in HMC.
+    This class BAPI is used to define an action used in HMC.
     Fermion and Force operators and given at the construction.
                                         [19 Jun 2012 S.UEDA]
     (Coding history will be recovered from trac.)
@@ -34,7 +34,7 @@ using Bridge::vout;
                                         [21 Mar 2015 Y.Namekawa]
  */
 
-class Action_F_Standard_eo : public Action
+class BAPI Action_F_Standard_eo : public Action
 {
  public:
   static const std::string class_name;

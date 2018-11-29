@@ -52,7 +52,7 @@ void Action_F_Standard_eo::set_config(Field *U)
 //====================================================================
 double Action_F_Standard_eo::langevin(RandomNumbers *rand)
 {
-  int Nvol = CommonParameters::Nvol();
+  //int Nvol = CommonParameters::Nvol();
   //int Ndim = CommonParameters::Ndim();
 
   int NinF     = m_fopr->field_nin();
@@ -60,7 +60,7 @@ double Action_F_Standard_eo::langevin(RandomNumbers *rand)
   int NexF     = m_fopr->field_nex();
   int size_psf = NinF * NvolF * NexF * CommonParameters::NPE();
 
-  assert(NvolF == Nvol);
+  assert(NvolF == CommonParameters::Nvol());
   m_psf.reset(NinF, NvolF, NexF);
 
   vout.general(m_vl, "  %s: %s\n", class_name.c_str(), m_label.c_str());
@@ -116,15 +116,15 @@ double Action_F_Standard_eo::calcH()
 //====================================================================
 void Action_F_Standard_eo::force(Field& force)
 {
-  int Nin  = m_U->nin();
-  int Nvol = m_U->nvol();
-  int Nex  = m_U->nex();
+  //int Nin  = m_U->nin();
+  //int Nvol = m_U->nvol();
+  //int Nex  = m_U->nex();
   //int Nc   = CommonParameters::Nc();
   //int Ndim = CommonParameters::Ndim();
 
-  assert(force.nin() == Nin);
-  assert(force.nvol() == Nvol);
-  assert(force.nex() == Nex);
+  assert(force.nin() == m_U->nin());
+  assert(force.nvol() == m_U->nvol());
+  assert(force.nex() == m_U->nex());
 
   int   NinF  = m_fopr->field_nin();
   int   NvolF = m_fopr->field_nvol();

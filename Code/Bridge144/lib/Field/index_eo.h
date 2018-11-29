@@ -24,7 +24,7 @@ using Bridge::vout;
 //! Even-odd site index.
 
 /*!
-    This class defines even-odd site index.
+    This class BAPI defines even-odd site index.
     Only the site degree of freedom is concerned.
     Nx (x-extent inside a node) must be even in the present
     implementation.
@@ -36,7 +36,7 @@ using Bridge::vout;
     be helpful.
                                       [25 Dec 2011 H.Matsufuru]
 */
-class Index_eo {
+class BAPI Index_eo {
  private:
   int                Nx, Ny, Nz, Nt, Nvol;
   int                Nx2, Nvol2;

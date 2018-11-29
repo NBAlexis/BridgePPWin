@@ -1,0 +1,27 @@
+# this is a sample parameter file
+
+Test_FFT:
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level   : General
+  expected_result : 1.0
+
+FFT:
+  ## FFT_direction = {Forward,Backward}
+  FFT_direction : Forward
+  ## FFT_type = {FFT_xyz_3dim, FFT_xyz_1dim}
+  FFT_type      : FFT_xyz_1dim
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level : General
+
+Source:
+  ## source_type = {Local,Exponential,MomentumWall,Wall}
+  source_type     : Wall
+  ## source_position = [x,y,z,t], x = {0,...,Lx-1}
+  source_position : [0,0,0,0]
+  ## additional parameters for Exponential, exp(- slope * r^(power))
+  slope           : 0.25
+  power           : 2.0
+  ## additional parameters for MomentumWall, source_momentum = [nx,ny,nz,nt], p = (2 \pi / L) n
+  source_momentum : [1,1,1, 0]
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level   : General

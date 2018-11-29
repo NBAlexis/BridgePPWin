@@ -21,15 +21,15 @@
 #include "Communicator/communicator.h"
 #include "channel.h"
 
-//! MPI-realisation of communicator class implementation
+//! MPI-realisation of communicator class BAPI implementation
 
 /**
-   Communicator_impl class provides implementation of communication
+   Communicator_impl class BAPI provides implementation of communication
    between parallel processes using MPI.
    Interface is basically the same as the abstract communicator class.
  */
 
-class Communicator_impl {
+class BAPI Communicator_impl {
  public:
   static int init(int *pargc, char ***pargv);
   static int finalize();
@@ -69,7 +69,7 @@ class Communicator_impl {
   static int status();
 
   // base case
-  class Base {
+  class BAPI Base {
    public:
     static int reduce(int count, void *recv_buf, void *send_buf, MPI_Datatype type, MPI_Op op, int pattern);
     static int broadcast(size_t size, void *data, int sender);
@@ -86,7 +86,7 @@ class Communicator_impl {
   static Channel *recv_init(int count, int idir, int ipm);
 
   // logical and physical layout
-  class Layout;
+  class BAPI Layout;
 
  private:
   Communicator_impl() {}

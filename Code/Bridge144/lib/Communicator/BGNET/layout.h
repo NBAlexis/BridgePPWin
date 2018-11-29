@@ -16,7 +16,7 @@
 
 #include "communicator_bgnet.h"
 
-class Communicator_impl::Layout {
+class BAPI Communicator_impl::Layout {
  public:
 
   static int grid_rank(int *rank, const int *gcoord);

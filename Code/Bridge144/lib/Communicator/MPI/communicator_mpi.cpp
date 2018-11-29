@@ -35,7 +35,7 @@ int Communicator_impl::m_grid_size = 1;
 MPI_Comm Communicator_impl::m_comm;
 
 //====================================================================
-// class methods
+// class BAPI methods
 int Communicator_impl::init(int *pargc, char ***pargv)
 {
   LOG;

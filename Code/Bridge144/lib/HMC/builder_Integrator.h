@@ -37,7 +37,7 @@ using Bridge::vout;
  */
 
 
-class Builder_Integrator
+class BAPI Builder_Integrator
 {
  public:
   static const std::string class_name;

@@ -21,7 +21,7 @@
 
 static const int max_dimension = 4;
 
-class Channel {
+class BAPI Channel {
  public:
   typedef char                        element_type;
   typedef std::vector<element_type>   container_type;
@@ -91,6 +91,6 @@ class Channel {
     return &m_buf[m_ibuf][offset];
   }
 
-  friend class Communicator_impl;
+  friend class BAPI Communicator_impl;
 };
 #endif /* CHANNEL_INCLUDED */

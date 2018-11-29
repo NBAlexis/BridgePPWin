@@ -28,8 +28,8 @@ using Bridge::vout;
 #include "layout.h"
 
 
-// class Channel
-// class Communicator
+// class BAPI Channel
+// class BAPI Communicator
 #define MAX_BUFFER_DIM    8 // this value should be twice dimension.
 //====================================================================
 // define static members
@@ -60,7 +60,7 @@ void Channel::set_thread(int Ntask, const std::vector<int>& destid,
 }
 
 
-// class Communicator
+// class BAPI Communicator
 //====================================================================
 Channel *Communicator_impl::send_init(int count, int idir, int ipm)
 {
@@ -134,7 +134,7 @@ Channel *Communicator_impl::recv_init(int count, int idir, int ipm)
 }
 
 
-// class Channel
+// class BAPI Channel
 //====================================================================
 Channel::Channel(const int count, const int tag, const channel_mode mode)
 {

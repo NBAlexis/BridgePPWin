@@ -21,16 +21,16 @@
 //#include "field_G.h"
 #include "Tools/vec_SU_N.h"
 
-//! A class generated to add a function for the SF.
+//! A class BAPI generated to add a function for the SF.
 
 /*!
   <ul>
   <li>A function to set the boundary field.
-  <li>This class does not contain the filed object but manipulate it.
+  <li>This class BAPI does not contain the filed object but manipulate it.
   <li>[3 Apr 2012 Y.Taniguchi]
   </ul>
  */
-class Field_F_SF {
+class BAPI Field_F_SF {
  private:
   int m_Nc2;  // num of the double color elements
   int m_Nvol; // lattice volume

@@ -60,7 +60,7 @@ int Communicator_impl::Layout::grid_coord(int *gcoord, const int rank)
 //====================================================================
 int Communicator_impl::Layout::physical_map_setup()
 {
-  strncpy(m_map_grid, CommonParameters::Grid_map(), sizeof(m_map_grid) / sizeof(char));
+  strncpy_s(m_map_grid, CommonParameters::Grid_map(), sizeof(m_map_grid) / sizeof(char));
 
   // physical to logical map
   m_physical_to_logical = new int [m_ndim];

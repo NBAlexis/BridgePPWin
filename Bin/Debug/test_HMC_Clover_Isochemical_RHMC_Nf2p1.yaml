@@ -1,0 +1,148 @@
+# this is a sample parameter file
+
+Test_HMC_Clover_Isochemical:
+  ## gauge_config_status = {Continue,Cold_start,Hot_start}
+  gauge_config_status      : Continue
+  ## gauge_config_type = {Text,Binary,Binary_Parallel,Fortran_JLQCD,Fortran_ILDG,ILDG,ILDG_Parallel,Null}
+  gauge_config_type_input  : Text
+  config_filename_input    : ./conf_04040408.txt
+  gauge_config_type_output : Null
+  config_filename_output   : ./conf_output.dat
+  ## random_number_type = {Mseries,MT19937,SFMT} NB. SFMT is an extra library
+  random_number_type       : Mseries
+  seed_for_random_number   : 1234567UL
+  trajectory_number        : 200000
+  trajectory_number_step   : 1
+  save_config_interval     : 100
+  int_seed_for_noise       : 200000
+  number_of_noises         : 10
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level            : General
+  expected_result          : 0.62767340813735
+
+HMC_General:
+  trajectory_length : 0.1
+  ## Metropolis_test = {1,0} for Metropolis_test on/off
+  Metropolis_test   : 1
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level     : General
+
+Action_G:
+  action_type   :  Action_G_Rectangle
+  beta          :  2.3
+  c_plaq        :  3.648
+  c_rect        : -0.331
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level : General
+
+Fopr_Nf2:
+  fermion_type               : Clover_Isochemical
+  ## gamma_matrix_type = {Chiral,Dirac}
+  gamma_matrix_type          : Dirac
+  hopping_parameter          : 0.13
+  clover_coefficient         : 1.0
+  isospin_chemical_potential : 0.3
+  boundary_condition         : [1,1,1,-1]
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level              : General
+
+Fopr_Nf2_prec:
+  fermion_type               : Clover_Isochemical
+  ## gamma_matrix_type = {Chiral,Dirac}
+  gamma_matrix_type          : Dirac
+  hopping_parameter          : 0.11
+  clover_coefficient         : 1.0
+  isospin_chemical_potential : 0.3
+  boundary_condition         : [1,1,1,-1]
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level              : General
+
+Fopr_Nf1:
+  fermion_type               : Clover_Isochemical
+  ## gamma_matrix_type = {Chiral,Dirac}
+  gamma_matrix_type          : Dirac
+  hopping_parameter          : 0.12
+  clover_coefficient         : 1.0
+  isospin_chemical_potential : 0.3
+  boundary_condition         : [1,1,1,-1]
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level              : General
+
+Projection:
+  ## projection_type = {Maximum_SU_N,Stout_SU3}
+  projection_type : Stout_SU3
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level   : General
+
+Smear:
+  ## smear_type = {APE,HYP}
+  smear_type    : APE
+  rho_uniform   : 0.1
+  #smear_type    : HYP
+  #alpha1        : 0.95
+  #alpha2        : 0.76
+  #alpha3        : 0.38
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level : General
+
+Director_Smear:
+  number_of_smearing : 2
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level      : General
+
+Fopr_Rational_MD:
+  number_of_poles               : 16
+  exponent_numerator            : -1
+  exponent_denominator          :  2
+  lower_bound                   : 1.0e-2
+  upper_bound                   : 3.16227766
+  maximum_number_of_iteration   : 1000
+  convergence_criterion_squared : 1.e-20
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level                 : General
+
+Fopr_Rational_H:
+  number_of_poles               : 16
+  exponent_numerator            :  1
+  exponent_denominator          :  4
+  lower_bound                   : 1.0e-2
+  upper_bound                   : 3.16227766
+  maximum_number_of_iteration   : 1000
+  convergence_criterion_squared : 1.e-20
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level                 : General
+
+Solver_MD:
+  ## solver_type = {CG,CGNE,CGNR,BiCGStab_Cmplx,BiCGStab_L_Cmplx,BiCGStab_DS_L_Cmplx,BiCGStab_IDS_L_Cmplx,GMRES_m_Cmplx}
+  solver_type                         : BiCGStab_L_Cmplx
+  maximum_number_of_iteration         : 100
+  maximum_number_of_restart           : 40
+  convergence_criterion_squared       : 1.0e-28
+  ## additional parameters for each solver
+  number_of_orthonormal_vectors       : 2
+  tolerance_for_DynamicSelection_of_L : 0.1
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level                       : General
+
+Solver_H:
+  ## solver_type = {CG,CGNE,CGNR,BiCGStab_Cmplx,BiCGStab_L_Cmplx,BiCGStab_DS_L_Cmplx,BiCGStab_IDS_L_Cmplx,GMRES_m_Cmplx}
+  solver_type                         : BiCGStab_L_Cmplx
+  maximum_number_of_iteration         : 100
+  maximum_number_of_restart           : 40
+  convergence_criterion_squared       : 1.0e-28
+  ## additional parameters for each solver
+  number_of_orthonormal_vectors       : 2
+  tolerance_for_DynamicSelection_of_L : 0.1
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level                       : General
+
+Builder_Integrator:
+  ## integrator = {Leapfrog,Omelyan}
+  integrator        : Leapfrog
+  number_of_levels  : 3
+  level_of_actions  : [0, 1, 1, 2]
+  number_of_steps   : [5, 2, 3]
+  order_of_exp_iP   : 8
+  lambda_Omelyan    : 0.1931833275
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level     : General

@@ -1,0 +1,39 @@
+# this is a sample parameter file
+
+Test_WilsonLoop:
+  ## gauge_config_status = {Continue,Cold_start,Hot_start}
+  gauge_config_status        : Continue
+  ## gauge_config_type = {Text,Binary,Binary_Parallel,Fortran_JLQCD,Fortran_ILDG,ILDG,ILDG_Parallel}
+  gauge_config_type_input    : Text
+  config_filename_input      : ./conf_04040408.txt
+  ## random_number_type = {Mseries,MT19937,SFMT} NB. SFMT is an extra library
+  random_number_type         : Mseries
+  seed_for_random_number     : 1234567UL
+  number_of_max_smearing     : 30
+  number_of_measurement_step :  5
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level              : General
+  expected_result            : 0.0787318897706090
+
+WilsonLoop:
+  ## filename_output = {stdout, or "filename"}
+  filename_output        : stdout
+  max_spatial_loop_size  : 2
+  max_temporal_loop_size : 4
+  ## number_of_loop_type = [1,6], ex. 1 = on-axis
+  number_of_loop_type    : 6
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level          : General
+
+Projection:
+  ## projection_type = {Maximum_SU_N,Stout_SU3}
+  projection_type             : Maximum_SU_N
+  maximum_number_of_iteration : 1000
+  convergence_criterion       : 1.0e-14
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level   : General
+
+Smear_APE_spatial:
+  rho           : 1.0 / (1.0 + 2.3)
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level : General

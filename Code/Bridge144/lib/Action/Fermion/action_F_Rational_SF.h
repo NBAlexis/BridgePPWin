@@ -25,19 +25,19 @@
 #include "IO/bridgeIO.h"
 using Bridge::vout;
 
-//! action class for RHMC, with externally constructed Fopr_Rational.
+//! action class BAPI for RHMC, with externally constructed Fopr_Rational.
 
 /*!
     For the class, Fopr and Force objects are instantiated outside
-    the class and specified at the construction.
-    This class just provides the framework of rational actions.
+    the class BAPI and specified at the construction.
+    This class BAPI just provides the framework of rational actions.
                                          [28 Dec 2011 H.Matsufuru]
     unique_ptr is introduced to avoid memory leaks
                                          [21 Mar 2015 Y.Namekawa]
  */
 
 
-class Action_F_Rational_SF : public Action {
+class BAPI Action_F_Rational_SF : public Action {
  public:
   static const std::string class_name;
 
@@ -77,7 +77,7 @@ class Action_F_Rational_SF : public Action {
   {
   }
 
-  //! setting parameters and creating class instances.
+  //! setting parameters and creating class BAPI instances.
   void set_parameters(const Parameters& params);
 
   //! set the label of action.
@@ -116,7 +116,7 @@ class Action_F_Rational_SF : public Action {
   //! creating instances. called from set_parameters().
   void setup();
 
-  //! destruct class instances constructed in setup()
+  //! destruct class BAPI instances constructed in setup()
   void tidyup();
 };
 #endif
