@@ -709,6 +709,9 @@
     <ClCompile Include="lib\ResourceManager\OpenMP_stub\threadManager_OpenMP_STUB.cpp">
       <Filter>ResourceManager\OpenMP_stub</Filter>
     </ClCompile>
+    <ClCompile Include="lib\Tools\randomNumbers_Schrage.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\Action\action.h">
@@ -1380,6 +1383,9 @@
     <ClInclude Include="BridgeLib.h" />
     <ClInclude Include="BridgeLib_Private.h" />
     <ClInclude Include="BridgeLibSetup.h" />
+    <ClInclude Include="lib\Tools\randomNumbers_Schrage.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="lib\Field\Imp\field_F_imp_SU_N.inc">

@@ -51,6 +51,7 @@
     <ClCompile Include="Mult\test_Mult_Wilson.cpp" />
     <ClCompile Include="PolyakovLoop\test_PolyakovLoop.cpp" />
     <ClCompile Include="QuarkNumberSusceptibility\test_QuarkNumberSusceptibility_Clover_Isochemical.cpp" />
+    <ClCompile Include="RandomNumbers\test_RandomNumbers_Schrage.cpp" />
     <ClCompile Include="RandomNumbers\test_RandomNumbers_Mseries_Gaussian.cpp" />
     <ClCompile Include="RandomNumbers\test_RandomNumbers_Mseries_GaussianField.cpp" />
     <ClCompile Include="RandomNumbers\test_RandomNumbers_Mseries_Global.cpp" />

@@ -159,11 +159,18 @@
     <ClCompile Include="HMC\test_HMC_Wilson_Nf2.cpp">
       <Filter>HMC</Filter>
     </ClCompile>
+    <ClCompile Include="run_testmanager.cpp" />
+    <ClCompile Include="testManager.cpp" />
+    <ClCompile Include="RandomNumbers\test_RandomNumbers_Schrage.cpp">
+      <Filter>RandomNumbers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BppSmallTest.h" />
     <ClInclude Include="test.h" />
     <ClInclude Include="testlist.h" />
+    <ClInclude Include="run_testmanager.h" />
+    <ClInclude Include="testManager.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="IO">

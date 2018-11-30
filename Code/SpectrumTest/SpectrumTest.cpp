@@ -94,7 +94,14 @@ int main(int argc, char * argv[])
 
 
     //Run the thing here
-    RunJob1();
+    //RunJob1();
+    RandomNumbers_Schrage ra(0);
+    std::cout << ra.get() << std::endl;
+    std::cout << ra.get() << std::endl;
+    std::cout << ra.get() << std::endl;
+    std::cout << ra.get() << std::endl;
+    std::cout << ra.get() << std::endl;
+
 
     ThreadManager_OpenMP::finalize();
     Communicator::finalize();

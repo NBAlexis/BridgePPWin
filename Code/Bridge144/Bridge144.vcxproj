@@ -238,6 +238,7 @@
     <ClInclude Include="lib\Tools\position.hh" />
     <ClInclude Include="lib\Tools\randomNumberManager.h" />
     <ClInclude Include="lib\Tools\randomNumbers.h" />
+    <ClInclude Include="lib\Tools\randomNumbers_Schrage.h" />
     <ClInclude Include="lib\Tools\randomNumbers_Mseries.h" />
     <ClInclude Include="lib\Tools\randomNumbers_MT19937.h" />
     <ClInclude Include="lib\Tools\randomNumbers_SFMT.h" />
@@ -448,6 +449,7 @@
     <ClCompile Include="lib\Tools\mat_SU_N.cpp" />
     <ClCompile Include="lib\Tools\randomNumberManager.cpp" />
     <ClCompile Include="lib\Tools\randomNumbers.cpp" />
+    <ClCompile Include="lib\Tools\randomNumbers_Schrage.cpp" />
     <ClCompile Include="lib\Tools\randomNumbers_Mseries.cpp" />
     <ClCompile Include="lib\Tools\randomNumbers_MT19937.cpp" />
     <ClCompile Include="lib\Tools\randomNumbers_SFMT.cpp" />

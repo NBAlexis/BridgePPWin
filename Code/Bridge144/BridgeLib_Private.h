@@ -87,6 +87,7 @@
 #include "Tools/randomNumbers.h"
 #include "Tools/randomNumbers_Mseries.h" //Mseries is faster
 #include "Tools/randomNumbers_MT19937.h"
+#include "Tools/randomNumbers_Schrage.h"
 
 //math
 #include "Tools/math_Sign_Zolotarev.h"
