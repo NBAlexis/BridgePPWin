@@ -102,11 +102,11 @@ Director_Smear:
 GaugeFixing:
   ## gauge_fixing_type = {Coulomb,Landau,None}
   gauge_fixing_type             : Coulomb
-  maximum_number_of_iteration   : 5000
+  maximum_number_of_iteration   : 10000
   number_of_naive_iteration     : 50
-  interval_of_measurement       : 10
-  iteration_to_reset            : 1000
-  convergence_criterion_squared : 1.0e-24
+  interval_of_measurement       : 100
+  iteration_to_reset            : 2000
+  convergence_criterion_squared : 1.0e-10
   overrelaxation_parameter      : 1.6
   ## verbose_level = {Crucial,General,Detailed,Paranoiac}
   verbose_level                 : Detailed
