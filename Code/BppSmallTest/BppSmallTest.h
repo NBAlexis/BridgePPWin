@@ -19,7 +19,8 @@
 
 using Bridge::vout;
 
-#define USE_TESTMANAGER_AUTOREGISTER
+#define USE_TESTMANAGER_AUTOREGISTER 1
+#define USE_TESTMANAGER 1
 
 #include "testManager.h"
 #include "run_testmanager.h"

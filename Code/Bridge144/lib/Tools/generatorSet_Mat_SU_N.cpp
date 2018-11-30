@@ -27,7 +27,7 @@ void GeneratorSet_Mat_SU_N::setup(int Nc)
 
   m_Ta.resize(m_NcA);
   for (int ica = 0; ica < m_NcA; ++ica) {
-    m_Ta[ica] = new Mat_SU_N(m_Nc, 0.0);
+    m_Ta[ica] = new Mat_SU_N(m_Nc);
   }
 
   int k = 0;
