@@ -1,17 +1,19 @@
 /*!
-        @file    $Id:: test_RandomNumbers_Mseries_Gaussian.cpp #$
+        @file    test_RandomNumbers_Mseries_Gaussian.cpp
 
         @brief
 
         @author  Hideo Matsufuru  (matsufuru)
-                 $LastChangedBy: aoym $
+                 $LastChangedBy: aoyama $
 
-        @date    $LastChangedDate:: 2017-02-24 18:35:38 #$
+        @date    $LastChangedDate:: 2019-01-21 17:06:23 #$
 
-        @version $LastChangedRevision: 1571 $
+        @version $LastChangedRevision: 1929 $
 */
-
 #include "BppSmallTest.h"
+#include "test.h"
+
+#include "Tools/randomNumbers_Mseries.h"
 
 //====================================================================
 //! Test of random number generator.
@@ -49,18 +51,18 @@ namespace Test_RandomNumbers_Mseries {
   {
     // ####  parameter setup  ####
 
-    Parameters params_all = ParameterManager::read(filename_input);
+    const Parameters params_all = ParameterManager::read(filename_input);
 
-    Parameters params_test = params_all.lookup("Test_RandomNumbers");
+    const Parameters params_test = params_all.lookup("Test_RandomNumbers");
 
-    int          iseed      = params_test.get_int("int_seed");
-    int          Nrand      = params_test.get_int("number_of_samples");
+    const int    iseed      = params_test.get_int("int_seed");
+    const int    Nrand      = params_test.get_int("number_of_samples");
     const string str_vlevel = params_test.get_string("verbose_level");
 
     const bool   do_check        = params_test.is_set("expected_result");
     const double expected_result = do_check ? params_test.get_double("expected_result") : 0.0;
 
-    Bridge::VerboseLevel vl = vout.set_verbose_level(str_vlevel);
+    const Bridge::VerboseLevel vl = vout.set_verbose_level(str_vlevel);
 
     //- print input parameters
     vout.general(vl, "  iseed  = %d\n", iseed);
@@ -70,8 +72,8 @@ namespace Test_RandomNumbers_Mseries {
 
 
     // ####  object setup  ####
-    unique_ptr<RandomNumbers> rand(new RandomNumbers_Mseries(iseed));
-    unique_ptr<Timer>         timer(new Timer(test_name));
+    const unique_ptr<RandomNumbers> rand(new RandomNumbers_Mseries(iseed));
+    const unique_ptr<Timer>         timer(new Timer(test_name));
 
 
     // ####  Execution main part  ####
@@ -98,7 +100,7 @@ namespace Test_RandomNumbers_Mseries {
     vout.general(vl, "  variance          = %10.8f\n", vr);
     vout.general(vl, "  variance(expect)  = %10.8f\n", 1.0 / sqrt(2.0));
 
-    double result = vr;
+    const double result = vr;
 
     timer->report();
 

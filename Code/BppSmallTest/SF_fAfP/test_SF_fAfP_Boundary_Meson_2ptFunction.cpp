@@ -1,17 +1,29 @@
 /*!
-        @file    $Id:: test_SF_fAfP_Boundary_Meson_2ptFunction.cpp #$
+        @file    test_SF_fAfP_Boundary_Meson_2ptFunction.cpp
 
         @brief
 
         @author  Yusuke Taniguchi
-                 $LastChangedBy: aoym $
+                 $LastChangedBy: aoyama $
 
-        @date    $LastChangedDate:: 2017-02-24 18:35:38 #$
+        @date    $LastChangedDate:: 2019-01-21 17:06:23 #$
 
-        @version $LastChangedRevision: 1571 $
+        @version $LastChangedRevision: 1929 $
 */
-
 #include "BppSmallTest.h"
+#include "test.h"
+
+#include "Fopr/fopr_Clover_SF.h"
+#include "Fopr/fopr_Smeared.h"
+
+#include "IO/gaugeConfig.h"
+
+#include "Measurements/Fermion/corr2pt_Wilson_SF.h"
+#include "Measurements/Fermion/fprop_Standard_lex.h"
+#include "Measurements/Fermion/source_Wall_SF.h"
+
+#include "Tools/gammaMatrixSet.h"
+#include "Tools/randomNumberManager.h"
 
 //====================================================================
 
@@ -60,20 +72,20 @@ namespace Test_SF_fAfP {
   int boundary_meson_2ptFunction(void)
   {
     // #####  parameter setup  #####
-    int Nc   = CommonParameters::Nc();
-    int Nd   = CommonParameters::Nd();
-    int Ndim = CommonParameters::Ndim();
-    int Nvol = CommonParameters::Nvol();
+    const int Nc   = CommonParameters::Nc();
+    const int Nd   = CommonParameters::Nd();
+    const int Ndim = CommonParameters::Ndim();
+    const int Nvol = CommonParameters::Nvol();
 
-    Parameters params_all = ParameterManager::read(filename_input);
+    const Parameters params_all = ParameterManager::read(filename_input);
 
-    Parameters params_test     = params_all.lookup("Test_SF_fAfP");
-    Parameters params_clover   = params_all.lookup("Fopr_Clover_SF");
-    Parameters params_proj     = params_all.lookup("Projection");
-    Parameters params_smear    = params_all.lookup("Smear_SF");
-    Parameters params_dr_smear = params_all.lookup("Director_Smear");
-    Parameters params_solver   = params_all.lookup("Solver");
-    Parameters params_source   = params_all.lookup("Source_Wall_SF");
+    const Parameters params_test     = params_all.lookup("Test_SF_fAfP");
+    const Parameters params_clover   = params_all.lookup("Fopr_Clover_SF");
+    const Parameters params_proj     = params_all.lookup("Projection");
+    const Parameters params_smear    = params_all.lookup("Smear_SF");
+    const Parameters params_dr_smear = params_all.lookup("Director_Smear");
+    const Parameters params_solver   = params_all.lookup("Solver");
+    const Parameters params_source   = params_all.lookup("Source_Wall_SF");
 
     const string        str_gconf_status = params_test.get_string("gauge_config_status");
     const string        str_gconf_read   = params_test.get_string("gauge_config_type_input");
@@ -90,7 +102,7 @@ namespace Test_SF_fAfP {
     const string str_smear_type  = params_smear.get_string("smear_type");
     const string str_solver_type = params_solver.get_string("solver_type");
 
-    Bridge::VerboseLevel vl = vout.set_verbose_level(str_vlevel);
+    const Bridge::VerboseLevel vl = vout.set_verbose_level(str_vlevel);
 
     //- print input parameters
     vout.general(vl, "  gconf_status = %s\n", str_gconf_status.c_str());
@@ -142,12 +154,12 @@ namespace Test_SF_fAfP {
     dr_smear->set_parameters(params_dr_smear);
     dr_smear->set_config(U);
 
-    unique_ptr<Director_Smear> dr_smear_config(new Director_Smear(smear));
+    const unique_ptr<Director_Smear> dr_smear_config(new Director_Smear(smear));
     dr_smear_config->set_parameters(params_dr_smear);
     dr_smear_config->set_config(U);
 
-    int     Nsmear  = dr_smear_config->get_Nsmear();
-    Field_G *Usmear = (Field_G *)dr_smear_config->getptr_smearedConfig(Nsmear);
+    const int Nsmear  = dr_smear_config->get_Nsmear();
+    Field_G   *Usmear = (Field_G *)dr_smear_config->getptr_smearedConfig(Nsmear);
 
 
     // ####  object setup  #####
@@ -165,13 +177,13 @@ namespace Test_SF_fAfP {
     unique_ptr<Solver> solver(Solver::New(str_solver_type, fopr_smear));
     solver->set_parameters(params_solver);
 
-    unique_ptr<Fprop> fprop_lex(new Fprop_Standard_lex(solver));
+    const unique_ptr<Fprop> fprop_lex(new Fprop_Standard_lex(solver));
 
-    unique_ptr<Source_Wall_SF> source(new Source_Wall_SF());
+    const unique_ptr<Source_Wall_SF> source(new Source_Wall_SF());
     source->set_parameters(params_source);
     source->set_config(Usmear);
 
-    unique_ptr<Timer> timer(new Timer(test_name));
+    const unique_ptr<Timer> timer(new Timer(test_name));
 
 
     // ####  Execution main part  ####
@@ -179,10 +191,6 @@ namespace Test_SF_fAfP {
 
     std::vector<Field_F> H(Nc * Nd);
     std::vector<Field_F> Hpr(Nc * Nd);
-    Field_F              xq, b, b2;
-
-    int    Nconv;
-    double diff, diff2;
 
     vout.general(vl, "\n");
     vout.general(vl, "Solving quark propagator:\n");
@@ -190,9 +198,14 @@ namespace Test_SF_fAfP {
 
     for (int icolor = 0; icolor < Nc; ++icolor) {
       for (int ispin = 0; ispin < Nd / 2; ++ispin) {
+        Field_F b;
         source->set_t0(b, icolor, ispin);
 
         int idx = icolor + Nc * ispin;
+
+        Field_F xq;
+        int     Nconv;
+        double  diff;
         fprop_lex->invert_D(xq, b, Nconv, diff);
 
         Field_F y(b);
@@ -200,7 +213,7 @@ namespace Test_SF_fAfP {
 
         fopr_smear->mult(y, xq);  // y  = fopr_w->mult(xq);
         axpy(y, -1.0, b);         // y -= b;
-        diff2 = y.norm2();
+        double diff2 = y.norm2();
 
         vout.general(vl, "   %2d   %2d   %6d   %12.4e   %12.4e\n",
                      icolor, ispin, Nconv, diff, diff2);
@@ -211,9 +224,14 @@ namespace Test_SF_fAfP {
       }
 
       for (int ispin = Nd / 2; ispin < Nd; ++ispin) {
+        Field_F b;
         source->set_tT(b, icolor, ispin);
 
         int idx = icolor + Nc * ispin;
+
+        Field_F xq;
+        int     Nconv;
+        double  diff;
         fprop_lex->invert_D(xq, b, Nconv, diff);
 
         Field_F y(b);
@@ -221,7 +239,7 @@ namespace Test_SF_fAfP {
 
         fopr_smear->mult(y, xq);  // y  = fopr_w->mult(xq);
         axpy(y, -1.0, b);         // y -= b;
-        diff2 = y.norm2();
+        double diff2 = y.norm2();
 
         vout.general(vl, "   %2d   %2d   %6d   %12.4e   %12.4e\n",
                      icolor, ispin, Nconv, diff, diff2);
@@ -271,7 +289,7 @@ namespace Test_SF_fAfP {
     vout.general(vl, "boundary 2-point correlator with SF BC:\n");
 
     Corr2pt_Wilson_SF corr(gmset);
-    double            result = corr.fAfP(H, Hpr);
+    const double      result = corr.fAfP(H, Hpr);
 
     timer->report();
 

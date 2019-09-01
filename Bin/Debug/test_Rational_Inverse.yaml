@@ -3,7 +3,7 @@
 Test_Rational:
   ## gauge_config_status = {Continue,Cold_start,Hot_start}
   gauge_config_status      : Continue
-  ## gauge_config_type = {Text,Binary,Binary_Parallel,Fortran_JLQCD,Fortran_ILDG,ILDG,ILDG_Parallel}
+  ## gauge_config_type = {Text,Binary,Binary_Distributed,Binary_Parallel,Fortran_JLQCD,Fortran_ILDG,ILDG,ILDG_Parallel}
   gauge_config_type_input : Text
   config_filename_input   : ./conf_04040408.txt
   ## random_number_type = {Mseries,MT19937,SFMT} NB. SFMT is an extra library
@@ -34,7 +34,7 @@ Fopr_Clover:
   verbose_level      : General
 
 Source:
-  ## source_type = {Local,Exponential,MomentumWall,Wall}
+  ## source_type = {Local,Exponential,MomentumWall,Random,Wall}
   source_type     : Local
   ## source_position = [x,y,z,t], x = {0,...,Lx-1}
   source_position : [0,0,0,0]
@@ -43,5 +43,8 @@ Source:
   power           : 2.0
   ## additional parameters for MomentumWall, source_momentum = [nx,ny,nz,nt], p = (2 \pi / L) n
   source_momentum : [1,1,1, 0]
+  ## additional parameters for Random
+  ## noise_type = {Gaussian,U1,Z2}
+  noise_type      : Z2
   ## verbose_level = {Crucial,General,Detailed,Paranoiac}
   verbose_level   : General

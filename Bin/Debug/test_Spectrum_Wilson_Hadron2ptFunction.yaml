@@ -3,7 +3,7 @@
 Test_Spectrum:
   ## gauge_config_status = {Continue,Cold_start,Hot_start}
   gauge_config_status      : Continue
-  ## gauge_config_type = {Text,Binary,Binary_Parallel,Fortran_JLQCD,Fortran_ILDG,ILDG,ILDG_Parallel}
+  ## gauge_config_type = {Text,Binary,Binary_Distributed,Binary_Parallel,Fortran_JLQCD,Fortran_ILDG,ILDG,ILDG_Parallel}
   gauge_config_type_input  : Text
   config_filename_input    : ./conf_04040408.txt
   ## random_number_type = {Mseries,MT19937,SFMT} NB. SFMT is an extra library
@@ -29,7 +29,7 @@ Fopr:
   verbose_level      : General
 
 Source:
-  ## source_type = {Local,Exponential,MomentumWall,Wall}
+  ## source_type = {Local,Exponential,MomentumWall,Random,Wall}
   source_type     : Local
   ## source_position = [x,y,z,t], x = {0,...,Lx-1}
   source_position : [0,0,0,0]
@@ -38,6 +38,9 @@ Source:
   power           : 2.0
   ## additional parameters for MomentumWall, source_momentum = [nx,ny,nz,nt], p = (2 \pi / L) n
   source_momentum : [1,1,1, 0]
+  ## additional parameters for Random
+  ## noise_type = {Gaussian,U1,Z2}
+  noise_type      : Z2
   ## verbose_level = {Crucial,General,Detailed,Paranoiac}
   verbose_level   : General
 
@@ -58,7 +61,10 @@ Solver:
   solver_type                         : CGNE
   maximum_number_of_iteration         : 100
   maximum_number_of_restart           : 40
-  convergence_criterion_squared       : 1.0e-24
+  convergence_criterion_squared       : 1.0e-28
+  use_initial_guess                   : false
+  ## additional parameters for BiCGStab series
+  Omega_tolerance                     : 0.7
   ## additional parameters for each solver
   number_of_orthonormal_vectors       : 2
   tolerance_for_DynamicSelection_of_L : 0.1

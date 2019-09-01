@@ -1,17 +1,25 @@
 /*!
-        @file    $Id: test_TopologicalCharge.cpp #$
+        @file    test_TopologicalCharge.cpp
 
         @brief
 
         @author  Yusuke Namekawa  (namekawa)
-                 $LastChangedBy: aoym $
+                 $LastChangedBy: aoyama $
 
         @date    $LastChangedDate: 2013-01-22 13:51:53 #$
 
-        @version $LastChangedRevision: 1571 $
+        @version $LastChangedRevision: 1929 $
 */
-
 #include "BppSmallTest.h"
+#include "test.h"
+
+#include "IO/gaugeConfig.h"
+
+#include "Measurements/Gauge/topologicalCharge.h"
+
+#include "Smear/smear.h"
+
+#include "Tools/randomNumberManager.h"
 
 //====================================================================
 //! Test of Topological Charge measurement.
@@ -52,15 +60,15 @@ namespace Test_TopologicalCharge {
   int topological_charge(void)
   {
     // ####  parameter setup  ####
-    int Nvol = CommonParameters::Nvol();
-    int Ndim = CommonParameters::Ndim();
+    const int Nvol = CommonParameters::Nvol();
+    const int Ndim = CommonParameters::Ndim();
 
-    Parameters params_all = ParameterManager::read(filename_input);
+    const Parameters params_all = ParameterManager::read(filename_input);
 
-    Parameters params_test  = params_all.lookup("Test_TopologicalCharge");
-    Parameters params_topo  = params_all.lookup("TopologicalCharge");
-    Parameters params_proj  = params_all.lookup("Projection");
-    Parameters params_smear = params_all.lookup("Smear");
+    const Parameters params_test  = params_all.lookup("Test_TopologicalCharge");
+    const Parameters params_topo  = params_all.lookup("TopologicalCharge");
+    const Parameters params_proj  = params_all.lookup("Projection");
+    const Parameters params_smear = params_all.lookup("Smear");
 
     const string        str_gconf_status = params_test.get_string("gauge_config_status");
     const string        str_gconf_read   = params_test.get_string("gauge_config_type_input");
@@ -77,7 +85,7 @@ namespace Test_TopologicalCharge {
     const string str_proj_type  = params_proj.get_string("projection_type");
     const string str_smear_type = params_smear.get_string("smear_type");
 
-    Bridge::VerboseLevel vl = vout.set_verbose_level(str_vlevel);
+    const Bridge::VerboseLevel vl = vout.set_verbose_level(str_vlevel);
 
     //- print input parameters
     vout.general(vl, "  gconf_status = %s\n", str_gconf_status.c_str());
@@ -121,27 +129,28 @@ namespace Test_TopologicalCharge {
 
 
     // #### object setup #####
-    unique_ptr<TopologicalCharge> topological_charge(new TopologicalCharge());
+    const unique_ptr<TopologicalCharge> topological_charge(new TopologicalCharge());
     topological_charge->set_parameters(params_topo);
 
     unique_ptr<Projection> proj(Projection::New(str_proj_type));
     proj->set_parameters(params_proj);
 
-    unique_ptr<Smear> smear(Smear::New(str_smear_type, proj));
+    const unique_ptr<Smear> smear(Smear::New(str_smear_type, proj));
     smear->set_parameters(params_smear);
 
-    unique_ptr<Timer> timer(new Timer(test_name));
+    const unique_ptr<Timer> timer(new Timer(test_name));
 
 
     // ####  Execution main part  ####
     timer->start();
 
-    Field_G Uorg(Nvol, Ndim), Usmear(Nvol, Ndim);
-    Uorg   = *U;
-    Usmear = *U;
+    Field_G Uorg(Nvol, Ndim);
+    Uorg = *U;
 
     double result = 0.0;
     for (int i_smear = 0; i_smear <= Nsmear; ++i_smear) {
+      Field_G Usmear(Nvol, Ndim);
+      if (i_smear == 0) copy(Usmear, Uorg);
       if (i_smear > 0) smear->smear(Usmear, Uorg);
 
       if ((i_smear % Nmeas) == 0) {

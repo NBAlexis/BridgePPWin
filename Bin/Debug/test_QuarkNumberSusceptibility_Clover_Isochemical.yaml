@@ -3,7 +3,7 @@
 Test_QuarkNumSuscept_Clover_Isochemical:
   ## gauge_config_status = {Continue,Cold_start,Hot_start}
   gauge_config_status      : Continue
-  ## gauge_config_type = {Text,Binary,Binary_Parallel,Fortran_JLQCD,Fortran_ILDG,ILDG,ILDG_Parallel}
+  ## gauge_config_type = {Text,Binary,Binary_Distributed,Binary_Parallel,Fortran_JLQCD,Fortran_ILDG,ILDG,ILDG_Parallel}
   gauge_config_type_input  : Text
   config_filename_input    : ./conf_04040408.txt
   ## random_number_type = {Mseries,MT19937,SFMT} NB. SFMT is an extra library
@@ -53,6 +53,9 @@ Solver:
   maximum_number_of_iteration         : 100
   maximum_number_of_restart           : 40
   convergence_criterion_squared       : 1.0e-28
+  use_initial_guess                   : false
+  ## additional parameters for BiCGStab series
+  Omega_tolerance                     : 0.60
   ## additional parameters for each solver
   number_of_orthonormal_vectors       : 2
   tolerance_for_DynamicSelection_of_L : 0.1

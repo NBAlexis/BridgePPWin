@@ -1,17 +1,27 @@
 /*!
-        @file    $Id:: test_Spectrum_Wilson_2ptFunction.cpp #$
+        @file    test_Spectrum_Wilson_2ptFunction.cpp
 
         @brief
 
         @author  UEDA, Satoru  (sueda)
-                 $LastChangedBy: aoym $
+                 $LastChangedBy: aoyama $
 
-        @date    $LastChangedDate:: 2017-02-24 18:35:38 #$
+        @date    $LastChangedDate:: 2019-01-21 17:06:23 #$
 
-        @version $LastChangedRevision: 1571 $
+        @version $LastChangedRevision: 1929 $
 */
-
 #include "BppSmallTest.h"
+#include "test.h"
+
+#include "IO/gaugeConfig.h"
+
+#include "Measurements/Fermion/corr2pt_4spinor.h"
+#include "Measurements/Fermion/fprop_Standard_lex.h"
+#include "Measurements/Fermion/source.h"
+#include "Measurements/Gauge/gaugeFixing.h"
+
+#include "Tools/gammaMatrixSet.h"
+#include "Tools/randomNumberManager.h"
 
 //====================================================================
 //! Test of Spectrum with Wilson fermion, prepared for beginners.
@@ -54,18 +64,18 @@ namespace Test_Spectrum_Wilson {
   int hadron_2ptFunction(void)
   {
     // ####  parameter setup  ####
-    int Nc   = CommonParameters::Nc();
-    int Nd   = CommonParameters::Nd();
-    int Ndim = CommonParameters::Ndim();
-    int Nvol = CommonParameters::Nvol();
+    const int Nc   = CommonParameters::Nc();
+    const int Nd   = CommonParameters::Nd();
+    const int Ndim = CommonParameters::Ndim();
+    const int Nvol = CommonParameters::Nvol();
 
-    Parameters params_all = ParameterManager::read(filename_input);
+    const Parameters params_all = ParameterManager::read(filename_input);
 
-    Parameters params_test   = params_all.lookup("Test_Spectrum");
-    Parameters params_gfix   = params_all.lookup("GaugeFixing");
-    Parameters params_fopr   = params_all.lookup("Fopr");
-    Parameters params_solver = params_all.lookup("Solver");
-    Parameters params_source = params_all.lookup("Source");
+    const Parameters params_test   = params_all.lookup("Test_Spectrum");
+    const Parameters params_gfix   = params_all.lookup("GaugeFixing");
+    const Parameters params_fopr   = params_all.lookup("Fopr");
+    const Parameters params_solver = params_all.lookup("Solver");
+    const Parameters params_source = params_all.lookup("Source");
 
     const string        str_gconf_status = params_test.get_string("gauge_config_status");
     const string        str_gconf_read   = params_test.get_string("gauge_config_type_input");
@@ -83,7 +93,7 @@ namespace Test_Spectrum_Wilson {
     const string str_solver_type = params_solver.get_string("solver_type");
     const string str_source_type = params_source.get_string("source_type");
 
-    Bridge::VerboseLevel vl = vout.set_verbose_level(str_vlevel);
+    const Bridge::VerboseLevel vl = vout.set_verbose_level(str_vlevel);
 
     //- print input parameters
     vout.general(vl, "  gconf_status = %s\n", str_gconf_status.c_str());
@@ -130,13 +140,15 @@ namespace Test_Spectrum_Wilson {
 
 
     // ####  Gauge fixing  ####
-    unique_ptr<Field_G>     Ufix(new Field_G(Nvol, Ndim));
-    unique_ptr<GaugeFixing> gfix(GaugeFixing::New(str_gfix_type));
-    gfix->set_parameters(params_gfix);
+    {
+      unique_ptr<Field_G>           Ufix(new Field_G(Nvol, Ndim));
+      const unique_ptr<GaugeFixing> gfix(GaugeFixing::New(str_gfix_type));
+      gfix->set_parameters(params_gfix);
 
-    gfix->fix(*Ufix, *U);
+      gfix->fix(*Ufix, *U);
 
-    copy(*U, *Ufix);
+      copy(*U, *Ufix);
+    }
 
 
     // ####  object setup  #####
@@ -149,30 +161,24 @@ namespace Test_Spectrum_Wilson {
     unique_ptr<Solver> solver(Solver::New(str_solver_type, fopr));
     solver->set_parameters(params_solver);
 
-    unique_ptr<Fprop> fprop_lex(new Fprop_Standard_lex(solver));
+    const unique_ptr<Fprop> fprop_lex(new Fprop_Standard_lex(solver));
 
-    unique_ptr<Source> source(Source::New(str_source_type));
+    const unique_ptr<Source> source(Source::New(str_source_type));
     source->set_parameters(params_source);
-
-    unique_ptr<Timer> timer(new Timer(test_name));
 
     Corr2pt_4spinor corr(gmset);
     corr.set_parameters(params_all.lookup("Corr2pt_4spinor"));
+
+    const unique_ptr<Timer> timer(new Timer(test_name));
 
 
     // ####  Execution main part  ####
     timer->start();
 
     std::vector<Field_F> sq(Nc * Nd);
-    for (int i = 0; i < Nc * Nd; ++i) {
-      sq[i].set(0.0);
+    for (int i_cd = 0; i_cd < Nc * Nd; ++i_cd) {
+      sq[i_cd].set(0.0);
     }
-
-    Field_F b;
-    b.set(0.0);
-
-    int    Nconv;
-    double diff;
 
     vout.general(vl, "\n");
     vout.general(vl, "Solving quark propagator:\n");
@@ -180,14 +186,18 @@ namespace Test_Spectrum_Wilson {
 
     for (int ispin = 0; ispin < Nd; ++ispin) {
       for (int icolor = 0; icolor < Nc; ++icolor) {
-        int idx = icolor + Nc * ispin;
-        source->set(b, idx);
+        int i_cd = icolor + Nc * ispin;
 
-        fprop_lex->invert_D(sq[idx], b, Nconv, diff);
+        Field_F b;  // b.set(0.0);
+        source->set(b, i_cd);
+
+        int    Nconv;
+        double diff;
+        fprop_lex->invert_D(sq[i_cd], b, Nconv, diff);
 
         Field_F y(b);
         fopr->set_mode("D");
-        fopr->mult(y, sq[idx]);  // y  = fopr->mult(sq[idx]);
+        fopr->mult(y, sq[i_cd]); // y  = fopr->mult(sq[i_cd]);
         axpy(y, -1.0, b);        // y -= b;
         double diff2 = y.norm2() / b.norm2();
 
@@ -200,7 +210,7 @@ namespace Test_Spectrum_Wilson {
     vout.general(vl, "\n");
     vout.general(vl, "2-point correlator:\n");
 
-    double result = corr.meson_all(sq, sq);
+    const double result = corr.meson_all(sq, sq);
 
     timer->report();
 

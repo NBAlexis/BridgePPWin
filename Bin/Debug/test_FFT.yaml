@@ -1,6 +1,9 @@
 # this is a sample parameter file
 
 Test_FFT:
+  ## random_number_type = {Mseries,MT19937,SFMT} NB. SFMT is an extra library
+  random_number_type       : Mseries
+  seed_for_random_number   : 1234567UL
   ## verbose_level = {Crucial,General,Detailed,Paranoiac}
   verbose_level   : General
   expected_result : 1.0
@@ -14,7 +17,7 @@ FFT:
   verbose_level : General
 
 Source:
-  ## source_type = {Local,Exponential,MomentumWall,Wall}
+  ## source_type = {Local,Exponential,MomentumWall,Random,Wall}
   source_type     : Wall
   ## source_position = [x,y,z,t], x = {0,...,Lx-1}
   source_position : [0,0,0,0]
@@ -23,5 +26,8 @@ Source:
   power           : 2.0
   ## additional parameters for MomentumWall, source_momentum = [nx,ny,nz,nt], p = (2 \pi / L) n
   source_momentum : [1,1,1, 0]
+  ## additional parameters for Random
+  ## noise_type = {Gaussian,U1,Z2}
+  noise_type      : Z2
   ## verbose_level = {Crucial,General,Detailed,Paranoiac}
   verbose_level   : General

@@ -1,17 +1,26 @@
 /*!
-        @file    $Id: test_Eigensolver_Clover_SF.cpp #$
+        @file    test_Eigensolver_Clover_SF.cpp
 
         @brief
 
         @author  Hideo Matsufuru  (matsufuru)
-                 $LastChangedBy: aoym $
+                 $LastChangedBy: aoyama $
 
         @date    $LastChangedDate: 2013-01-22 13:51:53 #$
 
-        @version $LastChangedRevision: 1571 $
+        @version $LastChangedRevision: 1929 $
 */
-
 #include "BppSmallTest.h"
+#include "test.h"
+
+#include "Eigen/eigensolver_IRLanczos.h"
+
+#include "Fopr/fopr_Clover_SF.h"
+#include "Fopr/fopr_Smeared.h"
+
+#include "IO/gaugeConfig.h"
+
+#include "Tools/randomNumberManager.h"
 
 //====================================================================
 //! Test of eigenvalue solver.
@@ -55,17 +64,17 @@ namespace Test_Eigensolver_Clover_SF {
   int solve_SF(void)
   {
     // #####  parameter setup  #####
-    int Ndim = CommonParameters::Ndim();
-    int Nvol = CommonParameters::Nvol();
+    const int Ndim = CommonParameters::Ndim();
+    const int Nvol = CommonParameters::Nvol();
 
-    Parameters params_all = ParameterManager::read(filename_input);
+    const Parameters params_all = ParameterManager::read(filename_input);
 
-    Parameters params_test      = params_all.lookup("Test_Eigensolver");
-    Parameters params_fopr      = params_all.lookup("Fopr");
-    Parameters params_proj      = params_all.lookup("Projection");
-    Parameters params_smear     = params_all.lookup("Smear_SF");
-    Parameters params_dr_smear  = params_all.lookup("Director_Smear");
-    Parameters params_irlanczos = params_all.lookup("Eigensolver");
+    const Parameters params_test      = params_all.lookup("Test_Eigensolver");
+    const Parameters params_fopr      = params_all.lookup("Fopr");
+    const Parameters params_proj      = params_all.lookup("Projection");
+    const Parameters params_smear     = params_all.lookup("Smear_SF");
+    const Parameters params_dr_smear  = params_all.lookup("Director_Smear");
+    const Parameters params_irlanczos = params_all.lookup("Eigensolver");
 
     const string        str_gconf_status = params_test.get_string("gauge_config_status");
     const string        str_gconf_read   = params_test.get_string("gauge_config_type_input");
@@ -84,7 +93,7 @@ namespace Test_Eigensolver_Clover_SF {
     const int    Nk = params_irlanczos.get_int("number_of_wanted_eigenvectors");
     const int    Np = params_irlanczos.get_int("number_of_working_eigenvectors");
 
-    Bridge::VerboseLevel vl = vout.set_verbose_level(str_vlevel);
+    const Bridge::VerboseLevel vl = vout.set_verbose_level(str_vlevel);
 
     //- print input parameters
     vout.general(vl, "  gconf_status   = %s\n", str_gconf_status.c_str());
@@ -146,23 +155,24 @@ namespace Test_Eigensolver_Clover_SF {
     fopr_smear->set_config(U);
     fopr_smear->set_mode("H");
 
-    unique_ptr<Eigensolver> eigen(new Eigensolver_IRLanczos(fopr_smear));
+    const unique_ptr<Eigensolver> eigen(new Eigensolver_IRLanczos(fopr_smear));
     eigen->set_parameters(params_irlanczos);
 
-    unique_ptr<Timer> timer(new Timer(test_name));
+    const unique_ptr<Timer> timer(new Timer(test_name));
 
 
     // ####  Execution main part  ####
     timer->start();
 
-    int                 Nm = Nk + Np;
-    std::vector<double> TDa(Nm);
-    std::vector<Field>  vk(Nm);
+    Field_F   b2;
+    const int NFin  = b2.nin();
+    const int NFvol = b2.nvol();
+    const int NFex  = b2.nex();
 
-    Field_F b2;
-    int     NFin  = b2.nin();
-    int     NFvol = b2.nvol();
-    int     NFex  = b2.nex();
+    const int           Nm = Nk + Np;
+    std::vector<double> TDa(Nm);
+
+    std::vector<Field> vk(Nm);
     for (int k = 0; k < Nm; ++k) {
       vk[k].reset(NFin, NFvol, NFex);
     }
@@ -171,19 +181,17 @@ namespace Test_Eigensolver_Clover_SF {
     int Nconv = -100;
     eigen->solve(TDa, vk, Nsbt, Nconv, (Field)b2);
 
-    Field v;
-    v.reset(NFin, NFvol, NFex);
-    double vv = 0.0;  // superficial initialization
-
     for (int i = 0; i < Nsbt + 1; ++i) {
+      Field v(NFin, NFvol, NFex);
+
       fopr_smear->mult(v, vk[i]);
       axpy(v, -TDa[i], vk[i]);  // v -= TDa[i] * vk[i];
-      vv = v.norm2();           // vv = v * v;
+      double vv = v.norm2();    // vv = v * v;
 
       vout.general(vl, "Eigenvalues: %4d %20.14f %20.15e \n", i, TDa[i], vv);
     }
 
-    double result = TDa[0];
+    const double result = TDa[0];
 
     timer->report();
 

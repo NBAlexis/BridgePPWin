@@ -1,17 +1,20 @@
 /*!
-        @file    $Id: test_Spectrum_CRSMatrix_CRSsolver.cpp #$
+        @file    test_Spectrum_CRSMatrix_CRSsolver.cpp
 
         @brief
 
         @author  Hideo Matsufuru  (matsufuru)
-                 $LastChangedBy: aoym $
+                 $LastChangedBy: aoyama $
 
         @date    $LastChangedDate: 2013-01-22 22:08:29 #$
 
-        @version $LastChangedRevision: 1561 $
+        @version $LastChangedRevision: 1929 $
 */
-
 #include "BppSmallTest.h"
+#include "test.h"
+
+#include "Fopr/fopr_CRS.h"
+#include "Solver/solver_CG.h"
 
 //====================================================================
 //     // clover set
@@ -42,14 +45,16 @@ namespace Test_Spectrum_CRSMatrix
     double& result       /* return value */
     )
   {
-    Bridge::VerboseLevel vl = CommonParameters::Vlevel();
+    const Bridge::VerboseLevel vl = CommonParameters::Vlevel();
 
     // #####  Following part is common  #####
 
     // read source and solution vectors
-    Field b, xq;
+    Field b;
 
     read_text(b, source);
+
+    Field xq;
     read_text(xq, solution);
 
     // read CRS matrix
@@ -57,20 +62,19 @@ namespace Test_Spectrum_CRSMatrix
 
 
     // setup of CG solver
-    int                Niter     = 100;
-    int                Nrestart  = 40;
-    double             Stop_cond = 1.0e-28;
-    unique_ptr<Solver> solver(new Solver_CG(fopr_crs));
+    const int                Niter     = 100;
+    const int                Nrestart  = 40;
+    const double             Stop_cond = 1.0e-28;
+    const unique_ptr<Solver> solver(new Solver_CG(fopr_crs));
     solver->set_parameters(Niter, Nrestart, Stop_cond);
 
-    Field b2(b);
-    Field x(b);
-
     // setup of CGNE source
+    Field b2(b);
     fopr_crs->set_mode("D");
     fopr_crs->mult_dag(b2, b);
 
     // CGNE solver
+    Field  x(b);
     int    Nconv;
     double diff;
     fopr_crs->set_mode("DdagD");
@@ -79,7 +83,7 @@ namespace Test_Spectrum_CRSMatrix
 
     // check
     axpy(x, -1.0, xq);
-    double xx = x.norm2();
+    const double xx = x.norm2();
     vout.general(vl, "standard norm2 = %.8e\n", xx);
 
     result = xx;

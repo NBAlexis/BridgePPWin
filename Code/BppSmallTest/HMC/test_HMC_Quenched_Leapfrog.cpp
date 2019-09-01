@@ -1,17 +1,27 @@
 /*!
-        @file    $Id: test_HMC_Quenched_Leapfrog.cpp #$
+        @file    test_HMC_Quenched_Leapfrog.cpp
 
         @brief
 
         @author  Hideo Matsufuru  (matsufuru)
-                 $LastChangedBy: aoym $
+                 $LastChangedBy: aoyama $
 
         @date    $LastChangedDate: 2013-04-27 12:28:50 #$
 
-        @version $LastChangedRevision: 1571 $
+        @version $LastChangedRevision: 1929 $
 */
-
 #include "BppSmallTest.h"
+#include "test.h"
+
+#include "Action/action.h"
+
+#include "HMC/hmc_Leapfrog.h"
+
+#include "IO/gaugeConfig.h"
+
+#include "Tools/file_utils.h"
+#include "Tools/randomNumberManager.h"
+#include "Tools/randomNumbers_Mseries.h"
 
 //====================================================================
 //! Test of quenched HMC update.
@@ -53,15 +63,15 @@ namespace Test_HMC_Quenched {
   int leapfrog_Nf0(void)
   {
     // ####  parameter setup  ####
-    int Nc   = CommonParameters::Nc();
-    int Nvol = CommonParameters::Nvol();
-    int Ndim = CommonParameters::Ndim();
+    const int Nc   = CommonParameters::Nc();
+    const int Nvol = CommonParameters::Nvol();
+    const int Ndim = CommonParameters::Ndim();
 
-    Parameters params_all = ParameterManager::read(filename_input);
+    const Parameters params_all = ParameterManager::read(filename_input);
 
-    Parameters params_test     = params_all.lookup("Test_HMC_Quenched");
-    Parameters params_action_G = params_all.lookup("Action_G");
-    Parameters params_hmc      = params_all.lookup("HMC_Leapfrog");
+    const Parameters params_test     = params_all.lookup("Test_HMC_Quenched");
+    const Parameters params_action_G = params_all.lookup("Action_G");
+    const Parameters params_hmc      = params_all.lookup("HMC_Leapfrog");
 
     const string        str_gconf_status = params_test.get_string("gauge_config_status");
     const string        str_gconf_read   = params_test.get_string("gauge_config_type_input");
@@ -71,7 +81,7 @@ namespace Test_HMC_Quenched {
     const string        str_rand_type    = params_test.get_string("random_number_type");
     const unsigned long seed             = params_test.get_unsigned_long("seed_for_random_number");
     int                 i_conf           = params_test.get_int("trajectory_number");
-    int                 Ntraj            = params_test.get_int("trajectory_number_step");
+    const int           Ntraj            = params_test.get_int("trajectory_number_step");
     const int           i_save_conf      = params_test.get_int("save_config_interval");
     const string        str_vlevel       = params_test.get_string("verbose_level");
 
@@ -80,7 +90,7 @@ namespace Test_HMC_Quenched {
 
     const string str_action_G_type = params_action_G.get_string("action_type");
 
-    Bridge::VerboseLevel vl = vout.set_verbose_level(str_vlevel);
+    const Bridge::VerboseLevel vl = vout.set_verbose_level(str_vlevel);
 
     //- print input parameters
     vout.general(vl, "  gconf_status = %s\n", str_gconf_status.c_str());
@@ -126,7 +136,7 @@ namespace Test_HMC_Quenched {
       exit(EXIT_FAILURE);
     }
 
-    unique_ptr<GaugeConfig> gconf_write(new GaugeConfig(str_gconf_write));
+    const unique_ptr<GaugeConfig> gconf_write(new GaugeConfig(str_gconf_write));
 
 
     unique_ptr<Action> action_G(Action::New(str_action_G_type));
@@ -140,7 +150,7 @@ namespace Test_HMC_Quenched {
     HMC_Leapfrog hmc(actions, rand);
     hmc.set_parameters(params_hmc);
 
-    unique_ptr<Timer> timer(new Timer(test_name));
+    const unique_ptr<Timer> timer(new Timer(test_name));
 
 
     // ####  Execution main part  ####

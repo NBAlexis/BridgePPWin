@@ -1,0 +1,1382 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="bridge_complex.h" />
+    <ClInclude Include="bridge_defs.h" />
+    <ClInclude Include="bridge_long.h" />
+    <ClInclude Include="BridgeLib.h" />
+    <ClInclude Include="BridgeLib_Private.h" />
+    <ClInclude Include="BridgeLibSetup.h" />
+    <ClInclude Include="configure.h" />
+    <ClInclude Include="lib\bridge_init_factory.h" />
+    <ClInclude Include="lib\bridge_setup.h" />
+    <ClInclude Include="lib\Parameters\commonParameters.h">
+      <Filter>Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Parameters\parameterCheck.h">
+      <Filter>Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Parameters\parameterManager.h">
+      <Filter>Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Parameters\parameterManager_XML.h">
+      <Filter>Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Parameters\parameterManager_YAML.h">
+      <Filter>Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Parameters\parameters.h">
+      <Filter>Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\IO\bridgeIO.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\IO\dataIO.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\IO\dataIO_Text.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\IO\dataIO_Text_impl.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\IO\fieldIO.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\IO\fieldIO_Binary.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\IO\fieldIO_Binary_Distributed.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\IO\fieldIO_Binary_Parallel.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\IO\fieldIO_Fortran.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\IO\fieldIO_LIME.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\IO\fieldIO_LIME_Parallel.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\IO\fieldIO_None.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\IO\fieldIO_Text.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\IO\fieldIO_Text_4x4x4x8.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\IO\gaugeConfig.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\IO\gaugeConfig_SF.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\IO\io_format.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\IO\io_format_gauge.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Parameters\tinyxml2.h">
+      <Filter>Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Communicator\communicator.h">
+      <Filter>Communicator</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Communicator\Single\channel.h">
+      <Filter>Communicator\Single</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Communicator\MPI\channel.h">
+      <Filter>Communicator\MPI</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Communicator\MPI\communicator_mpi.h">
+      <Filter>Communicator\MPI</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Communicator\MPI\layout.h">
+      <Filter>Communicator\MPI</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Tools\decompose_Hessenberg_Cmplx.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Tools\decompose_LU_Cmplx.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Tools\decompose_LUP_Cmplx.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Tools\decompose_QR_Cmplx.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Tools\director.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Tools\eigen_QR_Cmplx.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Tools\epsilonTensor.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Tools\evalexpr.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Tools\evalexpr_global.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Tools\evalexpr_parser.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Tools\evalexpr_symbol.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Tools\factory.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Tools\file_utils.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Tools\gammaMatrix.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Tools\gammaMatrixSet.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Tools\gammaMatrixSet_Chiral.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Tools\gammaMatrixSet_Dirac.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Tools\generatorSet_Mat_SU_N.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Tools\location.hh">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Tools\mat_SU_N.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Tools\math_Rational.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Tools\position.hh">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Tools\randomNumberManager.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Tools\randomNumbers.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Tools\randomNumbers_Mseries.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Tools\randomNumbers_MT19937.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Tools\randomNumbers_SFMT.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Tools\sorter.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Tools\stack.hh">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Tools\timer.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Tools\unique_pointer.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Tools\vec_SU_N.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\ResourceManager\threadManager_OpenMP.h">
+      <Filter>ResourceManager</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Tools\math_Sign_Zolotarev.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Field\field.h">
+      <Filter>Field</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Field\field_F.h">
+      <Filter>Field</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Field\field_F_SF.h">
+      <Filter>Field</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Field\field_G.h">
+      <Filter>Field</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Field\field_G_SF.h">
+      <Filter>Field</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Field\index_eo.h">
+      <Filter>Field</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Field\index_lex.h">
+      <Filter>Field</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Field\shiftField_eo.h">
+      <Filter>Field</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Field\shiftField_lex.h">
+      <Filter>Field</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Field\Imp\field_F_imp_SU_N-inc.h">
+      <Filter>Field\Imp</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Field\Imp\field_F_imp_SU2-inc.h">
+      <Filter>Field\Imp</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Field\Imp\field_F_imp_SU3-inc.h">
+      <Filter>Field\Imp</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Field\Imp\field_G_imp_SU_N-inc.h">
+      <Filter>Field\Imp</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Field\Imp\field_G_imp_SU2-inc.h">
+      <Filter>Field\Imp</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Field\Imp\field_G_imp_SU3-inc.h">
+      <Filter>Field\Imp</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Fopr\fopr.h">
+      <Filter>Fopr</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Fopr\fopr_Chebyshev.h">
+      <Filter>Fopr</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Fopr\fopr_Clover.h">
+      <Filter>Fopr</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Fopr\fopr_Clover_eo.h">
+      <Filter>Fopr</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Fopr\fopr_Clover_Isochemical.h">
+      <Filter>Fopr</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Fopr\fopr_Clover_SF.h">
+      <Filter>Fopr</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Fopr\fopr_CloverGeneral.h">
+      <Filter>Fopr</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Fopr\fopr_CloverTerm.h">
+      <Filter>Fopr</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Fopr\fopr_CloverTerm_eo.h">
+      <Filter>Fopr</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Fopr\fopr_CloverTerm_General.h">
+      <Filter>Fopr</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Fopr\fopr_CRS.h">
+      <Filter>Fopr</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Fopr\fopr_eo.h">
+      <Filter>Fopr</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Fopr\fopr_Rational.h">
+      <Filter>Fopr</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Fopr\fopr_Rational_SF.h">
+      <Filter>Fopr</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Fopr\fopr_Smeared.h">
+      <Filter>Fopr</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Fopr\fopr_Smeared_eo.h">
+      <Filter>Fopr</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Fopr\fopr_Wilson.h">
+      <Filter>Fopr</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Fopr\fopr_Wilson_eo.h">
+      <Filter>Fopr</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Fopr\fopr_Wilson_Isochemical.h">
+      <Filter>Fopr</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Fopr\fopr_Wilson_SF.h">
+      <Filter>Fopr</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Fopr\fopr_WilsonGeneral.h">
+      <Filter>Fopr</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Fopr\Org\fopr_CloverTerm_eo_impl.h">
+      <Filter>Fopr\Org</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Fopr\Org\fopr_CloverTerm_General_impl.h">
+      <Filter>Fopr\Org</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Fopr\Org\fopr_CloverTerm_impl.h">
+      <Filter>Fopr\Org</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Fopr\Org\fopr_Wilson_eo_impl.h">
+      <Filter>Fopr\Org</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Fopr\Org\fopr_Wilson_impl.h">
+      <Filter>Fopr\Org</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Fopr\Org\fopr_WilsonGeneral_impl.h">
+      <Filter>Fopr\Org</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Fopr\Imp\fopr_CloverTerm_eo_impl.h">
+      <Filter>Fopr\Imp</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Fopr\Imp\fopr_CloverTerm_General_impl.h">
+      <Filter>Fopr\Imp</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Fopr\Imp\fopr_CloverTerm_impl.h">
+      <Filter>Fopr\Imp</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Fopr\Imp\fopr_Wilson_eo_impl.h">
+      <Filter>Fopr\Imp</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Fopr\Imp\fopr_Wilson_impl.h">
+      <Filter>Fopr\Imp</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Fopr\Imp\fopr_Wilson_impl_SU_N-inc.h">
+      <Filter>Fopr\Imp</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Fopr\Imp\fopr_Wilson_impl_SU2-inc.h">
+      <Filter>Fopr\Imp</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Fopr\Imp\fopr_Wilson_impl_SU3-inc.h">
+      <Filter>Fopr\Imp</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Fopr\Imp\fopr_WilsonGeneral_impl.h">
+      <Filter>Fopr\Imp</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Solver\shiftsolver.h">
+      <Filter>Solver</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Solver\shiftsolver_CG.h">
+      <Filter>Solver</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Solver\solver.h">
+      <Filter>Solver</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Solver\solver_BiCGStab_Cmplx.h">
+      <Filter>Solver</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Solver\solver_BiCGStab_DS_L_Cmplx.h">
+      <Filter>Solver</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Solver\solver_BiCGStab_IDS_L_Cmplx.h">
+      <Filter>Solver</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Solver\solver_BiCGStab_L_Cmplx.h">
+      <Filter>Solver</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Solver\solver_CG.h">
+      <Filter>Solver</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Solver\solver_CGNE.h">
+      <Filter>Solver</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Solver\solver_CGNR.h">
+      <Filter>Solver</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Solver\solver_GMRES_m_Cmplx.h">
+      <Filter>Solver</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Eigen\eigensolver.h">
+      <Filter>Eigen</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Eigen\eigensolver_IRLanczos.h">
+      <Filter>Eigen</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Measurements\Gauge\energyDensity.h">
+      <Filter>Measurements\Gauge</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Measurements\Gauge\energyMomentumTensor.h">
+      <Filter>Measurements\Gauge</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Measurements\Gauge\fieldStrength.h">
+      <Filter>Measurements\Gauge</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Measurements\Gauge\gaugeFixing.h">
+      <Filter>Measurements\Gauge</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Measurements\Gauge\gaugeFixing_Coulomb.h">
+      <Filter>Measurements\Gauge</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Measurements\Gauge\gaugeFixing_Landau.h">
+      <Filter>Measurements\Gauge</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Measurements\Gauge\gaugeFixing_None.h">
+      <Filter>Measurements\Gauge</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Measurements\Gauge\gradientFlow.h">
+      <Filter>Measurements\Gauge</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Measurements\Gauge\gradientFlow_AdaptiveRungeKutta.h">
+      <Filter>Measurements\Gauge</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Measurements\Gauge\gradientFlow_RungeKutta.h">
+      <Filter>Measurements\Gauge</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Measurements\Gauge\gradientFlow_RungeKutta_1st.h">
+      <Filter>Measurements\Gauge</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Measurements\Gauge\gradientFlow_RungeKutta_2nd.h">
+      <Filter>Measurements\Gauge</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Measurements\Gauge\gradientFlow_RungeKutta_3rd.h">
+      <Filter>Measurements\Gauge</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Measurements\Gauge\gradientFlow_RungeKutta_4th.h">
+      <Filter>Measurements\Gauge</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Measurements\Gauge\polyakovLoop.h">
+      <Filter>Measurements\Gauge</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Measurements\Gauge\staple.h">
+      <Filter>Measurements\Gauge</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Measurements\Gauge\staple_eo.h">
+      <Filter>Measurements\Gauge</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Measurements\Gauge\staple_lex.h">
+      <Filter>Measurements\Gauge</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Measurements\Gauge\staple_SF.h">
+      <Filter>Measurements\Gauge</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Measurements\Gauge\topologicalCharge.h">
+      <Filter>Measurements\Gauge</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Measurements\Gauge\wilsonLoop.h">
+      <Filter>Measurements\Gauge</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Measurements\Fermion\contract_4spinor.h">
+      <Filter>Measurements\Fermion</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Measurements\Fermion\corr2pt_4spinor.h">
+      <Filter>Measurements\Fermion</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Measurements\Fermion\corr2pt_Wilson_SF.h">
+      <Filter>Measurements\Fermion</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Measurements\Fermion\corr4pt_4spinor.h">
+      <Filter>Measurements\Fermion</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Measurements\Fermion\fprop.h">
+      <Filter>Measurements\Fermion</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Measurements\Fermion\fprop_Standard_eo.h">
+      <Filter>Measurements\Fermion</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Measurements\Fermion\fprop_Standard_lex.h">
+      <Filter>Measurements\Fermion</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Measurements\Fermion\fprop_Wilson_Shift.h">
+      <Filter>Measurements\Fermion</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Measurements\Fermion\noiseVector.h">
+      <Filter>Measurements\Fermion</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Measurements\Fermion\noiseVector_Z2.h">
+      <Filter>Measurements\Fermion</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Measurements\Fermion\quarkNumberSusceptibility_Wilson.h">
+      <Filter>Measurements\Fermion</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Measurements\Fermion\source.h">
+      <Filter>Measurements\Fermion</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Measurements\Fermion\source_Exponential.h">
+      <Filter>Measurements\Fermion</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Measurements\Fermion\source_Local.h">
+      <Filter>Measurements\Fermion</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Measurements\Fermion\source_MomentumWall.h">
+      <Filter>Measurements\Fermion</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Measurements\Fermion\source_Random.h">
+      <Filter>Measurements\Fermion</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Measurements\Fermion\source_Wall.h">
+      <Filter>Measurements\Fermion</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Measurements\Fermion\source_Wall_SF.h">
+      <Filter>Measurements\Fermion</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Force\Gauge\force_G.h">
+      <Filter>Force\Gauge</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Force\Gauge\force_G_Plaq.h">
+      <Filter>Force\Gauge</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Force\Gauge\force_G_Plaq_SF.h">
+      <Filter>Force\Gauge</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Force\Gauge\force_G_Rectangle.h">
+      <Filter>Force\Gauge</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Force\Gauge\force_G_Rectangle_SF.h">
+      <Filter>Force\Gauge</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Force\Fermion\force_F.h">
+      <Filter>Force\Fermion</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Force\Fermion\force_F_Clover_Nf2.h">
+      <Filter>Force\Fermion</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Force\Fermion\force_F_Clover_Nf2_Isochemical.h">
+      <Filter>Force\Fermion</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Force\Fermion\force_F_Clover_SF.h">
+      <Filter>Force\Fermion</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Force\Fermion\force_F_CloverTerm.h">
+      <Filter>Force\Fermion</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Force\Fermion\force_F_Rational.h">
+      <Filter>Force\Fermion</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Force\Fermion\force_F_Smeared.h">
+      <Filter>Force\Fermion</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Force\Fermion\force_F_Wilson_eo.h">
+      <Filter>Force\Fermion</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Force\Fermion\force_F_Wilson_Nf2.h">
+      <Filter>Force\Fermion</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Force\Fermion\force_F_Wilson_Nf2_Isochemical.h">
+      <Filter>Force\Fermion</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Force\Fermion\force_F_Wilson_SF.h">
+      <Filter>Force\Fermion</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Force\Fermion\forceSmear.h">
+      <Filter>Force\Fermion</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Force\Fermion\forceSmear_APE.h">
+      <Filter>Force\Fermion</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Force\Fermion\forceSmear_APE_SF.h">
+      <Filter>Force\Fermion</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Force\Fermion\forceSmear_HYP.h">
+      <Filter>Force\Fermion</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Force\Fermion\forceSmear_HYP_SF.h">
+      <Filter>Force\Fermion</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Force\Fermion\tensorProd.h">
+      <Filter>Force\Fermion</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Smear\director_Smear.h">
+      <Filter>Smear</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Smear\projection.h">
+      <Filter>Smear</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Smear\projection_Maximum_SU_N.h">
+      <Filter>Smear</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Smear\projection_Stout_SU3.h">
+      <Filter>Smear</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Smear\smear.h">
+      <Filter>Smear</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Smear\smear_APE.h">
+      <Filter>Smear</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Smear\smear_APE_SF.h">
+      <Filter>Smear</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Smear\smear_APE_spatial.h">
+      <Filter>Smear</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Smear\smear_HYP.h">
+      <Filter>Smear</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Smear\smear_HYP_SF.h">
+      <Filter>Smear</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Action\action.h">
+      <Filter>Action</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Action\Gauge\action_G_Plaq.h">
+      <Filter>Action\Gauge</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Action\Gauge\action_G_Plaq_SF.h">
+      <Filter>Action\Gauge</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Action\Gauge\action_G_Rectangle.h">
+      <Filter>Action\Gauge</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Action\Gauge\action_G_Rectangle_SF.h">
+      <Filter>Action\Gauge</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Action\Fermion\action_F_Ratio_eo.h">
+      <Filter>Action\Fermion</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Action\Fermion\action_F_Ratio_lex.h">
+      <Filter>Action\Fermion</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Action\Fermion\action_F_Rational.h">
+      <Filter>Action\Fermion</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Action\Fermion\action_F_Rational_SF.h">
+      <Filter>Action\Fermion</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Action\Fermion\action_F_Standard_eo.h">
+      <Filter>Action\Fermion</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Action\Fermion\action_F_Standard_lex.h">
+      <Filter>Action\Fermion</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\Action\Fermion\action_F_Standard_SF.h">
+      <Filter>Action\Fermion</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\HMC\action_list.h">
+      <Filter>HMC</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\HMC\builder_Integrator.h">
+      <Filter>HMC</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\HMC\hmc_General.h">
+      <Filter>HMC</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\HMC\hmc_Leapfrog.h">
+      <Filter>HMC</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\HMC\integrator.h">
+      <Filter>HMC</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\HMC\integrator_Leapfrog.h">
+      <Filter>HMC</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\HMC\integrator_Omelyan.h">
+      <Filter>HMC</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\HMC\integrator_UpdateP.h">
+      <Filter>HMC</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\HMC\integrator_UpdateU.h">
+      <Filter>HMC</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\HMC\langevin_Momentum.h">
+      <Filter>HMC</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="BridgeLib_Private.cpp" />
+    <ClCompile Include="lib\bridge_init_factory.cpp" />
+    <ClCompile Include="lib\bridge_setup.cpp" />
+    <ClCompile Include="lib\Parameters\commonParameters.cpp">
+      <Filter>Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Parameters\parameterCheck.cpp">
+      <Filter>Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Parameters\parameterManager.cpp">
+      <Filter>Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Parameters\parameterManager_XML.cpp">
+      <Filter>Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Parameters\parameterManager_YAML.cpp">
+      <Filter>Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Parameters\parameters.cpp">
+      <Filter>Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\IO\bridgeIO.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\IO\fieldIO.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\IO\fieldIO_Binary.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\IO\fieldIO_Binary_Distributed.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\IO\fieldIO_Binary_Parallel.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\IO\fieldIO_Fortran.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\IO\fieldIO_LIME.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\IO\fieldIO_LIME_Parallel.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\IO\fieldIO_None.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\IO\fieldIO_Text.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\IO\fieldIO_Text_4x4x4x8.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\IO\gaugeConfig.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\IO\gaugeConfig_SF.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\IO\io_format.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Parameters\tinyxml2.cpp">
+      <Filter>Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Communicator\Single\channel.cpp">
+      <Filter>Communicator\Single</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Communicator\Single\communicator_single.cpp">
+      <Filter>Communicator\Single</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Communicator\MPI\communicator.cpp">
+      <Filter>Communicator\MPI</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Communicator\MPI\communicator_mpi.cpp">
+      <Filter>Communicator\MPI</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Communicator\MPI\layout.cpp">
+      <Filter>Communicator\MPI</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Communicator\MPI\physical_map.cpp">
+      <Filter>Communicator\MPI</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Tools\decompose_Hessenberg_Cmplx.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Tools\decompose_LU_Cmplx.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Tools\decompose_LUP_Cmplx.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Tools\decompose_QR_Cmplx.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Tools\eigen_QR_Cmplx.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Tools\epsilonTensor.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Tools\evalexpr.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Tools\evalexpr_parser.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Tools\evalexpr_symbol.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Tools\file_utils.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Tools\gammaMatrix.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Tools\gammaMatrixSet.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Tools\gammaMatrixSet_Chiral.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Tools\gammaMatrixSet_Dirac.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Tools\generatorSet_Mat_SU_N.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Tools\mat_SU_N.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Tools\math_Rational.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Tools\randomNumberManager.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Tools\randomNumbers.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Tools\randomNumbers_Mseries.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Tools\randomNumbers_MT19937.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Tools\randomNumbers_SFMT.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Tools\sorter.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Tools\timer.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\ResourceManager\OpenMP\threadManager_OpenMP.cpp">
+      <Filter>ResourceManager\OpenMP</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Tools\math_Sign_Zolotarev.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Field\field.cpp">
+      <Filter>Field</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Field\field_G_SF.cpp">
+      <Filter>Field</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Field\index_eo.cpp">
+      <Filter>Field</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Field\shiftField_eo.cpp">
+      <Filter>Field</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Field\Imp\field_F_imp.cpp">
+      <Filter>Field\Imp</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Field\Imp\field_G_imp.cpp">
+      <Filter>Field\Imp</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Field\Imp\shiftField_lex_imp.cpp">
+      <Filter>Field\Imp</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Field\Org\field_F.cpp">
+      <Filter>Field\Org</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Field\Org\field_G.cpp">
+      <Filter>Field\Org</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Field\Org\shiftField_lex.cpp">
+      <Filter>Field\Org</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\fopr.cpp">
+      <Filter>Fopr</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\fopr_Chebyshev.cpp">
+      <Filter>Fopr</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\fopr_Clover.cpp">
+      <Filter>Fopr</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\fopr_Clover_eo.cpp">
+      <Filter>Fopr</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\fopr_Clover_Isochemical.cpp">
+      <Filter>Fopr</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\fopr_Clover_SF.cpp">
+      <Filter>Fopr</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\fopr_CloverGeneral.cpp">
+      <Filter>Fopr</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\fopr_CRS.cpp">
+      <Filter>Fopr</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\fopr_Rational.cpp">
+      <Filter>Fopr</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\fopr_Rational_SF.cpp">
+      <Filter>Fopr</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\fopr_Smeared.cpp">
+      <Filter>Fopr</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\fopr_Smeared_eo.cpp">
+      <Filter>Fopr</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\fopr_Wilson.cpp">
+      <Filter>Fopr</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\fopr_Wilson_eo.cpp">
+      <Filter>Fopr</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\fopr_Wilson_Isochemical.cpp">
+      <Filter>Fopr</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\fopr_Wilson_SF.cpp">
+      <Filter>Fopr</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\fopr_WilsonGeneral.cpp">
+      <Filter>Fopr</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\Org\fopr_CloverTerm_eo_impl.cpp">
+      <Filter>Fopr\Org</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\Org\fopr_CloverTerm_General_impl.cpp">
+      <Filter>Fopr\Org</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\Org\fopr_CloverTerm_impl.cpp">
+      <Filter>Fopr\Org</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\Org\fopr_Wilson_eo_impl.cpp">
+      <Filter>Fopr\Org</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\Org\fopr_Wilson_impl.cpp">
+      <Filter>Fopr\Org</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\Org\fopr_WilsonGeneral_impl.cpp">
+      <Filter>Fopr\Org</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\Imp\fopr_Wilson_eo_impl_thread.cpp">
+      <Filter>Fopr\Imp</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\Imp\fopr_Wilson_impl_thread.cpp">
+      <Filter>Fopr\Imp</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\Imp\fopr_WilsonGeneral_impl_thread.cpp">
+      <Filter>Fopr\Imp</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Solver\shiftsolver_CG.cpp">
+      <Filter>Solver</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Solver\solver.cpp">
+      <Filter>Solver</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Solver\solver_BiCGStab_Cmplx.cpp">
+      <Filter>Solver</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Solver\solver_BiCGStab_DS_L_Cmplx.cpp">
+      <Filter>Solver</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Solver\solver_BiCGStab_IDS_L_Cmplx.cpp">
+      <Filter>Solver</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Solver\solver_BiCGStab_L_Cmplx.cpp">
+      <Filter>Solver</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Solver\solver_CG.cpp">
+      <Filter>Solver</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Solver\solver_CGNE.cpp">
+      <Filter>Solver</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Solver\solver_CGNR.cpp">
+      <Filter>Solver</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Solver\solver_GMRES_m_Cmplx.cpp">
+      <Filter>Solver</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Eigen\eigensolver_IRLanczos.cpp">
+      <Filter>Eigen</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Measurements\Gauge\energyDensity.cpp">
+      <Filter>Measurements\Gauge</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Measurements\Gauge\energyMomentumTensor.cpp">
+      <Filter>Measurements\Gauge</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Measurements\Gauge\fieldStrength.cpp">
+      <Filter>Measurements\Gauge</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Measurements\Gauge\gaugeFixing.cpp">
+      <Filter>Measurements\Gauge</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Measurements\Gauge\gaugeFixing_Coulomb.cpp">
+      <Filter>Measurements\Gauge</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Measurements\Gauge\gaugeFixing_Landau.cpp">
+      <Filter>Measurements\Gauge</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Measurements\Gauge\gaugeFixing_None.cpp">
+      <Filter>Measurements\Gauge</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Measurements\Gauge\gradientFlow.cpp">
+      <Filter>Measurements\Gauge</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Measurements\Gauge\gradientFlow_AdaptiveRungeKutta.cpp">
+      <Filter>Measurements\Gauge</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Measurements\Gauge\gradientFlow_RungeKutta_1st.cpp">
+      <Filter>Measurements\Gauge</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Measurements\Gauge\gradientFlow_RungeKutta_2nd.cpp">
+      <Filter>Measurements\Gauge</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Measurements\Gauge\gradientFlow_RungeKutta_3rd.cpp">
+      <Filter>Measurements\Gauge</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Measurements\Gauge\gradientFlow_RungeKutta_4th.cpp">
+      <Filter>Measurements\Gauge</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Measurements\Gauge\polyakovLoop.cpp">
+      <Filter>Measurements\Gauge</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Measurements\Gauge\staple.cpp">
+      <Filter>Measurements\Gauge</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Measurements\Gauge\staple_eo.cpp">
+      <Filter>Measurements\Gauge</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Measurements\Gauge\staple_lex.cpp">
+      <Filter>Measurements\Gauge</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Measurements\Gauge\staple_SF.cpp">
+      <Filter>Measurements\Gauge</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Measurements\Gauge\topologicalCharge.cpp">
+      <Filter>Measurements\Gauge</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Measurements\Gauge\wilsonLoop.cpp">
+      <Filter>Measurements\Gauge</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Measurements\Fermion\corr2pt_4spinor.cpp">
+      <Filter>Measurements\Fermion</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Measurements\Fermion\corr2pt_Wilson_SF.cpp">
+      <Filter>Measurements\Fermion</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Measurements\Fermion\corr4pt_4spinor.cpp">
+      <Filter>Measurements\Fermion</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Measurements\Fermion\fprop_Standard_eo.cpp">
+      <Filter>Measurements\Fermion</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Measurements\Fermion\fprop_Standard_lex.cpp">
+      <Filter>Measurements\Fermion</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Measurements\Fermion\fprop_Wilson_Shift.cpp">
+      <Filter>Measurements\Fermion</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Measurements\Fermion\noiseVector_Z2.cpp">
+      <Filter>Measurements\Fermion</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Measurements\Fermion\quarkNumberSusceptibility_Wilson.cpp">
+      <Filter>Measurements\Fermion</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Measurements\Fermion\source.cpp">
+      <Filter>Measurements\Fermion</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Measurements\Fermion\source_Exponential.cpp">
+      <Filter>Measurements\Fermion</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Measurements\Fermion\source_Local.cpp">
+      <Filter>Measurements\Fermion</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Measurements\Fermion\source_MomentumWall.cpp">
+      <Filter>Measurements\Fermion</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Measurements\Fermion\source_Random.cpp">
+      <Filter>Measurements\Fermion</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Measurements\Fermion\source_Wall.cpp">
+      <Filter>Measurements\Fermion</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Measurements\Fermion\source_Wall_SF.cpp">
+      <Filter>Measurements\Fermion</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Measurements\Fermion\Org\contract_4spinor.cpp">
+      <Filter>Measurements\Fermion\Org</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Force\Gauge\force_G.cpp">
+      <Filter>Force\Gauge</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Force\Gauge\force_G_Plaq.cpp">
+      <Filter>Force\Gauge</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Force\Gauge\force_G_Plaq_SF.cpp">
+      <Filter>Force\Gauge</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Force\Gauge\force_G_Rectangle.cpp">
+      <Filter>Force\Gauge</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Force\Gauge\force_G_Rectangle_SF.cpp">
+      <Filter>Force\Gauge</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Force\Fermion\force_F.cpp">
+      <Filter>Force\Fermion</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Force\Fermion\force_F_Clover_Nf2.cpp">
+      <Filter>Force\Fermion</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Force\Fermion\force_F_Clover_Nf2_Isochemical.cpp">
+      <Filter>Force\Fermion</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Force\Fermion\force_F_Clover_SF.cpp">
+      <Filter>Force\Fermion</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Force\Fermion\force_F_CloverTerm.cpp">
+      <Filter>Force\Fermion</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Force\Fermion\force_F_Rational.cpp">
+      <Filter>Force\Fermion</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Force\Fermion\force_F_Smeared.cpp">
+      <Filter>Force\Fermion</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Force\Fermion\force_F_Wilson_eo.cpp">
+      <Filter>Force\Fermion</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Force\Fermion\force_F_Wilson_Nf2.cpp">
+      <Filter>Force\Fermion</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Force\Fermion\force_F_Wilson_Nf2_Isochemical.cpp">
+      <Filter>Force\Fermion</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Force\Fermion\force_F_Wilson_SF.cpp">
+      <Filter>Force\Fermion</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Force\Fermion\forceSmear.cpp">
+      <Filter>Force\Fermion</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Force\Fermion\forceSmear_APE.cpp">
+      <Filter>Force\Fermion</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Force\Fermion\forceSmear_APE_SF.cpp">
+      <Filter>Force\Fermion</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Force\Fermion\forceSmear_HYP.cpp">
+      <Filter>Force\Fermion</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Force\Fermion\forceSmear_HYP_SF.cpp">
+      <Filter>Force\Fermion</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Force\Fermion\Org\tensorProd.cpp">
+      <Filter>Force\Fermion\Org</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Smear\director_Smear.cpp">
+      <Filter>Smear</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Smear\projection.cpp">
+      <Filter>Smear</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Smear\projection_Maximum_SU_N.cpp">
+      <Filter>Smear</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Smear\projection_Stout_SU3.cpp">
+      <Filter>Smear</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Smear\smear.cpp">
+      <Filter>Smear</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Smear\smear_APE.cpp">
+      <Filter>Smear</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Smear\smear_APE_SF.cpp">
+      <Filter>Smear</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Smear\smear_APE_spatial.cpp">
+      <Filter>Smear</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Smear\smear_HYP.cpp">
+      <Filter>Smear</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Smear\smear_HYP_SF.cpp">
+      <Filter>Smear</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Action\action.cpp">
+      <Filter>Action</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Action\Gauge\action_G_Plaq.cpp">
+      <Filter>Action\Gauge</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Action\Gauge\action_G_Plaq_SF.cpp">
+      <Filter>Action\Gauge</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Action\Gauge\action_G_Rectangle.cpp">
+      <Filter>Action\Gauge</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Action\Gauge\action_G_Rectangle_SF.cpp">
+      <Filter>Action\Gauge</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Action\Fermion\action_F_Ratio_eo.cpp">
+      <Filter>Action\Fermion</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Action\Fermion\action_F_Ratio_lex.cpp">
+      <Filter>Action\Fermion</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Action\Fermion\action_F_Rational.cpp">
+      <Filter>Action\Fermion</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Action\Fermion\action_F_Rational_SF.cpp">
+      <Filter>Action\Fermion</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Action\Fermion\action_F_Standard_eo.cpp">
+      <Filter>Action\Fermion</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Action\Fermion\action_F_Standard_lex.cpp">
+      <Filter>Action\Fermion</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Action\Fermion\action_F_Standard_SF.cpp">
+      <Filter>Action\Fermion</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\HMC\action_list.cpp">
+      <Filter>HMC</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\HMC\builder_Integrator.cpp">
+      <Filter>HMC</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\HMC\hmc_General.cpp">
+      <Filter>HMC</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\HMC\hmc_Leapfrog.cpp">
+      <Filter>HMC</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\HMC\integrator_Leapfrog.cpp">
+      <Filter>HMC</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\HMC\integrator_Omelyan.cpp">
+      <Filter>HMC</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\HMC\integrator_UpdateP.cpp">
+      <Filter>HMC</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\HMC\integrator_UpdateU.cpp">
+      <Filter>HMC</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\HMC\langevin_Momentum.cpp">
+      <Filter>HMC</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Communicator\MPI\channel_MPI.cpp">
+      <Filter>Communicator\MPI</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Measurements\Fermion\Imp\contract_4spinor_Imp.cpp">
+      <Filter>Measurements\Fermion\Imp</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Force\Fermion\Imp\tensorProd_Imp.cpp">
+      <Filter>Force\Fermion\Imp</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\Imp\fopr_CloverTerm_eo_impl_Imp.cpp">
+      <Filter>Fopr\Imp</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\Imp\fopr_CloverTerm_General_impl_Imp.cpp">
+      <Filter>Fopr\Imp</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\Imp\fopr_CloverTerm_impl_Imp.cpp">
+      <Filter>Fopr\Imp</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\Imp\fopr_Wilson_eo_impl_Imp.cpp">
+      <Filter>Fopr\Imp</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\Imp\fopr_Wilson_impl_Imp.cpp">
+      <Filter>Fopr\Imp</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\Fopr\Imp\fopr_WilsonGeneral_impl_Imp.cpp">
+      <Filter>Fopr\Imp</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\ResourceManager\OpenMP_stub\threadManager_OpenMP_stub.cpp">
+      <Filter>ResourceManager\OpenMP_stub</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Tools">
+      <UniqueIdentifier>{210062ff-d05c-468b-bf2c-e438d2003a50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Parameters">
+      <UniqueIdentifier>{a6e93fdb-8207-4448-ac24-85dffdecb2ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IO">
+      <UniqueIdentifier>{4e2f68e9-9fd4-4c44-a143-eb68b250253e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Communicator">
+      <UniqueIdentifier>{11ec202b-da1e-4b48-8710-db1e160ab430}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Communicator\MPI">
+      <UniqueIdentifier>{3e9a8766-e207-4a77-8305-5d8bd6d27cb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Communicator\Single">
+      <UniqueIdentifier>{74b7a69a-cbcc-4f88-9a08-e91088d2e440}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ResourceManager">
+      <UniqueIdentifier>{c1511e54-659e-4662-90ab-8d1cfa17b0d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ResourceManager\OpenMP">
+      <UniqueIdentifier>{af561116-175a-417c-bb64-d72988112ebe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ResourceManager\OpenMP_stub">
+      <UniqueIdentifier>{0a3ef61a-a640-4ff2-ab2e-5bb4f9ba6924}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Field">
+      <UniqueIdentifier>{6907a957-7f7f-4ff5-acfb-dd271fa770f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Field\Imp">
+      <UniqueIdentifier>{cb0f761e-8e79-4a8f-9718-7d8147ee93a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Field\Org">
+      <UniqueIdentifier>{13d66623-809e-41cc-9f25-48d1d5756ec1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fopr">
+      <UniqueIdentifier>{bd18eb5e-8ee7-4d44-8a9f-0c7c1f014bc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fopr\Org">
+      <UniqueIdentifier>{1c89650f-7e18-4900-aee0-6e664b076ade}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fopr\Imp">
+      <UniqueIdentifier>{41f245aa-236f-42b7-a3cb-3b3b94356b86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Solver">
+      <UniqueIdentifier>{62c96946-ab69-4cb4-895e-5aaa9138f542}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Eigen">
+      <UniqueIdentifier>{d2598f9b-bf5d-4876-ab98-4a0d0de4203c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Measurements">
+      <UniqueIdentifier>{84cf1a3b-80fb-4b75-9455-47b89d02741a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Measurements\Gauge">
+      <UniqueIdentifier>{719c50e4-a303-4a8a-b66d-22d53a251a45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Measurements\Fermion">
+      <UniqueIdentifier>{7d643c93-397f-4179-af5a-330e50fa3392}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Measurements\Fermion\Imp">
+      <UniqueIdentifier>{4ab9d556-7b00-4c58-ad51-90f9fe34358f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Measurements\Fermion\Org">
+      <UniqueIdentifier>{f2566795-c1ea-40ac-8620-ee160f9d6512}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Force">
+      <UniqueIdentifier>{2d257bb8-d372-41d0-a975-e5b6dd8bb188}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Force\Gauge">
+      <UniqueIdentifier>{2cc7e250-3e80-4eb6-a6f3-25540be27e3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Force\Fermion">
+      <UniqueIdentifier>{ddb860a8-2315-4d91-bfb1-8b3b5a6caab8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Force\Fermion\Imp">
+      <UniqueIdentifier>{f76b5e22-6dd7-4465-ba10-735a84543627}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Force\Fermion\Org">
+      <UniqueIdentifier>{dadc8814-a80f-471a-99ec-5a42ed6f43a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Smear">
+      <UniqueIdentifier>{843c9181-a487-4c8a-a4cd-b4d0a1970f91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Action">
+      <UniqueIdentifier>{6cad028d-2906-4c9b-bcf4-5e3bf75e6cfd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Action\Gauge">
+      <UniqueIdentifier>{2c3f3833-4847-4d05-b25d-9a63f91b64ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Action\Fermion">
+      <UniqueIdentifier>{5d7de514-7d80-48b6-9fa7-d6807fe01aae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HMC">
+      <UniqueIdentifier>{53df9e86-978e-46b7-8a7c-a163c0206319}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="lib\Tools\evalexpr_parser.yy">
+      <Filter>Tools</Filter>
+    </None>
+  </ItemGroup>
+</Project>

@@ -2,100 +2,9 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="BppSmallTest.cpp" />
-    <ClCompile Include="IO\test_IO_Data_Text.cpp">
-      <Filter>IO</Filter>
-    </ClCompile>
-    <ClCompile Include="IO\test_IO_GaugeConfig.cpp">
-      <Filter>IO</Filter>
-    </ClCompile>
+    <ClCompile Include="run_testmanager.cpp" />
     <ClCompile Include="test.cpp" />
-    <ClCompile Include="RandomNumbers\test_RandomNumbers_Mseries_Gaussian.cpp">
-      <Filter>RandomNumbers</Filter>
-    </ClCompile>
-    <ClCompile Include="RandomNumbers\test_RandomNumbers_Mseries_GaussianField.cpp">
-      <Filter>RandomNumbers</Filter>
-    </ClCompile>
-    <ClCompile Include="RandomNumbers\test_RandomNumbers_Mseries_Global.cpp">
-      <Filter>RandomNumbers</Filter>
-    </ClCompile>
-    <ClCompile Include="RandomNumbers\test_RandomNumbers_Mseries_Uniform.cpp">
-      <Filter>RandomNumbers</Filter>
-    </ClCompile>
-    <ClCompile Include="RandomNumbers\test_RandomNumbers_MT19937_GaussianField.cpp">
-      <Filter>RandomNumbers</Filter>
-    </ClCompile>
-    <ClCompile Include="RandomNumbers\test_RandomNumbers_MT19937_Global.cpp">
-      <Filter>RandomNumbers</Filter>
-    </ClCompile>
-    <ClCompile Include="RandomNumbers\test_RandomNumbers_MT19937_Uniform.cpp">
-      <Filter>RandomNumbers</Filter>
-    </ClCompile>
-    <ClCompile Include="RandomNumbers\test_RandomNumbers_SFMT_GaussianField.cpp">
-      <Filter>RandomNumbers</Filter>
-    </ClCompile>
-    <ClCompile Include="RandomNumbers\test_RandomNumbers_SFMT_Global.cpp">
-      <Filter>RandomNumbers</Filter>
-    </ClCompile>
-    <ClCompile Include="RandomNumbers\test_RandomNumbers_SFMT_Uniform.cpp">
-      <Filter>RandomNumbers</Filter>
-    </ClCompile>
-    <ClCompile Include="HotStart\test_HotStart_Determinant.cpp">
-      <Filter>HotStart</Filter>
-    </ClCompile>
-    <ClCompile Include="HotStart\test_HotStart_Eigenvalue.cpp">
-      <Filter>HotStart</Filter>
-    </ClCompile>
-    <ClCompile Include="HotStart\test_HotStart_Unitary.cpp">
-      <Filter>HotStart</Filter>
-    </ClCompile>
-    <ClCompile Include="Gauge\test_Gauge_Plaquette.cpp">
-      <Filter>Gauge</Filter>
-    </ClCompile>
-    <ClCompile Include="Gauge\test_Gauge_Shift.cpp">
-      <Filter>Gauge</Filter>
-    </ClCompile>
-    <ClCompile Include="WilsonLoop\test_WilsonLoop.cpp">
-      <Filter>WilsonLoop</Filter>
-    </ClCompile>
-    <ClCompile Include="PolyakovLoop\test_PolyakovLoop.cpp">
-      <Filter>PolyakovLoop</Filter>
-    </ClCompile>
-    <ClCompile Include="ShiftSolver\test_ShiftSolver_Wilson.cpp">
-      <Filter>ShiftSolver</Filter>
-    </ClCompile>
-    <ClCompile Include="Spectrum\test_Spectrum_2ptFunction.cpp">
-      <Filter>Spectrum</Filter>
-    </ClCompile>
-    <ClCompile Include="Spectrum\test_Spectrum_2ptFunction_eo.cpp">
-      <Filter>Spectrum</Filter>
-    </ClCompile>
-    <ClCompile Include="Spectrum\test_Spectrum_2ptFunction_eo_withFileIO.cpp">
-      <Filter>Spectrum</Filter>
-    </ClCompile>
-    <ClCompile Include="Spectrum\test_Spectrum_2ptFunction_withFileIO.cpp">
-      <Filter>Spectrum</Filter>
-    </ClCompile>
-    <ClCompile Include="Spectrum\test_Spectrum_CRSMatrix_Clover_Lexical.cpp">
-      <Filter>Spectrum</Filter>
-    </ClCompile>
-    <ClCompile Include="Spectrum\test_Spectrum_CRSMatrix_CRSsolver.cpp">
-      <Filter>Spectrum</Filter>
-    </ClCompile>
-    <ClCompile Include="Spectrum\test_Spectrum_Wilson_2ptFunction.cpp">
-      <Filter>Spectrum</Filter>
-    </ClCompile>
-    <ClCompile Include="Eigensolver\test_Eigensolver.cpp">
-      <Filter>Eigensolver</Filter>
-    </ClCompile>
-    <ClCompile Include="Eigensolver\test_Eigensolver_Chebyshev.cpp">
-      <Filter>Eigensolver</Filter>
-    </ClCompile>
-    <ClCompile Include="Eigensolver\test_Eigensolver_Clover_SF.cpp">
-      <Filter>Eigensolver</Filter>
-    </ClCompile>
-    <ClCompile Include="GradientFlow\test_GradientFlow_Nf0.cpp">
-      <Filter>GradientFlow</Filter>
-    </ClCompile>
+    <ClCompile Include="testManager.cpp" />
     <ClCompile Include="Mult\test_Mult.cpp">
       <Filter>Mult</Filter>
     </ClCompile>
@@ -105,23 +14,20 @@
     <ClCompile Include="Mult\test_Mult_Wilson.cpp">
       <Filter>Mult</Filter>
     </ClCompile>
-    <ClCompile Include="QuarkNumberSusceptibility\test_QuarkNumberSusceptibility_Clover_Isochemical.cpp">
-      <Filter>QuarkNumberSusceptibility</Filter>
+    <ClCompile Include="IO\test_IO_Data_Text.cpp">
+      <Filter>IO</Filter>
     </ClCompile>
-    <ClCompile Include="Rational\test_Rational_Approx.cpp">
-      <Filter>Rational</Filter>
+    <ClCompile Include="IO\test_IO_GaugeConfig.cpp">
+      <Filter>IO</Filter>
     </ClCompile>
-    <ClCompile Include="Rational\test_Rational_Inverse.cpp">
-      <Filter>Rational</Filter>
+    <ClCompile Include="HotStart\test_HotStart_Determinant.cpp">
+      <Filter>HotStart</Filter>
     </ClCompile>
-    <ClCompile Include="Rational\test_Rational_Smeared.cpp">
-      <Filter>Rational</Filter>
+    <ClCompile Include="HotStart\test_HotStart_Eigenvalue.cpp">
+      <Filter>HotStart</Filter>
     </ClCompile>
-    <ClCompile Include="SF_fAfP\test_SF_fAfP_Boundary_Meson_2ptFunction.cpp">
-      <Filter>SF_fAfP</Filter>
-    </ClCompile>
-    <ClCompile Include="TopologicalCharge\test_TopologicalCharge.cpp">
-      <Filter>TopologicalCharge</Filter>
+    <ClCompile Include="HotStart\test_HotStart_Unitary.cpp">
+      <Filter>HotStart</Filter>
     </ClCompile>
     <ClCompile Include="HMC\test_HMC_Clover_Isochemical_Nf2.cpp">
       <Filter>HMC</Filter>
@@ -159,67 +65,164 @@
     <ClCompile Include="HMC\test_HMC_Wilson_Nf2.cpp">
       <Filter>HMC</Filter>
     </ClCompile>
-    <ClCompile Include="run_testmanager.cpp" />
-    <ClCompile Include="testManager.cpp" />
-    <ClCompile Include="RandomNumbers\test_RandomNumbers_Schrage.cpp">
+    <ClCompile Include="GradientFlow\test_GradientFlow_Nf0.cpp">
+      <Filter>GradientFlow</Filter>
+    </ClCompile>
+    <ClCompile Include="Gauge\test_Gauge_EnergyDensity.cpp">
+      <Filter>Gauge</Filter>
+    </ClCompile>
+    <ClCompile Include="Gauge\test_Gauge_Plaquette.cpp">
+      <Filter>Gauge</Filter>
+    </ClCompile>
+    <ClCompile Include="Gauge\test_Gauge_Shift.cpp">
+      <Filter>Gauge</Filter>
+    </ClCompile>
+    <ClCompile Include="Eigensolver\test_Eigensolver.cpp">
+      <Filter>Eigensolver</Filter>
+    </ClCompile>
+    <ClCompile Include="Eigensolver\test_Eigensolver_Chebyshev.cpp">
+      <Filter>Eigensolver</Filter>
+    </ClCompile>
+    <ClCompile Include="Eigensolver\test_Eigensolver_Clover_SF.cpp">
+      <Filter>Eigensolver</Filter>
+    </ClCompile>
+    <ClCompile Include="PolyakovLoop\test_PolyakovLoop.cpp">
+      <Filter>PolyakovLoop</Filter>
+    </ClCompile>
+    <ClCompile Include="QuarkNumberSusceptibility\test_QuarkNumberSusceptibility_Clover_Isochemical.cpp">
+      <Filter>QuarkNumberSusceptibility</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomNumbers\test_RandomNumbers_Field.cpp">
       <Filter>RandomNumbers</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomNumbers\test_RandomNumbers_Mseries_Gaussian.cpp">
+      <Filter>RandomNumbers</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomNumbers\test_RandomNumbers_Mseries_Global.cpp">
+      <Filter>RandomNumbers</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomNumbers\test_RandomNumbers_Mseries_Uniform.cpp">
+      <Filter>RandomNumbers</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomNumbers\test_RandomNumbers_MT19937_Global.cpp">
+      <Filter>RandomNumbers</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomNumbers\test_RandomNumbers_MT19937_Uniform.cpp">
+      <Filter>RandomNumbers</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomNumbers\test_RandomNumbers_SFMT_Global.cpp">
+      <Filter>RandomNumbers</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomNumbers\test_RandomNumbers_SFMT_Uniform.cpp">
+      <Filter>RandomNumbers</Filter>
+    </ClCompile>
+    <ClCompile Include="Rational\test_Rational_Approx.cpp">
+      <Filter>Rational</Filter>
+    </ClCompile>
+    <ClCompile Include="Rational\test_Rational_Inverse.cpp">
+      <Filter>Rational</Filter>
+    </ClCompile>
+    <ClCompile Include="Rational\test_Rational_Smeared.cpp">
+      <Filter>Rational</Filter>
+    </ClCompile>
+    <ClCompile Include="SF_fAfP\test_SF_fAfP_Boundary_Meson_2ptFunction.cpp">
+      <Filter>SF_fAfP</Filter>
+    </ClCompile>
+    <ClCompile Include="Solver\test_Solver_Wilson.cpp">
+      <Filter>Solver</Filter>
+    </ClCompile>
+    <ClCompile Include="Solver\test_Solver_Wilson_ShiftCG.cpp">
+      <Filter>Solver</Filter>
+    </ClCompile>
+    <ClCompile Include="Spectrum\test_Spectrum_2ptFunction.cpp">
+      <Filter>Spectrum</Filter>
+    </ClCompile>
+    <ClCompile Include="Spectrum\test_Spectrum_2ptFunction_eo.cpp">
+      <Filter>Spectrum</Filter>
+    </ClCompile>
+    <ClCompile Include="Spectrum\test_Spectrum_2ptFunction_eo_withFileIO.cpp">
+      <Filter>Spectrum</Filter>
+    </ClCompile>
+    <ClCompile Include="Spectrum\test_Spectrum_2ptFunction_withFileIO.cpp">
+      <Filter>Spectrum</Filter>
+    </ClCompile>
+    <ClCompile Include="Spectrum\test_Spectrum_2ptFunction_withFileIO_initial_guess.cpp">
+      <Filter>Spectrum</Filter>
+    </ClCompile>
+    <ClCompile Include="Spectrum\test_Spectrum_4ptFunction.cpp">
+      <Filter>Spectrum</Filter>
+    </ClCompile>
+    <ClCompile Include="Spectrum\test_Spectrum_CRSMatrix_Clover_Lexical.cpp">
+      <Filter>Spectrum</Filter>
+    </ClCompile>
+    <ClCompile Include="Spectrum\test_Spectrum_CRSMatrix_CRSsolver.cpp">
+      <Filter>Spectrum</Filter>
+    </ClCompile>
+    <ClCompile Include="Spectrum\test_Spectrum_Wilson_2ptFunction.cpp">
+      <Filter>Spectrum</Filter>
+    </ClCompile>
+    <ClCompile Include="TopologicalCharge\test_TopologicalCharge.cpp">
+      <Filter>TopologicalCharge</Filter>
+    </ClCompile>
+    <ClCompile Include="WilsonLoop\test_WilsonLoop.cpp">
+      <Filter>WilsonLoop</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BppSmallTest.h" />
+    <ClInclude Include="run_testmanager.h" />
     <ClInclude Include="test.h" />
     <ClInclude Include="testlist.h" />
-    <ClInclude Include="run_testmanager.h" />
     <ClInclude Include="testManager.h" />
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="IO">
-      <UniqueIdentifier>{bf265374-57d1-4f00-97c2-df71df8c47f6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="RandomNumbers">
-      <UniqueIdentifier>{b7e77c36-95c3-4945-a590-6f6d487ad3f5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="HotStart">
-      <UniqueIdentifier>{abe5bbe2-69c8-4586-8aae-55c1d6ee2e20}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Gauge">
-      <UniqueIdentifier>{3a5d878d-fb07-448b-a007-44e309c18e1c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="WilsonLoop">
-      <UniqueIdentifier>{3483f018-c57c-4dff-b846-d1d1b9388c93}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="PolyakovLoop">
-      <UniqueIdentifier>{515a7988-81fd-40a4-9e7b-5c6fb43e108f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ShiftSolver">
-      <UniqueIdentifier>{143b7a1f-4bca-4e8f-b7f1-6026b93a9ea2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Spectrum">
-      <UniqueIdentifier>{fabce968-52ea-44b4-9e72-63845bd979e8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Eigensolver">
-      <UniqueIdentifier>{0acfb57f-c22f-4b3e-8c8f-43b135761066}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GradientFlow">
-      <UniqueIdentifier>{3b0d3980-e21f-418c-9dc1-b433a993cb02}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Mult">
-      <UniqueIdentifier>{f0db14d5-a675-4d69-a7c3-9a9a25471c74}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="QuarkNumberSusceptibility">
-      <UniqueIdentifier>{410517b5-8a38-4e4c-997c-97570adc3f40}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Rational">
-      <UniqueIdentifier>{84835cc2-1680-4ae4-8712-0c73b10bbb27}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="SF_fAfP">
-      <UniqueIdentifier>{836b6b1c-0aea-4ee0-8176-cd697f7ecb47}</UniqueIdentifier>
+      <UniqueIdentifier>{f9af2f5d-ac7d-4b1e-89e3-9f3417d9f44b}</UniqueIdentifier>
     </Filter>
     <Filter Include="TopologicalCharge">
-      <UniqueIdentifier>{fbcbb359-abad-442d-8694-842e5be94e9e}</UniqueIdentifier>
+      <UniqueIdentifier>{f3d0c25a-7816-4ca0-b0d0-c04dcf39f20f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Spectrum">
+      <UniqueIdentifier>{eddc1948-9a8d-4a9f-9e35-a3a713cd5624}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Solver">
+      <UniqueIdentifier>{36465c21-1975-4695-b8c4-cfcc541e83f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SF_fAfP">
+      <UniqueIdentifier>{d8381575-e945-4c96-a633-c835ca506b80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Rational">
+      <UniqueIdentifier>{e8f29c36-58a8-45ae-b0a0-0e9c911b7f44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RandomNumbers">
+      <UniqueIdentifier>{bd98a909-12bc-47df-b912-f667b95bf733}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="QuarkNumberSusceptibility">
+      <UniqueIdentifier>{35759d50-f52d-4895-bd3d-36a60fc758d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PolyakovLoop">
+      <UniqueIdentifier>{217708e7-56a5-4d5d-bf06-a01f338b4f6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mult">
+      <UniqueIdentifier>{1dcafe9e-e94c-40bc-9ea1-13717bee13ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IO">
+      <UniqueIdentifier>{8dbd5e41-a4ba-4043-b40e-3477d6c91022}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HotStart">
+      <UniqueIdentifier>{2a6d072c-4be9-4a9d-8987-6df786691423}</UniqueIdentifier>
     </Filter>
     <Filter Include="HMC">
-      <UniqueIdentifier>{c8fe993c-8928-4c32-942c-b3df55354467}</UniqueIdentifier>
+      <UniqueIdentifier>{ab190378-8b26-4230-82a0-24661ae5e0bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GradientFlow">
+      <UniqueIdentifier>{a4c68c21-2813-4ebf-af90-5e888648ecd9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Gauge">
+      <UniqueIdentifier>{72b0326e-19b0-4329-98bb-fc890054c1a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Eigensolver">
+      <UniqueIdentifier>{9bb606f1-1772-414f-aac0-4caab91c28c2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

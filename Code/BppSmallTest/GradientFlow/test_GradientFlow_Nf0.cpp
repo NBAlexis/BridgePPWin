@@ -1,26 +1,39 @@
 /*!
-        @file    $Id:: test_GradientFlow_Nf0.cpp #$
+        @file    test_GradientFlow_Nf0.cpp
 
         @brief
 
         @author  Sinya Aoki (saoki)
 
-        @date    $LastChangedDate:: 2017-02-24 18:35:38 #$
+        @date    $LastChangedDate:: 2019-01-21 17:06:23 #$
 
-        @version $LastChangedRevision: 1571 $
+        @version $LastChangedRevision: 1929 $
 */
-
 #include "BppSmallTest.h"
+#include "test.h"
+
+#include "IO/gaugeConfig.h"
+
+#include "Measurements/Gauge/energyDensity.h"
+#include "Measurements/Gauge/gradientFlow.h"
+
+#include "Tools/randomNumberManager.h"
 
 //====================================================================
 //! Test of gradientFlow.
 
 /*!
                                [08 Jul 2012 S.Aoki]
-  (Coding history will be recovered from trac.)
-  YAML is implemented.         [14 Nov 2012 Y.Namekawa]
-  unique_ptr is introduced to avoid memory leaks.
+    (Coding history will be recovered from trac.)
+    YAML is implemented.       [14 Nov 2012 Y.Namekawa]
+    4th order Runge-Kutta in commutator-free method
+    formulated by E.Celledoni et al. FGCS 19, 341 (2003),
+    as well as 1st and 2nd order Runge-Kutta are implemented.
+                               [10 Oct 2014 Y.Namekawa]
+    unique_ptr is introduced to avoid memory leaks.
                                [21 Mar 2015 Y.Namekawa]
+    Adaptive stepsize control is implemented.
+                               [01 May 2015 Y.Namekawa]
  */
 
 namespace Test_GradientFlow {
@@ -92,16 +105,17 @@ namespace Test_GradientFlow {
   int update(const std::string& filename_input)
   {
     // ####  parameter setup  ####
-    int Nvol = CommonParameters::Nvol();
-    int Ndim = CommonParameters::Ndim();
-    int Nc   = CommonParameters::Nc();
+    const int Nvol = CommonParameters::Nvol();
+    const int Ndim = CommonParameters::Ndim();
+    const int Nc   = CommonParameters::Nc();
 
-    Parameters params_all = ParameterManager::read(filename_input);
+    const Parameters params_all = ParameterManager::read(filename_input);
 
-    Parameters params_test           = params_all.lookup("Test_GradientFlow");
-    Parameters params_action_G       = params_all.lookup("Action_G");
-    Parameters params_g_flow         = params_all.lookup("GradientFlow");
-    Parameters params_energy_density = params_all.lookup("EnergyDensity");
+    const Parameters params_test = params_all.lookup("Test_GradientFlow");
+    //- NB. additional parameter for action_G is set in the following object setup
+    Parameters       params_action_G       = params_all.lookup("Action_G");
+    const Parameters params_g_flow         = params_all.lookup("GradientFlow");
+    const Parameters params_energy_density = params_all.lookup("EnergyDensity");
 
     const string        str_gconf_status = params_test.get_string("gauge_config_status");
     const string        str_gconf_read   = params_test.get_string("gauge_config_type_input");
@@ -119,7 +133,7 @@ namespace Test_GradientFlow {
 
     const string str_action_G_type = params_action_G.get_string("action_type");
 
-    Bridge::VerboseLevel vl = vout.set_verbose_level(str_vlevel);
+    const Bridge::VerboseLevel vl = vout.set_verbose_level(str_vlevel);
 
     //- print input parameters
     vout.general(vl, "  gconf_status = %s\n", str_gconf_status.c_str());
@@ -166,13 +180,13 @@ namespace Test_GradientFlow {
     params_action_G.set_double("beta", static_cast<double>(Nc));
     action_G->set_parameters(params_action_G);
 
-    unique_ptr<GradientFlow> g_flow(new GradientFlow(action_G));
+    const unique_ptr<GradientFlow> g_flow(new GradientFlow(action_G));
     g_flow->set_parameters(params_g_flow);
 
-    unique_ptr<EnergyDensity> energy_density(new EnergyDensity);
+    const unique_ptr<EnergyDensity> energy_density(new EnergyDensity);
     energy_density->set_parameters(params_energy_density);
 
-    unique_ptr<Timer> timer(new Timer(test_name));
+    const unique_ptr<Timer> timer(new Timer(test_name));
 
 
     // ####  Execution main part  ####
@@ -201,7 +215,13 @@ namespace Test_GradientFlow {
 
 
     if (do_check) {
-      return Test::verify(result, expected_result);
+      //- NB. verification criterion is loosed for RK_adaptive,
+      //      due to its severe sensitivity to rounding errors
+      if (filename_input == "test_GradientFlow_Nf0_RK_adaptive.yaml") {
+        return Test::verify(result, expected_result, 1.0e-10);
+      } else {
+        return Test::verify(result, expected_result);
+      }
     } else {
       vout.detailed(vl, "check skipped: expected_result not set.\n\n");
       return EXIT_SKIP;

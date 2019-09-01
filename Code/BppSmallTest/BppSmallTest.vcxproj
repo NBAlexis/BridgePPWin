@@ -20,12 +20,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BppSmallTest.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Eigensolver\test_Eigensolver.cpp" />
     <ClCompile Include="Eigensolver\test_Eigensolver_Chebyshev.cpp" />
     <ClCompile Include="Eigensolver\test_Eigensolver_Clover_SF.cpp" />
+    <ClCompile Include="Gauge\test_Gauge_EnergyDensity.cpp" />
     <ClCompile Include="Gauge\test_Gauge_Plaquette.cpp" />
     <ClCompile Include="Gauge\test_Gauge_Shift.cpp" />
     <ClCompile Include="GradientFlow\test_GradientFlow_Nf0.cpp" />
@@ -51,15 +52,12 @@
     <ClCompile Include="Mult\test_Mult_Wilson.cpp" />
     <ClCompile Include="PolyakovLoop\test_PolyakovLoop.cpp" />
     <ClCompile Include="QuarkNumberSusceptibility\test_QuarkNumberSusceptibility_Clover_Isochemical.cpp" />
-    <ClCompile Include="RandomNumbers\test_RandomNumbers_Schrage.cpp" />
+    <ClCompile Include="RandomNumbers\test_RandomNumbers_Field.cpp" />
     <ClCompile Include="RandomNumbers\test_RandomNumbers_Mseries_Gaussian.cpp" />
-    <ClCompile Include="RandomNumbers\test_RandomNumbers_Mseries_GaussianField.cpp" />
     <ClCompile Include="RandomNumbers\test_RandomNumbers_Mseries_Global.cpp" />
     <ClCompile Include="RandomNumbers\test_RandomNumbers_Mseries_Uniform.cpp" />
-    <ClCompile Include="RandomNumbers\test_RandomNumbers_MT19937_GaussianField.cpp" />
     <ClCompile Include="RandomNumbers\test_RandomNumbers_MT19937_Global.cpp" />
     <ClCompile Include="RandomNumbers\test_RandomNumbers_MT19937_Uniform.cpp" />
-    <ClCompile Include="RandomNumbers\test_RandomNumbers_SFMT_GaussianField.cpp" />
     <ClCompile Include="RandomNumbers\test_RandomNumbers_SFMT_Global.cpp" />
     <ClCompile Include="RandomNumbers\test_RandomNumbers_SFMT_Uniform.cpp" />
     <ClCompile Include="Rational\test_Rational_Approx.cpp" />
@@ -67,11 +65,14 @@
     <ClCompile Include="Rational\test_Rational_Smeared.cpp" />
     <ClCompile Include="run_testmanager.cpp" />
     <ClCompile Include="SF_fAfP\test_SF_fAfP_Boundary_Meson_2ptFunction.cpp" />
-    <ClCompile Include="ShiftSolver\test_ShiftSolver_Wilson.cpp" />
+    <ClCompile Include="Solver\test_Solver_Wilson.cpp" />
+    <ClCompile Include="Solver\test_Solver_Wilson_ShiftCG.cpp" />
     <ClCompile Include="Spectrum\test_Spectrum_2ptFunction.cpp" />
     <ClCompile Include="Spectrum\test_Spectrum_2ptFunction_eo.cpp" />
     <ClCompile Include="Spectrum\test_Spectrum_2ptFunction_eo_withFileIO.cpp" />
     <ClCompile Include="Spectrum\test_Spectrum_2ptFunction_withFileIO.cpp" />
+    <ClCompile Include="Spectrum\test_Spectrum_2ptFunction_withFileIO_initial_guess.cpp" />
+    <ClCompile Include="Spectrum\test_Spectrum_4ptFunction.cpp" />
     <ClCompile Include="Spectrum\test_Spectrum_CRSMatrix_Clover_Lexical.cpp" />
     <ClCompile Include="Spectrum\test_Spectrum_CRSMatrix_CRSsolver.cpp" />
     <ClCompile Include="Spectrum\test_Spectrum_Wilson_2ptFunction.cpp" />
@@ -92,32 +93,32 @@
     <ProjectGuid>{C0FB5EBF-7893-46F8-B746-682DDD5E507A}</ProjectGuid>
     <RootNamespace>Bridge144</RootNamespace>
     <ProjectName>BppSmallTest</ProjectName>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -143,7 +144,7 @@
     <IncludePath>$(SolutionDir)..\Dependency\wxWidgets\include;$(SolutionDir)..\Dependency\wxWidgets\include\msvc;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(SolutionDir)..\Dependency\wxWidgets\include;$(SolutionDir)..\Dependency\wxWidgets\include\msvc;$(ProjectDir);$(SolutionDir)Bridge144;$(SolutionDir)Bridge144\lib;$(MSMPI_INC);$(MSMPI_INC)\x64;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)..\Dependency\wxWidgets\include;$(SolutionDir)..\Dependency\wxWidgets\include\msvc;$(ProjectDir);$(SolutionDir)Bridge151;$(SolutionDir)Bridge151\lib;$(MSMPI_INC);$(MSMPI_INC)\x64;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)..\Bin\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)..\Temp\$(ProjectName)\$(Configuration)\</IntDir>
     <TargetName>$(ProjectName)_d</TargetName>
@@ -151,7 +152,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)..\Bin\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)..\Temp\$(ProjectName)\$(Configuration)\</IntDir>
-    <IncludePath>$(SolutionDir)..\Dependency\wxWidgets\include;$(SolutionDir)..\Dependency\wxWidgets\include\msvc;$(ProjectDir);$(SolutionDir)Bridge144;$(SolutionDir)Bridge144\lib;$(MSMPI_INC);$(MSMPI_INC)\x64;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)..\Dependency\wxWidgets\include;$(SolutionDir)..\Dependency\wxWidgets\include\msvc;$(ProjectDir);$(SolutionDir)Bridge151;$(SolutionDir)Bridge151\lib;$(MSMPI_INC);$(MSMPI_INC)\x64;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

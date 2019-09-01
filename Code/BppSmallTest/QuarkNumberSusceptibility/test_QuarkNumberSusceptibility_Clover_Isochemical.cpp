@@ -1,20 +1,32 @@
 /*!
-        @file    $Id: test_QuarkNumberSusceptibility_Clover_Isochemical.cpp #$
+        @file    test_QuarkNumberSusceptibility_Clover_Isochemical.cpp
 
         @brief
 
         @author  Hideo Matsufuru  (matsufuru)
-                 $LastChangedBy: aoym $
+                 $LastChangedBy: aoyama $
 
         @date    $LastChangedDate: 2013-01-22 13:51:53 #$
 
-        @version $LastChangedRevision: 1571 $
+        @version $LastChangedRevision: 1929 $
 */
-
 #include "BppSmallTest.h"
+#include "test.h"
+
+#include "Fopr/fopr_Clover_Isochemical.h"
+#include "Fopr/fopr_Smeared.h"
+
+#include "IO/gaugeConfig.h"
+
+#include "Measurements/Fermion/fprop_Standard_lex.h"
+#include "Measurements/Fermion/noiseVector_Z2.h"
+#include "Measurements/Fermion/quarkNumberSusceptibility_Wilson.h"
+
+#include "Tools/randomNumberManager.h"
+#include "Tools/randomNumbers_Mseries.h"
 
 //====================================================================
-//! Quark number susceptibility for the Wilson-type fermion.
+//! Quark number susceptibility for the Wilson-element_type fermion.
 
 /*!
     This class tests measurements of the traces which is used to determine
@@ -56,25 +68,25 @@ namespace Test_QuarkNumSuscept {
   int quark_num_suscept(void)
   {
     // #####  parameter setup  #####
-    int Nc   = CommonParameters::Nc();
-    int Nvol = CommonParameters::Nvol();
-    int Ndim = CommonParameters::Ndim();
+    const int Nc   = CommonParameters::Nc();
+    const int Nvol = CommonParameters::Nvol();
+    const int Ndim = CommonParameters::Ndim();
 
-    Parameters params_all = ParameterManager::read(filename_input);
+    const Parameters params_all = ParameterManager::read(filename_input);
 
-    Parameters params_test     = params_all.lookup("Test_QuarkNumSuscept_Clover_Isochemical");
-    Parameters params_clover   = params_all.lookup("Fopr_Clover_Isochemical");
-    Parameters params_proj     = params_all.lookup("Projection");
-    Parameters params_smear    = params_all.lookup("Smear");
-    Parameters params_dr_smear = params_all.lookup("Director_Smear");
-    Parameters params_solver   = params_all.lookup("Solver");
+    const Parameters params_test     = params_all.lookup("Test_QuarkNumSuscept_Clover_Isochemical");
+    const Parameters params_clover   = params_all.lookup("Fopr_Clover_Isochemical");
+    const Parameters params_proj     = params_all.lookup("Projection");
+    const Parameters params_smear    = params_all.lookup("Smear");
+    const Parameters params_dr_smear = params_all.lookup("Director_Smear");
+    const Parameters params_solver   = params_all.lookup("Solver");
 
     const string        str_gconf_status = params_test.get_string("gauge_config_status");
     const string        str_gconf_read   = params_test.get_string("gauge_config_type_input");
     const string        readfile         = params_test.get_string("config_filename_input");
     const string        str_rand_type    = params_test.get_string("random_number_type");
     const unsigned long seed             = params_test.get_unsigned_long("seed_for_random_number");
-    int                 i_seed_noise     = params_test.get_int("int_seed_for_noise");
+    const int           i_seed_noise     = params_test.get_int("int_seed_for_noise");
     const string        str_vlevel       = params_test.get_string("verbose_level");
 
     const bool   do_check        = params_test.is_set("expected_result");
@@ -85,7 +97,7 @@ namespace Test_QuarkNumSuscept {
     const string str_smear_type  = params_smear.get_string("smear_type");
     const string str_solver_type = params_solver.get_string("solver_type");
 
-    Bridge::VerboseLevel vl = vout.set_verbose_level(str_vlevel);
+    const Bridge::VerboseLevel vl = vout.set_verbose_level(str_vlevel);
 
     //- print input parameters
     vout.general(vl, "  gconf_status = %s\n", str_gconf_status.c_str());
@@ -154,16 +166,16 @@ namespace Test_QuarkNumSuscept {
     solver->set_parameters(params_solver);
     unique_ptr<Fprop> fprop_lex(new Fprop_Standard_lex(solver));
 
-    unique_ptr<QuarkNumberSusceptibility_Wilson> quark_suscept(new QuarkNumberSusceptibility_Wilson(fopr_smear, fprop_lex, nv));
+    const unique_ptr<QuarkNumberSusceptibility_Wilson> quark_suscept(new QuarkNumberSusceptibility_Wilson(fopr_smear, fprop_lex, nv));
     quark_suscept->set_parameters(params_test);
 
-    unique_ptr<Timer> timer(new Timer(test_name));
+    const unique_ptr<Timer> timer(new Timer(test_name));
 
 
     // ####  Execution main part  ####
     timer->start();
 
-    double result = quark_suscept->measure();
+    const double result = quark_suscept->measure();
 
     timer->report();
 

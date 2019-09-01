@@ -1,17 +1,27 @@
 /*!
-        @file    $Id: test_Rational_Smeared.cpp #$
+        @file    test_Rational_Smeared.cpp
 
         @brief
 
         @author  Hideo Matsufuru  (matsufuru)
-                 $LastChangedBy: aoym $
+                 $LastChangedBy: aoyama $
 
-        @date    $LastChangedDate:: 2017-02-24 18:35:38 #$
+        @date    $LastChangedDate:: 2019-01-21 17:06:23 #$
 
-        @version $LastChangedRevision: 1571 $
+        @version $LastChangedRevision: 1929 $
 */
-
 #include "BppSmallTest.h"
+#include "test.h"
+
+#include "IO/gaugeConfig.h"
+
+#include "Fopr/fopr_Clover.h"
+#include "Fopr/fopr_Rational.h"
+#include "Fopr/fopr_Smeared.h"
+
+#include "Measurements/Fermion/source.h"
+
+#include "Tools/randomNumberManager.h"
 
 //====================================================================
 //! Test of rational approximation of fermion operators.
@@ -54,21 +64,21 @@ namespace Test_Rational {
   int smeared_rational(void)
   {
     // #####  parameter setup  #####
-    int Ndim = CommonParameters::Ndim();
-    int Nc   = CommonParameters::Nc();
-    int Nd   = CommonParameters::Nd();
-    int Nvol = CommonParameters::Nvol();
-    int NinF = 2 * Nc * Nd;
+    const int Ndim = CommonParameters::Ndim();
+    const int Nc   = CommonParameters::Nc();
+    const int Nd   = CommonParameters::Nd();
+    const int Nvol = CommonParameters::Nvol();
+    const int NinF = 2 * Nc * Nd;
 
-    Parameters params_all = ParameterManager::read(filename_input);
+    const Parameters params_all = ParameterManager::read(filename_input);
 
-    Parameters params_test     = params_all.lookup("Test_Rational");
-    Parameters params_clover   = params_all.lookup("Fopr_Clover");
-    Parameters params_proj     = params_all.lookup("Projection");
-    Parameters params_smear    = params_all.lookup("Smear");
-    Parameters params_dr_smear = params_all.lookup("Director_Smear");
-    Parameters params_rational = params_all.lookup("Fopr_Rational");
-    Parameters params_source   = params_all.lookup("Source");
+    const Parameters params_test     = params_all.lookup("Test_Rational");
+    const Parameters params_clover   = params_all.lookup("Fopr_Clover");
+    const Parameters params_proj     = params_all.lookup("Projection");
+    const Parameters params_smear    = params_all.lookup("Smear");
+    const Parameters params_dr_smear = params_all.lookup("Director_Smear");
+    const Parameters params_rational = params_all.lookup("Fopr_Rational");
+    const Parameters params_source   = params_all.lookup("Source");
 
     const string        str_gconf_status = params_test.get_string("gauge_config_status");
     const string        str_gconf_read   = params_test.get_string("gauge_config_type_input");
@@ -85,7 +95,7 @@ namespace Test_Rational {
     const string str_smear_type  = params_smear.get_string("smear_type");
     const string str_source_type = params_source.get_string("source_type");
 
-    Bridge::VerboseLevel vl = vout.set_verbose_level(str_vlevel);
+    const Bridge::VerboseLevel vl = vout.set_verbose_level(str_vlevel);
 
     //- print input parameters
     vout.general(vl, "  gconf_status = %s\n", str_gconf_status.c_str());
@@ -144,7 +154,7 @@ namespace Test_Rational {
     unique_ptr<Fopr> fopr_r(Fopr::New("Rational", fopr_c));
     fopr_r->set_parameters(params_rational);
 
-    unique_ptr<Source> source(Source::New(str_source_type));
+    const unique_ptr<Source> source(Source::New(str_source_type));
     source->set_parameters(params_source);
 
     //- Smeared-rational
@@ -158,7 +168,7 @@ namespace Test_Rational {
     fopr_r_smear_1.set_parameters(params_rational);
     fopr_r_smear_1.set_config(U);
 
-    unique_ptr<Timer> timer(new Timer(test_name));
+    const unique_ptr<Timer> timer(new Timer(test_name));
 
 
     // ####  Execution main part  ####
@@ -173,9 +183,9 @@ namespace Test_Rational {
     vout.general(vl, "Smeared-rational:\n");
 
     {
-      int ispin = 0;
+      const int ispin = 0;
       {
-        int icolor = 0;
+        const int icolor = 0;
         //for(int ispin = 0; ispin < Nd; ++ispin){
         //    for(int icolor = 0; icolor < Nc; ++icolor){
 
@@ -202,9 +212,9 @@ namespace Test_Rational {
 
     double vv;
     {
-      int ispin = 0;
+      const int ispin = 0;
       {
-        int icolor = 0;
+        const int icolor = 0;
         //for(int ispin = 0; ispin < Nd; ++ispin){
         //    for(int icolor = 0; icolor < Nc; ++icolor){
 
@@ -227,7 +237,7 @@ namespace Test_Rational {
       }
     }
 
-    double result = vv;
+    const double result = vv;
 
     timer->report();
 

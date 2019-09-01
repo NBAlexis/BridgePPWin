@@ -1,17 +1,26 @@
 /*!
-        @file    $Id: test_Spectrum_CRSMatrix_Clover_Lexical.cpp #$
+        @file    test_Spectrum_CRSMatrix_Clover_Lexical.cpp
 
         @brief
 
         @author  Hideo Matsufuru  (matsufuru)
-                 $LastChangedBy: aoym $
+                 $LastChangedBy: aoyama $
 
         @date    $LastChangedDate: 2013-01-22 22:08:29 #$
 
-        @version $LastChangedRevision: 1571 $
+        @version $LastChangedRevision: 1929 $
 */
-
 #include "BppSmallTest.h"
+#include "test.h"
+
+#include "Fopr/fopr_CRS.h"
+#include "Fopr/fopr_Clover.h"
+
+#include "Measurements/Fermion/source.h"
+
+#include "Solver/solver_CG.h"
+
+#include "IO/gaugeConfig.h"
 
 //====================================================================
 //! Test of CRS matrix format.
@@ -79,14 +88,14 @@ namespace Test_Spectrum_CRSMatrix {
     }
 
     // ####  parameter setup  ####
-    int Nc   = CommonParameters::Nc();
-    int Nd   = CommonParameters::Nd();
-    int Ndim = CommonParameters::Ndim();
-    int Nvol = CommonParameters::Nvol();
+    const int Nc   = CommonParameters::Nc();
+    const int Nd   = CommonParameters::Nd();
+    const int Ndim = CommonParameters::Ndim();
+    const int Nvol = CommonParameters::Nvol();
 
-    Parameters params_all = ParameterManager::read(filename_input);
+    const Parameters params_all = ParameterManager::read(filename_input);
 
-    Parameters params_test = params_all.lookup("Test_Spectrum_CRSMatrix");
+    const Parameters params_test = params_all.lookup("Test_Spectrum_CRSMatrix");
 
     const string str_gconf_read = params_test.get_string("gauge_config_type_input");
     const string readfile       = params_test.get_string("config_filename_input");
@@ -98,7 +107,7 @@ namespace Test_Spectrum_CRSMatrix {
     const bool   do_check        = params_test.is_set("expected_result");
     const double expected_result = do_check ? params_test.get_double("expected_result") : 0.0;
 
-    Bridge::VerboseLevel vl = vout.set_verbose_level(str_vlevel);
+    const Bridge::VerboseLevel vl = vout.set_verbose_level(str_vlevel);
 
     //- print input parameters
     vout.general(vl, "  gconf_read      = %s\n", str_gconf_read.c_str());
@@ -124,14 +133,14 @@ namespace Test_Spectrum_CRSMatrix {
 
 
     // ####  Set up a gauge configuration  ####
-    unique_ptr<Field_G>     U(new Field_G(Nvol, Ndim));
-    unique_ptr<GaugeConfig> gconf_read(new GaugeConfig(str_gconf_read));
+    unique_ptr<Field_G>           U(new Field_G(Nvol, Ndim));
+    const unique_ptr<GaugeConfig> gconf_read(new GaugeConfig(str_gconf_read));
     gconf_read->read_file(U, readfile);
 
 
     // ####  object setup  #####
-    double           kappa = 0.12;
-    double           cSW   = 1.0;
+    const double     kappa = 0.12;
+    const double     cSW   = 1.0;
     std::vector<int> boundary(Ndim);
     boundary[0] = -1;
     boundary[1] = -1;
@@ -142,20 +151,30 @@ namespace Test_Spectrum_CRSMatrix {
     params_c.set_double("hopping_parameter", kappa);
     params_c.set_double("clover_coefficient", cSW);
     params_c.set_int_vector("boundary_condition", boundary);
+    params_c.set_string("verbose_level", str_vlevel.c_str());
 
     unique_ptr<Fopr> fopr_c(Fopr::New("Clover", "Dirac"));
     fopr_c->set_parameters(params_c);
     fopr_c->set_config(U);
     fopr_c->set_mode("D");
 
-    unique_ptr<Fopr_CRS> fopr_crs(new Fopr_CRS(fopr_c.get()));
+    const unique_ptr<Fopr_CRS> fopr_crs(new Fopr_CRS(fopr_c.get()));
     fopr_crs->write_matrix(matrix_file);
 
-    int                Niter     = 100;
-    int                Nrestart  = 40;
-    double             Stop_cond = 1.0e-28;
-    unique_ptr<Solver> solver(new Solver_CG(fopr_c));
-    solver->set_parameters(Niter, Nrestart, Stop_cond);
+    const int    Niter          = 100;
+    const int    Nrestart       = 40;
+    const double Stop_cond      = 1.0e-28;
+    const bool   use_init_guess = false;
+
+    Parameters params_solver;
+    params_solver.set_int("maximum_number_of_iteration", Niter);
+    params_solver.set_int("maximum_number_of_restart", Nrestart);
+    params_solver.set_double("convergence_criterion_squared", Stop_cond);
+    params_solver.set_bool("use_initial_guess", use_init_guess);
+    params_solver.set_string("verbose_level", str_vlevel.c_str());
+
+    const unique_ptr<Solver> solver(new Solver_CG(fopr_c));
+    solver->set_parameters(params_solver);
 
     std::vector<int> source_position(Ndim);
     source_position[0] = 0;
@@ -163,28 +182,35 @@ namespace Test_Spectrum_CRSMatrix {
     source_position[2] = 0;
     source_position[3] = 0;
 
-    unique_ptr<Source> source(Source::New("Local"));
-    Parameters         params_source;
+    const unique_ptr<Source> source(Source::New("Local"));
+    Parameters               params_source;
     params_source.set_int_vector("source_position", source_position);
+    params_source.set_string("verbose_level", str_vlevel.c_str());
     source->set_parameters(params_source);
 
 
     // ####  Execution main part  ####
     std::vector<Field_F> sq(Nc * Nd);
-    Field_F              xq, b, b2;
+    for (int idx = 0; idx < Nc * Nd; ++idx) {
+      sq[idx].set(0.0);
+    }
 
     for (int ispin = 0; ispin < Nd; ++ispin) {
       for (int icolor = 0; icolor < Nc; ++icolor) {
         int idx = icolor + Nc * ispin;
+
+        Field_F b;
         source->set(b, idx);
 
         write_text(b, source_file.c_str());
 
+        Field_F b2;
         fopr_c->set_mode("D");
         fopr_c->mult_dag(b2, b);
 
-        int    Nconv;
-        double diff_CG;
+        Field_F xq;
+        int     Nconv;
+        double  diff_CG;
         fopr_c->set_mode("DdagD");
         solver->solve(xq, b2, Nconv, diff_CG);
         vout.general(vl, "  ispin = %2d  icolor = %2d  Nconv = %4d  diff = %12.6e\n",
@@ -212,9 +238,9 @@ namespace Test_Spectrum_CRSMatrix {
 
     double yy = 0.0L;
     {
-      int ispin = 0;
+      const int ispin = 0;
       {
-        int icolor = 0;
+        const int icolor = 0;
         //for(int ispin = 0; ispin < Nd; ++ispin){
         // for(int icolor = 0; icolor < Nc; ++icolor){
 

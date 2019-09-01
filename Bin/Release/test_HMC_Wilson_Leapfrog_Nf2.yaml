@@ -3,10 +3,10 @@
 Test_HMC_Wilson:
   ## gauge_config_status = {Continue,Cold_start,Hot_start}
   gauge_config_status      : Continue
-  ## gauge_config_type = {Text,Binary,Binary_Parallel,Fortran_JLQCD,Fortran_ILDG,ILDG,ILDG_Parallel,Null}
+  ## gauge_config_type = {Text,Binary,Binary_Distributed,Binary_Parallel,Fortran_JLQCD,Fortran_ILDG,ILDG,ILDG_Parallel,None}
   gauge_config_type_input  : Text
   config_filename_input    : ./conf_04040408.txt
-  gauge_config_type_output : Null
+  gauge_config_type_output : None
   config_filename_output   : ./conf_output.dat
   ## random_number_type = {Mseries,MT19937,SFMT} NB. SFMT is an extra library
   random_number_type       : Mseries
@@ -22,8 +22,7 @@ HMC_Leapfrog:
   step_size       : 0.02
   number_of_steps : 5
   order_of_exp_iP : 8
-  ## Metropolis_test = {1,0} for Metropolis_test on/off
-  Metropolis_test : 1
+  Metropolis_test : true
   ## verbose_level = {Crucial,General,Detailed,Paranoiac}
   verbose_level   : General
 
@@ -72,6 +71,9 @@ Solver_MD:
   maximum_number_of_iteration         : 100
   maximum_number_of_restart           : 40
   convergence_criterion_squared       : 1.0e-28
+  use_initial_guess                   : false
+  ## additional parameters for BiCGStab series
+  Omega_tolerance                     : 0.60
   ## additional parameters for each solver
   number_of_orthonormal_vectors       : 2
   tolerance_for_DynamicSelection_of_L : 0.1
@@ -84,6 +86,9 @@ Solver_H:
   maximum_number_of_iteration         : 100
   maximum_number_of_restart           : 40
   convergence_criterion_squared       : 1.0e-28
+  use_initial_guess                   : false
+  ## additional parameters for BiCGStab series
+  Omega_tolerance                     : 0.60
   ## additional parameters for each solver
   number_of_orthonormal_vectors       : 2
   tolerance_for_DynamicSelection_of_L : 0.1

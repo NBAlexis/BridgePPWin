@@ -1,17 +1,23 @@
 /*!
-        @file    $Id: test_Gauge_Plaquette.cpp #$
+        @file    test_Gauge_Plaquette.cpp
 
         @brief
 
         @author  Hideo Matsufuru  (matsufuru)
-                 $LastChangedBy: aoym $
+                 $LastChangedBy: aoyama $
 
         @date    $LastChangedDate: 2013-01-22 13:51:53 #$
 
-        @version $LastChangedRevision: 1571 $
+        @version $LastChangedRevision: 1929 $
 */
-
 #include "BppSmallTest.h"
+#include "test.h"
+
+#include "IO/gaugeConfig.h"
+
+#include "Measurements/Gauge/staple.h"
+
+#include "Tools/randomNumberManager.h"
 
 //====================================================================
 //! Test of gauge quantities.
@@ -72,13 +78,13 @@ namespace Test_Gauge {
   int plaquette(const std::string& filename_input)
   {
     // #####  parameter setup  #####
-    int Nvol = CommonParameters::Nvol();
-    int Ndim = CommonParameters::Ndim();
+    const int Nvol = CommonParameters::Nvol();
+    const int Ndim = CommonParameters::Ndim();
 
-    Parameters params_all = ParameterManager::read(filename_input);
+    const Parameters params_all = ParameterManager::read(filename_input);
 
-    Parameters params_test   = params_all.lookup("Test_Gauge");
-    Parameters params_staple = params_all.lookup("Staple");
+    const Parameters params_test   = params_all.lookup("Test_Gauge");
+    const Parameters params_staple = params_all.lookup("Staple");
 
     const string        str_gconf_status = params_test.get_string("gauge_config_status");
     const string        str_gconf_read   = params_test.get_string("gauge_config_type_input");
@@ -92,7 +98,7 @@ namespace Test_Gauge {
 
     const string str_index_type = params_staple.get_string("index_type");
 
-    Bridge::VerboseLevel vl = vout.set_verbose_level(str_vlevel);
+    const Bridge::VerboseLevel vl = vout.set_verbose_level(str_vlevel);
 
     //- print input parameters
     vout.general(vl, "  gconf_status = %s\n", str_gconf_status.c_str());
@@ -111,7 +117,6 @@ namespace Test_Gauge {
       vout.crucial(vl, "Error at %s: input parameters have not been set\n", test_name.c_str());
       exit(EXIT_FAILURE);
     }
-
 
     RandomNumberManager::initialize(str_rand_type, seed);
 
@@ -132,16 +137,16 @@ namespace Test_Gauge {
 
 
     // #### object setup #####
-    unique_ptr<Staple> staple(Staple::New(str_index_type));
+    const unique_ptr<Staple> staple(Staple::New(str_index_type));
     staple->set_parameters(params_staple);
 
-    unique_ptr<Timer> timer(new Timer(test_name));
+    const unique_ptr<Timer> timer(new Timer(test_name));
 
 
     // ####  Execution main part  ####
     timer->start();
 
-    double result = staple->plaquette(*U);
+    const double result = staple->plaquette(*U);
 
     timer->report();
 

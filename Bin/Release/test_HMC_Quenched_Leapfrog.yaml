@@ -3,10 +3,10 @@
 Test_HMC_Quenched:
   ## gauge_config_status = {Continue,Cold_start,Hot_start}
   gauge_config_status      : Continue
-  ## gauge_config_type = {Text,Binary,Binary_Parallel,Fortran_JLQCD,Fortran_ILDG,ILDG,ILDG_Parallel,Null}
+  ## gauge_config_type = {Text,Binary,Binary_Distributed,Binary_Parallel,Fortran_JLQCD,Fortran_ILDG,ILDG,ILDG_Parallel,None}
   gauge_config_type_input  : Text
   config_filename_input    : ./conf_04040408.txt
-  gauge_config_type_output : Null
+  gauge_config_type_output : None
   config_filename_output   : ./conf_output.dat
   ## random_number_type = {Mseries,MT19937,SFMT} NB. SFMT is an extra library
   random_number_type       : Mseries
@@ -22,8 +22,7 @@ HMC_Leapfrog:
   step_size       : 0.01
   number_of_steps : 10
   order_of_exp_iP : 8
-  ## Metropolis_test = {1,0} for Metropolis_test on/off
-  Metropolis_test : 1
+  Metropolis_test : true
   ## verbose_level = {Crucial,General,Detailed,Paranoiac}
   verbose_level   : General
 

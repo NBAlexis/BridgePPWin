@@ -1,5 +1,0 @@
-Test_RandomNumbers:
-  int_seed        : 0
-  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
-  verbose_level   : General
-  expected_result : 0.706645527896560

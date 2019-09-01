@@ -1,17 +1,19 @@
 /*!
-        @file    $Id: test_Rational_Approx.cpp #$
+        @file    test_Rational_Approx.cpp
 
         @brief
 
         @author  Hideo Matsufuru  (matsufuru)
-                 $LastChangedBy: aoym $
+                 $LastChangedBy: aoyama $
 
-        @date    $LastChangedDate:: 2017-02-24 00:49:46 #$
+        @date    $LastChangedDate:: 2019-01-21 17:06:23 #$
 
-        @version $LastChangedRevision: 1561 $
+        @version $LastChangedRevision: 1929 $
 */
-
 #include "BppSmallTest.h"
+#include "test.h"
+
+#include "Tools/math_Rational.h"
 
 //====================================================================
 //! Test of rational approximation of fermion operators.
@@ -52,11 +54,10 @@ namespace Test_Rational {
   int approx(void)
   {
     // ####  parameter setup  ####
+    const Parameters params_all = ParameterManager::read(filename_input);
 
-    Parameters params_all = ParameterManager::read(filename_input);
-
-    Parameters params_test     = params_all.lookup("Test_Rational");
-    Parameters params_rational = params_all.lookup("Math_Rational");
+    const Parameters params_test     = params_all.lookup("Test_Rational");
+    const Parameters params_rational = params_all.lookup("Math_Rational");
 
     const string str_vlevel = params_test.get_string("verbose_level");
 
@@ -69,7 +70,7 @@ namespace Test_Rational {
     const double x_max  = params_rational.get_double("upper_bound");
     const int    Npoint = params_rational.get_int("number_of_partitions");
 
-    Bridge::VerboseLevel vl = vout.set_verbose_level(str_vlevel);
+    const Bridge::VerboseLevel vl = vout.set_verbose_level(str_vlevel);
 
     //- print input parameters
     vout.general(vl, "  vlevel = %s\n", str_vlevel.c_str());
@@ -85,15 +86,16 @@ namespace Test_Rational {
     Math_Rational rational;
     rational.set_parameters(params_rational);
 
-    unique_ptr<Timer> timer(new Timer(test_name));
+    const unique_ptr<Timer> timer(new Timer(test_name));
 
 
     // ####  Execution main part  ####
     timer->start();
 
-    double x     = x_min;
-    double dx    = (x_max - x_min) / Npoint;
-    double p_exp = ((double)n_exp) / ((double)d_exp);
+    const double dx    = (x_max - x_min) / Npoint;
+    const double p_exp = ((double)n_exp) / ((double)d_exp);
+
+    double x = x_min;
 
     for (int j = 0; j < Npoint + 1; ++j) {
       double y1 = rational.func(x);
@@ -104,7 +106,7 @@ namespace Test_Rational {
       x += dx;
     }
 
-    double result = x;
+    const double result = x;
 
     timer->report();
 

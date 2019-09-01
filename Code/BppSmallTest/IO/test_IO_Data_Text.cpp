@@ -1,17 +1,22 @@
 /*!
-        @file    $Id: test_IO_Data_Text.cpp #$
+        @file    test_IO_Data_Text.cpp
 
         @brief
 
         @author  Tatsumi Aoyama  (aoym)
-                 $LastChangedBy: aoym $
+                 $LastChangedBy: aoyama $
 
         @date    $LastChangedDate: 2013-03-21 15:28:34 #$
 
-        @version $LastChangedRevision: 1571 $
+        @version $LastChangedRevision: 1929 $
 */
-
 #include "BppSmallTest.h"
+#include "test.h"
+
+#include "IO/dataIO_Text.h"
+#include "IO/gaugeConfig.h"
+
+#include "Tools/randomNumberManager.h"
 
 //====================================================================
 //! Test of I/O.
@@ -52,13 +57,13 @@ namespace Test_IO_Data {
   int test_io_data_text(void)
   {
     // ####  parameter setup  ####
-    int          Ndim = CommonParameters::Ndim();
-    int          Nvol = CommonParameters::Nvol();
+    const int    Ndim = CommonParameters::Ndim();
+    const int    Nvol = CommonParameters::Nvol();
     const double tiny = CommonParameters::epsilon_criterion();
 
-    Parameters params_all = ParameterManager::read(filename_input);
+    const Parameters params_all = ParameterManager::read(filename_input);
 
-    Parameters params_test = params_all.lookup("Test_IO_Data");
+    const Parameters params_test = params_all.lookup("Test_IO_Data");
 
     const string        str_gconf_status = params_test.get_string("gauge_config_status");
     const string        str_gconf_read   = params_test.get_string("gauge_config_type_input");
@@ -72,7 +77,7 @@ namespace Test_IO_Data {
     const bool   do_check        = params_test.is_set("expected_result");
     const double expected_result = do_check ? params_test.get_double("expected_result") : 0.0;
 
-    Bridge::VerboseLevel vl = vout.set_verbose_level(str_vlevel);
+    const Bridge::VerboseLevel vl = vout.set_verbose_level(str_vlevel);
 
     //- print input parameters
     vout.general(vl, "  gconf_status = %s\n", str_gconf_status.c_str());
@@ -115,8 +120,8 @@ namespace Test_IO_Data {
 
 
     // #####  object setup  #####
-    unique_ptr<DataIO> data_io(new DataIO_Text);
-    unique_ptr<Timer>  timer(new Timer(test_name));
+    const unique_ptr<DataIO> data_io(new DataIO_Text);
+    const unique_ptr<Timer>  timer(new Timer(test_name));
 
 
     // ####  Execution main part  ####

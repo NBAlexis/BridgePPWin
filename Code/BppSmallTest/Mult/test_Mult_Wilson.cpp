@@ -1,20 +1,32 @@
 /*!
-        @file    $Id:: test_Mult_Wilson.cpp #$
+        @file    test_Mult_Wilson.cpp
 
         @brief
 
         @author  Yusuke Namekawa  (namekawa)
-                 $LastChangedBy: aoym $
+                 $LastChangedBy: namekawa $
 
-        @date    $LastChangedDate:: 2017-02-24 18:35:38 #$
+        @date    $LastChangedDate:: 2019-01-24 13:58:34 #$
 
-        @version $LastChangedRevision: 1571 $
+        @version $LastChangedRevision: 1931 $
 */
-
 #include "BppSmallTest.h"
+#include "test.h"
 
-//- profiler of fx10
-//#include "fj_tool/fapp.h"
+#include "Fopr/fopr_Wilson.h"
+
+#include "IO/gaugeConfig.h"
+
+#include "Tools/randomNumberManager.h"
+
+//- profiler
+#ifdef FUJITSU_FX
+#  ifdef __has_include
+#    if __has_include(<fj_tool/fapp.h>)
+#      include <fj_tool/fapp.h>
+#    endif
+#  endif
+#endif
 
 //====================================================================
 //! Test of Mult with Wilson fermion, prepared for beginners.
@@ -49,19 +61,18 @@ namespace Test_Mult_Wilson {
   int mult(void)
   {
     // ####  parameter setup  ####
-    int Nc   = CommonParameters::Nc();
-    int Nd   = CommonParameters::Nd();
-    int Ndim = CommonParameters::Ndim();
-    int Nvol = CommonParameters::Nvol();
+    const int Nc   = CommonParameters::Nc();
+    const int Nd   = CommonParameters::Nd();
+    const int Ndim = CommonParameters::Ndim();
+    const int Nvol = CommonParameters::Nvol();
 
-    int Lvol    = CommonParameters::Lvol();
-    int NPE     = CommonParameters::NPE();
-    int Nthread = ThreadManager_OpenMP::get_num_threads_available();
+    const int NPE     = CommonParameters::NPE();
+    const int Nthread = ThreadManager_OpenMP::get_num_threads_available();
 
-    Parameters params_all = ParameterManager::read(filename_input);
+    const Parameters params_all = ParameterManager::read(filename_input);
 
-    Parameters params_test = params_all.lookup("Test_Mult");
-    Parameters params_fopr = params_all.lookup("Fopr");
+    const Parameters params_test = params_all.lookup("Test_Mult");
+    const Parameters params_fopr = params_all.lookup("Fopr");
 
     const string        str_gconf_status = params_test.get_string("gauge_config_status");
     const string        str_gconf_read   = params_test.get_string("gauge_config_type_input");
@@ -77,7 +88,7 @@ namespace Test_Mult_Wilson {
 
     const string str_gmset_type = params_fopr.get_string("gamma_matrix_type");
 
-    Bridge::VerboseLevel vl = vout.set_verbose_level(str_vlevel);
+    const Bridge::VerboseLevel vl = vout.set_verbose_level(str_vlevel);
 
     //- print input parameters
     vout.general(vl, "  gconf_status = %s\n", str_gconf_status.c_str());
@@ -118,14 +129,14 @@ namespace Test_Mult_Wilson {
 
 
     // ####  object setup  #####
-    unique_ptr<GammaMatrixSet> gmset(GammaMatrixSet::New(str_gmset_type));
+    const unique_ptr<GammaMatrixSet> gmset(GammaMatrixSet::New(str_gmset_type));
 
-    unique_ptr<Fopr> fopr(Fopr::New("Wilson", str_gmset_type));
+    const unique_ptr<Fopr> fopr(Fopr::New("Wilson", str_gmset_type));
     fopr->set_parameters(params_fopr);
     fopr->set_config(U);
     fopr->set_mode("D");
 
-    unique_ptr<Timer> timer(new Timer(test_name));
+    const unique_ptr<Timer> timer(new Timer(test_name));
 
     vout.general(vl, "\n");
 
@@ -137,8 +148,10 @@ namespace Test_Mult_Wilson {
     double result = 0.0;
 
     timer->start();
-    //- profiler of fx10 starts
-    // fapp_start("Mult.Domainwall",1,1);
+#ifdef FUJITSU_FX
+    //- profiler starts
+    // fapp_start("Mult.Wilson",1,1);
+#endif
 
 #pragma omp parallel
     {
@@ -148,34 +161,16 @@ namespace Test_Mult_Wilson {
       result = y.norm();
     }
 
-    //- profiler of fx10 ends
+#ifdef FUJITSU_FX
+    //- profiler ends
     // fapp_stop("Mult.Wilson",1,1);
+#endif
     timer->stop();
-    double elapse_sec = timer->elapsed_sec();
+    const double elapse_sec = timer->elapsed_sec();
 
 
-    //- additional verify for Nthread > 1
-    int thread_test = 0;
-
-    if (Nthread > 1) {
-      double result_single = 0.0;
-
-      fopr->mult(y, b);
-      result_single = y.norm();
-
-      if (Test::verify(result, result_single, tolerance)) {
-        vout.crucial("%s: result(multithread) not equal to result(single thread)\n", test_name.c_str());
-        vout.crucial("%s:   result(multithread)   = %22.14e\n", test_name.c_str(), result);
-        vout.crucial("%s:   result(single thread) = %22.14e\n", test_name.c_str(), result_single);
-
-        thread_test = 1;  // test failed.
-      }
-    }
-
-
-    //- Flops counting
-    double gflo_mult   = fopr->flop_count() / 1.0e+9;
-    double gflops_mult = gflo_mult * Nmult / (elapse_sec * NPE * Nthread);
+    //- Flops counting in giga unit
+    const double gflops_mult = fopr->flop_count() * Nmult / (elapse_sec * NPE * Nthread);
 
     vout.general(vl, "%s: %12.4e GFlops / core\n", test_name.c_str(), gflops_mult);
     vout.general(vl, "\n");
@@ -185,13 +180,7 @@ namespace Test_Mult_Wilson {
 
 
     if (do_check) {
-      int verify_test = Test::verify(result, expected_result, tolerance);
-
-      if ((thread_test == 0) && (verify_test == 0)) {
-        return EXIT_SUCCESS;
-      } else {
-        return EXIT_FAILURE;
-      }
+      return Test::verify(result, expected_result, tolerance);
     } else {
       vout.detailed(vl, "check skipped: expected_result not set.\n\n");
       return EXIT_SKIP;

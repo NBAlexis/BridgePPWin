@@ -1,0 +1,64 @@
+# this is a sample parameter file
+
+Test_Solver:
+  ## gauge_config_status = {Continue,Cold_start,Hot_start}
+  gauge_config_status      : Continue
+  ## gauge_config_type = {Text,Binary,Binary_Distributed,Binary_Parallel,Fortran_JLQCD,Fortran_ILDG,ILDG,ILDG_Parallel}
+  gauge_config_type_input  : Text
+  config_filename_input    : ./conf_04040408.txt
+  ## random_number_type = {Mseries,MT19937,SFMT} NB. SFMT is an extra library
+  random_number_type       : Mseries
+  seed_for_random_number   : 1234567UL
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level            : General
+  expected_result          : 11.0
+
+Solver:
+  ## solver_type = {CGNE,CGNR,BiCGStab_Cmplx,BiCGStab_L_Cmplx,BiCGStab_DS_L_Cmplx,BiCGStab_IDS_L_Cmplx,GMRES_m_Cmplx}
+  solver_type                         : CGNR
+  maximum_number_of_iteration         : 100
+  maximum_number_of_restart           : 40
+  convergence_criterion_squared       : 1.0e-28
+  use_initial_guess                   : false
+  ## additional parameters for each solver
+  number_of_orthonormal_vectors       : 2
+  tolerance_for_DynamicSelection_of_L : 0.1
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level                       : General
+
+Fopr:
+  fermion_type       : Wilson
+  ## gamma_matrix_type = {Chiral,Dirac}
+  gamma_matrix_type  : Dirac
+  hopping_parameter  : 0.12
+  boundary_condition : [-1,-1,-1,-1]
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level      : General
+
+Source:
+  ## source_type = {Local,Exponential,MomentumWall,Random,Wall}
+  source_type     : Local
+  ## source_position = [x,y,z,t], x = {0,...,Lx-1}
+  source_position : [0,0,0,0]
+  ## additional parameters for Exponential, exp(- slope * r^(power))
+  slope           : 0.25
+  power           : 2.0
+  ## additional parameters for MomentumWall, source_momentum = [nx,ny,nz,nt], p = (2 \pi / L) n
+  source_momentum : [1,1,1, 0]
+  ## additional parameters for Random
+  ## noise_type = {Gaussian,U1,Z2}
+  noise_type      : Z2
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level   : General
+
+GaugeFixing:
+  ## gauge_fixing_type = {Coulomb,Landau,None}
+  gauge_fixing_type             : None
+  maximum_number_of_iteration   : 5000
+  number_of_naive_iteration     : 50
+  interval_of_measurement       : 10
+  iteration_to_reset            : 1000
+  convergence_criterion_squared : 1.0e-24
+  overrelaxation_parameter      : 1.6
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level                 : General

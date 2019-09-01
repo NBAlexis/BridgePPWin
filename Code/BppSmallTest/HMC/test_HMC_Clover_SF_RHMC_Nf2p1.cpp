@@ -1,17 +1,35 @@
 /*!
-        @file    $Id: test_HMC_Clover_SF_RHMC_Nf2p1.cpp #$
+        @file    test_HMC_Clover_SF_RHMC_Nf2p1.cpp
 
         @brief   Testing the HMC leapfrog step with SF BC.
 
         @author  Yusuke Taniguchi  (taniguchi)
-                 $LastChangedBy: aoym $
+                 $LastChangedBy: aoyama $
 
         @date    $LastChangedDate: 2013-01-22 13:51:53 #$
 
-        @version $LastChangedRevision: 1571 $
+        @version $LastChangedRevision: 1929 $
  */
-
 #include "BppSmallTest.h"
+#include "test.h"
+
+#include "Action/Fermion/action_F_Standard_SF.h"
+#include "Action/Fermion/action_F_Rational_SF.h"
+
+#include "Fopr/fopr_Rational_SF.h"
+#include "Fopr/fopr_Smeared.h"
+
+#include "Force/Fermion/force_F_Clover_SF.h"
+#include "Force/Fermion/force_F_Smeared.h"
+
+#include "HMC/hmc_General.h"
+#include "HMC/builder_Integrator.h"
+
+#include "IO/gaugeConfig.h"
+
+#include "Tools/file_utils.h"
+#include "Tools/randomNumberManager.h"
+#include "Tools/randomNumbers_MT19937.h"
 
 //====================================================================
 //! Test of HMC update for clover fermions with SF.
@@ -71,23 +89,23 @@ namespace Test_HMC_Clover_SF {
   int RHMC_Nf2p1(void)
   {
     // #####  parameter setup  #####
-    int Nc   = CommonParameters::Nc();
-    int Nvol = CommonParameters::Nvol();
-    int Ndim = CommonParameters::Ndim();
+    const int Nc   = CommonParameters::Nc();
+    const int Nvol = CommonParameters::Nvol();
+    const int Ndim = CommonParameters::Ndim();
 
-    Parameters params_all = ParameterManager::read(filename_input);
+    const Parameters params_all = ParameterManager::read(filename_input);
 
-    Parameters params_test        = params_all.lookup("Test_HMC_Clover_SF");
-    Parameters params_action_G    = params_all.lookup("Action_G");
-    Parameters params_fopr_Nf2    = params_all.lookup("Fopr_Nf2");
-    Parameters params_fopr_Nf1    = params_all.lookup("Fopr_Nf1");
-    Parameters params_proj        = params_all.lookup("Projection");
-    Parameters params_smear       = params_all.lookup("Smear");
-    Parameters params_dr_smear    = params_all.lookup("Director_Smear");
-    Parameters params_rational_MD = params_all.lookup("Fopr_Rational_MD");
-    Parameters params_rational_H  = params_all.lookup("Fopr_Rational_H");
-    Parameters params_integrator  = params_all.lookup("Builder_Integrator");
-    Parameters params_hmc         = params_all.lookup("HMC_General");
+    const Parameters params_test        = params_all.lookup("Test_HMC_Clover_SF");
+    const Parameters params_action_G    = params_all.lookup("Action_G");
+    const Parameters params_fopr_Nf2    = params_all.lookup("Fopr_Nf2");
+    const Parameters params_fopr_Nf1    = params_all.lookup("Fopr_Nf1");
+    const Parameters params_proj        = params_all.lookup("Projection");
+    const Parameters params_smear       = params_all.lookup("Smear");
+    const Parameters params_dr_smear    = params_all.lookup("Director_Smear");
+    const Parameters params_rational_MD = params_all.lookup("Fopr_Rational_MD");
+    const Parameters params_rational_H  = params_all.lookup("Fopr_Rational_H");
+    const Parameters params_integrator  = params_all.lookup("Builder_Integrator");
+    const Parameters params_hmc         = params_all.lookup("HMC_General");
 
     const string        str_gconf_status = params_test.get_string("gauge_config_status");
     const string        str_gconf_read   = params_test.get_string("gauge_config_type_input");
@@ -97,7 +115,7 @@ namespace Test_HMC_Clover_SF {
     const string        str_rand_type    = params_test.get_string("random_number_type");
     const unsigned long seed             = params_test.get_unsigned_long("seed_for_random_number");
     int                 i_conf           = params_test.get_int("trajectory_number");
-    int                 Ntraj            = params_test.get_int("trajectory_number_step");
+    const int           Ntraj            = params_test.get_int("trajectory_number_step");
     const int           i_save_conf      = params_test.get_int("save_config_interval");
     const string        str_vlevel       = params_test.get_string("verbose_level");
 
@@ -113,7 +131,7 @@ namespace Test_HMC_Clover_SF {
     const int              Nlevels           = params_integrator.get_int("number_of_levels");
     const std::vector<int> level_action      = params_integrator.get_int_vector("level_of_actions");
 
-    Bridge::VerboseLevel vl = vout.set_verbose_level(str_vlevel);
+    const Bridge::VerboseLevel vl = vout.set_verbose_level(str_vlevel);
 
     //- print input parameters
     vout.general(vl, "  gconf_status = %s\n", str_gconf_status.c_str());
@@ -162,7 +180,7 @@ namespace Test_HMC_Clover_SF {
       exit(EXIT_FAILURE);
     }
 
-    unique_ptr<GaugeConfig> gconf_write(new GaugeConfig(str_gconf_write));
+    const unique_ptr<GaugeConfig> gconf_write(new GaugeConfig(str_gconf_write));
 
 
     unique_ptr<Action> action_G(Action::New(str_action_G_type));
@@ -231,7 +249,7 @@ namespace Test_HMC_Clover_SF {
     std::vector<Director *> directors(1);
     directors[0] = (Director *)dr_smear.get();
 
-    unique_ptr<Builder_Integrator> builder(new Builder_Integrator(actions, directors));
+    const unique_ptr<Builder_Integrator> builder(new Builder_Integrator(actions, directors));
     builder->set_parameters(params_integrator);
     Integrator *integrator = builder->build();
 
@@ -248,7 +266,7 @@ namespace Test_HMC_Clover_SF {
     HMC_General hmc(actions, directors, integrator, rand);
     hmc.set_parameters(params_hmc);
 
-    unique_ptr<Timer> timer(new Timer(test_name));
+    const unique_ptr<Timer> timer(new Timer(test_name));
 
 
     // ####  Execution main part  ####

@@ -1,17 +1,21 @@
 /*!
-        @file    $Id: test_IO_GaugeConfig.cpp #$
+        @file    test_IO_GaugeConfig.cpp
 
         @brief
 
         @author  Tatsumi Aoyama  (aoym)
-                 $LastChangedBy: aoym $
+                 $LastChangedBy: aoyama $
 
         @date    $LastChangedDate: 2013-03-21 15:28:34 #$
 
-        @version $LastChangedRevision: 1593 $
+        @version $LastChangedRevision: 1929 $
 */
-
 #include "BppSmallTest.h"
+#include "test.h"
+
+#include "IO/gaugeConfig.h"
+
+#include "Tools/randomNumberManager.h"
 
 //====================================================================
 //! Test of I/O.
@@ -127,12 +131,12 @@ namespace Test_IO_GaugeConfig {
   int test_io_gconf_main(const std::string& filename_input)
   {
     // ####  parameter setup  ####
-    int Ndim = CommonParameters::Ndim();
-    int Nvol = CommonParameters::Nvol();
+    const int Ndim = CommonParameters::Ndim();
+    const int Nvol = CommonParameters::Nvol();
 
-    Parameters params_all = ParameterManager::read(filename_input);
+    const Parameters params_all = ParameterManager::read(filename_input);
 
-    Parameters params_test = params_all.lookup("Test_IO_GaugeConfig");
+    const Parameters params_test = params_all.lookup("Test_IO_GaugeConfig");
 
     const string        str_gconf_status = params_test.get_string("gauge_config_status");
     const string        str_gconf_read   = params_test.get_string("gauge_config_type_input");
@@ -146,7 +150,7 @@ namespace Test_IO_GaugeConfig {
     const bool   do_check        = params_test.is_set("expected_result");
     const double expected_result = do_check ? params_test.get_double("expected_result") : 0.0;
 
-    Bridge::VerboseLevel vl = vout.set_verbose_level(str_vlevel);
+    const Bridge::VerboseLevel vl = vout.set_verbose_level(str_vlevel);
 
     //- print input parameters
     vout.general(vl, "  gconf_status = %s\n", str_gconf_status.c_str());
@@ -187,12 +191,13 @@ namespace Test_IO_GaugeConfig {
       exit(EXIT_FAILURE);
     }
 
-    unique_ptr<Field_G>     Utest(new Field_G(Nvol, Ndim));
-    unique_ptr<GaugeConfig> gconf_test(new GaugeConfig(str_gconf_write));
+    unique_ptr<Field_G> Utest(new Field_G(Nvol, Ndim));
+
+    const unique_ptr<GaugeConfig> gconf_test(new GaugeConfig(str_gconf_write));
 
 
     // #### object setup #####
-    unique_ptr<Timer> timer(new Timer(test_name));
+    const unique_ptr<Timer> timer(new Timer(test_name));
 
 
     // ####  Execution main part  ####
@@ -214,7 +219,7 @@ namespace Test_IO_GaugeConfig {
     vout.general(vl, "%s: \t%s\n", test_name.c_str(), is_equal ? "ok" : "failed");
 
 
-    int result = err;
+    const int result = err;
 
     timer->report();
 
@@ -248,13 +253,13 @@ namespace Test_IO_GaugeConfig {
   //====================================================================
   int check_conf(const unique_ptr<Field_G>& f, const unique_ptr<Field_G>& g)
   {
-    Bridge::VerboseLevel vl = CommonParameters::Vlevel();
+    const Bridge::VerboseLevel vl = CommonParameters::Vlevel();
 
     int err = 0;
 
-    int Ndim = CommonParameters::Ndim();
-    int Nvol = CommonParameters::Nvol();
-    int Nc   = CommonParameters::Nc();
+    const int Ndim = CommonParameters::Ndim();
+    const int Nvol = CommonParameters::Nvol();
+    const int Nc   = CommonParameters::Nc();
 
     for (int idir = 0; idir < Ndim; ++idir) {
       for (int isite = 0; isite < Nvol; ++isite) {

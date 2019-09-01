@@ -1,0 +1,143 @@
+# this is a sample parameter file
+
+Test_EnergyMomentumTensor_Fermion_1pt_Function:
+  ## gauge_config_status = {Continue,Cold_start,Hot_start}
+  #  gauge_config_status      : Continue
+  gauge_config_status      : Branch
+  #  gauge_config_status      : Read_gauge_heavy
+  #  gauge_config_status      : Read_gauge_phys
+  ## gauge_config_type = {Text,Binary,Binary_Distributed,Binary_Parallel,Fortran_JLQCD,Fortran_ILDG,ILDG,ILDG_Parallel,None}
+  gauge_config_type_input  : Text
+  config_filename_input    : ./conf_04040408.txt
+  gauge_config_type_output : None
+  config_filename_output   : ./conf_output.dat
+  ## random_number_type = {Mseries,MT19937,SFMT} NB. SFMT is an extra library
+  random_number_type       : MT19937
+  seed_for_random_number   : 1234567UL
+  rand_filename_input      : ./rand.txt
+  rand_filename_output     : ./rand.txt
+  even_odd                 : 1
+  number_of_valence_quarks : 2
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level            : General
+  expected_result          : 9.89310925856716e+00
+
+FermionFlow_1pt_Function:
+  ## filename_output = {stdout, or "filename"}
+  filename_output : stdout
+  number_of_noises             : 20
+  ## Min t = step_size * measurement_interval * initial_tau
+  initial_tau                  : 1
+  ## Max t = step_size * measurement_interval * number_of_measurement_times
+  number_of_measurement_times  : 2
+  ## Measure fermion flow for each t = step_size * measurement_interval
+  measurement_interval         : 5
+  ## Store gauge conf for each t = step_size * measurement_interval * gauge_store_interval
+  gauge_store_interval         : 1
+  max_momentum                 : 1
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level : General
+
+Action_G:
+  action_type   : Action_G_Rectangle
+  ## NB. beta has been fixed in GradientFlow
+  # beta        : 3.0
+  c_plaq        : 1.0
+  c_rect        : 0.0
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level : General
+
+Quark_1:
+  temporary_filename_base : prop_1
+  Fopr:
+    ## fermion_type = {Clover,CloverGeneral,Clover_Isochemical,Clover_SF,TMWilson,
+    ##                 Wilson,WilsonGeneral,Wilson_Isochemical,Wilson_SF}
+    ## NB. Domainwall,Overlap,Staggered need special treatments
+    fermion_type       : Clover
+    ## gamma_matrix_type = {Chiral,Dirac}
+    gamma_matrix_type          : Dirac
+    hopping_parameter  : 0.12
+    clover_coefficient : 1.0
+    # hopping_parameter          : 0.13779625
+    # clover_coefficient         : 1.715
+    # hopping_parameter          : 0.1356
+    # clover_coefficient         : 1.628
+    boundary_condition         : [1,1,1,-1]
+    ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+    verbose_level              : General
+
+  Solver:
+    ## solver_type = {CG,BiCGStab_Cmplx,BiCGStab_L_Cmplx,BiCGStab_DS_L_Cmplx,BiCGStab_IDS_L_Cmplx,GMRES_m_Cmplx}
+    solver_type                         : BiCGStab_L_Cmplx
+    maximum_number_of_iteration         : 5000
+    maximum_number_of_restart           : 100
+    convergence_criterion_squared       : 1.0e-28
+    ## additional parameters for BiCGStab series
+    Omega_tolerance                     : 0.60
+    ## additional parameters for each solver
+    number_of_orthonormal_vectors       : 2
+    tolerance_for_DynamicSelection_of_L : 0.1
+    use_initial_guess                   : 0
+    ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+    verbose_level                       : General
+
+Quark_2:
+  temporary_filename_base : prop_2
+  Fopr:
+    ## fermion_type = {Clover,CloverGeneral,Clover_Isochemical,Clover_SF,TMWilson,
+    ##                 Wilson,WilsonGeneral,Wilson_Isochemical,Wilson_SF}
+    ## NB. Domainwall,Overlap,Staggered need special treatments
+    fermion_type       : Clover
+    ## gamma_matrix_type = {Chiral,Dirac}
+    gamma_matrix_type          : Dirac
+    hopping_parameter  : 0.115
+    clover_coefficient : 1.0
+    # hopping_parameter          : 0.13663375
+    # clover_coefficient         : 1.715
+    # hopping_parameter          : 0.1351
+    # clover_coefficient         : 1.628
+    boundary_condition         : [1,1,1,-1]
+    ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+    verbose_level              : General
+
+  Solver:
+    ## solver_type = {CG,BiCGStab_Cmplx,BiCGStab_L_Cmplx,BiCGStab_DS_L_Cmplx,BiCGStab_IDS_L_Cmplx,GMRES_m_Cmplx}
+    solver_type                         : BiCGStab_L_Cmplx
+    maximum_number_of_iteration         : 5000
+    maximum_number_of_restart           : 100
+    convergence_criterion_squared       : 1.0e-28
+    ## additional parameters for BiCGStab series
+    Omega_tolerance                     : 0.60
+    ## additional parameters for each solver
+    number_of_orthonormal_vectors       : 2
+    tolerance_for_DynamicSelection_of_L : 0.1
+    use_initial_guess                   : 0
+    ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+    verbose_level                       : General
+
+GradientFlow:
+  ## order_of_RungeKutta = {1,2,3,4}
+  order_of_RungeKutta        : 3
+  step_size                  : 0.02
+  order_of_approx_for_exp_iP : 8
+  ## adaptive = { 0 = false, 1 = true }
+  adaptive                   : 0
+  tolerance                  : 1.0e-4
+  safety_factor              : 0.9
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level              : General
+
+FermionFlow:
+  ## order_of_RungeKutta = {3}
+  order_of_RungeKutta        : 3
+  step_size                  : 0.02
+  order_of_approx_for_exp_iP : 8
+  boundary_condition         : [1,1,1,-1]
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level              : General
+
+SourceRandom:
+  ## noise_type = {Gaussian,U1,Z2}
+  noise_type         : Z2
+  source_position    : [0,0,0,0]
+  source_momentum    : [0,0,0,0]

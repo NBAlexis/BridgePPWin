@@ -1,0 +1,58 @@
+# this is a sample parameter file
+
+Test_EnergyMomentumTensor_Gauge:
+  ## gauge_config_status = {Continue,Cold_start,Hot_start}
+  gauge_config_status      : Continue
+  ## gauge_config_type = {Text,Binary,Binary_Distributed,Binary_Parallel,Fortran_JLQCD,Fortran_ILDG,ILDG,ILDG_Parallel,None}
+  gauge_config_type_input  : Text
+  config_filename_input    : ./conf_04040408.txt
+  gauge_config_type_output : None
+  config_filename_output   : ./conf_output.dat
+  ## random_number_type = {Mseries,MT19937,SFMT} NB. SFMT is an extra library
+  random_number_type       : Mseries
+  seed_for_random_number   : 1234567UL
+  trajectory_number        : 0
+  number_of_steps          : 10
+  max_flow_time            : 0.2
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level            : General
+  expected_result          : 1.7084525163421119e+02
+
+Action_G:
+  action_type   : Action_G_Rectangle
+  ## NB. beta has been fixed in GradientFlow
+  # beta          :  3.0
+  c_plaq        : 1.0
+  c_rect        : 0.0
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level : General
+
+GradientFlow:
+  ## order_of_RungeKutta = {1,2,3,4}
+  order_of_RungeKutta        : 4
+  step_size                  : 0.02
+  order_of_approx_for_exp_iP : 8
+  ## adaptive = { 0 = false, 1 = true }
+  adaptive                   : 0
+  tolerance                  : 1.0e-4
+  safety_factor              : 0.9
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level              : General
+
+EnergyMomentumTensor:
+  ## filename_output = {stdout, or "filename"}
+  filename_output : stdout
+  c_plaq          :  5.0/3.0
+  c_rect          : -1.0/12.0
+  max_momentum    : 1
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level : General
+
+TopologicalCharge:
+  ## filename_output = {stdout, or "filename"}
+  filename_output : stdout
+  c_plaq          :  5.0/3.0
+  c_rect          : -1.0/12.0
+  max_momentum    : 1
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level   : General

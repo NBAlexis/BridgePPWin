@@ -1,17 +1,23 @@
 /*!
-        @file    $Id: test_Gauge_Shift.cpp #$
+        @file    test_Gauge_Shift.cpp
 
         @brief
 
         @author  Hideo Matsufuru  (matsufuru)
-                 $LastChangedBy: aoym $
+                 $LastChangedBy: aoyama $
 
         @date    $LastChangedDate: 2013-01-22 13:51:53 #$
 
-        @version $LastChangedRevision: 1571 $
+        @version $LastChangedRevision: 1929 $
 */
-
 #include "BppSmallTest.h"
+#include "test.h"
+
+#include "IO/gaugeConfig.h"
+
+#include "Measurements/Gauge/staple_lex.h"
+
+#include "Tools/randomNumberManager.h"
 
 //====================================================================
 //! Test of gauge quantities.
@@ -52,12 +58,12 @@ namespace Test_Gauge {
   int shift(void)
   {
     // #####  parameter setup  #####
-    int Nvol = CommonParameters::Nvol();
-    int Ndim = CommonParameters::Ndim();
+    const int Nvol = CommonParameters::Nvol();
+    const int Ndim = CommonParameters::Ndim();
 
-    Parameters params_all = ParameterManager::read(filename_input);
+    const Parameters params_all = ParameterManager::read(filename_input);
 
-    Parameters params_test = params_all.lookup("Test_Gauge");
+    const Parameters params_test = params_all.lookup("Test_Gauge");
 
     const string        str_gconf_status = params_test.get_string("gauge_config_status");
     const string        str_gconf_read   = params_test.get_string("gauge_config_type_input");
@@ -69,7 +75,7 @@ namespace Test_Gauge {
     const bool   do_check        = params_test.is_set("expected_result");
     const double expected_result = do_check ? params_test.get_double("expected_result") : 0.0;
 
-    Bridge::VerboseLevel vl = vout.set_verbose_level(str_vlevel);
+    const Bridge::VerboseLevel vl = vout.set_verbose_level(str_vlevel);
 
     //- print input parameters
     vout.general(vl, "  gconf_status = %s\n", str_gconf_status.c_str());
@@ -107,13 +113,13 @@ namespace Test_Gauge {
       exit(EXIT_FAILURE);
     }
 
-    unique_ptr<Index_lex> index(new Index_lex);
-    ShiftField_lex        shift;
+    const unique_ptr<Index_lex>  index(new Index_lex);
+    const unique_ptr<Staple_lex> staple(new Staple_lex);
 
-    unique_ptr<Field_G>    U2(new Field_G(Nvol, Ndim));
-    unique_ptr<Staple_lex> staple(new Staple_lex);
+    ShiftField_lex      shift;
+    unique_ptr<Field_G> U2(new Field_G(Nvol, Ndim));
 
-    unique_ptr<Timer> timer(new Timer(test_name));
+    const unique_ptr<Timer> timer(new Timer(test_name));
 
 
     // ####  Execution main part  ####
@@ -129,14 +135,15 @@ namespace Test_Gauge {
     vout.general(vl, "U2 = %.8f\n", U2->cmp(17, index->site(1, 0, 0, 0), 3));
     vout.general(vl, "\n");
 
-    double result;
-    int    nodeid = Communicator::nodeid();
+    double    result = 0.0;
+    const int nodeid = Communicator::nodeid();
 
     result = staple->plaquette(*U);
     vout.general(vl, "plaq (original field) = %d  %.8f\n", nodeid, result);
 
     result = staple->plaquette(*U2);
     vout.general(vl, "plaq (shifted field)  = %d  %.8f\n", nodeid, result);
+
 
     timer->report();
 

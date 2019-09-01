@@ -1,0 +1,9 @@
+Test_RandomNumbers:
+  ## random_number_type = {Mseries,MT19937,SFMT} NB. SFMT is an extra library
+  random_number_type : SFMT
+  ## noise_type = {Gaussian,U1,Z2}
+  noise_type         : U1
+  int_seed           : 0
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level      : General
+  expected_result    : 0.707106707272903

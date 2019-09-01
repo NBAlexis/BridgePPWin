@@ -3,7 +3,7 @@
 Test_Mult:
   ## gauge_config_status = {Continue,Cold_start,Hot_start}
   gauge_config_status      : Continue
-  ## gauge_config_type = {Text,Binary,Binary_Parallel,Fortran_JLQCD,Fortran_ILDG,ILDG,ILDG_Parallel}
+  ## gauge_config_type = {Text,Binary,Binary_Distributed,Binary_Parallel,Fortran_JLQCD,Fortran_ILDG,ILDG,ILDG_Parallel}
   gauge_config_type_input  : Text
   config_filename_input    : ./conf_04040408.txt
   ## random_number_type = {Mseries,MT19937,SFMT} NB. SFMT is an extra library
@@ -16,7 +16,7 @@ Test_Mult:
   tolerance                : 1.0e-14
 
 Fopr:
-  ## fermion_type = {Clover,CloverGeneral,Clover_Isochemical,Clover_SF,
+  ## fermion_type = {Clover,CloverGeneral,Clover_Isochemical,Clover_SF,TMWilson,
   ##                 Wilson,WilsonGeneral,Wilson_Isochemical,Wilson_SF}
   ## NB. Domainwall,Overlap,Staggered need special treatments
   fermion_type                 : CloverGeneral

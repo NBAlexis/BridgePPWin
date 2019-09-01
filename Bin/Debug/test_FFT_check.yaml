@@ -1,0 +1,14 @@
+# this is a sample parameter file
+
+Test_FFT:
+  external_dof    : 1
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level   : General
+  expected_result : 1.0
+  check_precision : 1.0e-9
+
+FFT:
+  ## FFT_direction = { Forward, Backward }
+  FFT_direction : Forward
+  ## verbose_level = {Crucial,General,Detailed,Paranoiac}
+  verbose_level : General

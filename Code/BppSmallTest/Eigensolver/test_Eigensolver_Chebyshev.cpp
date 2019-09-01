@@ -1,17 +1,26 @@
 /*!
-        @file    $Id: test_Eigensolver_Chebyshev.cpp #$
+        @file    test_Eigensolver_Chebyshev.cpp
 
         @brief
 
         @author  Hideo Matsufuru  (matsufuru)
-                 $LastChangedBy: aoym $
+                 $LastChangedBy: aoyama $
 
         @date    $LastChangedDate: 2013-01-22 13:51:53 #$
 
-        @version $LastChangedRevision: 1571 $
+        @version $LastChangedRevision: 1929 $
 */
-
 #include "BppSmallTest.h"
+#include "test.h"
+
+#include "Eigen/eigensolver_IRLanczos.h"
+
+#include "Fopr/fopr_Chebyshev.h"
+#include "Fopr/fopr_Smeared.h"
+
+#include "IO/gaugeConfig.h"
+
+#include "Tools/randomNumberManager.h"
 
 //====================================================================
 //! Test of eigenvalue solver with Chebyshev.
@@ -55,18 +64,18 @@ namespace Test_Eigensolver_Chebyshev {
   int solve_chebyshev(void)
   {
     // ####  parameter setup  ####
-    int Ndim = CommonParameters::Ndim();
-    int Nvol = CommonParameters::Nvol();
+    const int Ndim = CommonParameters::Ndim();
+    const int Nvol = CommonParameters::Nvol();
 
-    Parameters params_all = ParameterManager::read(filename_input);
+    const Parameters params_all = ParameterManager::read(filename_input);
 
-    Parameters params_test      = params_all.lookup("Test_Eigensolver");
-    Parameters params_fopr      = params_all.lookup("Fopr");
-    Parameters params_chebyshev = params_all.lookup("Fopr_Chebyshev");
-    Parameters params_proj      = params_all.lookup("Projection");
-    Parameters params_smear     = params_all.lookup("Smear");
-    Parameters params_dr_smear  = params_all.lookup("Director_Smear");
-    Parameters params_irlanczos = params_all.lookup("Eigensolver_Chebyshev");
+    const Parameters params_test      = params_all.lookup("Test_Eigensolver");
+    const Parameters params_fopr      = params_all.lookup("Fopr");
+    const Parameters params_chebyshev = params_all.lookup("Fopr_Chebyshev");
+    const Parameters params_proj      = params_all.lookup("Projection");
+    const Parameters params_smear     = params_all.lookup("Smear");
+    const Parameters params_dr_smear  = params_all.lookup("Director_Smear");
+    const Parameters params_irlanczos = params_all.lookup("Eigensolver_Chebyshev");
 
     const string        str_gconf_status = params_test.get_string("gauge_config_status");
     const string        str_gconf_read   = params_test.get_string("gauge_config_type_input");
@@ -89,7 +98,7 @@ namespace Test_Eigensolver_Chebyshev {
     const double Enorm_eigen = params_irlanczos.get_double("convergence_criterion_squared");
     const double Vthreshold  = params_irlanczos.get_double("threshold_value");
 
-    Bridge::VerboseLevel vl = vout.set_verbose_level(str_vlevel);
+    const Bridge::VerboseLevel vl = vout.set_verbose_level(str_vlevel);
 
     //- print input parameters
     vout.general(vl, "  gconf_status   = %s\n", str_gconf_status.c_str());
@@ -153,27 +162,28 @@ namespace Test_Eigensolver_Chebyshev {
     unique_ptr<Fopr_Chebyshev> fopr_ch(new Fopr_Chebyshev(fopr_smear.get()));
     fopr_ch->set_parameters(params_chebyshev);
 
-    double Vthreshold_ch = fopr_ch->mult(Vthreshold * Vthreshold);
+    const double Vthreshold_ch = fopr_ch->mult(Vthreshold * Vthreshold);
     vout.general(vl, "Vthreshold_ch = %12.6f\n", Vthreshold_ch);
 
     //- NB. Low and High must be inversed, because of Chebyshev expansion.
-    unique_ptr<Eigensolver_IRLanczos> eigen(new Eigensolver_IRLanczos(fopr_ch.get()));
+    const unique_ptr<Eigensolver_IRLanczos> eigen(new Eigensolver_IRLanczos(fopr_ch.get()));
     eigen->set_parameters(str_sortfield_type, Nk, Np, Niter_eigen, Enorm_eigen, Vthreshold_ch);
 
-    unique_ptr<Timer> timer(new Timer(test_name));
+    const unique_ptr<Timer> timer(new Timer(test_name));
 
 
     // ####  Execution main part  ####
     timer->start();
 
-    int                 Nm = Nk + Np;
-    std::vector<double> TDa(Nm);
-    std::vector<Field>  vk(Nm);
+    Field_F   b2;
+    const int NFin  = b2.nin();
+    const int NFvol = b2.nvol();
+    const int NFex  = b2.nex();
 
-    Field_F b2;
-    int     NFin  = b2.nin();
-    int     NFvol = b2.nvol();
-    int     NFex  = b2.nex();
+    const int           Nm = Nk + Np;
+    std::vector<double> TDa(Nm);
+
+    std::vector<Field> vk(Nm);
     for (int k = 0; k < Nm; ++k) {
       vk[k].reset(NFin, NFvol, NFex);
     }
@@ -185,13 +195,10 @@ namespace Test_Eigensolver_Chebyshev {
     //  vout.general(vl, "  Nsbt  = %d\n", Nsbt);
     //  vout.general(vl, "  Nconv = %d\n", Nconv);
 
-    Field v;
-    v.reset(NFin, NFvol, NFex);
-    double vv = 0.0;  // superficial initialization
-
-    fopr_smear->set_mode("H");
-
     for (int i = 0; i < Nsbt + 1; ++i) {
+      Field v(NFin, NFvol, NFex);
+
+      fopr_smear->set_mode("H");
       fopr_smear->mult(v, vk[i]);
 
       double vnum = dot(vk[i], v);
@@ -200,12 +207,12 @@ namespace Test_Eigensolver_Chebyshev {
 
       TDa[i] = veig;
       axpy(v, -TDa[i], vk[i]);  // v -= TDa[i] * vk[i];
-      vv = v.norm2();           // vv = v * v;
+      double vv = v.norm2();    // vv = v * v;
 
       vout.general(vl, "Eigenvalues: %4d %20.14f  %10.4e  %10.4e\n", i, TDa[i], vv, vden - 1.0);
     }
 
-    double result = TDa[0];
+    const double result = TDa[0];
 
     timer->report();
 

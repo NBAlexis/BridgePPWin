@@ -1,17 +1,38 @@
 /*!
-        @file    $Id: test_HMC_Clover_Isochemical_Nf2.cpp #$
+        @file    test_HMC_Clover_Isochemical_Nf2.cpp
 
         @brief
 
         @author  Hideo Matsufuru  (matsufuru)
-                 $LastChangedBy: aoym $
+                 $LastChangedBy: aoyama $
 
         @date    $LastChangedDate: 2013-01-22 13:51:53 #$
 
-        @version $LastChangedRevision: 1571 $
+        @version $LastChangedRevision: 1929 $
 */
-
 #include "BppSmallTest.h"
+#include "test.h"
+
+#include "Action/Fermion/action_F_Standard_lex.h"
+
+#include "Fopr/fopr_Smeared.h"
+
+#include "Force/Fermion/force_F_Clover_Nf2_Isochemical.h"
+#include "Force/Fermion/force_F_Smeared.h"
+
+#include "HMC/hmc_General.h"
+#include "HMC/builder_Integrator.h"
+
+#include "IO/gaugeConfig.h"
+
+#include "Measurements/Gauge/polyakovLoop.h"
+#include "Measurements/Fermion/fprop_Standard_lex.h"
+#include "Measurements/Fermion/noiseVector_Z2.h"
+#include "Measurements/Fermion/quarkNumberSusceptibility_Wilson.h"
+
+#include "Tools/file_utils.h"
+#include "Tools/randomNumberManager.h"
+#include "Tools/randomNumbers_Mseries.h"
 
 //====================================================================
 //! Test of HMC update for clover fermions with isochemical potential.
@@ -56,22 +77,22 @@ namespace Test_HMC_Clover_Isochemical {
   int update_Nf2(void)
   {
     // #####  parameter setup  #####
-    //int Nc   = CommonParameters::Nc();
-    int Nvol = CommonParameters::Nvol();
-    int Ndim = CommonParameters::Ndim();
+    const int Nc   = CommonParameters::Nc();
+    const int Nvol = CommonParameters::Nvol();
+    const int Ndim = CommonParameters::Ndim();
 
-    Parameters params_all = ParameterManager::read(filename_input);
+    const Parameters params_all = ParameterManager::read(filename_input);
 
-    Parameters params_test       = params_all.lookup("Test_HMC_Clover_Isochemical");
-    Parameters params_action_G   = params_all.lookup("Action_G");
-    Parameters params_fopr       = params_all.lookup("Fopr");
-    Parameters params_proj       = params_all.lookup("Projection");
-    Parameters params_smear      = params_all.lookup("Smear");
-    Parameters params_dr_smear   = params_all.lookup("Director_Smear");
-    Parameters params_solver_MD  = params_all.lookup("Solver_MD");
-    Parameters params_solver_H   = params_all.lookup("Solver_H");
-    Parameters params_integrator = params_all.lookup("Builder_Integrator");
-    Parameters params_hmc        = params_all.lookup("HMC_General");
+    const Parameters params_test       = params_all.lookup("Test_HMC_Clover_Isochemical");
+    const Parameters params_action_G   = params_all.lookup("Action_G");
+    const Parameters params_fopr       = params_all.lookup("Fopr");
+    const Parameters params_proj       = params_all.lookup("Projection");
+    const Parameters params_smear      = params_all.lookup("Smear");
+    const Parameters params_dr_smear   = params_all.lookup("Director_Smear");
+    const Parameters params_solver_MD  = params_all.lookup("Solver_MD");
+    const Parameters params_solver_H   = params_all.lookup("Solver_H");
+    const Parameters params_integrator = params_all.lookup("Builder_Integrator");
+    const Parameters params_hmc        = params_all.lookup("HMC_General");
 
     const string        str_gconf_status = params_test.get_string("gauge_config_status");
     const string        str_gconf_read   = params_test.get_string("gauge_config_type_input");
@@ -83,7 +104,7 @@ namespace Test_HMC_Clover_Isochemical {
     int                 i_conf           = params_test.get_int("trajectory_number");
     const int           Ntraj            = params_test.get_int("trajectory_number_step");
     const int           i_save_conf      = params_test.get_int("save_config_interval");
-    int                 i_seed_noise     = params_test.get_int("int_seed_for_noise");
+    const int           i_seed_noise     = params_test.get_int("int_seed_for_noise");
     const string        str_vlevel       = params_test.get_string("verbose_level");
 
     const bool   do_check        = params_test.is_set("expected_result");
@@ -99,7 +120,7 @@ namespace Test_HMC_Clover_Isochemical {
     const int              Nlevels            = params_integrator.get_int("number_of_levels");
     const std::vector<int> level_action       = params_integrator.get_int_vector("level_of_actions");
 
-    Bridge::VerboseLevel vl = vout.set_verbose_level(str_vlevel);
+    const Bridge::VerboseLevel vl = vout.set_verbose_level(str_vlevel);
 
     //- print input parameters
     vout.general(vl, "  gconf_status   = %s\n", str_gconf_status.c_str());
@@ -150,7 +171,7 @@ namespace Test_HMC_Clover_Isochemical {
       exit(EXIT_FAILURE);
     }
 
-    unique_ptr<GaugeConfig> gconf_write(new GaugeConfig(str_gconf_write));
+    const unique_ptr<GaugeConfig> gconf_write(new GaugeConfig(str_gconf_write));
 
 
     unique_ptr<Action> action_G(Action::New(str_action_G_type));
@@ -206,7 +227,7 @@ namespace Test_HMC_Clover_Isochemical {
     std::vector<Director *> directors(1);
     directors[0] = (Director *)dr_smear.get(); // register director[0] (SA)
 
-    unique_ptr<Builder_Integrator> builder(new Builder_Integrator(actions, directors));
+    const unique_ptr<Builder_Integrator> builder(new Builder_Integrator(actions, directors));
     builder->set_parameters(params_integrator);
     Integrator *integrator = builder->build();
 
@@ -217,15 +238,15 @@ namespace Test_HMC_Clover_Isochemical {
     hmc.set_parameters(params_hmc);
 
 
-    unique_ptr<PolyakovLoop> ploop(new PolyakovLoop());
+    const unique_ptr<PolyakovLoop> ploop(new PolyakovLoop());
 
     unique_ptr<RandomNumbers> rand_nv(new RandomNumbers_Mseries(i_seed_noise));
     unique_ptr<NoiseVector>   nv(new NoiseVector_Z2(rand_nv));
-    unique_ptr<QuarkNumberSusceptibility_Wilson> quark_suscept(
+    const unique_ptr<QuarkNumberSusceptibility_Wilson> quark_suscept(
       new QuarkNumberSusceptibility_Wilson(fopr_smear, fprop_H, nv));
     quark_suscept->set_parameters(params_test);
 
-    unique_ptr<Timer> timer(new Timer(test_name));
+    const unique_ptr<Timer> timer(new Timer(test_name));
 
 
     // ####  Execution main part  ####
@@ -233,7 +254,7 @@ namespace Test_HMC_Clover_Isochemical {
 
     vout.general(vl, "HMC: Ntraj = %d\n", Ntraj);
 
-    dcomplex ploop0 = ploop->measure_ploop(*U);
+    const dcomplex ploop0 = ploop->measure_ploop(*U);
     vout.general(vl, "Polyakov loop = %e %e\n", real(ploop0), imag(ploop0));
 
     double result = 0.0;
@@ -251,7 +272,7 @@ namespace Test_HMC_Clover_Isochemical {
       dcomplex ploop1 = ploop->measure_ploop(*U);
       vout.general(vl, "Polyakov loop = %e %e\n", real(ploop1), imag(ploop1));
 
-      double result_quark_suscept1 = quark_suscept->measure();
+      //double result_quark_suscept1 = quark_suscept->measure();
     }
 
     gconf_write->write_file(U, writefile);

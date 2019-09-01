@@ -1,17 +1,21 @@
 /*!
-        @file    $Id: test_HotStart_Unitary.cpp #$
+        @file    test_HotStart_Unitary.cpp
 
         @brief
 
         @author  Hideo Matsufuru  (matsufuru)
-                 $LastChangedBy: aoym $
+                 $LastChangedBy: aoyama $
 
         @date    $LastChangedDate: 2013-01-22 13:51:53 #$
 
-        @version $LastChangedRevision: 1561 $
+        @version $LastChangedRevision: 1929 $
 */
-
 #include "BppSmallTest.h"
+#include "test.h"
+
+#include "IO/gaugeConfig.h"
+
+#include "Tools/randomNumbers_Mseries.h"
 
 //====================================================================
 //! Test of hot start.
@@ -49,32 +53,33 @@ namespace Test_HotStart {
   //====================================================================
   int unitary(void)
   {
-    int Nc   = CommonParameters::Nc();
-    int Nvol = CommonParameters::Nvol();
-    int Ndim = CommonParameters::Ndim();
+    const int Nc   = CommonParameters::Nc();
+    const int Ndim = CommonParameters::Ndim();
+    const int Nvol = CommonParameters::Nvol();
+    const int NPE  = CommonParameters::NPE();
 
-    Parameters params_all = ParameterManager::read(filename_input);
+    const Parameters params_all = ParameterManager::read(filename_input);
 
-    Parameters params_test = params_all.lookup("Test_HotStart");
+    const Parameters params_test = params_all.lookup("Test_HotStart");
 
     const string str_vlevel = params_test.get_string("verbose_level");
 
     const bool   do_check        = params_test.is_set("expected_result");
     const double expected_result = do_check ? params_test.get_double("expected_result") : 0.0;
 
-    Bridge::VerboseLevel vl = vout.set_verbose_level(str_vlevel);
+    const Bridge::VerboseLevel vl = vout.set_verbose_level(str_vlevel);
 
 
     // ####  Set up a gauge configuration  ####
     unique_ptr<Field_G> U(new Field_G(Nvol, Ndim));
 
-    int i_seed_noise = 1234567;
+    const int                 i_seed_noise = 1234567;
     unique_ptr<RandomNumbers> rand(new RandomNumbers_Mseries(i_seed_noise));
     U->set_random(rand);
 
 
     // #### object setup #####
-    unique_ptr<Timer> timer(new Timer(test_name));
+    const unique_ptr<Timer> timer(new Timer(test_name));
 
 
     // ####  Execution main part  ####
@@ -96,15 +101,14 @@ namespace Test_HotStart {
       }
     }
 
-    double av_all = Communicator::reduce_sum(av);
-    int    Nlink  = CommonParameters::Lvol() * Ndim;
+    const double av_all = Communicator::reduce_sum(av);
 
     vout.general(vl, "\n");
     vout.general(vl, "Random SU(%d):\n", Nc);
-    vout.general(vl, "  number of matrix  = %10d\n", Nlink);
-    vout.general(vl, "  ave |UU^dag - I| = %23.16e\n", av_all / Nlink);
+    // vout.general(vl, "  number of matrix  = %10d\n", Nvol * NPE * Ndim);
+    vout.general(vl, "  ave |UU^dag - I| = %23.16e\n", av_all / Nvol / NPE / Ndim);
 
-    double result = av_all / Nlink;
+    const double result = av_all / Nvol / NPE / Ndim;
 
     timer->report();
 

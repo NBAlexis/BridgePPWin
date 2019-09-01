@@ -1,17 +1,24 @@
 /*!
-        @file    $Id:: test_RandomNumbers_Mseries_Global.cpp #$
+        @file    test_RandomNumbers_Mseries_Global.cpp
 
         @brief
 
         @author  T.Aoyama  (aoym)
-                 $LastChangedBy: aoym $
+                 $LastChangedBy: aoyama $
 
-        @date    $LastChangedDate:: 2017-02-24 18:35:38 #$
+        @date    $LastChangedDate:: 2019-01-21 17:06:23 #$
 
-        @version $LastChangedRevision: 1571 $
+        @version $LastChangedRevision: 1929 $
 */
-
 #include "BppSmallTest.h"
+#include "test.h"
+
+#include "Tools/randomNumbers_Mseries.h"
+
+#include "Field/field_G.h"
+
+#include "IO/fieldIO_Text.h"  // for gather field
+#include "IO/io_format_gauge.h"
 
 //====================================================================
 //! Test of random number generator.
@@ -49,17 +56,17 @@ namespace Test_RandomNumbers_Mseries {
   {
     // ####  parameter setup  ####
 
-    Parameters params_all = ParameterManager::read(filename_input);
+    const Parameters params_all = ParameterManager::read(filename_input);
 
-    Parameters params_test = params_all.lookup("Test_RandomNumbers");
+    const Parameters params_test = params_all.lookup("Test_RandomNumbers");
 
-    int          iseed      = params_test.get_int("int_seed");
+    const int    iseed      = params_test.get_int("int_seed");
     const string str_vlevel = params_test.get_string("verbose_level");
 
     const bool   do_check        = params_test.is_set("expected_result");
     const double expected_result = do_check ? params_test.get_double("expected_result") : 0.0;
 
-    Bridge::VerboseLevel vl = vout.set_verbose_level(str_vlevel);
+    const Bridge::VerboseLevel vl = vout.set_verbose_level(str_vlevel);
 
     //- print input parameters
     vout.general(vl, "  iseed     = %d\n", iseed);
@@ -68,7 +75,7 @@ namespace Test_RandomNumbers_Mseries {
 
 
     // #### object setup #####
-    unique_ptr<Timer> timer(new Timer(test_name));
+    const unique_ptr<Timer> timer(new Timer(test_name));
 
 
     // ####  Execution main part  ####
@@ -78,11 +85,11 @@ namespace Test_RandomNumbers_Mseries {
     vout.general(vl, "Serial and Node-parallel test of Random Number Generator:\n");
 
     // sample field size
-    int nin = 8;
-    int nex = 4;
+    const int nin = 8;
+    const int nex = 4;
 
-    int nvol = CommonParameters::Nvol();
-    int lvol = CommonParameters::Lvol();
+    const int    nvol = CommonParameters::Nvol();
+    const long_t lvol = CommonParameters::Lvol();
 
     vout.general(vl, "field size: nin = %d, nex = %d, nvol = %d, lvol = %d\n", nin, nex, nvol, lvol);
 
@@ -98,7 +105,7 @@ namespace Test_RandomNumbers_Mseries {
     Field field1(nin, nvol, nex);
 
     if (true) {
-      unique_ptr<RandomNumbers> rand(new RandomNumbers_Mseries(iseed));
+      const unique_ptr<RandomNumbers> rand(new RandomNumbers_Mseries(iseed));
       rand->set_parameter_verboselevel(Bridge::DETAILED);
 
       // fill field with uniform random numbers
@@ -114,9 +121,9 @@ namespace Test_RandomNumbers_Mseries {
     Field field2(0, 0, 0);
 
     if (Communicator::is_primary()) {
-      unique_ptr<RandomNumbers> rand(new RandomNumbers_Mseries(iseed));
+      const unique_ptr<RandomNumbers> rand(new RandomNumbers_Mseries(iseed));
 
-      field2.reset(nin, lvol, nex);
+      field2.reset(nin, (const int)lvol, nex);
 
       double *p = field2.ptr(0);
 
@@ -129,7 +136,7 @@ namespace Test_RandomNumbers_Mseries {
     Field field1b(0, 0, 0);
 
     if (Communicator::is_primary()) {
-      field1b.reset(nin, lvol, nex);
+      field1b.reset(nin, (const int)lvol, nex);
     }
 
     FieldIO_Text fieldio(IO_Format::Gauge::ILDG);
@@ -177,7 +184,7 @@ namespace Test_RandomNumbers_Mseries {
     int err3 = 0;
 
     if (true) {
-      unique_ptr<RandomNumbers_Mseries> rand(new RandomNumbers_Mseries(iseed));
+      const unique_ptr<RandomNumbers_Mseries> rand(new RandomNumbers_Mseries(iseed));
       rand->set_parameter_verboselevel(Bridge::DETAILED);
 
       // save current state to file
@@ -208,7 +215,7 @@ namespace Test_RandomNumbers_Mseries {
     field1.reset(nin, nvol, nex);
 
     if (true) {
-      unique_ptr<RandomNumbers> rand(new RandomNumbers_Mseries(iseed));
+      const unique_ptr<RandomNumbers> rand(new RandomNumbers_Mseries(iseed));
       rand->set_parameter_verboselevel(Bridge::DETAILED);
 
       // fill field with gaussian random numbers
@@ -218,7 +225,7 @@ namespace Test_RandomNumbers_Mseries {
     if (Communicator::is_primary()) {
       unique_ptr<RandomNumbers> rand(new RandomNumbers_Mseries(iseed));
 
-      field2.reset(nin, lvol, nex);
+      field2.reset(nin, (const int)lvol, nex);
 
       double *p = field2.ptr(0);
 
@@ -249,7 +256,7 @@ namespace Test_RandomNumbers_Mseries {
     }
 
     if (Communicator::is_primary()) {
-      field1b.reset(nin, lvol, nex);
+      field1b.reset(nin, (const int)lvol, nex);
     }
 
     fieldio.gather(&field1b, &field1);
@@ -275,7 +282,7 @@ namespace Test_RandomNumbers_Mseries {
 
 
     // 8. summary
-    double result = err1 + err2 + err3 + err4;
+    const double result = err1 + err2 + err3 + err4;
 
     timer->report();
 
